@@ -4,13 +4,13 @@ import _ from "lodash";
 
 const Dials = ({ dials }) => (
   <>
-    {dials.map(component => {
+    {dials.map(dial => {
       return (
         <circle
-          key={component.uuid}
-          cx={component.cx}
-          cy={component.cy}
-          r={component.r}
+          key={dial.uuid}
+          cx={dial.cx}
+          cy={dial.cy}
+          r={dial.r}
           stroke="black"
           strokeWidth="1"
           fill="none"
@@ -27,10 +27,10 @@ const PedalForm = ({ saveDimensions }) => {
   return (
     <form
       onSubmit={event => {
-        console.log({
-          width,
-          height
-        });
+        // console.log({
+        //   width,
+        //   height
+        // });
         event.preventDefault();
         saveDimensions({
           width,
@@ -38,25 +38,35 @@ const PedalForm = ({ saveDimensions }) => {
         });
       }}
     >
-      <input
-        placeholder="Set Width"
-        name="set-width"
-        type="text"
-        onChange={event => {
-          setWidth(event.target.value);
-        }}
-        value={width}
-      />
-      <input
-        placeholder="Set Height"
-        name="set-height"
-        type="text"
-        onChange={event => {
-          setHeight(event.target.value);
-        }}
-        value={height}
-      />
-      <input type="submit" value="Submit" />
+      <p>
+        <label htmlFor="width">Width </label>
+        <input
+          id="width"
+          placeholder="Set Width"
+          name="set-width"
+          type="number"
+          onChange={event => {
+            setWidth(event.target.value);
+          }}
+          value={width}
+        />
+      </p>
+      <p>
+        <label htmlFor="height">Height </label>
+        <input
+          id="height"
+          placeholder="Set Height"
+          name="set-height"
+          type="number"
+          onChange={event => {
+            setHeight(event.target.value);
+          }}
+          value={height}
+        />
+      </p>
+      <p>
+        <input type="submit" value="Submit" />
+      </p>
     </form>
   );
 };
@@ -69,13 +79,13 @@ const DialForm = ({ saveDial }) => {
   return (
     <form
       onSubmit={event => {
-        console.log({
-          uuid: Math.random(),
-          type: "Dial",
-          cx: cx,
-          cy: cy,
-          r: r
-        });
+        // console.log({
+        //   uuid: Math.random(),
+        //   type: "Dial",
+        //   cx: cx,
+        //   cy: cy,
+        //   r: r
+        // });
         event.preventDefault();
         saveDial({
           uuid: Math.random(),
@@ -86,44 +96,77 @@ const DialForm = ({ saveDial }) => {
         });
       }}
     >
-      <input
-        placeholder="Set cx"
-        name="set-cx"
-        type="text"
-        onChange={event => {
-          setCx(event.target.value);
-        }}
-        value={cx}
-      />
-      <input
-        placeholder="Set cy"
-        name="set-cy"
-        type="text"
-        onChange={event => {
-          setCy(event.target.value);
-        }}
-        value={cy}
-      />
-      <input
-        placeholder="Set r"
-        name="set-r"
-        type="text"
-        onChange={event => {
-          setR(event.target.value);
-        }}
-        value={r}
-      />
-      <input type="submit" value="Submit" />
+      <p>
+        <label htmlFor="cx">CX </label>
+        <input
+          id="cx"
+          placeholder="Set cx"
+          name="set-cx"
+          type="number"
+          onChange={event => {
+            setCx(event.target.value);
+          }}
+          value={cx}
+        />
+      </p>
+      <p>
+        <label htmlFor="cy">CY </label>
+        <input
+          id="cy"
+          placeholder="Set cy"
+          name="set-cy"
+          type="number"
+          onChange={event => {
+            setCy(event.target.value);
+          }}
+          value={cy}
+        />
+      </p>
+      <p>
+        <label htmlFor="r">R </label>
+        <input
+          id="r"
+          placeholder="Set r"
+          name="set-r"
+          type="number"
+          onChange={event => {
+            setR(event.target.value);
+          }}
+          value={r}
+        />
+      </p>
+      <p>
+        <input type="submit" value="Submit" />
+      </p>
     </form>
   );
 };
 
-function App() {
+const ComponentInfo = ({ selectedComponent }) => {
+  return <p>hello</p>;
+};
+
+const App = () => {
   const [dials, setDials] = useState([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [selectedComponent, setSelectedComponent] = useState({});
 
+  console.log(dials);
   return (
     <>
+      <div className="info">
+        <div className="form-stuff">
+          <PedalForm saveDimensions={setDimensions} />
+          <DialForm
+            saveDial={dial => {
+              setDials([...dials, dial]);
+            }}
+          />
+        </div>
+        <div className="display-stuff">
+          <ComponentInfo selectedComponent={selectedComponent} />
+        </div>
+      </div>
       <svg width="800" height="500">
         <rect
           width={dimensions.width}
@@ -136,16 +179,8 @@ function App() {
         />
         <Dials dials={dials} />
       </svg>
-      <div className="form-stuff">
-        <PedalForm saveDimensions={setDimensions} />
-        <DialForm
-          saveDial={dial => {
-            setDials([...dials, dial]);
-          }}
-        />
-      </div>
     </>
   );
-}
+};
 
 export default App;
