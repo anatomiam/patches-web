@@ -1,6 +1,7 @@
 .info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .form-stuff,
@@ -8,4 +9,8 @@
   margin: 5px;
   text-align: center;
   width: 50%;
+}
+
+.knob {
+  cursor: pointer;
 }

@@ -6,28 +6,29 @@ const pedal = {
   name: "1981 Inventions",
   dimensions: { width: 300, height: 350 },
   components: {
-    dials: [
-      { uuid: 0.2174300852631356, type: "Dial", cx: "50", cy: "100", r: "35" },
-      { uuid: 0.2891690671731057, type: "Dial", cx: "150", cy: "100", r: "35" },
-      { uuid: 0.5147078029919594, type: "Dial", cx: "250", cy: "100", r: "35" },
-      { uuid: 0.2029468986169089, type: "Dial", cx: "50", cy: "275", r: "15" }
+    knobs: [
+      { uuid: 0.2174300852631356, type: "Knob", cx: "50", cy: "100", r: "35" },
+      { uuid: 0.2891690671731057, type: "Knob", cx: "150", cy: "100", r: "35" },
+      { uuid: 0.5147078029919594, type: "Knob", cx: "250", cy: "100", r: "35" },
+      { uuid: 0.2029468986169089, type: "Knob", cx: "50", cy: "275", r: "15" }
     ]
   }
 };
 
-const Dials = ({ dials, setSelectedComponent }) => (
+const Knobs = ({ knobs, setSelectedComponent }) => (
   <>
-    {dials.map(dial => {
+    {knobs.map(knob => {
       return (
         <circle
-          key={dial.uuid}
-          cx={dial.cx}
-          cy={dial.cy}
-          r={dial.r}
+          className="knob"
+          key={knob.uuid}
+          cx={knob.cx}
+          cy={knob.cy}
+          r={knob.r}
           stroke="black"
           strokeWidth="1"
           fill="darkgrey"
-          onClick={() => setSelectedComponent(dial)}
+          onClick={() => setSelectedComponent(knob)}
         />
       );
     })}
@@ -75,13 +76,13 @@ const PedalForm = ({ dimensions, saveDimensions }) => {
         />
       </p>
       <p>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit Dimensions" />
       </p>
     </form>
   );
 };
 
-const DialForm = ({ saveDial }) => {
+const KnobForm = ({ saveKnob }) => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [r, setR] = useState(0);
@@ -90,13 +91,16 @@ const DialForm = ({ saveDial }) => {
     <form
       onSubmit={event => {
         event.preventDefault();
-        saveDial({
+        saveKnob({
           uuid: Math.random(),
-          type: "Dial",
-          cx: cx,
-          cy: cy,
-          r: r
+          type: "Knob",
+          cx,
+          cy,
+          r
         });
+        setCx(0);
+        setCy(0);
+        setR(0);
       }}
     >
       <p>
@@ -139,7 +143,7 @@ const DialForm = ({ saveDial }) => {
         />
       </p>
       <p>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Add Knob" />
       </p>
     </form>
   );
@@ -152,8 +156,8 @@ const ComponentInfo = ({ selectedComponent }) => {
     <>
       {_.map(selectedComponent, (value, key) => {
         return (
-          <p>
-            {key}: {value}
+          <p key={Math.random()}>
+            <strong>{key}</strong>: {value}
           </p>
         );
       })}
@@ -162,22 +166,22 @@ const ComponentInfo = ({ selectedComponent }) => {
 };
 
 const App = () => {
-  const [dials, setDials] = useState(pedal.components.dials);
+  const [knobs, setKnobs] = useState(pedal.components.knobs);
   const [dimensions, setDimensions] = useState({
     width: pedal.dimensions.width,
     height: pedal.dimensions.height
   });
   const [selectedComponent, setSelectedComponent] = useState({});
 
-  console.log(dials);
+  console.log(knobs);
   return (
     <>
       <div className="info">
         <div className="form-stuff">
           <PedalForm dimensions={dimensions} saveDimensions={setDimensions} />
-          <DialForm
-            saveDial={dial => {
-              setDials([...dials, dial]);
+          <KnobForm
+            saveKnob={knob => {
+              setKnobs([...knobs, knob]);
             }}
           />
         </div>
@@ -196,7 +200,7 @@ const App = () => {
             stroke: "rgb(0,0,0)"
           }}
         />
-        <Dials dials={dials} setSelectedComponent={setSelectedComponent} />
+        <Knobs knobs={knobs} setSelectedComponent={setSelectedComponent} />
       </svg>
     </>
   );
