@@ -2,7 +2,20 @@ import React, { useState } from "react";
 import "./App.css";
 import _ from "lodash";
 
-const Dials = ({ dials }) => (
+const pedal = {
+  name: "1981 Inventions",
+  dimensions: { width: 300, height: 350 },
+  components: {
+    dials: [
+      { uuid: 0.2174300852631356, type: "Dial", cx: "50", cy: "100", r: "35" },
+      { uuid: 0.2891690671731057, type: "Dial", cx: "150", cy: "100", r: "35" },
+      { uuid: 0.5147078029919594, type: "Dial", cx: "250", cy: "100", r: "35" },
+      { uuid: 0.2029468986169089, type: "Dial", cx: "50", cy: "275", r: "15" }
+    ]
+  }
+};
+
+const Dials = ({ dials, setSelectedComponent }) => (
   <>
     {dials.map(dial => {
       return (
@@ -13,24 +26,21 @@ const Dials = ({ dials }) => (
           r={dial.r}
           stroke="black"
           strokeWidth="1"
-          fill="none"
+          fill="darkgrey"
+          onClick={() => setSelectedComponent(dial)}
         />
       );
     })}
   </>
 );
 
-const PedalForm = ({ saveDimensions }) => {
-  const [height, setHeight] = useState(0);
-  const [width, setWidth] = useState(0);
+const PedalForm = ({ dimensions, saveDimensions }) => {
+  const [width, setWidth] = useState(dimensions.width);
+  const [height, setHeight] = useState(dimensions.height);
 
   return (
     <form
       onSubmit={event => {
-        // console.log({
-        //   width,
-        //   height
-        // });
         event.preventDefault();
         saveDimensions({
           width,
@@ -79,13 +89,6 @@ const DialForm = ({ saveDial }) => {
   return (
     <form
       onSubmit={event => {
-        // console.log({
-        //   uuid: Math.random(),
-        //   type: "Dial",
-        //   cx: cx,
-        //   cy: cy,
-        //   r: r
-        // });
         event.preventDefault();
         saveDial({
           uuid: Math.random(),
@@ -143,12 +146,27 @@ const DialForm = ({ saveDial }) => {
 };
 
 const ComponentInfo = ({ selectedComponent }) => {
-  return <p>hello</p>;
+  const components = Object.entries(selectedComponent);
+  console.log(components);
+  return (
+    <>
+      {_.map(selectedComponent, (value, key) => {
+        return (
+          <p>
+            {key}: {value}
+          </p>
+        );
+      })}
+    </>
+  );
 };
 
 const App = () => {
-  const [dials, setDials] = useState([]);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [dials, setDials] = useState(pedal.components.dials);
+  const [dimensions, setDimensions] = useState({
+    width: pedal.dimensions.width,
+    height: pedal.dimensions.height
+  });
   const [selectedComponent, setSelectedComponent] = useState({});
 
   console.log(dials);
@@ -156,7 +174,7 @@ const App = () => {
     <>
       <div className="info">
         <div className="form-stuff">
-          <PedalForm saveDimensions={setDimensions} />
+          <PedalForm dimensions={dimensions} saveDimensions={setDimensions} />
           <DialForm
             saveDial={dial => {
               setDials([...dials, dial]);
@@ -167,17 +185,18 @@ const App = () => {
           <ComponentInfo selectedComponent={selectedComponent} />
         </div>
       </div>
-      <svg width="800" height="500">
+      <h2>{pedal.name}</h2>
+      <svg className="pedal" width="800" height="500">
         <rect
           width={dimensions.width}
           height={dimensions.height}
           style={{
-            fill: "none",
+            fill: "grey",
             strokeWidth: 2,
             stroke: "rgb(0,0,0)"
           }}
         />
-        <Dials dials={dials} />
+        <Dials dials={dials} setSelectedComponent={setSelectedComponent} />
       </svg>
     </>
   );
