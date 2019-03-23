@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+function App() {
+  const [height, setHeight] = useState(200);
+  const [width, setWidth] = useState(150);
+
+  return (
+    <>
+      <svg width="300" height="300">
+        <rect
+          width={width}
+          height={height}
+          style={{
+            fill: "rgb(100,100,100)",
+            strokeWidth: 2,
+            stroke: "rgb(0,0,0)"
+          }}
+        />
+      </svg>
+      <div className="dimensions">
+        <input
+          value={height}
+          onChange={e => setHeight(e.target.value)}
+          placeholder="Height"
+          name="Height"
+          type="text"
+        />
+        <input
+          value={width}
+          onChange={e => setWidth(e.target.value)}
+          placeholder="Width"
+          name="Width"
+          type="text"
+        />
       </div>
-    );
-  }
+    </>
+  );
 }
 
 export default App;
