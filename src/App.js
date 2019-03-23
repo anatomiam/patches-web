@@ -7,10 +7,38 @@ const pedal = {
   dimensions: { width: 300, height: 350 },
   components: {
     knobs: [
-      { uuid: 0.2174300852631356, type: "Knob", cx: "50", cy: "100", r: "35" },
-      { uuid: 0.2891690671731057, type: "Knob", cx: "150", cy: "100", r: "35" },
-      { uuid: 0.5147078029919594, type: "Knob", cx: "250", cy: "100", r: "35" },
-      { uuid: 0.2029468986169089, type: "Knob", cx: "50", cy: "275", r: "15" }
+      {
+        uuid: 0.2174300852631356,
+        type: "Knob",
+        cx: 50,
+        cy: 100,
+        r: 35,
+        angle: 0
+      },
+      {
+        uuid: 0.2891690671731057,
+        type: "Knob",
+        cx: 150,
+        cy: 100,
+        r: 35,
+        angle: 0
+      },
+      {
+        uuid: 0.5147078029919594,
+        type: "Knob",
+        cx: 250,
+        cy: 100,
+        r: 35,
+        angle: 0
+      },
+      {
+        uuid: 0.2029468986169089,
+        type: "Knob",
+        cx: 50,
+        cy: 275,
+        r: 15,
+        angle: 0
+      }
     ]
   }
 };
@@ -19,17 +47,30 @@ const Knobs = ({ knobs, setSelectedComponent }) => (
   <>
     {knobs.map(knob => {
       return (
-        <circle
-          className="knob"
+        <g
           key={knob.uuid}
-          cx={knob.cx}
-          cy={knob.cy}
-          r={knob.r}
-          stroke="black"
-          strokeWidth="1"
-          fill="darkgrey"
-          onClick={() => setSelectedComponent(knob)}
-        />
+          transform={`rotate(${knob.angle} ${knob.cx} ${knob.cy})`}
+        >
+          <circle
+            className="knob component"
+            cx={knob.cx}
+            cy={knob.cy}
+            r={knob.r}
+            stroke="black"
+            strokeWidth="1"
+            fill="darkgrey"
+            onClick={() => setSelectedComponent(knob)}
+          />
+          <line
+            x1={knob.cx}
+            y1={knob.cy + knob.r / 4}
+            x2={knob.cx}
+            y2={knob.cy + (3.25 * knob.r) / 4}
+            stroke="black"
+            strokeWidth="1"
+            strokeLinecap="round"
+          />
+        </g>
       );
     })}
   </>
@@ -86,6 +127,7 @@ const KnobForm = ({ saveKnob }) => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [r, setR] = useState(0);
+  const [angle, setAngle] = useState(0);
 
   return (
     <form
@@ -94,13 +136,15 @@ const KnobForm = ({ saveKnob }) => {
         saveKnob({
           uuid: Math.random(),
           type: "Knob",
-          cx,
-          cy,
-          r
+          cx: parseInt(cx),
+          cy: parseInt(cy),
+          r: parseInt(r),
+          angle: parseInt(angle)
         });
         setCx(0);
         setCy(0);
         setR(0);
+        setAngle(0);
       }}
     >
       <p>
@@ -140,6 +184,19 @@ const KnobForm = ({ saveKnob }) => {
             setR(event.target.value);
           }}
           value={r}
+        />
+      </p>
+      <p>
+        <label htmlFor="angle">Angle </label>
+        <input
+          id="angle"
+          placeholder="Set angle"
+          name="set-angle"
+          type="number"
+          onChange={event => {
+            setAngle(event.target.value);
+          }}
+          value={angle}
         />
       </p>
       <p>
