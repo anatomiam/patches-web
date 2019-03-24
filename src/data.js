@@ -10,7 +10,8 @@ export const pedal = {
         cx: 50,
         cy: 80,
         r: 35,
-        angle: 90
+        angle: 90,
+        label: "DRV"
       },
       {
         uuid: 0.2891690671731057,
@@ -18,7 +19,8 @@ export const pedal = {
         cx: 150,
         cy: 80,
         r: 35,
-        angle: 180
+        angle: 180,
+        label: "CUT"
       },
       {
         uuid: 0.5147078029919594,
@@ -26,11 +28,12 @@ export const pedal = {
         cx: 250,
         cy: 80,
         r: 35,
-        angle: 345
+        angle: 345,
+        label: "VOL"
       },
       {
         uuid: 0.2029468986169089,
-        type: "Knob",
+        type: "FootSwitch",
         cx: 50,
         cy: 275,
         r: 15,
@@ -40,7 +43,7 @@ export const pedal = {
   }
 };
 
-const blankPedal = {
+export const blankPedal = {
   name: "Blank Slate",
   dimensions: { width: 0, height: 0 },
   components: {

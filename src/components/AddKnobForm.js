@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useStateValue } from "../StateProvider";
 
 export const AddKnobForm = ({ saveKnob }) => {
-  const [dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [r, setR] = useState(0);
   const [angle, setAngle] = useState(0);
+  const [label, setLabel] = useState("");
 
   return (
     <form
@@ -19,10 +20,11 @@ export const AddKnobForm = ({ saveKnob }) => {
           knob: {
             uuid: Math.random(),
             type: "Knob",
-            cx: cx,
-            cy: cy,
-            r: r,
-            angle: angle
+            cx,
+            cy,
+            r,
+            angle,
+            label
           }
         });
 
@@ -30,6 +32,7 @@ export const AddKnobForm = ({ saveKnob }) => {
         setCy(0);
         setR(0);
         setAngle(0);
+        setLabel("");
       }}
     >
       <p>
@@ -82,6 +85,19 @@ export const AddKnobForm = ({ saveKnob }) => {
             setAngle(parseFloat(event.target.value));
           }}
           value={angle}
+        />
+      </p>
+      <p>
+        <label htmlFor="label">Label </label>
+        <input
+          id="label"
+          placeholder="Set label"
+          name="set-label"
+          type="text"
+          onChange={event => {
+            setLabel(event.target.value);
+          }}
+          value={label}
         />
       </p>
       <p>

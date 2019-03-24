@@ -2,7 +2,7 @@ import React from "react";
 
 export const Knob = ({ knobDetails, dispatch }) => {
   // I extracted the knobs into their own components so that they could contain their own state
-  const { angle, cx, cy, r } = knobDetails;
+  const { angle, cx, cy, r, uuid } = knobDetails;
 
   return (
     <g transform={`rotate(${angle} ${cx} ${cy})`}>
@@ -17,7 +17,7 @@ export const Knob = ({ knobDetails, dispatch }) => {
         onClick={() =>
           dispatch({
             type: "SET_SELECTED_COMPONENT",
-            selectedComponent: knobDetails
+            selectedComponent: { uuid }
           })
         }
       />
