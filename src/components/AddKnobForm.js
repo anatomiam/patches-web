@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useStateValue } from "../App";
+import { useStateValue } from "../StateProvider";
 
 export const AddKnobForm = ({ saveKnob }) => {
-  const [{ pedal }, dispatch] = useStateValue();
+  const [dispatch] = useStateValue();
 
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);

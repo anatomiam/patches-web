@@ -2,7 +2,7 @@ import React from "react";
 
 export const Knob = ({ knobDetails, dispatch }) => {
   // I extracted the knobs into their own components so that they could contain their own state
-  const { angle, cx, cy, r, uuid } = knobDetails;
+  const { angle, cx, cy, r } = knobDetails;
 
   return (
     <g transform={`rotate(${angle} ${cx} ${cy})`}>

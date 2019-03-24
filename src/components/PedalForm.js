@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useStateValue } from "../App";
+import { useStateValue } from "../StateProvider";
 
 export const PedalForm = () => {
   const [{ pedal }, dispatch] = useStateValue();

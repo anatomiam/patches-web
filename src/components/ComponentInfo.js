@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateValue } from "../App";
+import { useStateValue } from "../StateProvider";
 import _ from "lodash";
 
 export const ComponentInfo = () => {

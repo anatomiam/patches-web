@@ -1,9 +1,9 @@
 import React from "react";
 import { Knobs } from "./Knobs";
-import { useStateValue } from "../App";
+import { useStateValue } from "../StateProvider";
 
 export const Pedal = () => {
-  const [{ pedal }, dispatch] = useStateValue();
+  const [{ pedal }] = useStateValue();
 
   const { height, width } = pedal.dimensions;
   return (
