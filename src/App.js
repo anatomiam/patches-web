@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import _ from "lodash";
 
+const blankPedal = {
+  name: "Blank Slate",
+  dimensions: { width: 0, height: 0 },
+  components: {
+    knobs: [{ uuid: 0, type: "Empty", cx: 0, cy: 0, r: 0, angle: 0 }]
+  }
+};
+
 const pedal = {
   name: "1981 Inventions",
   dimensions: { width: 300, height: 350 },
@@ -11,7 +19,7 @@ const pedal = {
         uuid: 0.2174300852631356,
         type: "Knob",
         cx: 50,
-        cy: 100,
+        cy: 80,
         r: 35,
         angle: 0
       },
@@ -19,7 +27,7 @@ const pedal = {
         uuid: 0.2891690671731057,
         type: "Knob",
         cx: 150,
-        cy: 100,
+        cy: 80,
         r: 35,
         angle: 0
       },
@@ -27,7 +35,7 @@ const pedal = {
         uuid: 0.5147078029919594,
         type: "Knob",
         cx: 250,
-        cy: 100,
+        cy: 80,
         r: 35,
         angle: 0
       },
@@ -37,6 +45,63 @@ const pedal = {
         cx: 50,
         cy: 275,
         r: 15,
+        angle: 0
+      }
+    ]
+  }
+};
+
+const CBAPedal = {
+  name: "Chase Bliss Audio",
+  dimensions: { width: 200, height: 400 },
+  components: {
+    knobs: [
+      {
+        uuid: 0.5040629413572115,
+        type: "Knob",
+        cx: 33.3,
+        cy: 33.3,
+        r: 20,
+        angle: 0
+      },
+      {
+        uuid: 0.3653608914422355,
+        type: "Knob",
+        cx: 99.9,
+        cy: 33.3,
+        r: 20,
+        angle: 0
+      },
+      {
+        uuid: 0.8017249190010618,
+        type: "Knob",
+        cx: 166.5,
+        cy: 33.3,
+        r: 20,
+        angle: 0
+      },
+      {
+        uuid: 0.5040629413572315,
+        type: "Knob",
+        cx: 33.3,
+        cy: 99.9,
+        r: 20,
+        angle: 0
+      },
+      {
+        uuid: 0.3653603914422355,
+        type: "Knob",
+        cx: 99.9,
+        cy: 99.9,
+        r: 20,
+        angle: 0
+      },
+      {
+        uuid: 0.8017249190310618,
+        type: "Knob",
+        cx: 166.5,
+        cy: 99.9,
+        r: 20,
         angle: 0
       }
     ]
@@ -136,10 +201,10 @@ const KnobForm = ({ saveKnob }) => {
         saveKnob({
           uuid: Math.random(),
           type: "Knob",
-          cx: parseInt(cx),
-          cy: parseInt(cy),
-          r: parseInt(r),
-          angle: parseInt(angle)
+          cx: parseFloat(cx),
+          cy: parseFloat(cy),
+          r: parseFloat(r),
+          angle: parseFloat(angle)
         });
         setCx(0);
         setCy(0);
@@ -264,3 +329,4 @@ const App = () => {
 };
 
 export default App;
+
