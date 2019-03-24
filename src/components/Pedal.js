@@ -1,5 +1,6 @@
 import React from "react";
 import { Knobs } from "./Knobs";
+import { Switch } from "./Switch";
 import { useStateValue } from "../StateProvider";
 
 export const Pedal = () => {
@@ -20,6 +21,7 @@ export const Pedal = () => {
           }}
         />
         <Knobs />
+        <Switch />
       </svg>
     </>
   );
