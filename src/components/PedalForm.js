@@ -11,7 +11,7 @@ export const PedalForm = () => {
       onSubmit={event => {
         event.preventDefault();
         dispatch({
-          type: "setDimensions",
+          type: "SET_DIMENSIONS",
           dimensions: {
             width,
             height

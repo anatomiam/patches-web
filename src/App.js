@@ -21,7 +21,7 @@ const App = () => {
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case "setDimensions":
+      case "SET_DIMENSIONS":
         return {
           ...state,
           pedal: {
@@ -29,7 +29,7 @@ const App = () => {
             dimensions: action.dimensions
           }
         };
-      case "setSelectedComponent":
+      case "SET_SELECTED_COMPONENT":
         return {
           ...state,
           pedal: {
@@ -37,7 +37,7 @@ const App = () => {
             selectedComponent: action.selectedComponent
           }
         };
-      case "addKnob":
+      case "ADD_KNOB":
         return {
           ...state,
           pedal: {

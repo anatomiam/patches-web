@@ -15,7 +15,7 @@ export const AddKnobForm = ({ saveKnob }) => {
         event.preventDefault();
 
         dispatch({
-          type: "addKnob",
+          type: "ADD_KNOB",
           knob: {
             uuid: Math.random(),
             type: "Knob",
