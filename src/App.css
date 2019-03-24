@@ -14,3 +14,13 @@
 .component {
   cursor: pointer;
 }
+
+.component-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  text-align: left;
+}
