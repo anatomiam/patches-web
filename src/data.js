@@ -1,4 +1,4 @@
-export const pedalss = {
+export const pedal = {
   name: "1981 Inventions",
   dimensions: { width: 300, height: 350 },
   selectedComponent: {},
@@ -10,7 +10,7 @@ export const pedalss = {
         cx: 50,
         cy: 80,
         r: 35,
-        angle: 0
+        angle: 90
       },
       {
         uuid: 0.2891690671731057,
@@ -18,7 +18,7 @@ export const pedalss = {
         cx: 150,
         cy: 80,
         r: 35,
-        angle: 0
+        angle: 180
       },
       {
         uuid: 0.5147078029919594,
@@ -26,7 +26,7 @@ export const pedalss = {
         cx: 250,
         cy: 80,
         r: 35,
-        angle: 0
+        angle: 345
       },
       {
         uuid: 0.2029468986169089,
@@ -48,7 +48,7 @@ const blankPedal = {
   }
 };
 
-export const pedal = {
+export const CBApedal = {
   name: "Chase Bliss Audio",
   dimensions: { width: 200, height: 400 },
   selectedComponent: {},

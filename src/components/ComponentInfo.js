@@ -4,12 +4,11 @@ import _ from "lodash";
 
 export const ComponentInfo = () => {
   const [{ pedal }, dispatch] = useStateValue();
+  const selectedComponent = pedal.components.knobs.find(element => {
+    return element.uuid === pedal.selectedComponent.uuid;
+  });
 
-  const { selectedComponent } = pedal;
-
-  const components = Object.entries(selectedComponent);
-  console.log(components);
-  return (
+  return selectedComponent ? (
     <div className="component-info">
       <div className="description">
         {_.map(selectedComponent, (value, key) => {
@@ -24,13 +23,22 @@ export const ComponentInfo = () => {
         <input
           style={{ transform: "rotate(270deg)" }}
           type="range"
-          min="1"
+          min="0"
           max="360"
-          value="250"
+          value={selectedComponent.angle}
+          onChange={event => {
+            dispatch({
+              type: "UPDATE_KNOB_ANGLE",
+              uuid: selectedComponent.uuid,
+              angle: parseInt(event.target.value)
+            });
+          }}
           className="slider"
           id="myRange"
         />
       </div>
     </div>
+  ) : (
+    <h3>Select a Component</h3>
   );
 };

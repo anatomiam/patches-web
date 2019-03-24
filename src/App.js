@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { AddKnobForm } from './components/AddKnobForm'
-import { ComponentInfo } from './components/ComponentInfo'
-import { Pedal } from './components/Pedal'
-import { PedalForm } from './components/PedalForm'
+import { AddKnobForm } from "./components/AddKnobForm";
+import { ComponentInfo } from "./components/ComponentInfo";
+import { Pedal } from "./components/Pedal";
+import { PedalForm } from "./components/PedalForm";
 import "./App.css";
 import { pedal } from "./data";
 
@@ -45,6 +45,25 @@ const App = () => {
             components: {
               ...state.pedal.components,
               knobs: [...state.pedal.components.knobs, action.knob]
+            }
+          }
+        };
+      case "UPDATE_KNOB_ANGLE":
+        const knobsCopy = state.pedal.components.knobs.slice();
+        const updatedKnobs = knobsCopy.map(knob => {
+          if (knob.uuid !== action.uuid) {
+            return knob;
+          }
+          return { ...knob, angle: action.angle };
+        });
+
+        return {
+          ...state,
+          pedal: {
+            ...state.pedal,
+            components: {
+              ...state.pedal.components,
+              knobs: updatedKnobs
             }
           }
         };
