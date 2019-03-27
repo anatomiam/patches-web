@@ -1,5 +1,6 @@
 import React from "react";
 import { AddKnobForm } from "./components/AddKnobForm";
+import { AddSwitchForm } from "./components/AddSwitchForm";
 import { ComponentInfo } from "./components/ComponentInfo";
 import { Pedal } from "./components/Pedal";
 import { PedalForm } from "./components/PedalForm";
@@ -14,6 +15,7 @@ const App = () => {
         <div className="form-stuff">
           <PedalForm />
           <AddKnobForm />
+          <AddSwitchForm />
         </div>
         <div className="display-stuff">
           <ComponentInfo />

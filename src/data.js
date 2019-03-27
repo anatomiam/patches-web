@@ -1,4 +1,4 @@
-export const pedal = {
+export const _pedal = {
   name: "1981 Inventions",
   dimensions: { width: 300, height: 350 },
   selectedComponent: {},
@@ -12,6 +12,14 @@ export const pedal = {
         r: 35,
         angle: 90,
         label: "DRV"
+      },
+      {
+        uuid: 0.8097249190310618,
+        type: "Switch",
+        cx: 33.3,
+        cy: 166.5,
+        width: 30,
+        label: "Gibberish"
       },
       {
         uuid: 0.2891690671731057,
@@ -33,7 +41,7 @@ export const pedal = {
       },
       {
         uuid: 0.2029468986169089,
-        type: "FootSwitch",
+        type: "Knob",
         cx: 50,
         cy: 275,
         r: 15,
@@ -51,7 +59,7 @@ export const blankPedal = {
   }
 };
 
-export const CBApedal = {
+export const pedal = {
   name: "Chase Bliss Audio",
   dimensions: { width: 200, height: 400 },
   selectedComponent: {},
@@ -104,6 +112,27 @@ export const CBApedal = {
         cy: 99.9,
         r: 20,
         angle: 0
+      },
+      {
+        uuid: 0.80972491310618,
+        type: "Switch",
+        cx: 33.3,
+        cy: 166.5,
+        width: 30
+      },
+      {
+        uuid: 0.8097249110618,
+        type: "Switch",
+        cx: 99.9,
+        cy: 166.5,
+        width: 30
+      },
+      {
+        uuid: 0.8097249190318,
+        type: "Switch",
+        cx: 166.5,
+        cy: 166.5,
+        width: 30
       }
     ]
   }

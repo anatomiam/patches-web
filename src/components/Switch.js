@@ -1,20 +1,21 @@
 import React from "react";
 
-export const Switch = () => {
-  const x = 75;
-  const y = 170;
-  const width = 30;
-  const height = width / 2;
+export const Switch = ({ switchDetails, dispatch }) => {
+  const { cx, cy, width, uuid } = switchDetails;
+  const x = cx;
+  const y = cy;
+  const _width = width;
+  const height = _width / 2;
   const rx = height / 2;
-  const ry = width / 2;
-  const cx = x - width / 2;
-  const cy = y - height / 2;
+  const ry = _width / 2;
+  const _cx = x - _width / 2;
+  const _cy = y - height / 2;
   const r = rx * 0.75;
-  const numberOfPositions = 4;
+  const numberOfPositions = 3;
   const positions = {
-    2: [x - width / 4, x + width / 4],
-    3: [x - width / 4, x, x + width / 4],
-    4: [x - width / 4, x - width / 8, x + width / 8, x + width / 4]
+    2: [x - _width / 4, x + _width / 4],
+    3: [x - _width / 4, x, x + _width / 4],
+    4: [x - _width / 4, x - _width / 8, x + _width / 8, x + _width / 4]
   };
   const position = positions[numberOfPositions];
 
@@ -22,9 +23,9 @@ export const Switch = () => {
     <g transform={`rotate(${0} ${x} ${y})`}>
       <rect
         className="component"
-        x={cx}
-        y={cy}
-        width={width}
+        x={_cx}
+        y={_cy}
+        width={_width}
         height={height}
         fill="silver"
         stroke="black"
@@ -40,7 +41,12 @@ export const Switch = () => {
         stroke="black"
         strokeWidth="1"
         fill="darkgrey"
-        onClick={() => console.log("clicked!")}
+        onClick={() =>
+          dispatch({
+            type: "SET_SELECTED_COMPONENT",
+            selectedComponent: { uuid }
+          })
+        }
       />
     </g>
   );

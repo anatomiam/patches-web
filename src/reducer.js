@@ -30,6 +30,17 @@ export const reducer = (state, action) => {
           }
         }
       };
+    case "ADD_SWITCH":
+      return {
+        ...state,
+        pedal: {
+          ...state.pedal,
+          components: {
+            ...state.pedal.components,
+            knobs: [...state.pedal.components.knobs, action.switch]
+          }
+        }
+      };
     case "UPDATE_KNOB_ANGLE":
       const knobsCopy = state.pedal.components.knobs.slice();
       const updatedKnobs = knobsCopy.map(knob => {
