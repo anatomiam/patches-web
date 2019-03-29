@@ -133,6 +133,27 @@ export const pedal = {
         cx: 166.5,
         cy: 166.5,
         width: 30
+      },
+      {
+        uuid: 0.8097249190318,
+        type: "Switch",
+        cx: 99.9,
+        cy: 345,
+        width: 30
+      },
+      {
+        uuid: 0.8097249190318,
+        type: "FootSwitch",
+        cx: 166.5,
+        cy: 345,
+        r: 15
+      },
+      {
+        uuid: 0.8097249190318,
+        type: "FootSwitch",
+        cx: 33.3,
+        cy: 345,
+        r: 15
       }
     ]
   }

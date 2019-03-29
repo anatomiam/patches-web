@@ -1,4 +1,5 @@
 import React from "react";
+import { FootSwitch } from "./FootSwitch";
 import { Knob } from "./Knob";
 import { Switch } from "./Switch";
 import { useStateValue } from "../StateProvider";
@@ -11,6 +12,14 @@ export const Knobs = () => {
     <>
       {knobs.map(knob => {
         switch (knob.type) {
+          case "FootSwitch":
+            return (
+              <FootSwitch
+                key={knob.uuid}
+                footSwitchDetails={knob}
+                dispatch={dispatch}
+              />
+            );
           case "Knob":
             return (
               <Knob key={knob.uuid} knobDetails={knob} dispatch={dispatch} />
