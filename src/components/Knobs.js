@@ -1,7 +1,7 @@
 import React from "react";
-import { FootSwitch } from "./FootSwitch";
-import { Knob } from "./Knob";
-import { Switch } from "./Switch";
+import { FootSwitch } from "./Parts/FootSwitch";
+import { Knob } from "./Parts/Knob";
+import { Switch } from "./Parts/Switch";
 import { useStateValue } from "../StateProvider";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../../StateProvider";
 
-export const AddSwitchForm = () => {
+export const AddKnobForm = ({ saveKnob }) => {
   const [, dispatch] = useStateValue();
 
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
-  const [width, setWidth] = useState(0);
+  const [r, setR] = useState(0);
+  const [angle, setAngle] = useState(0);
   const [label, setLabel] = useState("");
 
   return (
@@ -15,20 +16,22 @@ export const AddSwitchForm = () => {
         event.preventDefault();
 
         dispatch({
-          type: "ADD_SWITCH",
-          switch: {
+          type: "ADD_KNOB",
+          knob: {
             uuid: Math.random(),
-            type: "Switch",
+            type: "Knob",
             cx,
             cy,
-            width,
+            r,
+            angle,
             label
           }
         });
 
         setCx(0);
         setCy(0);
-        setWidth(0);
+        setR(0);
+        setAngle(0);
         setLabel("");
       }}
     >
@@ -59,16 +62,29 @@ export const AddSwitchForm = () => {
         />
       </p>
       <p>
-        <label htmlFor="r">Width </label>
+        <label htmlFor="r">R </label>
         <input
           id="r"
-          placeholder="Set Width"
+          placeholder="Set r"
           name="set-r"
           type="number"
           onChange={event => {
-            setWidth(parseFloat(event.target.value));
+            setR(parseFloat(event.target.value));
           }}
-          value={width}
+          value={r}
+        />
+      </p>
+      <p>
+        <label htmlFor="angle">Angle </label>
+        <input
+          id="angle"
+          placeholder="Set angle"
+          name="set-angle"
+          type="number"
+          onChange={event => {
+            setAngle(parseFloat(event.target.value));
+          }}
+          value={angle}
         />
       </p>
       <p>
@@ -85,7 +101,7 @@ export const AddSwitchForm = () => {
         />
       </p>
       <p>
-        <input type="submit" value="Add Switch" />
+        <input type="submit" value="Add Knob" />
       </p>
     </form>
   );

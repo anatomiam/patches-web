@@ -1,6 +1,6 @@
 import React from "react";
-import { Knobs } from "./Knobs";
-import { useStateValue } from "../StateProvider";
+import { Knobs } from "../Knobs";
+import { useStateValue } from "../../StateProvider";
 
 export const Pedal = () => {
   const [{ pedal }] = useStateValue();

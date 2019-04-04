@@ -1,13 +1,12 @@
 import React from "react";
-import { AddKnobForm } from "./components/AddKnobForm";
-import { AddSwitchForm } from "./components/AddSwitchForm";
+import { AddKnobForm } from "./components/Forms/AddKnobForm";
+import { AddSwitchForm } from "./components/Forms/AddSwitchForm";
 import { ComponentInfo } from "./components/ComponentInfo";
-import { Pedal } from "./components/Pedal";
-import { PedalForm } from "./components/PedalForm";
-import KnobqlList from "./components/KnobqlList";
+import { Pedal } from "./components/Parts/Pedal";
+import { PedalForm } from "./components/Forms/PedalForm";
 import { reducer, initialState } from "./reducer.js";
 import { StateProvider } from "./StateProvider";
-import "./App.css";
+import "./index.css";
 
 const App = () => {
   return (
@@ -23,7 +22,6 @@ const App = () => {
         </div>
       </div>
       <Pedal />
-      <KnobqlList />
     </StateProvider>
   );
 };

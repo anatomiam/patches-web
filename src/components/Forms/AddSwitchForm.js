@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../../StateProvider";
 
-export const AddKnobForm = ({ saveKnob }) => {
+export const AddSwitchForm = () => {
   const [, dispatch] = useStateValue();
 
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
-  const [r, setR] = useState(0);
-  const [angle, setAngle] = useState(0);
+  const [width, setWidth] = useState(0);
   const [label, setLabel] = useState("");
 
   return (
@@ -16,22 +15,20 @@ export const AddKnobForm = ({ saveKnob }) => {
         event.preventDefault();
 
         dispatch({
-          type: "ADD_KNOB",
-          knob: {
+          type: "ADD_SWITCH",
+          switch: {
             uuid: Math.random(),
-            type: "Knob",
+            type: "Switch",
             cx,
             cy,
-            r,
-            angle,
+            width,
             label
           }
         });
 
         setCx(0);
         setCy(0);
-        setR(0);
-        setAngle(0);
+        setWidth(0);
         setLabel("");
       }}
     >
@@ -62,29 +59,16 @@ export const AddKnobForm = ({ saveKnob }) => {
         />
       </p>
       <p>
-        <label htmlFor="r">R </label>
+        <label htmlFor="r">Width </label>
         <input
           id="r"
-          placeholder="Set r"
+          placeholder="Set Width"
           name="set-r"
           type="number"
           onChange={event => {
-            setR(parseFloat(event.target.value));
+            setWidth(parseFloat(event.target.value));
           }}
-          value={r}
-        />
-      </p>
-      <p>
-        <label htmlFor="angle">Angle </label>
-        <input
-          id="angle"
-          placeholder="Set angle"
-          name="set-angle"
-          type="number"
-          onChange={event => {
-            setAngle(parseFloat(event.target.value));
-          }}
-          value={angle}
+          value={width}
         />
       </p>
       <p>
@@ -101,7 +85,7 @@ export const AddKnobForm = ({ saveKnob }) => {
         />
       </p>
       <p>
-        <input type="submit" value="Add Knob" />
+        <input type="submit" value="Add Switch" />
       </p>
     </form>
   );

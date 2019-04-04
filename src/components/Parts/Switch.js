@@ -5,6 +5,7 @@ export const Switch = ({ switchDetails, dispatch }) => {
   const x = cx;
   const y = cy;
   const _width = width;
+
   const height = _width / 2;
   const rx = height / 2;
   const ry = _width / 2;

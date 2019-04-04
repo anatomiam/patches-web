@@ -1,7 +1,7 @@
 import React from "react";
 
 export const FootSwitch = ({ footSwitchDetails, dispatch }) => {
-  const { cx, cy, r, uuid } = footSwitchDetails;
+  const { cx, cy, r } = footSwitchDetails;
 
   return (
     <g transform={`rotate(${0} ${cx} ${cy})`}>

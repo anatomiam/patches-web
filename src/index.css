@@ -17,3 +17,30 @@ form,
 #root > div {
   border: 1px solid steelblue;
 }
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-stuff,
+.display-stuff {
+  margin: 5px;
+  text-align: center;
+  width: 50%;
+}
+
+.component {
+  cursor: pointer;
+}
+
+.component-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  text-align: left;
+}
