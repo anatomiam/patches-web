@@ -19,6 +19,10 @@ export const ComponentInfo = () => {
           );
         })}
       </div>
+      {/* TODO  - 
+        build a slider component that takes in min, max, step and start rotation props
+        create helper functions that allow stepping through set rotation values
+      */}
       <div className="slider">
         <input
           style={{ transform: "rotate(270deg)" }}

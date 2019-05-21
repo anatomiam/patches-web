@@ -1,26 +1,59 @@
 import React from "react";
 import { Knobs } from "../Knobs";
-import { useStateValue } from "../../StateProvider";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+
+const PEDAL_QUERY = gql`
+  query {
+    pedals {
+      id
+      name
+      width
+      height
+      knobs {
+        id
+        type
+        description
+        builder {
+          name
+        }
+        cx
+        cy
+        r
+        angle
+        width
+      }
+    }
+  }
+`;
 
 export const Pedal = () => {
-  const [{ pedal }] = useStateValue();
-
-  const { height, width } = pedal.dimensions;
   return (
-    <>
-      <h2>{pedal.name}</h2>
-      <svg className="pedal" width="800" height="500">
-        <rect
-          width={width}
-          height={height}
-          style={{
-            fill: "grey",
-            strokeWidth: 2,
-            stroke: "rgb(0,0,0)"
-          }}
-        />
-        <Knobs />
-      </svg>
-    </>
+    <Query query={PEDAL_QUERY}>
+      {({ loading, error, data }) => {
+        if (loading) return <div>Fetching</div>;
+        if (error) return <div>Error</div>;
+
+        const { knobs, width, height, name } = data.pedals[0];
+        console.log(knobs, width, height, name);
+        return (
+          <>
+            <h2>{name}</h2>
+            <svg className="pedal" width="800" height="500">
+              <rect
+                width={width}
+                height={height}
+                style={{
+                  fill: "grey",
+                  strokeWidth: 2,
+                  stroke: "rgb(0,0,0)"
+                }}
+              />
+              <Knobs knobs={knobs} />
+            </svg>
+          </>
+        );
+      }}
+    </Query>
   );
 };

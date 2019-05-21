@@ -3,69 +3,37 @@ import { FootSwitch } from "./Parts/FootSwitch";
 import { Knob } from "./Parts/Knob";
 import { Switch } from "./Parts/Switch";
 import { useStateValue } from "../StateProvider";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
 
-const FEED_QUERY = gql`
-  query {
-    knobs {
-      id
-      type
-      description
-      cx
-      cy
-      r
-      angle
-      pedal {
-        id
-      }
-      builder {
-        id
-      }
-    }
-  }
-`;
-
-export const Knobs = () => {
+export const Knobs = ({ knobs }) => {
   const [, dispatch] = useStateValue();
-
+  console.log(knobs);
   return (
-    <Query query={FEED_QUERY}>
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
+    <>
+      {knobs.map(knob => {
+        console.log(knob);
 
-        const { knobs } = data;
-        console.log(data);
-
-        return knobs.map(knob => {
-          switch (knob.type) {
-            case "FootSwitch":
-              return (
-                <FootSwitch
-                  key={knob.id}
-                  footSwitchDetails={knob}
-                  dispatch={dispatch}
-                />
-              );
-            case "Knob":
-              console.log(knob);
-              return (
-                <Knob key={knob.id} knobDetails={knob} dispatch={dispatch} />
-              );
-            case "Switch":
-              return (
-                <Switch
-                  key={knob.id}
-                  switchDetails={knob}
-                  dispatch={dispatch}
-                />
-              );
-            default:
-              return null;
-          }
-        });
-      }}
-    </Query>
+        switch (knob.type) {
+          case "FootSwitch":
+            return (
+              <FootSwitch
+                key={knob.id}
+                footSwitchDetails={knob}
+                dispatch={dispatch}
+              />
+            );
+          case "Knob":
+            console.log(knob);
+            return (
+              <Knob key={knob.id} knobDetails={knob} dispatch={dispatch} />
+            );
+          case "Switch":
+            return (
+              <Switch key={knob.id} switchDetails={knob} dispatch={dispatch} />
+            );
+          default:
+            return null;
+        }
+      })}
+    </>
   );
 };
