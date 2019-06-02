@@ -3,6 +3,22 @@ import { Knobs } from "../Knobs";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+const PEDAL_QUERY_CACHE = gql`
+  query {
+    pedals {
+      name
+      width
+      height
+      knobs {
+        id
+      }
+      selectedComponent {
+        id
+      }
+    }
+  }
+`;
+
 const PEDAL_QUERY = gql`
   query {
     pedals {
@@ -39,7 +55,7 @@ const PEDAL_QUERY = gql`
 
 export const Pedal = () => {
   return (
-    <Query query={PEDAL_QUERY}>
+    <Query query={PEDAL_QUERY_CACHE}>
       {({ loading, error, data }) => {
         if (loading) return <div>Fetching</div>;
         if (error) return <div>Error</div>;

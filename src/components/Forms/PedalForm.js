@@ -3,6 +3,17 @@ import { useStateValue } from "../../StateProvider";
 import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
 
+const PEDAL_QUERY = gql`
+  query {
+    pedals @client {
+      id
+      name
+      width
+      height
+    }
+  }
+`;
+
 const CREATE_PEDAL = gql`
   mutation CreatePedal($name: String!, $width: Float, $height: Float) {
     createPedal(name: $name, width: $width, height: $height) {
@@ -13,7 +24,6 @@ const CREATE_PEDAL = gql`
 
 export const PedalForm = () => {
   const [{ pedal }, dispatch] = useStateValue();
-
   const [width, setWidth] = useState(pedal.dimensions.width);
   const [height, setHeight] = useState(pedal.dimensions.height);
   const [name, setName] = useState("Joseph");
