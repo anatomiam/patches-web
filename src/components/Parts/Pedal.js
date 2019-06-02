@@ -10,6 +10,16 @@ const PEDAL_QUERY = gql`
       name
       width
       height
+      selectedComponent {
+        id
+        type
+        description
+        cx
+        cy
+        r
+        angle
+        width
+      }
       knobs {
         id
         type
@@ -34,8 +44,14 @@ export const Pedal = () => {
         if (loading) return <div>Fetching</div>;
         if (error) return <div>Error</div>;
 
-        const { knobs, width, height, name } = data.pedals[0];
-        console.log(knobs, width, height, name);
+        const {
+          knobs,
+          width,
+          height,
+          name,
+          selectedComponent
+        } = data.pedals[0];
+        console.log(knobs, width, height, name, selectedComponent);
         return (
           <>
             <h2>{name}</h2>
