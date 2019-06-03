@@ -1,6 +1,6 @@
 import React from "react";
 import { Knobs } from "../Knobs";
-import { Query } from "react-apollo";
+import { useQuery } from "react-apollo-hooks";
 import gql from "graphql-tag";
 
 const PEDAL_QUERY_CACHE = gql`
@@ -54,38 +54,28 @@ const PEDAL_QUERY = gql`
 `;
 
 export const Pedal = () => {
-  return (
-    <Query query={PEDAL_QUERY_CACHE}>
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
+  const { data, loading, error } = useQuery(PEDAL_QUERY);
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
 
-        const {
-          knobs,
-          width,
-          height,
-          name,
-          selectedComponent
-        } = data.pedals[0];
-        console.log(knobs, width, height, name, selectedComponent);
-        return (
-          <>
-            <h2>{name}</h2>
-            <svg className="pedal" width="800" height="500">
-              <rect
-                width={width}
-                height={height}
-                style={{
-                  fill: "grey",
-                  strokeWidth: 2,
-                  stroke: "rgb(0,0,0)"
-                }}
-              />
-              <Knobs knobs={knobs} />
-            </svg>
-          </>
-        );
-      }}
-    </Query>
+  console.log(data);
+  const { knobs, width, height, name, selectedComponent } = data.pedals[2];
+
+  return (
+    <>
+      <h2>{name}</h2>
+      <svg className="pedal" width="800" height="500">
+        <rect
+          width={width}
+          height={height}
+          style={{
+            fill: "grey",
+            strokeWidth: 2,
+            stroke: "rgb(0,0,0)"
+          }}
+        />
+        <Knobs knobs={knobs} />
+      </svg>
+    </>
   );
 };
