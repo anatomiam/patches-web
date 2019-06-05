@@ -1,62 +1,196 @@
-export const _pedal = {
-  name: "1981 Inventions",
-  dimensions: { width: 300, height: 350 },
-  selectedComponent: {},
-  components: {
-    knobs: [
-      {
-        uuid: 0.2174300852631356,
-        type: "Knob",
-        cx: 50,
-        cy: 80,
-        r: 35,
-        angle: 90,
-        label: "DRV"
-      },
-      {
-        uuid: 0.8097249190310618,
-        type: "Switch",
-        cx: 33.3,
-        cy: 166.5,
-        width: 30,
-        label: "Gibberish"
-      },
-      {
-        uuid: 0.2891690671731057,
-        type: "Knob",
-        cx: 150,
-        cy: 80,
-        r: 35,
-        angle: 180,
-        label: "CUT"
-      },
-      {
-        uuid: 0.5147078029919594,
-        type: "Knob",
-        cx: 250,
-        cy: 80,
-        r: 35,
-        angle: 345,
-        label: "VOL"
-      },
-      {
-        uuid: 0.2029468986169089,
-        type: "Knob",
-        cx: 50,
-        cy: 275,
-        r: 15,
-        angle: 0
-      }
-    ]
-  }
-};
-
-export const blankPedal = {
-  name: "Blank Slate",
-  dimensions: { width: 0, height: 0 },
-  components: {
-    knobs: [{ uuid: 0, type: "Empty", cx: 0, cy: 0, r: 0, angle: 0 }]
-  }
+export const pedals = {
+  pedals: [
+    {
+      __typename: "Pedal",
+      id: "cjwbxrjmh009v0789d1pbvo0q",
+      name: "eric",
+      width: 200,
+      height: 400,
+      selectedComponent: null,
+      knobs: [
+        {
+          __typename: "Knob",
+          id: "cju6772i2006f0738fr52jql5",
+          type: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 33.3,
+          cy: 33.3,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          __typename: "Knob",
+          id: "cju677zte006z0738girykb5t",
+          type: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 99.9,
+          cy: 33.3,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          id: "cju678eg0007g0738u50xchuw",
+          type: "Knob",
+          __typename: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 166.5,
+          cy: 33.3,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          id: "cju67dza6009c0738v78i7hzg",
+          type: "Knob",
+          __typename: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 33.3,
+          cy: 99.9,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          id: "cju67eqam00a70738vook8n7e",
+          type: "Knob",
+          __typename: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 99.9,
+          cy: 99.9,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          id: "cju67f1yq00al07384uh9o1un",
+          type: "Knob",
+          __typename: "Knob",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 166.5,
+          cy: 99.9,
+          r: 20,
+          angle: 0,
+          width: null
+        },
+        {
+          id: "cju67jf4r00ca07387di9pzmr",
+          type: "Switch",
+          __typename: "Switch",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 33.3,
+          cy: 166.5,
+          r: null,
+          angle: null,
+          width: 30
+        },
+        {
+          id: "cju67ow4e00ef0738vqvdnwqn",
+          type: "Switch",
+          __typename: "Switch",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 99.9,
+          cy: 166.5,
+          r: null,
+          angle: null,
+          width: 30
+        },
+        {
+          id: "cju67p78500et0738o3vic17t",
+          type: "Switch",
+          __typename: "Switch",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 166.5,
+          cy: 166.5,
+          r: null,
+          angle: null,
+          width: 30
+        },
+        {
+          id: "cju67pnyw00fb0738g7ebczu3",
+          type: "Switch",
+          __typename: "Switch",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 99.9,
+          cy: 345,
+          r: null,
+          angle: null,
+          width: 30
+        },
+        {
+          id: "cju67qh0500g00738xn9ukhgv",
+          type: "FootSwitch",
+          description: "",
+          __typename: "FootSwitch",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 166.5,
+          cy: 345,
+          r: 15,
+          angle: null,
+          width: null
+        },
+        {
+          id: "cju67qu7r00gh0738w3idyevc",
+          type: "FootSwitch",
+          __typename: "FootSwitch",
+          description: "",
+          builder: {
+            __typename: "Builder",
+            name: "Eric Dulcet"
+          },
+          cx: 33.3,
+          cy: 345,
+          r: 15,
+          angle: null,
+          width: null
+        }
+      ]
+    }
+  ]
 };
 
 export const pedal = {

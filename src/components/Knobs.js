@@ -6,12 +6,9 @@ import { useStateValue } from "../StateProvider";
 
 export const Knobs = ({ knobs }) => {
   const [, dispatch] = useStateValue();
-  console.log(knobs);
   return (
     <>
       {knobs.map(knob => {
-        console.log(knob);
-
         switch (knob.type) {
           case "FootSwitch":
             return (
@@ -22,7 +19,6 @@ export const Knobs = ({ knobs }) => {
               />
             );
           case "Knob":
-            console.log(knob);
             return (
               <Knob key={knob.id} knobDetails={knob} dispatch={dispatch} />
             );

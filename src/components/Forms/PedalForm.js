@@ -13,20 +13,29 @@ const CREATE_PEDAL = gql`
 export const PedalForm = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  const [name, setName] = useState("Template");
+
+export const PedalForm = ({ width, height, name }) => {
+  // arbitrarily starting local state variables with '_'
+  const [_width, setWidth] = useState(width);
+  const [_height, setHeight] = useState(height);
+  const [_name, setName] = useState(name);
+
   const createPedal = useMutation(CREATE_PEDAL, {
     update: cache => {
       cache.writeData({
-        data: { pedal: { __typename: "Pedal", width, height, name } }
+        data: { pedal: { __typename: "Pedal", _width, _height, _name } }
       });
     }
   });
+
   return (
     <>
       <form
         onSubmit={event => {
           event.preventDefault();
-          createPedal({ variables: { name, width, height } });
+          createPedal({
+            variables: { name: _name, width: _width, height: _height }
+          });
         }}
       >
         <p>
@@ -39,7 +48,7 @@ export const PedalForm = () => {
             onChange={event => {
               setName(event.target.value);
             }}
-            value={name}
+            value={_name}
           />
         </p>
         <p>
@@ -52,7 +61,7 @@ export const PedalForm = () => {
             onChange={event => {
               setWidth(parseFloat(event.target.value));
             }}
-            value={width}
+            value={_width}
           />
         </p>
         <p>
@@ -65,7 +74,7 @@ export const PedalForm = () => {
             onChange={event => {
               setHeight(parseFloat(event.target.value));
             }}
-            value={height}
+            value={_height}
           />
         </p>
         <p>

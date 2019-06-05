@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { pedals } from "./data";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { resolvers, typeDefs } from "./resolvers";
@@ -18,33 +19,13 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({
   link: httpLink,
   cache,
+  typeDefs,
+  resolvers
 });
 
-const data = {
-  pedals: [
-    {
-      __typename: "Pedal",
-      id: "laksdjflkjasdf",
-      name: "Default Template",
-      width: 400,
-      height: 300,
-      knobs: [
-        {
-          __typename: "Knob",
-          id: "123123"
-        }
-      ],
-      selectedComponent: {
-        __typename: "SelectedComponent",
-        id: "123123"
-      }
-    }
-  ]
-};
-
-cache.writeData({ data });
-
-client.onResetStore(() => cache.writeData({ data }));
+client.resetStore();
+cache.writeData({ data: pedals });
+client.onResetStore(() => cache.writeData({ data: pedals }));
 
 ReactDOM.render(
   <ApolloProvider client={client}>
