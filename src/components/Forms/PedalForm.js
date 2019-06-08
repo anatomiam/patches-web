@@ -10,9 +10,9 @@ const CREATE_PEDAL = gql`
   }
 `;
 
-export const PedalForm = () => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+// TODO inject props to initialize state
+// shouldn't need a mutation here, only update cache in this componenet
+// mutation should be in it's own component that uses the cache for all the parts and pieces
 
 export const PedalForm = ({ width, height, name }) => {
   // arbitrarily starting local state variables with '_'

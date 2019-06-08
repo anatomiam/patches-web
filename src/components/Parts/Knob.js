@@ -1,8 +1,37 @@
 import React from "react";
+import gql from "graphql-tag";
+import { useMutation, useApolloClient } from "react-apollo-hooks";
 
+const UPDATE_SELECTED_COMPONENT = gql`
+  mutation UpdateSelectedComponent($id: String!) {
+    updateSelectedComponent(id: $id) {
+      id
+    }
+  }
+`;
+
+// return (
+//   <>
+//     <form
+//       onSubmit={event => {
+//         event.preventDefault();
+//         createPedal({
+//           variables: { name: _name, width: _width, height: _height }
+//         });
+//       }}
+//     ></form>
+
+// client.writeData({
+//   data: {
+//     selectedComponent: { id, __typename: "SelectedComponent" }
+//   }
+// });
 export const Knob = ({ knobDetails, dispatch }) => {
-  // I extracted the knobs into their own components so that they could contain their own state
-  const { angle, cx, cy, r, uuid } = knobDetails;
+  const client = useApolloClient();
+  const { angle, cx, cy, r, id } = knobDetails;
+  const selectComponent = useMutation(UPDATE_SELECTED_COMPONENT, {
+    variables: { id }
+  });
 
   return (
     <g transform={`rotate(${angle} ${cx} ${cy})`}>
@@ -14,10 +43,11 @@ export const Knob = ({ knobDetails, dispatch }) => {
         stroke="black"
         strokeWidth="1"
         fill="darkgrey"
+        // onClick={selectComponent}
         onClick={() =>
           dispatch({
             type: "SET_SELECTED_COMPONENT",
-            selectedComponent: { uuid }
+            selectedComponent: id
           })
         }
       />

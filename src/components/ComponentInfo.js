@@ -2,11 +2,17 @@ import React from "react";
 import { useStateValue } from "../StateProvider";
 import _ from "lodash";
 
-export const ComponentInfo = () => {
-  const [{ pedal }, dispatch] = useStateValue();
-  const selectedComponent = pedal.components.knobs.find(element => {
-    return element.uuid === pedal.selectedComponent.uuid;
+export const ComponentInfo = ({ knobs }) => {
+  const [{ localState }, dispatch] = useStateValue();
+  const selectedComponent = knobs.find(knob => {
+    return knob.id === localState.selectedComponent;
   });
+
+  const selectedComponentsNewAngle = localState.updatedKnobAngles.find(knob => {
+    return knob.id === localState.selectedComponent;
+  });
+
+  console.log(selectedComponentsNewAngle);
 
   return selectedComponent ? (
     <div className="component-info">
@@ -19,7 +25,7 @@ export const ComponentInfo = () => {
           );
         })}
       </div>
-      {/* TODO  - 
+      {/* TODO  
         build a slider component that takes in min, max, step and start rotation props
         create helper functions that allow stepping through set rotation values
       */}
@@ -29,11 +35,13 @@ export const ComponentInfo = () => {
           type="range"
           min="0"
           max="360"
-          value={selectedComponent.angle}
+          value={
+            selectedComponentsNewAngle ? selectedComponentsNewAngle.angle : 0
+          }
           onChange={event => {
             dispatch({
               type: "UPDATE_KNOB_ANGLE",
-              uuid: selectedComponent.uuid,
+              knobId: selectedComponent.id,
               angle: parseInt(event.target.value)
             });
           }}

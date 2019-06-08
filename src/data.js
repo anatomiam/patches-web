@@ -193,6 +193,11 @@ export const pedals = {
   ]
 };
 
+export const localState = {
+  selectedComponent: null,
+  updatedKnobAngles: []
+};
+
 export const pedal = {
   name: "Chase Bliss Audio",
   dimensions: { width: 200, height: 400 },

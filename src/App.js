@@ -7,33 +7,21 @@ import { PedalForm } from "./components/Forms/PedalForm";
 import { reducer, initialState } from "./reducer.js";
 import { StateProvider } from "./StateProvider";
 import "./index.css";
+import { useStateValue } from "./StateProvider";
 import { useQuery } from "react-apollo-hooks";
 import gql from "graphql-tag";
 
 const PEDAL_QUERY = gql`
   query {
-    pedals {
+    pedals @client {
       id
       name
       width
       height
-      selectedComponent {
-        id
-        type
-        description
-        cx
-        cy
-        r
-        angle
-        width
-      }
       knobs {
         id
         type
         description
-        builder {
-          name
-        }
         cx
         cy
         r
@@ -47,10 +35,12 @@ const PEDAL_QUERY = gql`
 const App = () => {
   const { data, loading, error } = useQuery(PEDAL_QUERY);
   if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
+  if (error) return `Error! ${error}`;
   console.log(data)
 
-  const { knobs, width, height, name } = data.pedals[0];
+  const { knobs, width, height, name, id } = data.pedals[0];
+  // console.log(knobs)
+
   // TODO build landing page that lets a user select from templates or existing pedals
   // second page will be the edit page
   return (
@@ -62,7 +52,7 @@ const App = () => {
           <AddSwitchForm />
         </div>
         <div className="display-stuff">
-          <ComponentInfo />
+          <ComponentInfo knobs={knobs} />
         </div>
       </div>
       <Pedal knobs={knobs} width={width} height={height} name={name} />
