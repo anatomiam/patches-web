@@ -1,40 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import gql from "graphql-tag";
-import { useMutation, useApolloClient } from "react-apollo-hooks";
 
-const UPDATE_SELECTED_COMPONENT = gql`
-  mutation UpdateSelectedComponent($id: String!) {
-    updateSelectedComponent(id: $id) {
-      id
-    }
-  }
-`;
-
-// return (
-//   <>
-//     <form
-//       onSubmit={event => {
-//         event.preventDefault();
-//         createPedal({
-//           variables: { name: _name, width: _width, height: _height }
-//         });
-//       }}
-//     ></form>
-
-// client.writeData({
-//   data: {
-//     selectedComponent: { id, __typename: "SelectedComponent" }
-//   }
-// });
-export const Knob = ({ knobDetails, dispatch }) => {
-  const client = useApolloClient();
+export const Knob = React.memo(({ knobDetails, dispatch }) => {
+  const [dragging, setDragging] = useState(false);
+  const [angleAdjust, setAngleAdjust] = useState(0);
+  const [mouseDownPosition, setMouseDownPosition] = useState(0);
   const { angle, cx, cy, r, id } = knobDetails;
-  const selectComponent = useMutation(UPDATE_SELECTED_COMPONENT, {
-    variables: { id }
-  });
 
   return (
-    <g transform={`rotate(${angle} ${cx} ${cy})`}>
+    <g transform={`rotate(${angle + angleAdjust} ${cx} ${cy})`}>
       <circle
         className="knob component"
         cx={cx}
@@ -43,13 +17,40 @@ export const Knob = ({ knobDetails, dispatch }) => {
         stroke="black"
         strokeWidth="1"
         fill="darkgrey"
-        // onClick={selectComponent}
-        onClick={() =>
+        onMouseDown={event => {
+          console.log(id);
           dispatch({
-            type: "SET_SELECTED_COMPONENT",
-            selectedComponent: id
-          })
+            type: "SET_SELECTED_COMPONENT_ID",
+            id
+          });
+          dispatch({
+            type: "SET_SELECTED_COMPONENT_ANGLE",
+            angle: angle + angleAdjust
+          });
+          setDragging(true);
+          setMouseDownPosition(event.clientY + angleAdjust);
+        }}
+        onMouseMove={
+          dragging
+            ? event => {
+                setAngleAdjust(mouseDownPosition - event.clientY);
+              }
+            : null
         }
+        onMouseUp={() => {
+          setDragging(false);
+          dispatch({
+            type: "UPDATE_LIVE_ANGLE",
+            angle: angle + angleAdjust
+          });
+        }}
+        onMouseOut={() => {
+          setDragging(false);
+          dispatch({
+            type: "UPDATE_LIVE_ANGLE",
+            angle: angle + angleAdjust
+          });
+        }}
       />
       <line
         x1={cx}
@@ -62,4 +63,4 @@ export const Knob = ({ knobDetails, dispatch }) => {
       />
     </g>
   );
-};
+});

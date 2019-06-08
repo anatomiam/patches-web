@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Switch = ({ switchDetails, dispatch }) => {
-  const { cx, cy, width, uuid } = switchDetails;
+  const { cx, cy, width, id } = switchDetails;
   const x = cx;
   const y = cy;
   const _width = width;
@@ -45,7 +45,7 @@ export const Switch = ({ switchDetails, dispatch }) => {
         onClick={() =>
           dispatch({
             type: "SET_SELECTED_COMPONENT",
-            selectedComponent: { uuid }
+            id
           })
         }
       />
