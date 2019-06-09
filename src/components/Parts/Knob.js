@@ -32,10 +32,10 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
           dragging
             ? event => {
                 setAngleAdjust(mouseDownPosition - event.clientY);
-                dispatch({
-                  type: "SET_SELECTED_COMPONENT_ANGLE",
-                  angle: angle + angleAdjust
-                });
+                // dispatch({
+                //   type: "SET_SELECTED_COMPONENT_ANGLE",
+                //   angle: angle + angleAdjust
+                // });
               }
             : null
         }

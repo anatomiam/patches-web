@@ -196,7 +196,12 @@ export const pedals = {
 export const localState = {
   selectedComponentId: null,
   selectedComponentAngle: 0,
-  updatedKnobAngles: []
+  updatedKnobAngles: [],
+  pedal: {
+    name: "name",
+    width: 1000,
+    height: 2000
+  }
 };
 
 export const pedal = {

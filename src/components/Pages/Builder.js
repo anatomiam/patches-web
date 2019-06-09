@@ -6,6 +6,7 @@ import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
 import "../../index.css";
 import { useStateValue } from "../../StateProvider";
+import { CreatePedalButton } from "../Forms/CreatePedalButton";
 
 const Builder = ({ pedal }) => {
   const { knobs, width, height, name } = pedal;
@@ -23,6 +24,7 @@ const Builder = ({ pedal }) => {
           />
           <AddKnobForm dispatch={dispatch} />
           <AddSwitchForm dispatch={dispatch} />
+          <CreatePedalButton localState={localState} />
         </div>
         <div className="display-stuff">
           <ComponentInfo
