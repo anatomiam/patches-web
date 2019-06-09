@@ -19,7 +19,6 @@ export const typeDefs = gql`
 export const resolvers = {
   Mutation: {
     updateSelectedComponent: (root, args, { cache }) => {
-      console.log(args);
       cache.writeData({ data: { selectedComponent: args.id } });
     }
   }

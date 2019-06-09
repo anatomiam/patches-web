@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Switch = ({ switchDetails, dispatch }) => {
+export const Switch = React.memo(({ switchDetails, dispatch }) => {
   const { cx, cy, width, id } = switchDetails;
   const x = cx;
   const y = cy;
@@ -51,4 +51,4 @@ export const Switch = ({ switchDetails, dispatch }) => {
       />
     </g>
   );
-};
+});

@@ -14,7 +14,7 @@ const CREATE_PEDAL = gql`
 // shouldn't need a mutation here, only update cache in this componenet
 // mutation should be in it's own component that uses the cache for all the parts and pieces
 
-export const PedalForm = ({ width, height, name }) => {
+export const PedalForm = React.memo(({ width, height, name }) => {
   // arbitrarily starting local state variables with '_'
   const [_width, setWidth] = useState(width);
   const [_height, setHeight] = useState(height);
@@ -83,4 +83,4 @@ export const PedalForm = ({ width, height, name }) => {
       </form>
     </>
   );
-};
+});

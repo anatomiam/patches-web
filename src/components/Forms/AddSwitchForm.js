@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useStateValue } from "../../StateProvider";
 
-export const AddSwitchForm = () => {
-  const [, dispatch] = useStateValue();
-
+export const AddSwitchForm = React.memo(({ dispatch }) => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [width, setWidth] = useState(0);
@@ -89,4 +86,4 @@ export const AddSwitchForm = () => {
       </p>
     </form>
   );
-};
+});

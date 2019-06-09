@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useStateValue } from "../../StateProvider";
 
-export const AddKnobForm = ({ saveKnob }) => {
-  const [, dispatch] = useStateValue();
-
+export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [r, setR] = useState(0);
@@ -105,4 +102,4 @@ export const AddKnobForm = ({ saveKnob }) => {
       </p>
     </form>
   );
-};
+});

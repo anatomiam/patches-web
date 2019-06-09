@@ -3,26 +3,27 @@ import { pedal, localState } from "./data";
 export const initialState = { pedal, localState };
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_SELECTED_COMPONENT":
+    case "SET_SELECTED_COMPONENT_ID":
       return {
         ...state,
         localState: {
           ...state.localState,
-          selectedComponent: action.selectedComponent
+          selectedComponentId: action.id
         }
       };
-    case "ADD_KNOB_ANGLE":
+    case "SET_SELECTED_COMPONENT_ANGLE":
       return {
         ...state,
         localState: {
           ...state.localState,
-          updatedKnobAngles: action.knobAngles
+          selectedComponentAngle: action.angle
         }
       };
     case "UPDATE_KNOB_ANGLE":
-      console.log(state);
-      console.log(action);
-
+      // TODO loop through knobs to create or update 
+      // select by id 
+      // if doesnt exist, create
+      // if exists, update
       const knobsCopy = state.localState.updatedKnobAngles.slice();
       const updatedKnobs = knobsCopy.map(knob => {
         if (knob.id !== action.knobId) {
@@ -38,64 +39,6 @@ export const reducer = (state, action) => {
           updatedKnobAngles: updatedKnobs
         }
       };
-    case "SET_DIMENSIONS":
-      return {
-        ...state,
-        pedal: {
-          ...state.pedal,
-          dimensions: action.dimensions
-        }
-      };
-    case "SET_SELECTED_COMPONENT_OLD":
-      return {
-        ...state,
-        pedal: {
-          ...state.pedal,
-          selectedComponent: action.selectedComponent
-        }
-      };
-    case "ADD_KNOB":
-      return {
-        ...state,
-        pedal: {
-          ...state.pedal,
-          components: {
-            ...state.pedal.components,
-            knobs: [...state.pedal.components.knobs, action.knob]
-          }
-        }
-      };
-    case "ADD_SWITCH":
-      return {
-        ...state,
-        pedal: {
-          ...state.pedal,
-          components: {
-            ...state.pedal.components,
-            knobs: [...state.pedal.components.knobs, action.switch]
-          }
-        }
-      };
-    // case "UPDATE_KNOB_ANGLE":
-    //   const knobsCopy = state.pedal.components.knobs.slice();
-    //   const updatedKnobs = knobsCopy.map(knob => {
-    //     if (knob.uuid !== action.uuid) {
-    //       return knob;
-    //     }
-    //     return { ...knob, angle: action.angle };
-    //   });
-
-    //   return {
-    //     ...state,
-    //     pedal: {
-    //       ...state.pedal,
-    //       components: {
-    //         ...state.pedal.components,
-    //         knobs: updatedKnobs
-    //       }
-    //     }
-    //   };
-
     default:
       return state;
   }

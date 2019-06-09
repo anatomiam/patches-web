@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import gql from "graphql-tag";
 
 export const Knob = React.memo(({ knobDetails, dispatch }) => {
   const [dragging, setDragging] = useState(false);
@@ -18,7 +17,6 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
         strokeWidth="1"
         fill="darkgrey"
         onMouseDown={event => {
-          console.log(id);
           dispatch({
             type: "SET_SELECTED_COMPONENT_ID",
             id
@@ -34,22 +32,28 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
           dragging
             ? event => {
                 setAngleAdjust(mouseDownPosition - event.clientY);
+                dispatch({
+                  type: "SET_SELECTED_COMPONENT_ANGLE",
+                  angle: angle + angleAdjust
+                });
               }
             : null
         }
         onMouseUp={() => {
           setDragging(false);
           dispatch({
-            type: "UPDATE_LIVE_ANGLE",
+            type: "SET_SELECTED_COMPONENT_ANGLE",
             angle: angle + angleAdjust
           });
         }}
         onMouseOut={() => {
-          setDragging(false);
-          dispatch({
-            type: "UPDATE_LIVE_ANGLE",
-            angle: angle + angleAdjust
-          });
+          if (dragging) {
+            setDragging(false);
+            dispatch({
+              type: "SET_SELECTED_COMPONENT_ANGLE",
+              angle: angle + angleAdjust
+            });
+          }
         }}
       />
       <line

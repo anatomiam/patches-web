@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FootSwitch = ({ footSwitchDetails, dispatch }) => {
+export const FootSwitch = React.memo(({ footSwitchDetails, dispatch }) => {
   const { cx, cy, r } = footSwitchDetails;
 
   return (
@@ -17,4 +17,4 @@ export const FootSwitch = ({ footSwitchDetails, dispatch }) => {
       />
     </g>
   );
-};
+});

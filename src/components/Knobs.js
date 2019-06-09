@@ -2,10 +2,8 @@ import React from "react";
 import { FootSwitch } from "./Parts/FootSwitch";
 import { Knob } from "./Parts/Knob";
 import { Switch } from "./Parts/Switch";
-import { useStateValue } from "../StateProvider";
 
-export const Knobs = ({ knobs }) => {
-  const [, dispatch] = useStateValue();
+export const Knobs = React.memo(({ knobs, dispatch }) => {
   return (
     <>
       {knobs.map(knob => {
@@ -32,4 +30,4 @@ export const Knobs = ({ knobs }) => {
       })}
     </>
   );
-};
+});
