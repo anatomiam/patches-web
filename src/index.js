@@ -24,8 +24,8 @@ const client = new ApolloClient({
 });
 
 client.resetStore();
-cache.writeData({ data: pedals });
-client.onResetStore(() => cache.writeData({ data: pedals }));
+// cache.writeData({ data: pedals });
+// client.onResetStore(() => cache.writeData({ data: pedals }));
 
 ReactDOM.render(
   <ApolloProvider client={client}>

@@ -6,7 +6,6 @@ export const pedals = {
       name: "eric",
       width: 200,
       height: 400,
-      selectedComponent: null,
       knobs: [
         {
           __typename: "Knob",
@@ -194,9 +193,39 @@ export const pedals = {
 };
 
 export const localState = {
+  builder: "cju66ydwl000y0738rs8jz7yv",
   selectedComponentId: null,
   selectedComponentAngle: 0,
   updatedKnobAngles: [],
+  knobs: [
+    {
+      description: "1",
+      angle: 0,
+      cx: 33.3,
+      cy: 33.3,
+      r: 20,
+      type: "Knob",
+      width: null
+    },
+    {
+      description: "2",
+      angle: 0,
+      cx: 99.9,
+      cy: 33.3,
+      r: 20,
+      type: "Knob",
+      width: null
+    },
+    {
+      description: "3",
+      angle: 0,
+      cx: 33.3,
+      cy: 33.3,
+      r: 20,
+      type: "Knob",
+      width: null
+    }
+  ],
   pedal: {
     name: "name",
     width: 1000,

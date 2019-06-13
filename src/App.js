@@ -8,7 +8,7 @@ import "./index.css";
 
 const PEDAL_QUERY = gql`
   query {
-    pedals @client {
+    pedals {
       id
       name
       width
