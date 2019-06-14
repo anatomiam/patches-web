@@ -19,9 +19,25 @@ export const reducer = (state, action) => {
           selectedComponentAngle: action.angle
         }
       };
+    case "SET_PEDAL_DETAILS":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          pedalDetails: action.pedalDetails
+        }
+      };
+    case "ADD_KNOB":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          knobs: [...state.localState.knobs, action.knob]
+        }
+      };
     case "UPDATE_KNOB_ANGLE":
-      // TODO loop through knobs to create or update 
-      // select by id 
+      // TODO loop through knobs to create or update
+      // select by id
       // if doesnt exist, create
       // if exists, update
       const knobsCopy = state.localState.updatedKnobAngles.slice();

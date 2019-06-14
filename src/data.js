@@ -197,39 +197,11 @@ export const localState = {
   selectedComponentId: null,
   selectedComponentAngle: 0,
   updatedKnobAngles: [],
-  knobs: [
-    {
-      description: "1",
-      angle: 0,
-      cx: 33.3,
-      cy: 33.3,
-      r: 20,
-      type: "Knob",
-      width: null
-    },
-    {
-      description: "2",
-      angle: 0,
-      cx: 99.9,
-      cy: 33.3,
-      r: 20,
-      type: "Knob",
-      width: null
-    },
-    {
-      description: "3",
-      angle: 0,
-      cx: 33.3,
-      cy: 33.3,
-      r: 20,
-      type: "Knob",
-      width: null
-    }
-  ],
-  pedal: {
-    name: "name",
-    width: 1000,
-    height: 2000
+  knobs: [],
+  pedalDetails: {
+    name: "Template",
+    width: 200,
+    height: 400
   }
 };
 

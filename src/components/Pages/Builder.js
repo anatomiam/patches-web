@@ -9,9 +9,10 @@ import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
 
 const Builder = ({ pedal }) => {
-  const { knobs, width, height, name } = pedal;
+  // const { knobs, width, height, name } = pedal;
   const [{ localState }, dispatch] = useStateValue();
-  const { selectedComponentId, selectedComponentAngle } = localState;
+  const { width, height, name } = localState.pedalDetails;
+  const { selectedComponentId, selectedComponentAngle, knobs } = localState;
   return (
     <>
       <div className="info">

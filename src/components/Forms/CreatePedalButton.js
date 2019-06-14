@@ -23,9 +23,8 @@ const CREATE_PEDAL = gql`
 `;
 
 export const CreatePedalButton = React.memo(({ localState }) => {
-  // arbitrarily starting local state variables with '_'
   const { knobs, builder } = localState;
-  const { name, width, height } = localState.pedal;
+  const { name, width, height } = localState.pedalDetails;
   const createPedal = useMutation(CREATE_PEDAL);
   return (
     <>

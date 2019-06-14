@@ -11,11 +11,10 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
     <form
       onSubmit={event => {
         event.preventDefault();
-
         dispatch({
           type: "ADD_KNOB",
           knob: {
-            uuid: Math.random(),
+            id: Math.random(),
             type: "Knob",
             cx,
             cy,

@@ -12,9 +12,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         event.preventDefault();
 
         dispatch({
-          type: "ADD_SWITCH",
-          switch: {
-            uuid: Math.random(),
+          type: "ADD_KNOB",
+          knob: {
+            id: Math.random(),
             type: "Switch",
             cx,
             cy,
