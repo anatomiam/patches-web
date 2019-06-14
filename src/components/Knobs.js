@@ -11,18 +11,18 @@ export const Knobs = React.memo(({ knobs, dispatch }) => {
           case "FootSwitch":
             return (
               <FootSwitch
-                key={knob.id}
+                key={Math.random()}
                 footSwitchDetails={knob}
                 dispatch={dispatch}
               />
             );
           case "Knob":
             return (
-              <Knob key={knob.id} knobDetails={knob} dispatch={dispatch} />
+              <Knob key={Math.random()} knobDetails={knob} dispatch={dispatch} />
             );
           case "Switch":
             return (
-              <Switch key={knob.id} switchDetails={knob} dispatch={dispatch} />
+              <Switch key={Math.random()} switchDetails={knob} dispatch={dispatch} />
             );
           default:
             return null;

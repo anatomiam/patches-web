@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { pedals } from "./data";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { resolvers, typeDefs } from "./resolvers";

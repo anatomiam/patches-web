@@ -4,7 +4,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
   const [cx, setCx] = useState(0);
   const [cy, setCy] = useState(0);
   const [width, setWidth] = useState(0);
-  const [label, setLabel] = useState("");
+  const [description, setDescription] = useState("");
 
   return (
     <form
@@ -14,19 +14,18 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         dispatch({
           type: "ADD_KNOB",
           knob: {
-            id: Math.random(),
             type: "Switch",
             cx,
             cy,
             width,
-            label
+            description
           }
         });
 
         setCx(0);
         setCy(0);
         setWidth(0);
-        setLabel("");
+        setDescription("");
       }}
     >
       <p>
@@ -69,16 +68,16 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         />
       </p>
       <p>
-        <label htmlFor="label">Label </label>
+        <label htmlFor="description">Description </label>
         <input
-          id="label"
-          placeholder="Set label"
-          name="set-label"
+          id="description"
+          placeholder="Set description"
+          name="set-description"
           type="text"
           onChange={event => {
-            setLabel(event.target.value);
+            setDescription(event.target.value);
           }}
-          value={label}
+          value={description}
         />
       </p>
       <p>

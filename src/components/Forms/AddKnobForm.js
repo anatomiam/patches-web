@@ -5,7 +5,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
   const [cy, setCy] = useState(0);
   const [r, setR] = useState(0);
   const [angle, setAngle] = useState(0);
-  const [label, setLabel] = useState("");
+  const [description, setDescription] = useState("");
 
   return (
     <form
@@ -14,13 +14,12 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         dispatch({
           type: "ADD_KNOB",
           knob: {
-            id: Math.random(),
             type: "Knob",
             cx,
             cy,
             r,
             angle,
-            label
+            description
           }
         });
 
@@ -28,7 +27,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         setCy(0);
         setR(0);
         setAngle(0);
-        setLabel("");
+        setDescription("");
       }}
     >
       <p>
@@ -84,16 +83,16 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         />
       </p>
       <p>
-        <label htmlFor="label">Label </label>
+        <label htmlFor="description">Description </label>
         <input
-          id="label"
-          placeholder="Set label"
-          name="set-label"
+          id="description"
+          placeholder="Set description"
+          name="set-description"
           type="text"
           onChange={event => {
-            setLabel(event.target.value);
+            setDescription(event.target.value);
           }}
-          value={label}
+          value={description}
         />
       </p>
       <p>
