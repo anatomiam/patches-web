@@ -3,6 +3,20 @@ import { pedal, localState } from "./data";
 export const initialState = { pedal, localState };
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "SELECT_PEDAL":
+      console.log(action.pedal);
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          pedalDetails: {
+            name: action.pedal.name,
+            width: action.pedal.width,
+            height: action.pedal.height
+          },
+          knobs: action.pedal.knobs
+        }
+      };
     case "SET_SELECTED_COMPONENT_ID":
       return {
         ...state,
