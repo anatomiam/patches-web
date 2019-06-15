@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <Builder pedal={data.pedals[0]} />
+      <Builder pedals={data.pedals} />
     </StateProvider>
   );
 };

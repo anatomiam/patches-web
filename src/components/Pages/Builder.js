@@ -1,6 +1,7 @@
 import React from "react";
 import { AddKnobForm } from "../Forms/AddKnobForm";
 import { AddSwitchForm } from "../Forms/AddSwitchForm";
+import { AvailablePedals } from "../Forms/AvailablePedals";
 import { ComponentInfo } from "../ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
@@ -8,11 +9,12 @@ import "../../index.css";
 import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
 
-const Builder = ({ pedal }) => {
+const Builder = ({ pedals }) => {
   // const { knobs, width, height, name } = pedal;
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, name } = localState.pedalDetails;
-  const { selectedComponentId, selectedComponentAngle, knobs } = localState;
+  const { knobs } = localState;
+  const { selectedComponentId, selectedComponentAngle } = localState;
   return (
     <>
       <div className="info">
@@ -34,6 +36,7 @@ const Builder = ({ pedal }) => {
             selectedComponentId={selectedComponentId}
             selectedComponentAngle={selectedComponentAngle}
           />
+          <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </div>
       </div>
       <Pedal
