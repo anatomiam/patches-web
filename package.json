@@ -10,6 +10,7 @@
     "react-apollo": "^2.5.3",
     "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.5",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8"
   },
   "scripts": {

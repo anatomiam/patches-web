@@ -4,12 +4,12 @@ export const initialState = { pedal, localState };
 export const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_PEDAL":
-      console.log(action.pedal);
       return {
         ...state,
         localState: {
           ...state.localState,
           pedalDetails: {
+            id: action.pedal.id,
             name: action.pedal.name,
             width: action.pedal.width,
             height: action.pedal.height
