@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Select } from 'semantic-ui-react'
 
 export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
   const [selectedPedalId, setSelectedPedalId] = useState("");

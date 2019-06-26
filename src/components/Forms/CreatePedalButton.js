@@ -1,6 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo-hooks";
+import { Button, Form } from "semantic-ui-react";
 
 const CREATE_PEDAL = gql`
   mutation CreatePedal(
@@ -28,8 +29,8 @@ export const CreatePedalButton = React.memo(({ localState }) => {
   const createPedal = useMutation(CREATE_PEDAL);
   return (
     <>
-      <form>
-        <button
+      <Form>
+        <Button
           onClick={event => {
             event.preventDefault();
             createPedal({
@@ -44,8 +45,8 @@ export const CreatePedalButton = React.memo(({ localState }) => {
           }}
         >
           Save Pedal
-        </button>
-      </form>
+        </Button>
+      </Form>
     </>
   );
 });

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Input, Form } from "semantic-ui-react";
 
 export const AddSwitchForm = React.memo(({ dispatch }) => {
   const [cx, setCx] = useState(0);
@@ -7,7 +8,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
   const [description, setDescription] = useState("");
 
   return (
-    <form
+    <Form
       onSubmit={event => {
         event.preventDefault();
 
@@ -28,9 +29,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         setDescription("");
       }}
     >
-      <p>
+      <Form.Field>
         <label htmlFor="cx">CX </label>
-        <input
+        <Input
           id="cx"
           placeholder="Set cx"
           name="set-cx"
@@ -40,10 +41,10 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           }}
           value={cx}
         />
-      </p>
-      <p>
+      </Form.Field>
+      <Form.Field>
         <label htmlFor="cy">CY </label>
-        <input
+        <Input
           id="cy"
           placeholder="Set cy"
           name="set-cy"
@@ -53,10 +54,10 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           }}
           value={cy}
         />
-      </p>
-      <p>
+      </Form.Field>
+      <Form.Field>
         <label htmlFor="r">Width </label>
-        <input
+        <Input
           id="r"
           placeholder="Set Width"
           name="set-r"
@@ -66,10 +67,10 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           }}
           value={width}
         />
-      </p>
-      <p>
+      </Form.Field>
+      <Form.Field>
         <label htmlFor="description">Description </label>
-        <input
+        <Input
           id="description"
           placeholder="Set description"
           name="set-description"
@@ -79,10 +80,8 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           }}
           value={description}
         />
-      </p>
-      <p>
-        <input type="submit" value="Add Switch" />
-      </p>
-    </form>
+      </Form.Field>
+      <Button type="submit">Add Switch</Button>
+    </Form>
   );
 });
