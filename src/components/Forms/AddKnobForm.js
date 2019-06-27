@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Button, Input, Form } from "semantic-ui-react";
 
 export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
-  const [cx, setCx] = useState(0);
-  const [cy, setCy] = useState(0);
-  const [r, setR] = useState(0);
-  const [angle, setAngle] = useState(0);
+  const [cx, setCx] = useState("");
+  const [cy, setCy] = useState("");
+  const [r, setR] = useState("");
+  const [angle, setAngle] = useState("");
   const [description, setDescription] = useState("");
 
   return (
@@ -24,17 +24,16 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
           }
         });
 
-        setCx(0);
-        setCy(0);
-        setR(0);
-        setAngle(0);
+        setCx("");
+        setCy("");
+        setR("");
+        setAngle("");
         setDescription("");
       }}
     >
       <Form.Field>
-        <label htmlFor="cx">CX </label>
         <Input
-          id="cx"
+          label="CX"
           placeholder="Set cx"
           name="set-cx"
           type="number"
@@ -45,9 +44,9 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="cy">CY </label>
         <Input
           id="cy"
+          label="CY"
           placeholder="Set cy"
           name="set-cy"
           type="number"
@@ -58,9 +57,9 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="r">R </label>
         <Input
           id="r"
+          label="R"
           placeholder="Set r"
           name="set-r"
           type="number"
@@ -71,9 +70,9 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="angle">Angle </label>
         <Input
           id="angle"
+          label="Angle"
           placeholder="Set angle"
           name="set-angle"
           type="number"
@@ -84,9 +83,9 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="description">Description </label>
         <Input
           id="description"
+          label="Description"
           placeholder="Set description"
           name="set-description"
           type="text"

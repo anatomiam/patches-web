@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select } from 'semantic-ui-react'
+import { Select } from "semantic-ui-react";
 
 export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
   const [selectedPedalId, setSelectedPedalId] = useState("");
@@ -24,23 +24,21 @@ export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
     >
       <label>
         Pick your pedal:
-        <select
+        <Select
+          placeholder="-- Select a Pedal --"
           value={selectedPedalName}
-          onChange={event => {
-            event.preventDefault();
-            setSelectedPedalName(event.target.value);
-            setSelectedPedalId(event.target[event.target.selectedIndex].id);
+          onChange={(e, data) => {
+            setSelectedPedalName(data.value);
+            setSelectedPedalId(data.value);
           }}
-        >
-          <option value="-- Select a Pedal --">-- Select a Pedal --</option>
-          {pedals.map(pedal => {
-            return (
-              <option key={pedal.id} id={pedal.id} value={pedal.name}>
-                {pedal.name}
-              </option>
-            );
+          options={pedals.map(pedal => {
+            return {
+              key: pedal.id,
+              value: pedal.id,
+              text: pedal.name
+            };
           })}
-        </select>
+        />
       </label>
       <input type="submit" value="Submit" />
     </form>

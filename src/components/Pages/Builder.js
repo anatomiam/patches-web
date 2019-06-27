@@ -8,6 +8,7 @@ import { PedalForm } from "../Forms/PedalForm";
 import "../../index.css";
 import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
+import { Container, Segment } from "semantic-ui-react";
 
 const Builder = ({ pedals }) => {
   // const { knobs, width, height, name } = pedal;
@@ -16,41 +17,38 @@ const Builder = ({ pedals }) => {
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
 
-  const selectedPedalDetails = localState.pedalDetails
-    ? pedals.find(pedal => {
-        return pedal.id === localState.pedalDetails.id;
-      })
-    : null;
-
-  console.log(
-    selectedPedalDetails
-      ? selectedPedalDetails.name + localState.pedalDetails.name
-      : "lkajsdklfjasf"
-  );
   return (
     <>
-      <div className="info">
-        <div className="form-stuff">
+      <Container>
+        <Segment color="red">
           <PedalForm
             width={width}
             height={height}
             name={name}
             dispatch={dispatch}
           />
+        </Segment>
+        <Segment color="blue">
           <AddKnobForm dispatch={dispatch} />
+        </Segment>
+        <Segment color="teal">
           <AddSwitchForm dispatch={dispatch} />
+        </Segment>
+        <Segment color="olive">
           <CreatePedalButton localState={localState} />
-        </div>
-        <div className="display-stuff">
+        </Segment>
+        <Segment color="black">
           <ComponentInfo
             knobs={knobs}
             dispatch={dispatch}
             selectedComponentId={selectedComponentId}
             selectedComponentAngle={selectedComponentAngle}
           />
+        </Segment>
+        <Segment color="orange">
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
-        </div>
-      </div>
+        </Segment>
+      </Container>
       <Pedal
         knobs={knobs}
         width={width}

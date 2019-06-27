@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Builder from "./components/Pages/Builder";
 import Patcher from "./components/Pages/Patcher";
 import Landing from "./components/Pages/Landing";
@@ -8,6 +8,7 @@ import { useQuery } from "react-apollo-hooks";
 import gql from "graphql-tag";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./index.css";
+import { Menu, Segment } from "semantic-ui-react";
 
 const PEDAL_QUERY = gql`
   query {
@@ -31,6 +32,7 @@ const PEDAL_QUERY = gql`
 `;
 
 const App = () => {
+  const [activeTab, setActiveTab] = useState("");
   const { data, loading, error } = useQuery(PEDAL_QUERY);
   if (loading) return "Loading...";
   if (error) return `Error! ${error}`;
@@ -38,31 +40,41 @@ const App = () => {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/builder">Builder</Link>
-            </li>
-            <li>
-              <Link to="/patcher">Patcher</Link>
-            </li>
-          </ul>
+        <Segment inverted>
+          <Menu inverted pointing secondary>
+            <Menu.Item
+              as={Link}
+              to="/"
+              name="home"
+              active={activeTab === "home"}
+              onClick={() => setActiveTab("home")}
+            />
+            <Menu.Item
+              as={Link}
+              to="/builder"
+              name="builder"
+              active={activeTab === "builder"}
+              onClick={() => setActiveTab("builder")}
+            />
+            <Menu.Item
+              as={Link}
+              to="/patcher"
+              name="patcher"
+              active={activeTab === "patcher"}
+              onClick={() => setActiveTab("patcher")}
+            />
+          </Menu>
+        </Segment>
 
-          <hr />
-
-          <Route exact path="/" component={Landing} />
-          <Route
-            path="/builder"
-            render={() => <Builder pedals={data.pedals} />}
-          />
-          <Route
-            path="/patcher"
-            render={() => <Patcher pedals={data.pedals} />}
-          />
-        </div>
+        <Route exact path="/" component={Landing} />
+        <Route
+          path="/builder"
+          render={() => <Builder pedals={data.pedals} />}
+        />
+        <Route
+          path="/patcher"
+          render={() => <Patcher pedals={data.pedals} />}
+        />
       </Router>
     </StateProvider>
   );

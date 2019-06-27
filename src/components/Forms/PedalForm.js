@@ -3,8 +3,8 @@ import { Button, Input, Form } from "semantic-ui-react";
 
 export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
   // arbitrarily starting local state variables with '_'
-  const [_width, setWidth] = useState(width);
-  const [_height, setHeight] = useState(height);
+  const [_width, setWidth] = useState("");
+  const [_height, setHeight] = useState("");
   const [_name, setName] = useState(name);
 
   return (
@@ -22,9 +22,9 @@ export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
       }}
     >
       <Form.Field>
-        <label htmlFor="name">Name </label>
         <Input
           id="name"
+          label="Name"
           placeholder="Set Name"
           name="set-name"
           type="text"
@@ -35,9 +35,9 @@ export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="width">Width </label>
         <Input
           id="width"
+          label="Width"
           placeholder="Set Width"
           name="set-width"
           type="number"
@@ -48,9 +48,9 @@ export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="height">Height </label>
         <Input
           id="height"
+          label="Height"
           placeholder="Set Height"
           name="set-height"
           type="number"

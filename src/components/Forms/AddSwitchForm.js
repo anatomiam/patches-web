@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Button, Input, Form } from "semantic-ui-react";
 
 export const AddSwitchForm = React.memo(({ dispatch }) => {
-  const [cx, setCx] = useState(0);
-  const [cy, setCy] = useState(0);
-  const [width, setWidth] = useState(0);
+  const [cx, setCx] = useState("");
+  const [cy, setCy] = useState("");
+  const [width, setWidth] = useState("");
   const [description, setDescription] = useState("");
 
   return (
@@ -23,16 +23,16 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           }
         });
 
-        setCx(0);
-        setCy(0);
-        setWidth(0);
+        setCx("");
+        setCy("");
+        setWidth("");
         setDescription("");
       }}
     >
       <Form.Field>
-        <label htmlFor="cx">CX </label>
         <Input
           id="cx"
+          label="CX"
           placeholder="Set cx"
           name="set-cx"
           type="number"
@@ -43,9 +43,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="cy">CY </label>
         <Input
           id="cy"
+          label="CY"
           placeholder="Set cy"
           name="set-cy"
           type="number"
@@ -56,9 +56,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="r">Width </label>
         <Input
           id="r"
+          label="R"
           placeholder="Set Width"
           name="set-r"
           type="number"
@@ -69,9 +69,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         />
       </Form.Field>
       <Form.Field>
-        <label htmlFor="description">Description </label>
         <Input
           id="description"
+          label="Description"
           placeholder="Set description"
           name="set-description"
           type="text"
