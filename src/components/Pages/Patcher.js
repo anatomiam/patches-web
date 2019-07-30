@@ -4,6 +4,7 @@ import { ComponentInfo } from "../ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
 import { useStateValue } from "../../StateProvider";
+import { Form, Grid, TextArea } from "semantic-ui-react";
 
 const Patcher = ({ pedals }) => {
   // const { knobs, width, height, name } = pedal;
@@ -14,24 +15,33 @@ const Patcher = ({ pedals }) => {
 
   return (
     <>
-      <div className="info">
-        <div className="display-stuff">
-          <ComponentInfo
-            knobs={knobs}
-            dispatch={dispatch}
-            selectedComponentId={selectedComponentId}
-            selectedComponentAngle={selectedComponentAngle}
-          />
-          <AvailablePedals pedals={pedals} dispatch={dispatch} />
-        </div>
-      </div>
-      <Pedal
-        knobs={knobs}
-        width={width}
-        height={height}
-        name={name}
-        dispatch={dispatch}
-      />
+      <Grid>
+        <Grid.Row centered columns={3}>
+          <Grid.Column>
+            <Pedal
+              knobs={knobs}
+              width={width}
+              height={height}
+              name={name}
+              dispatch={dispatch}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <Form>
+              <TextArea placeholder="Tell us more" />
+            </Form>
+            <ComponentInfo
+              knobs={knobs}
+              dispatch={dispatch}
+              selectedComponentId={selectedComponentId}
+              selectedComponentAngle={selectedComponentAngle}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <AvailablePedals pedals={pedals} dispatch={dispatch} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };

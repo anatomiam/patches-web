@@ -5,7 +5,7 @@ export const Pedal = React.memo(({ knobs, width, height, name, dispatch }) => {
   return (
     <>
       <h2>{name}</h2>
-      <svg className="pedal" width="800" height="500">
+      <svg className="pedal" width={width} height={height}>
         <rect
           width={width}
           height={height}
