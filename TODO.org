@@ -1,0 +1,46 @@
+* Server
+** TODO [#B] Set up Notes db table                                   :server:
+   - [ ] pedal notes
+   - [ ] knob notes
+   - [ ] patch notes
+
+** TODO [#B] Figure out if all pedal components can be stored in the same db table :server:
+** TODO [#C] Set up user login                                       :server:
+** TODO [#B] Set up query pedals by user                             :server:
+** TODO [#C] Create example pedals                                   :server:
+
+** TODO [#B] Set up ability to query for Browser page - read only :server:web:
+* Web
+** Maintenance
+*** TODO [#B] Refactor folder structure                     :maintenance:web:
+*** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
+** Builder
+*** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
+*** TODO [#C] Create default template pedal dimensions          :builder:web:
+    - use pedalplaygrounds dimensions
+*** TODO [#B] Pedal dimensions details section                  :builder:web:
+*** TODO [#B] Set up form for entering SVG path                 :builder:web:
+*** TODO [#A] Set up tabs for differnent builder forms          :builder:web:
+    - [ ] pedal
+    - [ ] knob
+    - [ ] toggle
+    - [ ] footswitch
+    - [ ] svg path
+
+*** TODO [#B] Set up 'graph paper' for pedal background         :builder:web:
+*** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
+*** TODO [#C] Drag and Drop                                     :builder:web:
+** Patcher
+*** TODO [#B] Hook up Notes read/write                          :patcher:web:
+*** TODO [#A] Improve knob twisting                             :patcher:web:
+    - try out that react knobs library
+*** TODO [#B] Set up patch information table                    :patcher:web:
+*** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
+** Browser
+*** TODO [#B] Set up Browser page                               :browser:web:
+    - first step: display a list of patch names / descriptions
+** Landing
+*** TODO [#C] Remove Landing page?                              :landing:web:
+
+** Getting Started
+*** TODO [#C] Screenshots of how to get started         :getting:started:web:

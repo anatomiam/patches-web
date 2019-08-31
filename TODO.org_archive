@@ -1,0 +1,15 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
+
+
+* DONE Make sure everything happens in local state, only write to db on `Submit` :builder:web:
+  CLOSED: [2019-08-31 Sat 13:09]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-08-31 Sat 13:09
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Builder
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
