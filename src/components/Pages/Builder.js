@@ -7,7 +7,6 @@ import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
 import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
-import { Segment } from "semantic-ui-react";
 
 const styles = {
   builderContainer: {
@@ -56,22 +55,16 @@ const Builder = ({ pedals }) => {
     <>
       <div style={styles.builderContainer}>
         <div style={styles.builderForm}>
-          <Segment color="red">
-            <h2>{name}</h2>
-            <PedalForm
-              width={width}
-              height={height}
-              name={name}
-              dispatch={dispatch}
-            />
-          </Segment>
+          <h2>{name}</h2>
+          <PedalForm
+            width={width}
+            height={height}
+            name={name}
+            dispatch={dispatch}
+          />
         </div>
-        {/* <Segment color="blue">
-          <AddKnobForm dispatch={dispatch} />
-        </Segment>
-        <Segment color="teal">
-          <AddSwitchForm dispatch={dispatch} />
-        </Segment> */}
+        {/* <AddKnobForm dispatch={dispatch} />
+          <AddSwitchForm dispatch={dispatch} /> */}
         <div style={styles.builderPedal}>
           <Pedal
             knobs={knobs}
@@ -82,31 +75,23 @@ const Builder = ({ pedals }) => {
           />
         </div>
         <div style={styles.builderPedalSelector}>
-          <Segment color="orange">
-            <AvailablePedals pedals={pedals} dispatch={dispatch} />
-          </Segment>
+          <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </div>
         <div style={styles.builderPedalDetails}>
-          <Segment color="black">
-            <div>pedal width</div>
-            <div>pedal height</div>
-            <div>name or somthing</div>
-          </Segment>
+          <div>pedal width</div>
+          <div>pedal height</div>
+          <div>name or somthing</div>
         </div>
         <div style={styles.builderDetails}>
-          <Segment color="black">
-            <ComponentInfo
-              knobs={knobs}
-              dispatch={dispatch}
-              selectedComponentId={selectedComponentId}
-              selectedComponentAngle={selectedComponentAngle}
-            />
-          </Segment>
+          <ComponentInfo
+            knobs={knobs}
+            dispatch={dispatch}
+            selectedComponentId={selectedComponentId}
+            selectedComponentAngle={selectedComponentAngle}
+          />
         </div>
         <div style={styles.builderSubmit}>
-          <Segment color="olive">
-            <CreatePedalButton localState={localState} />
-          </Segment>
+          <CreatePedalButton localState={localState} />
         </div>
       </div>
     </>
