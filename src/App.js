@@ -66,17 +66,15 @@ const App = () => {
           </Menu>
         </Segment>
 
-        <div className="container">
-          <Route exact path="/" component={Landing} />
-          <Route
-            path="/builder"
-            render={() => <Builder pedals={data.pedals} />}
-          />
-          <Route
-            path="/patcher"
-            render={() => <Patcher pedals={data.pedals} />}
-          />
-        </div>
+        <Route exact path="/" component={Landing} />
+        <Route
+          path="/builder"
+          render={() => <Builder pedals={data.pedals} />}
+        />
+        <Route
+          path="/patcher"
+          render={() => <Patcher pedals={data.pedals} />}
+        />
       </Router>
     </StateProvider>
   );

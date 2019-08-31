@@ -8,7 +8,7 @@ import { PedalForm } from "../Forms/PedalForm";
 import "../../index.css";
 import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
-import { Grid, Segment } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 
 const Builder = ({ pedals }) => {
   // const { knobs, width, height, name } = pedal;
@@ -19,63 +19,61 @@ const Builder = ({ pedals }) => {
 
   return (
     <>
-      <Grid>
-        <Grid.Row centered columns={3}>
-          <Grid.Column>
-            <Segment color="red">
-              <PedalForm
-                width={width}
-                height={height}
-                name={name}
-                dispatch={dispatch}
-              />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment color="orange">
-              <AvailablePedals pedals={pedals} dispatch={dispatch} />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment color="blue">
-              <AddKnobForm dispatch={dispatch} />
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={4}>
-            <Segment color="teal">
-              <AddSwitchForm dispatch={dispatch} />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={8} style={{ textAlign: "center" }}>
-            <Pedal
-              knobs={knobs}
+      <div className="builder-container">
+        <div className="builder-form">
+          <Segment color="red">
+            <h2>{name}</h2>
+            <PedalForm
               width={width}
               height={height}
               name={name}
               dispatch={dispatch}
             />
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Segment color="black">
-              <ComponentInfo
-                knobs={knobs}
-                dispatch={dispatch}
-                selectedComponentId={selectedComponentId}
-                selectedComponentAngle={selectedComponentAngle}
-              />
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row centered>
-          <Grid.Column>
-            <Segment color="olive">
-              <CreatePedalButton localState={localState} />
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+          </Segment>
+        </div>
+        {/* <Segment color="blue">
+          <AddKnobForm dispatch={dispatch} />
+        </Segment>
+        <Segment color="teal">
+          <AddSwitchForm dispatch={dispatch} />
+        </Segment> */}
+        <div className="builder-pedal">
+          <Pedal
+            knobs={knobs}
+            width={width}
+            height={height}
+            name={name}
+            dispatch={dispatch}
+          />
+        </div>
+        <div className="builder-pedal-selector">
+          <Segment color="orange">
+            <AvailablePedals pedals={pedals} dispatch={dispatch} />
+          </Segment>
+        </div>
+        <div className="builder-pedal-details">
+          <Segment color="black">
+            <div>pedal width</div>
+            <div>pedal height</div>
+            <div>name or somthing</div>
+          </Segment>
+        </div>
+        <div className="builder-details">
+          <Segment color="black">
+            <ComponentInfo
+              knobs={knobs}
+              dispatch={dispatch}
+              selectedComponentId={selectedComponentId}
+              selectedComponentAngle={selectedComponentAngle}
+            />
+          </Segment>
+        </div>
+        <div className="builder-submit">
+          <Segment color="olive">
+            <CreatePedalButton localState={localState} />
+          </Segment>
+        </div>
+      </div>
     </>
   );
 };

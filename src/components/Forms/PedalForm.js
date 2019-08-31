@@ -60,7 +60,9 @@ export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
           value={_height}
         />
       </Form.Field>
-      <Button type="submit">Submit Dimensions</Button>
+      <Button size="mini" floated="right" type="submit">
+        Submit Dimensions
+      </Button>
     </Form>
   );
 });
