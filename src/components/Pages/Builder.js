@@ -49,6 +49,7 @@ const Builder = ({ pedals }) => {
               width={width}
               height={height}
               name={name}
+              color={color}
               dispatch={dispatch}
             />
           </Accordion.Content>
