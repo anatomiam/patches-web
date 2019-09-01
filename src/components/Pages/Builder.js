@@ -5,7 +5,7 @@ import { AvailablePedals } from "../Forms/AvailablePedals";
 import { ComponentInfo } from "../ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
-import { useStateValue } from "../../StateProvider";
+import { useStateValue } from "../../state/StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
 import { Accordion, Icon } from "semantic-ui-react";
 

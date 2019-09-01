@@ -3,7 +3,7 @@ import { AvailablePedals } from "../Forms/AvailablePedals";
 import { ComponentInfo } from "../ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
-import { useStateValue } from "../../StateProvider";
+import { useStateValue } from "../../state/StateProvider";
 import { Form, TextArea } from "semantic-ui-react";
 
 const styles = {

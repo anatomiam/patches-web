@@ -13,3 +13,20 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Set up tabs for different builder forms             :builder:web:
+  CLOSED: [2019-08-31 Sat 22:21]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-08-31 Sat 22:21
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Builder
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] pedal
+  - [X] knob
+  - [X] toggle
+  - [ ] footswitch
+    - added todo
+  - [ ] svg path
+    - captured in todo
