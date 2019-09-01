@@ -18,7 +18,8 @@ export const PedalForm = React.memo(({ width, height, name, dispatch }) => {
           pedalDetails: {
             name: _name,
             height: _height,
-            width: _width
+            width: _width,
+            color: _color
           }
         });
       }}

@@ -20,7 +20,7 @@ import {
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
-  const { width, height, name } = localState.pedalDetails;
+  const { width, height, name, color } = localState.pedalDetails;
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -83,7 +83,7 @@ const Builder = ({ pedals }) => {
           knobs={knobs}
           width={width}
           height={height}
-          name={name}
+          color={color}
           dispatch={dispatch}
         />
       </DivPedal>

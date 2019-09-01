@@ -19,7 +19,7 @@
 ** Builder
 *** TODO [#B] Set up distinc "create" and "edit" modes          :builder:web:
     - edit mode should be a toggle button from a view mode ?
-*** TODO [#A] Set Color option                                  :builder:web:
+*** STARTED [#A] Set Color option                               :builder:web:
 *** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 *** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
 *** TODO [#C] Create default template pedal dimensions          :builder:web:

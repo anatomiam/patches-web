@@ -15,7 +15,7 @@ import {
 
 const Patcher = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
-  const { width, height, name } = localState.pedalDetails;
+  const { width, height, name, color } = localState.pedalDetails;
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
 
@@ -26,7 +26,7 @@ const Patcher = ({ pedals }) => {
           knobs={knobs}
           width={width}
           height={height}
-          name={name}
+          color={color}
           dispatch={dispatch}
         />
       </DivPedal>

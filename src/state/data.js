@@ -201,7 +201,8 @@ export const localState = {
   pedalDetails: {
     name: "Template",
     width: 200,
-    height: 400
+    height: 400,
+    color: "#ff381d"
   }
 };
 
