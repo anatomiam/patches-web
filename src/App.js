@@ -17,6 +17,7 @@ const PEDAL_QUERY = gql`
       name
       width
       height
+      color
       knobs {
         id
         type

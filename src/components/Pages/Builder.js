@@ -41,7 +41,7 @@ const Builder = ({ pedals }) => {
             index={0}
             onClick={handleClick}
           >
-            <Icon name="asterisk" />
+            <Icon name="plus square outline" />
             Set the Pedal dimensions
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>

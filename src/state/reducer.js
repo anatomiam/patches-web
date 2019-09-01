@@ -12,7 +12,8 @@ export const reducer = (state, action) => {
             id: action.pedal.id,
             name: action.pedal.name,
             width: action.pedal.width,
-            height: action.pedal.height
+            height: action.pedal.height,
+            color: action.pedal.color
           },
           knobs: action.pedal.knobs
         }

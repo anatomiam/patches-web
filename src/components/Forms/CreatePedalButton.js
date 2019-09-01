@@ -9,6 +9,7 @@ const CREATE_PEDAL = gql`
     $builder: ID!
     $width: Float
     $height: Float
+    $color: String
     $knobs: [KnobsInput]
   ) {
     createPedal(
@@ -16,6 +17,7 @@ const CREATE_PEDAL = gql`
       builder: $builder
       width: $width
       height: $height
+      color: $color
       knobs: $knobs
     ) {
       id
@@ -25,7 +27,7 @@ const CREATE_PEDAL = gql`
 
 export const CreatePedalButton = React.memo(({ localState }) => {
   const { knobs, builder } = localState;
-  const { name, width, height } = localState.pedalDetails;
+  const { name, width, height, color } = localState.pedalDetails;
   const createPedal = useMutation(CREATE_PEDAL);
   return (
     <>
@@ -39,6 +41,7 @@ export const CreatePedalButton = React.memo(({ localState }) => {
                 builder,
                 width,
                 height,
+                color,
                 knobs
               }
             });

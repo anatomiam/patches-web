@@ -30,3 +30,33 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
     - added todo
   - [ ] svg path
     - captured in todo
+
+* DONE [#A] Set up storing colors on pedals                          :server:
+  CLOSED: [2019-09-01 Sun 11:32]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-01 Sun 11:32
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Server
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Set up styled-components                        :maintenance:web:
+  CLOSED: [2019-09-01 Sun 11:31]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-01 Sun 11:32
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Maintenance
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Set Color option for pedals                         :builder:web:
+  CLOSED: [2019-09-01 Sun 11:32]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-01 Sun 11:32
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Builder
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
