@@ -14,17 +14,19 @@
 *** TODO [#B] Add tests                                     :maintenance:web:
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
-*** STARTED [#A] Set up responsiveness                      :maintenance:web:
+*** TODO [#A] Set up responsiveness                         :maintenance:web:
 ** Builder
 *** TODO [#C] Animate icons on accordion when selected          :builder:web:
 *** TODO [#B] Set up distinc "create" and "edit" modes          :builder:web:
     - edit mode should be a toggle button from a view mode ?
+*** TODO [#B] Update forms when loading a pedal                 :builder:web:
 *** TODO [#A] Set Color option for knobs                        :builder:web:
 *** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 *** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
 *** TODO [#C] Create default template pedal dimensions          :builder:web:
     - use pedalplaygrounds dimensions
-*** TODO [#B] Pedal dimensions details section                  :builder:web:
+*** STARTED [#B] Pedal dimensions details section               :builder:web:
+*** STARTED [#B] Pedal dimensions colored when doesn't match form :builder:web:
 *** TODO [#B] Set up form for entering SVG path                 :builder:web
     - add to accordian
 *** TODO [#C] Set up Footswitch form                            :builder:web:

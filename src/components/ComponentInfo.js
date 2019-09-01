@@ -2,12 +2,20 @@ import React from "react";
 import _ from "lodash";
 
 export const ComponentInfo = React.memo(
-  ({ knobs, selectedComponentId, selectedComponentAngle, dispatch }) => {
-    const selectedComponent = knobs.find(knob => {
-      return knob.id === selectedComponentId;
-    });
-
-    return selectedComponent ? (
+  ({
+    knobs,
+    selectedComponentId,
+    selectedComponentAngle,
+    pedalDetails,
+    dispatch
+  }) => {
+    // default to showing pedal info
+    const selectedComponent = selectedComponentId
+      ? knobs.find(knob => {
+          return knob.id === selectedComponentId;
+        })
+      : pedalDetails;
+    return (
       <div className="component-info">
         <div className="description">
           {_.map(selectedComponent, (value, key) => {
@@ -18,11 +26,7 @@ export const ComponentInfo = React.memo(
             );
           })}
         </div>
-        <p>angle: </p>
-        {selectedComponentAngle}
       </div>
-    ) : (
-      <h3>Select a Component</h3>
     );
   }
 );

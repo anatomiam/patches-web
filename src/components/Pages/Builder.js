@@ -91,17 +91,13 @@ const Builder = ({ pedals }) => {
       <DivPedalSelector>
         <AvailablePedals pedals={pedals} dispatch={dispatch} />
       </DivPedalSelector>
-      <DivPedalDetails>
-        <div>pedal width</div>
-        <div>pedal height</div>
-        <div>name or somthing</div>
-      </DivPedalDetails>
       <DivDetails>
         <ComponentInfo
           knobs={knobs}
           dispatch={dispatch}
           selectedComponentId={selectedComponentId}
           selectedComponentAngle={selectedComponentAngle}
+          pedalDetails={localState.pedalDetails}
         />
       </DivDetails>
       <DivSubmit>
