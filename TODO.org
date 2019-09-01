@@ -14,13 +14,14 @@
 ** Maintenance
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
+*** TODO [#A] Set up responsiveness                         :maintenance:web:
 ** Builder
 *** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 *** TODO [#C] Create default template pedal dimensions          :builder:web:
     - use pedalplaygrounds dimensions
 *** TODO [#B] Pedal dimensions details section                  :builder:web:
 *** TODO [#B] Set up form for entering SVG path                 :builder:web:
-*** TODO [#A] Set up tabs for differnent builder forms          :builder:web:
+*** STARTED [#A] Set up tabs for different builder forms        :builder:web:
     - [ ] pedal
     - [ ] knob
     - [ ] toggle
