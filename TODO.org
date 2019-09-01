@@ -1,14 +1,13 @@
 * Server
+** TODO [#A] Set up storing colors on pedals                         :server:
 ** TODO [#B] Set up Notes db table                                   :server:
    - [ ] pedal notes
    - [ ] knob notes
    - [ ] patch notes
-
 ** TODO [#B] Figure out if all pedal components can be stored in the same db table :server:
 ** TODO [#C] Set up user login                                       :server:
 ** TODO [#B] Set up query pedals by user                             :server:
 ** TODO [#C] Create example pedals                                   :server:
-
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Web
 ** Maintenance
@@ -16,18 +15,18 @@
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
 *** TODO [#A] Set up responsiveness                         :maintenance:web:
 ** Builder
+*** TODO [#A] Set Color option                                  :builder:web:
 *** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 *** TODO [#C] Create default template pedal dimensions          :builder:web:
     - use pedalplaygrounds dimensions
 *** TODO [#B] Pedal dimensions details section                  :builder:web:
 *** TODO [#B] Set up form for entering SVG path                 :builder:web:
 *** STARTED [#A] Set up tabs for different builder forms        :builder:web:
-    - [ ] pedal
-    - [ ] knob
-    - [ ] toggle
+    - [X] pedal
+    - [X] knob
+    - [X] toggle
     - [ ] footswitch
     - [ ] svg path
-
 *** TODO [#B] Set up 'graph paper' for pedal background         :builder:web:
 *** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
 *** TODO [#C] Drag and Drop                                     :builder:web:
@@ -42,6 +41,5 @@
     - first step: display a list of patch names / descriptions
 ** Landing
 *** TODO [#C] Remove Landing page?                              :landing:web:
-
 ** Getting Started
 *** TODO [#C] Screenshots of how to get started         :getting:started:web:

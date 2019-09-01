@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddKnobForm } from "../Forms/AddKnobForm";
 import { AddSwitchForm } from "../Forms/AddSwitchForm";
 import { AvailablePedals } from "../Forms/AvailablePedals";
@@ -7,6 +7,7 @@ import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
 import { useStateValue } from "../../StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
+import { Accordion, Icon } from "semantic-ui-react";
 
 const styles = {
   builderContainer: {
@@ -45,26 +46,66 @@ const styles = {
 };
 
 const Builder = ({ pedals }) => {
-  // const { knobs, width, height, name } = pedal;
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, name } = localState.pedalDetails;
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const newIndex = activeIndex === index ? -1 : index;
+    setActiveIndex(newIndex);
+  };
 
   return (
     <>
       <div style={styles.builderContainer}>
         <div style={styles.builderForm}>
           <h2>{name}</h2>
-          <PedalForm
-            width={width}
-            height={height}
-            name={name}
-            dispatch={dispatch}
-          />
+          <Accordion styled>
+            <Accordion.Title
+              active={activeIndex === 0}
+              index={0}
+              onClick={handleClick}
+            >
+              <Icon name="asterisk" />
+              Set the Pedal dimensions
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 0}>
+              <PedalForm
+                width={width}
+                height={height}
+                name={name}
+                dispatch={dispatch}
+              />
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 1}
+              index={1}
+              onClick={handleClick}
+            >
+              <Icon name="circle notch" />
+              Add a Knob
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+              <AddKnobForm dispatch={dispatch} />
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 2}
+              index={2}
+              onClick={handleClick}
+            >
+              <Icon name="toggle on" />
+              Add a Switch
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <AddSwitchForm dispatch={dispatch} />
+            </Accordion.Content>
+          </Accordion>
         </div>
-        {/* <AddKnobForm dispatch={dispatch} />
-          <AddSwitchForm dispatch={dispatch} /> */}
         <div style={styles.builderPedal}>
           <Pedal
             knobs={knobs}

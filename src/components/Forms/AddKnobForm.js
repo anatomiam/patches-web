@@ -85,7 +85,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
       <Form.Field>
         <Input
           id="description"
-          label="Description"
+          label="Desc."
           placeholder="Set description"
           name="set-description"
           type="text"
@@ -95,7 +95,9 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
           value={description}
         />
       </Form.Field>
-      <Button type="submit">Add Knob</Button>
+      <Button size="mini" type="submit">
+        Add Knob
+      </Button>
     </Form>
   );
 });

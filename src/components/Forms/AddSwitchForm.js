@@ -71,7 +71,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
       <Form.Field>
         <Input
           id="description"
-          label="Description"
+          label="Desc."
           placeholder="Set description"
           name="set-description"
           type="text"
@@ -81,7 +81,9 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
           value={description}
         />
       </Form.Field>
-      <Button type="submit">Add Switch</Button>
+      <Button size="mini" type="submit">
+        Add Switch
+      </Button>
     </Form>
   );
 });
