@@ -10,6 +10,15 @@ const size = {
   desktop: "2560px"
 };
 
+export const InputColorPicker = styled.input`
+  width: 50%;
+`;
+
+export const DivLabeledColorPicker = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 export const DivContainer = styled.div`
   display: grid;
   grid-template-rows: 100px 100px repeat(5, minmax(75px, 125px)) 75px 75px;
