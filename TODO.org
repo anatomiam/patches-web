@@ -11,6 +11,8 @@
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Web
 ** Maintenance
+*** TODO [#C] CI/CD Pipeline                                :maintenance:web:
+*** TODO [#B] Refactor to Typescript                        :maintenance:web:
 *** TODO [#B] Add tests                                     :maintenance:web:
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
@@ -36,8 +38,10 @@
 *** TODO [#C] Drag and Drop                                     :builder:web:
 ** Patcher
 *** TODO [#B] Hook up Notes read/write                          :patcher:web:
-*** TODO [#A] Improve knob twisting                             :patcher:web:
+*** STARTED [#A] Improve knob twisting                          :patcher:web:
     - try out that react knobs library
+      - Try moving the onMouseMove and onMouseUp functions to the SVG component itself, and making the SVG area as large as it can be
+      - isDragging will need to be moved into the global state
 *** TODO [#B] Set up patch information table                    :patcher:web:
 *** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
 ** Browser
