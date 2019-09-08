@@ -17,6 +17,8 @@
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
 *** TODO [#A] Set up responsiveness                         :maintenance:web:
+*** TODO [#B] Stop knob twisting from selecting text on page :maintenance:web:
+*** TODO [#B] Improve names of Switch variables             :maintenance:web:
 ** Builder
 *** TODO [#C] Animate icons on accordion when selected          :builder:web:
 *** TODO [#B] Set up distinc "create" and "edit" modes          :builder:web:
@@ -37,11 +39,10 @@
 *** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
 *** TODO [#C] Drag and Drop                                     :builder:web:
 ** Patcher
-*** TODO [#A] Update Footswitch components with styled components / motion :patcher:web:
-*** TODO [#A] Update Switch components with styled components / motion :patcher:web:
 *** TODO [#B] Hook up Notes read/write                          :patcher:web:
 *** TODO [#B] Set up patch information table                    :patcher:web:
 *** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
+*** TODO [#C] Switch component 'steps'                          :patcher:web:
 ** Browser
 *** TODO [#B] Set up Browser page                               :browser:web:
     - first step: display a list of patch names / descriptions

@@ -30,12 +30,14 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
         return `rotate(${angle + angleAdjust}deg)`;
       }}
       onTapStart={event => {
+        event.preventDefault();
         dispatch({
           type: "SET_SELECTED_COMPONENT_ID",
           id
         });
       }}
       onPan={(event, info) => {
+        event.preventDefault();
         setAngleAdjust(info.offset.y);
       }}
       onPanEnd={() => {
@@ -53,8 +55,6 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
             cx={r}
             cy={r}
             r={r}
-            stroke="black"
-            strokeWidth="1"
             fill="darkgrey"
           />
           <line

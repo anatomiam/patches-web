@@ -27,6 +27,7 @@ export const reducer = (state, action) => {
         }
       };
     case "SET_SELECTED_COMPONENT_ANGLE":
+      // TODO only update single knob instead of whole set?
       const knobsCopy = state.localState.knobs.slice();
       const updatedKnobs = knobsCopy.map(knob => {
         if (knob.id !== action.knobId) {
