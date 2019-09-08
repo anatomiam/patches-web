@@ -9,21 +9,29 @@ export const Knobs = React.memo(({ knobs, dispatch }) => {
       {knobs.map(knob => {
         switch (knob.type) {
           case "FootSwitch":
+          // return (
+          //   <FootSwitch
+          //     key={Math.random()}
+          //     footSwitchDetails={knob}
+          //     dispatch={dispatch}
+          //   />
+          // );
+          case "Knob":
             return (
-              <FootSwitch
+              <Knob
                 key={Math.random()}
-                footSwitchDetails={knob}
+                knobDetails={knob}
                 dispatch={dispatch}
               />
             );
-          case "Knob":
-            return (
-              <Knob key={Math.random()} knobDetails={knob} dispatch={dispatch} />
-            );
           case "Switch":
-            return (
-              <Switch key={Math.random()} switchDetails={knob} dispatch={dispatch} />
-            );
+          // return (
+          //   <Switch
+          //     key={Math.random()}
+          //     switchDetails={knob}
+          //     dispatch={dispatch}
+          //   />
+          // );
           default:
             return null;
         }

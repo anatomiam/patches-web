@@ -60,3 +60,24 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE Start using Framer Motion library to handle interactions 
+  CLOSED: [2019-09-08 Sun 14:06]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-08 Sun 14:06
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Patcher/Improve knob twisting
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :ARCHIVE_ITAGS: patcher web
+  :END:
+
+* DONE [#A] Improve knob twisting                               :patcher:web:
+  CLOSED: [2019-09-08 Sun 14:06]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-08 Sun 14:06
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Patcher
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

@@ -27,8 +27,8 @@
 *** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
 *** TODO [#C] Create default template pedal dimensions          :builder:web:
     - use pedalplaygrounds dimensions
-*** STARTED [#B] Pedal dimensions details section               :builder:web:
-*** STARTED [#B] Pedal dimensions colored when doesn't match form :builder:web:
+*** TODO [#B] Pedal dimensions details section                  :builder:web:
+*** TODO [#B] Pedal dimensions colored when doesn't match form  :builder:web:
 *** TODO [#B] Set up form for entering SVG path                 :builder:web
     - add to accordian
 *** TODO [#C] Set up Footswitch form                            :builder:web:
@@ -37,11 +37,9 @@
 *** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
 *** TODO [#C] Drag and Drop                                     :builder:web:
 ** Patcher
+*** TODO [#A] Update Footswitch components with styled components / motion :patcher:web:
+*** TODO [#A] Update Switch components with styled components / motion :patcher:web:
 *** TODO [#B] Hook up Notes read/write                          :patcher:web:
-*** STARTED [#A] Improve knob twisting                          :patcher:web:
-    - try out that react knobs library
-      - Try moving the onMouseMove and onMouseUp functions to the SVG component itself, and making the SVG area as large as it can be
-      - isDragging will need to be moved into the global state
 *** TODO [#B] Set up patch information table                    :patcher:web:
 *** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
 ** Browser

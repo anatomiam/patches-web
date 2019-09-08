@@ -27,11 +27,18 @@ export const reducer = (state, action) => {
         }
       };
     case "SET_SELECTED_COMPONENT_ANGLE":
+      const knobsCopy = state.localState.knobs.slice();
+      const updatedKnobs = knobsCopy.map(knob => {
+        if (knob.id !== action.knobId) {
+          return knob;
+        }
+        return { ...knob, angle: action.angle };
+      });
       return {
         ...state,
         localState: {
           ...state.localState,
-          selectedComponentAngle: action.angle
+          knobs: updatedKnobs
         }
       };
     case "SET_PEDAL_DETAILS":
@@ -55,8 +62,8 @@ export const reducer = (state, action) => {
       // select by id
       // if doesnt exist, create
       // if exists, update
-      const knobsCopy = state.localState.updatedKnobAngles.slice();
-      const updatedKnobs = knobsCopy.map(knob => {
+      const knobsCopy2 = state.localState.updatedKnobAngles.slice();
+      const updatedKnobs2 = knobsCopy2.map(knob => {
         if (knob.id !== action.knobId) {
           return knob;
         }
@@ -67,7 +74,7 @@ export const reducer = (state, action) => {
         ...state,
         localState: {
           ...state.localState,
-          updatedKnobAngles: updatedKnobs
+          updatedKnobAngles: updatedKnobs2
         }
       };
     default:

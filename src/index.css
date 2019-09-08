@@ -1,15 +1,3 @@
-div {
-  border: 1px solid black;
-}
 .component {
   cursor: pointer;
-}
-
-.container {
-  /* display: grid; */
-
-  /* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
-  /* grid-template-rows: repeat(9, 1fr);
-  grid-template-rows: repeat(9, 1fr);
-  justify-items: center; */
 }

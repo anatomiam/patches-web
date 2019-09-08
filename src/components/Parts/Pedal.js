@@ -1,19 +1,19 @@
 import React from "react";
 import { Knobs } from "../Knobs";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+
+const PedalDiv = styled(motion.div)`
+  position: relative;
+  width: ${props => props.width + "px"};
+  height: ${props => props.height + "px"};
+  background-color: ${props => props.color};
+`;
 
 export const Pedal = React.memo(({ knobs, width, height, color, dispatch }) => {
   return (
-    <svg className="pedal" width={width} height={height}>
-      <rect
-        width={width}
-        height={height}
-        style={{
-          fill: color,
-          strokeWidth: 2,
-          stroke: "rgb(0,0,0)"
-        }}
-      />
-      <Knobs knobs={knobs} dispatch={dispatch} />
-    </svg>
+    <PedalDiv width={width} height={height} color={color}>
+      <Knobs knobs={knobs} dispatch={dispatch} width={width} height={height} />
+    </PedalDiv>
   );
 });
