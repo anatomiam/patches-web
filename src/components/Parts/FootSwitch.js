@@ -14,7 +14,13 @@ export const FootSwitch = React.memo(({ footSwitchDetails, dispatch }) => {
   const { cx, cy, r } = footSwitchDetails;
 
   return (
-    <FootSwitchDiv width={r * 2} height={r * 2} left={cx - r} top={cy - r}>
+    <FootSwitchDiv
+      whileTap={{ scale: 0.8 }}
+      width={r * 2}
+      height={r * 2}
+      left={cx - r}
+      top={cy - r}
+    >
       <svg width={r * 2} height={r * 2}>
         <g>
           <circle
