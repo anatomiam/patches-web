@@ -25,10 +25,12 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
       height={r * 2}
       left={cx - r}
       top={cy - r}
-      style={{ rotate: angle }}
-      transformTemplate={() => {
-        return `rotate(${angle + angleAdjust}deg)`;
+      animate={{
+        rotate: angle + angleAdjust
       }}
+      initial={false}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
       onTapStart={event => {
         event.preventDefault();
         dispatch({
