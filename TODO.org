@@ -10,17 +10,18 @@
 ** TODO [#C] Create example pedals                                   :server:
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Web
-** Maintenance
+** Devops/Maintenance
 *** TODO [#C] CI/CD Pipeline                                :maintenance:web:
 *** TODO [#B] Refactor to Typescript                        :maintenance:web:
 *** TODO [#B] Add tests                                     :maintenance:web:
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
 *** TODO [#A] Set up responsiveness                         :maintenance:web:
-*** TODO [#B] Stop knob twisting from selecting text on page :maintenance:web:
+*** TODO [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]]  :maintenance:web:
 *** TODO [#B] Improve names of Switch variables             :maintenance:web:
 ** Builder
-*** TODO [#C] Animate icons on accordion when selected          :builder:web:
+*** TODO [#C] Animate icons on accordion when selected       :builder:web:ux:
+*** TODO [#B] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 *** TODO [#B] Set up distinc "create" and "edit" modes          :builder:web:
     - edit mode should be a toggle button from a view mode ?
 *** TODO [#B] Update forms when loading a pedal                 :builder:web:
@@ -38,11 +39,15 @@
 *** TODO [#B] Set up 'graph paper' for pedal background         :builder:web:
 *** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
 *** TODO [#C] Drag and Drop                                     :builder:web:
+*** TODO [#B] Add on/off/whateverelse indicators                :builder:web:
+*** TODO [#B] Pedal Saved notification                       :builder:web:ux:
 ** Patcher
+*** TODO [#B] Indicators are change colors with footswitch      :patcher:web:
 *** TODO [#B] Hook up Notes read/write                          :patcher:web:
 *** TODO [#B] Set up patch information table                    :patcher:web:
 *** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
-*** TODO [#C] Switch component 'steps'                          :patcher:web:
+*** TODO [#C] Switch component 'steps'                       :patcher:web:ux:
+*** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                  :patcher:web:ux:
 ** Browser
 *** TODO [#B] Set up Browser page                               :browser:web:
     - first step: display a list of patch names / descriptions

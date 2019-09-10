@@ -101,3 +101,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Stop knob twisting from selecting text on page  :maintenance:web:
+  CLOSED: [2019-09-08 Sun 16:52]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-08 Sun 16:52
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Maintenance
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
