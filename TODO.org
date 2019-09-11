@@ -17,7 +17,7 @@
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
 *** TODO [#A] Set up responsiveness                         :maintenance:web:
-*** TODO [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]]  :maintenance:web:
+*** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
 *** TODO [#B] Improve names of Switch variables             :maintenance:web:
 ** Builder
 *** TODO [#C] Animate icons on accordion when selected       :builder:web:ux:

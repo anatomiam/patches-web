@@ -1,91 +1,101 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
 import { DivLabeledColorPicker, InputColorPicker } from "../PageStyles";
+import { Formik } from "formik";
 
 export const PedalForm = React.memo(
   ({ width, height, name, color, dispatch }) => {
-    // arbitrarily starting local state variables with '_'
-    const [_width, setWidth] = useState(width);
-    const [_height, setHeight] = useState(height);
-    const [_color, setColor] = useState(color);
-    const [_name, setName] = useState(name);
-
     return (
-      <Form
-        onSubmit={event => {
-          event.preventDefault();
+      <Formik
+        initialValues={{
+          width: width,
+          height: height,
+          color: color,
+          name: name
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log(values);
           dispatch({
             type: "SET_PEDAL_DETAILS",
             pedalDetails: {
-              name: _name,
-              height: _height,
-              width: _width,
-              color: _color
+              name: values.name,
+              height: values.height,
+              width: values.width,
+              color: values.color
             }
           });
+          setSubmitting(false);
         }}
       >
-        <Form.Field>
-          <Input
-            id="name"
-            label="Name"
-            placeholder="Set Name"
-            name="set-name"
-            type="text"
-            onChange={event => {
-              setName(event.target.value);
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          isSubmitting,
+          handleSubmit
+        }) => (
+          <Form
+            onSubmit={event => {
+              event.preventDefault();
+              handleSubmit();
             }}
-            value={_name}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Input
-            id="width"
-            label="Width"
-            placeholder="Set Width"
-            name="set-width"
-            type="number"
-            onChange={event => {
-              setWidth(parseFloat(event.target.value));
-            }}
-            value={_width}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Input
-            id="height"
-            label="Height"
-            placeholder="Set Height"
-            name="set-height"
-            type="number"
-            onChange={event => {
-              setHeight(parseFloat(event.target.value));
-            }}
-            value={_height}
-          />
-        </Form.Field>
-        <Form.Field>
-          <DivLabeledColorPicker>
-            <Label size="large" horizontal>
-              Color
-            </Label>
-            <InputColorPicker
-              id="color"
-              label="Color"
-              placeholder="Set Color"
-              name="set-color"
-              type="color"
-              onChange={event => {
-                setColor(event.target.value);
-              }}
-              value={_color}
-            />
-          </DivLabeledColorPicker>
-        </Form.Field>
-        <Button size="mini" type="submit">
-          Submit Dimensions
-        </Button>
-      </Form>
+          >
+            <Form.Field>
+              <Input
+                id="name"
+                label="Name"
+                placeholder="Set Name"
+                name="name"
+                type="text"
+                onChange={handleChange}
+                value={values.name}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                id="width"
+                label="Width"
+                placeholder="Set Width"
+                name="width"
+                type="number"
+                onChange={handleChange}
+                value={values.width}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                id="height"
+                label="Height"
+                placeholder="Set Height"
+                name="height"
+                type="number"
+                onChange={handleChange}
+                value={values.height}
+              />
+            </Form.Field>
+            <Form.Field>
+              <DivLabeledColorPicker>
+                <Label size="large" horizontal>
+                  Color
+                </Label>
+                <InputColorPicker
+                  id="color"
+                  label="Color"
+                  placeholder="Set Color"
+                  name="color"
+                  type="color"
+                  onChange={handleChange}
+                  value={values.color}
+                />
+              </DivLabeledColorPicker>
+            </Form.Field>
+            <Button type="submit" disabled={isSubmitting}>
+              Submit Dimensions
+            </Button>
+          </Form>
+        )}
+      </Formik>
     );
   }
 );
