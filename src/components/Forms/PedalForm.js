@@ -2,6 +2,25 @@ import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
 import { DivLabeledColorPicker, InputColorPicker } from "../PageStyles";
 import { Formik } from "formik";
+import * as Yup from "yup";
+
+const PedalFormSchema = Yup.object().shape({
+  width: Yup.number()
+    .min(20, "Too Short!")
+    .max(750, "Too Long!")
+    .required("Required"),
+  height: Yup.number()
+    .min(20, "Too Short!")
+    .max(750, "Too Long!")
+    .required("Required"),
+  color: Yup.string()
+    .length(7, "Must be a valid color")
+    .required("Required"),
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required")
+});
 
 export const PedalForm = React.memo(
   ({ width, height, name, color, dispatch }) => {
@@ -13,6 +32,7 @@ export const PedalForm = React.memo(
           color: color,
           name: name
         }}
+        validationSchema={PedalFormSchema}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           dispatch({
@@ -28,10 +48,12 @@ export const PedalForm = React.memo(
         }}
       >
         {({
+          dirty,
           values,
           errors,
           touched,
           handleChange,
+          handleReset,
           isSubmitting,
           handleSubmit
         }) => (
@@ -52,6 +74,7 @@ export const PedalForm = React.memo(
                 value={values.name}
               />
             </Form.Field>
+            {errors.name && touched.name ? <div>{errors.name}</div> : null}
             <Form.Field>
               <Input
                 id="width"
@@ -63,6 +86,7 @@ export const PedalForm = React.memo(
                 value={values.width}
               />
             </Form.Field>
+            {errors.width && touched.width ? <div>{errors.width}</div> : null}
             <Form.Field>
               <Input
                 id="height"
@@ -74,6 +98,9 @@ export const PedalForm = React.memo(
                 value={values.height}
               />
             </Form.Field>
+            {errors.height && touched.height ? (
+              <div>{errors.height}</div>
+            ) : null}
             <Form.Field>
               <DivLabeledColorPicker>
                 <Label size="large" horizontal>
@@ -90,8 +117,12 @@ export const PedalForm = React.memo(
                 />
               </DivLabeledColorPicker>
             </Form.Field>
+            {errors.color && touched.color ? <div>{errors.color}</div> : null}
             <Button type="submit" disabled={isSubmitting}>
               Submit Dimensions
+            </Button>
+            <Button type="button" disabled={!dirty} onClick={handleReset}>
+              Reset
             </Button>
           </Form>
         )}
