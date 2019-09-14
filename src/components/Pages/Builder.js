@@ -33,6 +33,18 @@ const Builder = ({ pedals }) => {
 
   return (
     <DivContainer>
+      <DivPedal>
+        <Pedal
+          knobs={knobs}
+          width={width}
+          height={height}
+          color={color}
+          dispatch={dispatch}
+        />
+      </DivPedal>
+      <DivPedalSelector>
+        <AvailablePedals pedals={pedals} dispatch={dispatch} />
+      </DivPedalSelector>
       <DivForm>
         <h2>{name}</h2>
         <Accordion styled>
@@ -79,18 +91,6 @@ const Builder = ({ pedals }) => {
           </Accordion.Content>
         </Accordion>
       </DivForm>
-      <DivPedal>
-        <Pedal
-          knobs={knobs}
-          width={width}
-          height={height}
-          color={color}
-          dispatch={dispatch}
-        />
-      </DivPedal>
-      <DivPedalSelector>
-        <AvailablePedals pedals={pedals} dispatch={dispatch} />
-      </DivPedalSelector>
       <DivDetails>
         <ComponentInfo
           knobs={knobs}

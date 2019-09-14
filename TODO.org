@@ -18,7 +18,7 @@
 *** TODO [#B] Add tests                                     :maintenance:web:
 *** TODO [#B] Refactor folder structure                     :maintenance:web:
 *** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
-*** TODO [#A] Set up responsiveness                         :maintenance:web:
+*** STARTED [#A] Set up responsiveness                      :maintenance:web:
 *** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
 *** STARTED [#A] Add Yup form validation                    :maintenance:web:
 *** TODO [#B] Improve names of Switch variables             :maintenance:web:
@@ -43,6 +43,7 @@
     - add to accordian
 *** TODO [#B] Set up 'graph paper' for pedal background         :builder:web:
 *** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
+*** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 *** TODO [#C] Drag and Drop                                     :builder:web:
 *** TODO [#B] Add on/off/whateverelse indicators                :builder:web:
 *** TODO [#B] Pedal Saved notification                       :builder:web:ux:
