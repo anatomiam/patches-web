@@ -10,7 +10,8 @@ import {
   DivDetails,
   DivNotes,
   DivPedal,
-  DivPedalSelector
+  DivPedalSelector,
+  DivTools
 } from "../PageStyles";
 
 const Patcher = ({ pedals }) => {
@@ -30,22 +31,24 @@ const Patcher = ({ pedals }) => {
           dispatch={dispatch}
         />
       </DivPedal>
-      <DivNotes>
-        <Form>
-          <TextArea placeholder="Tell us more" />
-        </Form>
-      </DivNotes>
-      <DivDetails>
-        <ComponentInfo
-          knobs={knobs}
-          dispatch={dispatch}
-          selectedComponentId={selectedComponentId}
-          selectedComponentAngle={selectedComponentAngle}
-        />
-      </DivDetails>
-      <DivPedalSelector>
-        <AvailablePedals pedals={pedals} dispatch={dispatch} />
-      </DivPedalSelector>
+      <DivTools>
+        <DivNotes>
+          <Form>
+            <TextArea placeholder="Tell us more" />
+          </Form>
+        </DivNotes>
+        <DivDetails>
+          <ComponentInfo
+            knobs={knobs}
+            dispatch={dispatch}
+            selectedComponentId={selectedComponentId}
+            selectedComponentAngle={selectedComponentAngle}
+          />
+        </DivDetails>
+        <DivPedalSelector>
+          <AvailablePedals pedals={pedals} dispatch={dispatch} />
+        </DivPedalSelector>
+      </DivTools>
     </DivContainer>
   );
 };

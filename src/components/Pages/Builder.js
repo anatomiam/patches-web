@@ -15,7 +15,8 @@ import {
   DivPedal,
   DivPedalDetails,
   DivPedalSelector,
-  DivSubmit
+  DivSubmit,
+  DivTools
 } from "../PageStyles";
 
 const Builder = ({ pedals }) => {
@@ -42,67 +43,69 @@ const Builder = ({ pedals }) => {
           dispatch={dispatch}
         />
       </DivPedal>
-      <DivPedalSelector>
-        <AvailablePedals pedals={pedals} dispatch={dispatch} />
-      </DivPedalSelector>
-      <DivForm>
-        <h2>{name}</h2>
-        <Accordion styled>
-          <Accordion.Title
-            active={activeIndex === 0}
-            index={0}
-            onClick={handleClick}
-          >
-            <Icon name="plus square outline" />
-            Set the Pedal dimensions
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>
-            <PedalForm
-              width={width}
-              height={height}
-              name={name}
-              color={color}
-              dispatch={dispatch}
-            />
-          </Accordion.Content>
+      <DivTools>
+        <DivPedalSelector>
+          <AvailablePedals pedals={pedals} dispatch={dispatch} />
+        </DivPedalSelector>
+        <DivForm>
+          <h2>{name}</h2>
+          <Accordion styled>
+            <Accordion.Title
+              active={activeIndex === 0}
+              index={0}
+              onClick={handleClick}
+            >
+              <Icon name="plus square outline" />
+              Set the Pedal dimensions
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 0}>
+              <PedalForm
+                width={width}
+                height={height}
+                name={name}
+                color={color}
+                dispatch={dispatch}
+              />
+            </Accordion.Content>
 
-          <Accordion.Title
-            active={activeIndex === 1}
-            index={1}
-            onClick={handleClick}
-          >
-            <Icon name="circle notch" />
-            Add a Knob
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
-            <AddKnobForm dispatch={dispatch} />
-          </Accordion.Content>
+            <Accordion.Title
+              active={activeIndex === 1}
+              index={1}
+              onClick={handleClick}
+            >
+              <Icon name="circle notch" />
+              Add a Knob
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+              <AddKnobForm dispatch={dispatch} />
+            </Accordion.Content>
 
-          <Accordion.Title
-            active={activeIndex === 2}
-            index={2}
-            onClick={handleClick}
-          >
-            <Icon name="toggle on" />
-            Add a Switch
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 2}>
-            <AddSwitchForm dispatch={dispatch} />
-          </Accordion.Content>
-        </Accordion>
-      </DivForm>
-      <DivDetails>
-        <ComponentInfo
-          knobs={knobs}
-          dispatch={dispatch}
-          selectedComponentId={selectedComponentId}
-          selectedComponentAngle={selectedComponentAngle}
-          pedalDetails={localState.pedalDetails}
-        />
-      </DivDetails>
-      <DivSubmit>
-        <CreatePedalButton localState={localState} />
-      </DivSubmit>
+            <Accordion.Title
+              active={activeIndex === 2}
+              index={2}
+              onClick={handleClick}
+            >
+              <Icon name="toggle on" />
+              Add a Switch
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <AddSwitchForm dispatch={dispatch} />
+            </Accordion.Content>
+          </Accordion>
+        </DivForm>
+        <DivDetails>
+          <ComponentInfo
+            knobs={knobs}
+            dispatch={dispatch}
+            selectedComponentId={selectedComponentId}
+            selectedComponentAngle={selectedComponentAngle}
+            pedalDetails={localState.pedalDetails}
+          />
+        </DivDetails>
+        <DivSubmit>
+          <CreatePedalButton localState={localState} />
+        </DivSubmit>
+      </DivTools>
     </DivContainer>
   );
 };
