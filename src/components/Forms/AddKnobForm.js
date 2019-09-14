@@ -7,6 +7,8 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
   const [r, setR] = useState("");
   const [angle, setAngle] = useState("");
   const [description, setDescription] = useState("");
+  // TODO generate a real id
+  const tempId = Math.random();
 
   return (
     <Form
@@ -20,7 +22,8 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
             cy,
             r,
             angle,
-            description
+            description,
+            id: tempId
           }
         });
 

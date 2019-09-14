@@ -13,6 +13,9 @@
 ** TODO [#B] Set up updating knob values                             :server:
 * Web
 ** Devops/Maintenance
+*** TODO [#A] Define MVP and features w/ version releases   :maintenance:web:
+    - reorganize todos based on this list
+    - update tags with version numbers
 *** TODO [#C] CI/CD Pipeline                                :maintenance:web:
 *** TODO [#B] Refactor to Typescript                        :maintenance:web:
 *** TODO [#B] Add tests                                     :maintenance:web:
@@ -47,8 +50,10 @@
 *** TODO [#C] Drag and Drop                                     :builder:web:
 *** TODO [#B] Add on/off/whateverelse indicators                :builder:web:
 *** TODO [#B] Pedal Saved notification                       :builder:web:ux:
-*** TODO [#A] Fix bug that changles multiple knob angles when turning one knob :builder:web:
+*** STARTED [#A] Fix bug that changles multiple knob angles when turning one knob :builder:web:
     - To trigger, just build a new pedal with two knobs and turn one of them
+    - need to generate ID for prisma or tempID
+*** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
 ** Patcher
 *** TODO [#B] Indicators are change colors with footswitch      :patcher:web:
 *** TODO [#B] Hook up Notes read/write                          :patcher:web:
