@@ -111,3 +111,55 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Figure out if all pedal components can be stored in the same db table :server:
+  CLOSED: [2019-09-14 Sat 18:51]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-14 Sat 18:51
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Server
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Define MVP and features w/ version releases     :maintenance:web:
+  CLOSED: [2019-09-14 Sat 18:57]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-14 Sat 18:57
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Devops/Maintenance
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - reorganize todos based on this list
+  - update tags with version numbers
+
+* DONE [#B] Pedal dimensions details section                    :builder:web:
+  CLOSED: [2019-09-14 Sat 19:06]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-14 Sat 19:06
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Builder
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
+  CLOSED: [2019-09-14 Sat 19:07]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-14 Sat 19:07
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Builder
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#C] Remove Landing page?                                :landing:web:
+  CLOSED: [2019-09-14 Sat 19:24]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-14 Sat 19:24
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Web/Landing
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

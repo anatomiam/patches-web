@@ -1,70 +1,59 @@
-* Server
+* Pre-Alpha
+** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
+** STARTED [#A] Add Yup form validation                     :maintenance:web:
+** STARTED [#A] Set up responsiveness                       :maintenance:web:
+** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
+** TODO [#A] Set Color option for knobs                         :builder:web:
+** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 ** TODO [#A] Set up storing colors on knobs                          :server:
-** TODO [#B] Set up Notes db table                                   :server:
+** TODO [#B] Set up updating knob values                             :server:
+** TODO [#B] Hook up Notes read/write                           :patcher:web:
+** TODO [#B] Set up deleting knobs                                   :server:
+** TODO [#B] Set up notes db table                                   :server:
    - [ ] pedal notes
    - [ ] knob notes
    - [ ] patch notes
-** TODO [#B] Figure out if all pedal components can be stored in the same db table :server:
-** TODO [#C] Set up user login                                       :server:
-** TODO [#B] Set up query pedals by user                             :server:
+** TODO [#B] Set up deleting knobs                              :builder:web:
+** TODO [#B] Set up updating knob values                        :builder:web:
+** TODO [#B] Update pedal form when loading a pedal             :builder:web:
+** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
+   - edit mode should be a toggle button from a view mode ?
+** TODO [#B] Set up patch information table                     :patcher:web:
+** TODO [#B] Add on/off/whateverelse indicators                 :builder:web:
+** TODO [#B] Pedal dimensions colored when doesn't match form   :builder:web:
+** TODO [#B] Refactor folder structure                      :maintenance:web:
+** TODO [#B] Improve names of in general                    :maintenance:web:
+** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
+** TODO [#C] Updgrade to react-apollo v3                    :maintenance:web:
+** TODO [#C] Switch component 'steps'                        :patcher:web:ux:
+** STARTED [#C] Fix bug that changles multiple knob angles when turning one knob :builder:web:
+   - To trigger, just build a new pedal with two knobs and turn one of them
+   - need to generate ID for prisma or tempID
+* Alpha
+** TODO [#B] Set up user login                                       :server:
+** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
+** TODO [#B] Set up form for entering SVG path                 :builder:web
+   - add to accordian
+** TODO [#B] Add tests                                      :maintenance:web:
 ** TODO [#C] Create example pedals                                   :server:
+** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
+** TODO [#C] Drag and Drop                                      :builder:web:
+** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
+** TODO [#C] Create default template pedal dimensions           :builder:web:
+   - use pedalplaygrounds dimensions
+* Beta
+** TODO [#B] Set up 'graph paper' for pedal background          :builder:web:
+** TODO [#B] Set up Browser page                                :browser:web:
+   - first step: display a list of patch names / descriptions
+** TODO [#B] Set up query pedals by user                             :server:
+** TODO [#C] Screenshots of how to get started          :getting:started:web:
+** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                   :patcher:web:ux:
+** TODO [#C] Click to create components                         :builder:web:
+** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
+** TODO [#C] CI/CD Pipeline                                 :maintenance:web:
+** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
+* Release Candidate
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
-** TODO [#B] Set up deleting knobs                                   :server:
-** TODO [#B] Set up updating knob values                             :server:
-* Web
-** Devops/Maintenance
-*** TODO [#A] Define MVP and features w/ version releases   :maintenance:web:
-    - reorganize todos based on this list
-    - update tags with version numbers
-*** TODO [#C] CI/CD Pipeline                                :maintenance:web:
-*** TODO [#B] Refactor to Typescript                        :maintenance:web:
-*** TODO [#B] Add tests                                     :maintenance:web:
-*** TODO [#B] Refactor folder structure                     :maintenance:web:
-*** TODO [#C] Updgrade to react-apollo v3                   :maintenance:web:
-*** STARTED [#A] Set up responsiveness                      :maintenance:web:
-*** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
-*** STARTED [#A] Add Yup form validation                    :maintenance:web:
-*** TODO [#B] Improve names of Switch variables             :maintenance:web:
-** Builder
-*** TODO [#B] Set up deleting knobs                             :builder:web:
-*** TODO [#B] Set up updating knob values                       :builder:web:
-*** TODO [#C] Animate icons on accordion when selected       :builder:web:ux:
-*** TODO [#B] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
-*** TODO [#B] Set up distinc "create" and "edit" modes          :builder:web:
-    - edit mode should be a toggle button from a view mode ?
-*** TODO [#B] Update forms when loading a pedal                 :builder:web:
-*** TODO [#A] Set Color option for knobs                        :builder:web:
-*** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
-*** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
-*** TODO [#C] Create default template pedal dimensions          :builder:web:
-    - use pedalplaygrounds dimensions
-*** TODO [#B] Pedal dimensions details section                  :builder:web:
-*** TODO [#B] Pedal dimensions colored when doesn't match form  :builder:web:
-*** TODO [#B] Set up form for entering SVG path                 :builder:web
-    - add to accordian
-*** TODO [#C] Set up Footswitch form                            :builder:web:
-    - add to accordian
-*** TODO [#B] Set up 'graph paper' for pedal background         :builder:web:
-*** TODO [#B] Figure out if you can/should easily remove knob twisting functionality :builder:web:
-*** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
-*** TODO [#C] Drag and Drop                                     :builder:web:
-*** TODO [#B] Add on/off/whateverelse indicators                :builder:web:
-*** TODO [#B] Pedal Saved notification                       :builder:web:ux:
-*** STARTED [#A] Fix bug that changles multiple knob angles when turning one knob :builder:web:
-    - To trigger, just build a new pedal with two knobs and turn one of them
-    - need to generate ID for prisma or tempID
-*** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
-** Patcher
-*** TODO [#B] Indicators are change colors with footswitch      :patcher:web:
-*** TODO [#B] Hook up Notes read/write                          :patcher:web:
-*** TODO [#B] Set up patch information table                    :patcher:web:
-*** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
-*** TODO [#C] Switch component 'steps'                       :patcher:web:ux:
-*** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                  :patcher:web:ux:
-** Browser
-*** TODO [#B] Set up Browser page                               :browser:web:
-    - first step: display a list of patch names / descriptions
-** Landing
-*** TODO [#C] Remove Landing page?                              :landing:web:
-** Getting Started
-*** TODO [#C] Screenshots of how to get started         :getting:started:web:
+* Stable Release
+* Nice to haves
+** TODO [#B] Refactor to Typescript                         :maintenance:web:
