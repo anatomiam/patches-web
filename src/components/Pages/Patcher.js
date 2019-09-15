@@ -1,6 +1,6 @@
 import React from "react";
 import { AvailablePedals } from "../Forms/AvailablePedals";
-import { ComponentInfo } from "../ComponentInfo";
+import { ComponentInfo } from "../Forms/ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
 import { useStateValue } from "../../state/StateProvider";
@@ -12,7 +12,7 @@ import {
   DivPedal,
   DivPedalSelector,
   DivTools
-} from "../PageStyles";
+} from "./PageStyles";
 
 const Patcher = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();

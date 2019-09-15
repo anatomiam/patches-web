@@ -1,7 +1,7 @@
 import React from "react";
-import { FootSwitch } from "./Parts/FootSwitch";
-import { Knob } from "./Parts/Knob";
-import { Switch } from "./Parts/Switch";
+import { FootSwitch } from "./FootSwitch";
+import { Knob } from "./Knob";
+import { Switch } from "./Switch";
 
 export const Knobs = React.memo(({ knobs, builder, patcher, dispatch }) => {
   return (

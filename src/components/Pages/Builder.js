@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AddKnobForm } from "../Forms/AddKnobForm";
 import { AddSwitchForm } from "../Forms/AddSwitchForm";
 import { AvailablePedals } from "../Forms/AvailablePedals";
-import { ComponentInfo } from "../ComponentInfo";
+import { ComponentInfo } from "../Forms/ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
 import { useStateValue } from "../../state/StateProvider";
@@ -16,7 +16,7 @@ import {
   DivPedalSelector,
   DivSubmit,
   DivTools
-} from "../PageStyles";
+} from "./PageStyles";
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();

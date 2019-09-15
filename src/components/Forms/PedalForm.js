@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
-import { DivLabeledColorPicker, InputColorPicker } from "../PageStyles";
+import { DivLabeledColorPicker, InputColorPicker } from "../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 

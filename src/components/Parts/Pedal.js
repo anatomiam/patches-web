@@ -1,5 +1,5 @@
 import React from "react";
-import { Knobs } from "../Knobs";
+import { Knobs } from "./Knobs";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
