@@ -173,3 +173,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Move twisting functionality into patcher only       :builder:web:
+  CLOSED: [2019-09-15 Sun 08:09]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-15 Sun 08:09
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

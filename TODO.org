@@ -1,7 +1,7 @@
 * Pre-Alpha
+** STARTED [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 ** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
 ** STARTED [#A] Add Yup form validation                     :maintenance:web:
-** STARTED [#A] Move twisting functionality into patcher only   :builder:web:
 ** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
    - what is needed?
     {
@@ -15,7 +15,6 @@
 	}
     }
 ** TODO [#A] Set Color option for knobs                         :builder:web:
-** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 ** TODO [#A] Set up storing colors on knobs                          :server:
 ** TODO [#B] Set up updating knob values                             :server:
 ** TODO [#B] Hook up Notes read/write                           :patcher:web:
@@ -37,10 +36,11 @@
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 ** TODO [#C] Updgrade to react-apollo v3                    :maintenance:web:
 ** TODO [#C] Switch component 'steps'                        :patcher:web:ux:
-** STARTED [#C] Fix bug that changles multiple knob angles when turning one knob :builder:web:
+** TODO [#C] Fix bug that changles multiple knob angles when turning one knob :builder:web:
    - To trigger, just build a new pedal with two knobs and turn one of them
    - need to generate ID for prisma or tempID
 * Alpha
+** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
 ** TODO [#B] Set up form for entering SVG path                 :builder:web
@@ -64,6 +64,7 @@
 ** TODO [#C] CI/CD Pipeline                                 :maintenance:web:
 ** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
 * Release Candidate
+** TODO [#B] Embed user soundcloud demos                        :patcher:web:
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Stable Release
 * Nice to haves
