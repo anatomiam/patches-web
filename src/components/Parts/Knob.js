@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const KnobDiv = styled(motion.div)`
   position: absolute;
   border-radius: 50%;
+  touch-action: none;
   width: ${props => props.width + "px"};
   height: ${props => props.height + "px"};
   left: ${props => props.left + "px"};
@@ -24,14 +25,12 @@ export const Knob = React.memo(
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
       onTapStart: event => {
-        event.preventDefault();
         dispatch({
           type: "SET_SELECTED_COMPONENT_ID",
           id
         });
       },
       onPan: (event, info) => {
-        event.preventDefault();
         setAngleAdjust(info.offset.y);
       },
       onPanEnd: () => {

@@ -3,6 +3,17 @@
 ** STARTED [#A] Add Yup form validation                     :maintenance:web:
 ** STARTED [#A] Move twisting functionality into patcher only   :builder:web:
 ** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
+   - what is needed?
+    {
+	ID
+	userId
+	pedalId
+	name
+	patch { # or knobs w/ angles?
+	    knobID
+	    angle
+	}
+    }
 ** TODO [#A] Set Color option for knobs                         :builder:web:
 ** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 ** TODO [#A] Set up storing colors on knobs                          :server:
