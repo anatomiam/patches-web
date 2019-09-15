@@ -29,6 +29,7 @@ const Patcher = ({ pedals }) => {
           height={height}
           color={color}
           dispatch={dispatch}
+          patcher
         />
       </DivPedal>
       <DivTools>

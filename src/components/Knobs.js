@@ -3,7 +3,7 @@ import { FootSwitch } from "./Parts/FootSwitch";
 import { Knob } from "./Parts/Knob";
 import { Switch } from "./Parts/Switch";
 
-export const Knobs = React.memo(({ knobs, dispatch }) => {
+export const Knobs = React.memo(({ knobs, builder, patcher, dispatch }) => {
   return (
     <>
       {knobs.map(knob => {
@@ -22,6 +22,8 @@ export const Knobs = React.memo(({ knobs, dispatch }) => {
                 key={Math.random()}
                 knobDetails={knob}
                 dispatch={dispatch}
+                builder={builder}
+                patcher={patcher}
               />
             );
           case "Switch":

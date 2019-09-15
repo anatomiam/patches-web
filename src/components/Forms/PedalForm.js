@@ -34,7 +34,6 @@ export const PedalForm = React.memo(
         }}
         validationSchema={PedalFormSchema}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
           dispatch({
             type: "SET_PEDAL_DETAILS",
             pedalDetails: {

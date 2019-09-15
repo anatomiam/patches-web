@@ -10,10 +10,19 @@ const PedalDiv = styled(motion.div)`
   background-color: ${props => props.color};
 `;
 
-export const Pedal = React.memo(({ knobs, width, height, color, dispatch }) => {
-  return (
-    <PedalDiv width={width} height={height} color={color}>
-      <Knobs knobs={knobs} dispatch={dispatch} width={width} height={height} />
-    </PedalDiv>
-  );
-});
+export const Pedal = React.memo(
+  ({ knobs, width, height, color, builder, patcher, dispatch }) => {
+    return (
+      <PedalDiv width={width} height={height} color={color}>
+        <Knobs
+          knobs={knobs}
+          dispatch={dispatch}
+          width={width}
+          height={height}
+          builder={builder}
+          patcher={patcher}
+        />
+      </PedalDiv>
+    );
+  }
+);

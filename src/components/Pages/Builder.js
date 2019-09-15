@@ -40,6 +40,7 @@ const Builder = ({ pedals }) => {
           height={height}
           color={color}
           dispatch={dispatch}
+          builder
         />
       </DivPedal>
       <DivTools>
