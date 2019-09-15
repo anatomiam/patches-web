@@ -1,7 +1,7 @@
 * Pre-Alpha
 ** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
 ** STARTED [#A] Add Yup form validation                     :maintenance:web:
-** STARTED [#A] Set up responsiveness                       :maintenance:web:
+** STARTED [#A] Move twisting functionality into patcher only   :builder:web:
 ** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
 ** TODO [#A] Set Color option for knobs                         :builder:web:
 ** TODO [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:

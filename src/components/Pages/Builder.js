@@ -13,7 +13,6 @@ import {
   DivDetails,
   DivForm,
   DivPedal,
-  DivPedalDetails,
   DivPedalSelector,
   DivSubmit,
   DivTools

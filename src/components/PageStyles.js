@@ -2,12 +2,8 @@ import styled from "styled-components";
 
 const size = {
   mobileS: "320px",
-  // mobileM: "375px",
-  // mobileL: "425px",
   tablet: "768px",
   laptop: "1024px"
-  // laptopL: "1440px",
-  // desktop: "2560px"
 };
 
 export const InputColorPicker = styled.input`
@@ -21,6 +17,7 @@ export const DivLabeledColorPicker = styled.div`
 `;
 
 export const DivContainer = styled.div`
+  margin: 10px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(5, minmax(65px, 155px));
@@ -37,8 +34,11 @@ export const DivPedal = styled.div`
   grid-column: 1 / 6;
   place-self: start center;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 3 / 8;
-    grid-row: 2 / 8;
+    grid-column: 4 / 8;
+    grid-row: 1 / 13;
+  }
+  @media only screen and (min-width: ${size.laptop}) {
+    grid-column: 4 / 10;
   }
 `;
 
@@ -58,7 +58,7 @@ export const DivTools = styled.div`
 export const DivForm = styled.div`
   grid-column: 1 / 4;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 2 / 7;
   }
 `;
@@ -66,24 +66,16 @@ export const DivForm = styled.div`
 export const DivDetails = styled.div`
   grid-column: 1 / 4;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
-    grid-row: 7 / 10;
-  }
-  @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 8 / 10;
-    grid-row: 3 / 7;
+    grid-column: 1 / 4;
+    grid-row: 7 / 9;
   }
 `;
 
 export const DivPedalDetails = styled.div`
   grid-column: 1 / 4;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
-    grid-row: 10 / 12;
-  }
-  @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 1 / 3;
-    grid-row: 8 / 10;
+    grid-column: 1 / 4;
+    grid-row: 9 / 11;
   }
 `;
 
@@ -91,11 +83,7 @@ export const DivPedalSelector = styled.div`
   grid-column: 1 / 4;
   place-self: center;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-  }
-  @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 8 / 10;
+    grid-column: 1 / 4;
     grid-row: 1 / 2;
   }
 `;
@@ -104,23 +92,15 @@ export const DivSubmit = styled.div`
   grid-column: 1 / 4;
   place-self: center end;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
-    grid-row: 10 / 11;
-  }
-  @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 8 / 10;
-    grid-row: 7 / 8;
+    grid-column: 1 / 4;
+    grid-row: 11 / 12;
   }
 `;
 
 export const DivNotes = styled.div`
   grid-column: 1 / 4;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 8;
-  }
-  @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 8;
+    grid-column: 1 / 4;
+    grid-row: 2 / 7;
   }
 `;

@@ -16,7 +16,7 @@ import {
 
 const Patcher = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
-  const { width, height, name, color } = localState.pedalDetails;
+  const { width, height, color } = localState.pedalDetails;
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
 
