@@ -183,3 +183,23 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]]    :maintenance:web:
+  CLOSED: [2019-09-15 Sun 10:14]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-15 Sun 10:14
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Add Yup form validation                         :maintenance:web:
+  CLOSED: [2019-09-15 Sun 10:14]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-15 Sun 10:14
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

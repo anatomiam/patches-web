@@ -16,8 +16,8 @@ const AddKnobFormSchema = Yup.object().shape({
     .required("Center Y is required"),
   r: Yup.number()
     .min(1, "Radius must be at least 1")
-    .max(750, "r cannot be greater than 750 pixels")
-    .required("r is required"),
+    .max(750, "Radius cannot be greater than 750 pixels")
+    .required("Radius is required"),
   angle: Yup.string().required("Angle is required"),
   description: Yup.string()
     .min(2, "Description must be at least 2 characters long.")
