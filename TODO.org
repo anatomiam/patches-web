@@ -1,5 +1,4 @@
 * Pre-Alpha
-** STARTED [#A] Consolidate the 'knob' forms to be one with a type switcher :builder:web:
 ** STARTED [#A] Upgrade forms to Formik [[https://medium.com/teamsubchannel/react-formik-styled-components-add78b37971f][w/ styled-components]] :maintenance:web:
 ** STARTED [#A] Add Yup form validation                     :maintenance:web:
 ** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:

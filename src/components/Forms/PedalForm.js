@@ -1,25 +1,27 @@
 import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
 import { DivLabeledColorPicker, InputColorPicker } from "../Pages/PageStyles";
+import { ValidationErrors } from "./ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { isEmpty } from "lodash";
 
 const PedalFormSchema = Yup.object().shape({
   width: Yup.number()
-    .min(20, "Too Short!")
-    .max(750, "Too Long!")
-    .required("Required"),
+    .min(20, "Width must be at least 20 pixels.")
+    .max(750, "Width must be less than 750 pixels")
+    .required("Width is required"),
   height: Yup.number()
-    .min(20, "Too Short!")
-    .max(750, "Too Long!")
-    .required("Required"),
+    .min(20, "Height must be at least 20 pixels.")
+    .max(750, "Height must be less than 750 pixels")
+    .required("Height is required"),
   color: Yup.string()
-    .length(7, "Must be a valid color")
-    .required("Required"),
+    .length(7, "Color must be the hex code format (#000000) ")
+    .required("Color is required"),
   name: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required")
+    .min(2, "Name must be at least 2 characters long.")
+    .max(50, "Name must be less than 50 characters long")
+    .required("Color is required")
 });
 
 export const PedalForm = React.memo(
@@ -27,12 +29,14 @@ export const PedalForm = React.memo(
     return (
       <Formik
         initialValues={{
-          width: width,
-          height: height,
-          color: color,
-          name: name
+          width,
+          height,
+          color,
+          name
         }}
         validationSchema={PedalFormSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
           dispatch({
             type: "SET_PEDAL_DETAILS",
@@ -50,7 +54,6 @@ export const PedalForm = React.memo(
           dirty,
           values,
           errors,
-          touched,
           handleChange,
           handleReset,
           isSubmitting,
@@ -73,7 +76,6 @@ export const PedalForm = React.memo(
                 value={values.name}
               />
             </Form.Field>
-            {errors.name && touched.name ? <div>{errors.name}</div> : null}
             <Form.Field>
               <Input
                 id="width"
@@ -85,7 +87,6 @@ export const PedalForm = React.memo(
                 value={values.width}
               />
             </Form.Field>
-            {errors.width && touched.width ? <div>{errors.width}</div> : null}
             <Form.Field>
               <Input
                 id="height"
@@ -97,9 +98,6 @@ export const PedalForm = React.memo(
                 value={values.height}
               />
             </Form.Field>
-            {errors.height && touched.height ? (
-              <div>{errors.height}</div>
-            ) : null}
             <Form.Field>
               <DivLabeledColorPicker>
                 <Label size="large" horizontal>
@@ -116,13 +114,13 @@ export const PedalForm = React.memo(
                 />
               </DivLabeledColorPicker>
             </Form.Field>
-            {errors.color && touched.color ? <div>{errors.color}</div> : null}
             <Button type="submit" disabled={isSubmitting}>
               Submit Dimensions
             </Button>
             <Button type="button" disabled={!dirty} onClick={handleReset}>
               Reset
             </Button>
+            {!isEmpty(errors) ? <ValidationErrors errors={errors} /> : null}
           </Form>
         )}
       </Formik>
