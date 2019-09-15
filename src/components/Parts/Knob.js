@@ -14,6 +14,33 @@ const KnobDiv = styled(motion.div)`
 export const Knob = React.memo(({ knobDetails, dispatch }) => {
   const { angle, cx, cy, r, id } = knobDetails;
   const [angleAdjust, setAngleAdjust] = useState(0);
+
+  const builderProps = {
+    animate: {
+      rotate: angle + angleAdjust
+    },
+    initial: false,
+    whileHover: { scale: 1.1 },
+    whileTap: { scale: 0.95 },
+    onTapStart: event => {
+      event.preventDefault();
+      dispatch({
+        type: "SET_SELECTED_COMPONENT_ID",
+        id
+      });
+    },
+    onPan: (event, info) => {
+      event.preventDefault();
+      setAngleAdjust(info.offset.y);
+    },
+    onPanEnd: () => {
+      dispatch({
+        type: "SET_SELECTED_COMPONENT_ANGLE",
+        angle: angle + angleAdjust,
+        knobId: id
+      });
+    }
+  };
   // set document width and height to 100x100,
   // or get width and height of svg bounding box from user
   // svg center as center of document,
@@ -25,30 +52,7 @@ export const Knob = React.memo(({ knobDetails, dispatch }) => {
       height={r * 2}
       left={cx - r}
       top={cy - r}
-      animate={{
-        rotate: angle + angleAdjust
-      }}
-      initial={false}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      onTapStart={event => {
-        event.preventDefault();
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
-      }}
-      onPan={(event, info) => {
-        event.preventDefault();
-        setAngleAdjust(info.offset.y);
-      }}
-      onPanEnd={() => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ANGLE",
-          angle: angle + angleAdjust,
-          knobId: id
-        });
-      }}
+      {...builderProps}
     >
       <svg width={r * 2} height={r * 2}>
         <g>
