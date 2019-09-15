@@ -22,6 +22,7 @@ const PEDAL_QUERY = gql`
         id
         type
         description
+        color
         cx
         cy
         r

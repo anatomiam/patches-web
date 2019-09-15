@@ -11,8 +11,6 @@
 	    angle
 	}
     }
-** TODO [#A] Set Color option for knobs                         :builder:web:
-** TODO [#A] Set up storing colors on knobs                          :server:
 ** TODO [#B] Set up updating knob values                             :server:
 ** TODO [#B] Hook up Notes read/write                           :patcher:web:
 ** TODO [#B] Set up deleting knobs                                   :server:
@@ -33,10 +31,8 @@
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 ** TODO [#C] Updgrade to react-apollo v3                    :maintenance:web:
 ** TODO [#C] Switch component 'steps'                        :patcher:web:ux:
-** TODO [#C] Fix bug that changles multiple knob angles when turning one knob :builder:web:
-   - To trigger, just build a new pedal with two knobs and turn one of them
-   - need to generate ID for prisma or tempID
 * Alpha
+** TODO [#B] Remove all Math.random() and generate actual uuid's :maintenance:
 ** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:

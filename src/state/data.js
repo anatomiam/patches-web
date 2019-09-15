@@ -202,7 +202,7 @@ export const localState = {
     name: "Template",
     height: 400,
     width: 200,
-    color: "#ff381d"
+    color: "#d4d7dd"
   }
 };
 

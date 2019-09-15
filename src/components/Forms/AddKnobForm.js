@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Input, Form } from "semantic-ui-react";
+import { Button, Input, Form, Label } from "semantic-ui-react";
 import { ValidationErrors } from "./ValidationErrors";
+import { DivLabeledColorPicker, InputColorPicker } from "../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
@@ -19,6 +20,9 @@ const AddKnobFormSchema = Yup.object().shape({
     .max(750, "Radius cannot be greater than 750 pixels")
     .required("Radius is required"),
   angle: Yup.string().required("Angle is required"),
+  color: Yup.string()
+    .length(7, "Color must be the hex code format (#000000) ")
+    .required("Color is required"),
   description: Yup.string()
     .min(2, "Description must be at least 2 characters long.")
     .max(50, "Description must be less than 50 characters long")
@@ -35,6 +39,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
         cy: 0,
         r: 0,
         angle: 0,
+        color: "#A9A9A9",
         description: ""
       }}
       validationSchema={AddKnobFormSchema}
@@ -49,6 +54,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
             cy: values.cy,
             r: values.r,
             angle: values.angle,
+            color: values.color,
             description: values.description,
             id: tempId
           }
@@ -114,6 +120,22 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
               onChange={handleChange}
               value={values.angle}
             />
+          </Form.Field>
+          <Form.Field>
+            <DivLabeledColorPicker>
+              <Label size="large" horizontal>
+                Color
+              </Label>
+              <InputColorPicker
+                id="color"
+                label="Color"
+                placeholder="Set Color"
+                name="color"
+                type="color"
+                onChange={handleChange}
+                value={values.color}
+              />
+            </DivLabeledColorPicker>
           </Form.Field>
           <Form.Field>
             <Input

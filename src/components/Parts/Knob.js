@@ -14,7 +14,7 @@ const KnobDiv = styled(motion.div)`
 
 export const Knob = React.memo(
   ({ knobDetails, builder, patcher, dispatch }) => {
-    const { angle, cx, cy, r, id } = knobDetails;
+    const { angle, cx, cy, r, id, color } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
       onTapStart: event => {
@@ -65,7 +65,7 @@ export const Knob = React.memo(
               cx={r}
               cy={r}
               r={r}
-              fill="darkgrey"
+              fill={color}
             />
             <line
               x1={r}
