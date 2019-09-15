@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+import { map } from "lodash";
 
 export const ComponentInfo = React.memo(
   ({
@@ -18,7 +18,7 @@ export const ComponentInfo = React.memo(
     return (
       <div className="component-info">
         <div className="description">
-          {_.map(selectedComponent, (value, key) => {
+          {map(selectedComponent, (value, key) => {
             return (
               <p key={Math.random()}>
                 <strong>{key}</strong>: {value}
