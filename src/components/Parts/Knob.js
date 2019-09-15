@@ -16,6 +16,14 @@ export const Knob = React.memo(
   ({ knobDetails, builder, patcher, dispatch }) => {
     const { angle, cx, cy, r, id } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
+    const sharedProps = {
+      onTapStart: event => {
+        dispatch({
+          type: "SET_SELECTED_COMPONENT_ID",
+          id
+        });
+      }
+    };
     const builderProps = {};
     const patcherProps = {
       animate: {
@@ -24,12 +32,6 @@ export const Knob = React.memo(
       initial: false,
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
-      onTapStart: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
-      },
       onPan: (event, info) => {
         setAngleAdjust(info.offset.y);
       },
@@ -52,6 +54,7 @@ export const Knob = React.memo(
         height={r * 2}
         left={cx - r}
         top={cy - r}
+        {...sharedProps}
         {...(builder ? builderProps : {})}
         {...(patcher ? patcherProps : {})}
       >
