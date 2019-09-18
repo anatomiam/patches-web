@@ -1,19 +1,7 @@
 * Pre-Alpha
-** TODO [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
-   - what is needed?
-    {
-	ID
-	userId
-	pedalId
-	name
-	patch { # or knobs w/ angles?
-	    knobID
-	    angle
-	}
-    }
-** TODO [#B] Set up patch information table                     :patcher:web:
-** TODO [#B] Set up updating knob values                             :server:
-** TODO [#B] Set up updating knob values                        :builder:web:
+** STARTED [#B] Set up patch information table                  :patcher:web:
+** STARTED [#B] Set up updating knob values                          :server:
+** STARTED [#B] Set up updating knob values                     :builder:web:
 ** TODO [#B] Hook up Notes read/write                           :patcher:web:
 ** TODO [#B] Set up notes db table                                   :server:
    - [ ] pedal notes

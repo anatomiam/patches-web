@@ -5,11 +5,13 @@ import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
 import { useStateValue } from "../../state/StateProvider";
 import { Form, TextArea } from "semantic-ui-react";
+import { CreatePresetButton } from "../Forms/CreatePresetButton";
 import {
   DivContainer,
   DivDetails,
   DivNotes,
   DivPedal,
+  DivSubmit,
   DivPedalSelector,
   DivTools
 } from "./PageStyles";
@@ -49,6 +51,9 @@ const Patcher = ({ pedals }) => {
         <DivPedalSelector>
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </DivPedalSelector>
+        <DivSubmit>
+          <CreatePresetButton localState={localState} />
+        </DivSubmit>
       </DivTools>
     </DivContainer>
   );

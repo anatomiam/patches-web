@@ -223,3 +223,24 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Figure out how to save a `patch` for a specific pedal :patcher:web:
+  CLOSED: [2019-09-18 Wed 08:50]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-18 Wed 08:51
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - what is needed?
+   {
+       ID
+       userId
+       pedalId
+       name
+       patch { # or knobs w/ angles?
+	   knobID
+	   angle
+       }
+   }
