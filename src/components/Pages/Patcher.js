@@ -16,7 +16,7 @@ import {
   DivTools
 } from "./PageStyles";
 
-const Patcher = ({ pedals }) => {
+const Patcher = ({ pedals, presets }) => {
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, color } = localState.pedalDetails;
   const { knobs } = localState;

@@ -10,6 +10,25 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
 
+const PRESET_QUERY = gql`
+  query PresetsByUser($userId: ID!) {
+    presetsByUser(userId: $userId) {
+      id
+      description
+      name
+      pedal {
+        id
+      }
+      patches {
+        knob {
+          id
+        }
+        angle
+      }
+    }
+  }
+`;
+
 const PEDAL_QUERY = gql`
   query {
     pedals {
@@ -35,9 +54,23 @@ const PEDAL_QUERY = gql`
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("");
-  const { data, loading, error } = useQuery(PEDAL_QUERY);
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error}`;
+  const {
+    data: pedalsData,
+    loading: pedalsLoading,
+    error: pedalsError
+  } = useQuery(PEDAL_QUERY);
+  const {
+    data: presetsData,
+    loading: presetsLoading,
+    error: presetsError
+  } = useQuery(PRESET_QUERY, {
+    variables: { userId: "cju66ydwl000y0738rs8jz7yv" }
+  });
+
+  if (pedalsLoading) return "Loading Pedals...";
+  if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
+  if (presetsLoading) return "Loading Presets...";
+  if (presetsError) return `Loading Presets Error! ${presetsError}`;
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
@@ -71,11 +104,16 @@ const App = () => {
         <Route exact path="/" component={Landing} />
         <Route
           path="/builder"
-          render={() => <Builder pedals={data.pedals} />}
+          render={() => <Builder pedals={pedalsData.pedals} />}
         />
         <Route
           path="/patcher"
-          render={() => <Patcher pedals={data.pedals} />}
+          render={() => (
+            <Patcher
+              pedals={pedalsData.pedals}
+              presets={presetsData.presetsByUser}
+            />
+          )}
         />
       </Router>
     </StateProvider>
