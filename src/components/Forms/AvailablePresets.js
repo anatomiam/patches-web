@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Select, Button } from "semantic-ui-react";
 
-export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
-  const [selectedPedalId, setSelectedPedalId] = useState("");
-  const [selectedPedalName, setSelectedPedalName] = useState("");
+export const AvailablePresets = React.memo(({ presets, dispatch }) => {
+  const [selectedPresetId, setSelectedPresetId] = useState("");
+  const [selectedPresetName, setSelectedPresetName] = useState("");
 
-  const selectedPedalDetails = selectedPedalId
-    ? pedals.find(pedal => {
-        return pedal.id === selectedPedalId;
+  const selectedPresetDetails = selectedPresetId
+    ? presets.find(preset => {
+        return preset.id === selectedPresetId;
       })
     : null;
 
@@ -17,23 +17,25 @@ export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
         // Is the submit button necessary?
         event.preventDefault();
         dispatch({
-          type: "SELECT_PEDAL",
-          pedal: selectedPedalDetails
+          type: "SELECT_PRESET",
+          preset: selectedPresetDetails
         });
       }}
     >
       <Select
-        placeholder="-- Select a Pedal --"
-        value={selectedPedalName}
+        placeholder="-- Select a Preset --"
+        value={selectedPresetName}
         onChange={(e, data) => {
-          setSelectedPedalName(data.value);
-          setSelectedPedalId(data.value);
+          console.log(data.value);
+          setSelectedPresetName(data.value);
+          setSelectedPresetId(data.value);
         }}
-        options={pedals.map(pedal => {
+        options={presets.map(preset => {
+          console.log(preset);
           return {
-            key: pedal.id,
-            value: pedal.id,
-            text: pedal.name
+            key: preset.id,
+            value: preset.id,
+            text: preset.name
           };
         })}
       />

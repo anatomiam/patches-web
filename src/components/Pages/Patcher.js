@@ -1,5 +1,6 @@
 import React from "react";
 import { AvailablePedals } from "../Forms/AvailablePedals";
+import { AvailablePresets } from "../Forms/AvailablePresets";
 import { ComponentInfo } from "../Forms/ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
@@ -51,6 +52,7 @@ const Patcher = ({ pedals, presets }) => {
         <DivPedalSelector>
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </DivPedalSelector>
+        <AvailablePresets presets={presets} dispatch={dispatch} />
         <DivSubmit>
           <CreatePresetButton localState={localState} />
         </DivSubmit>
