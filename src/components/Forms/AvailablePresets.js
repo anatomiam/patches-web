@@ -26,12 +26,10 @@ export const AvailablePresets = React.memo(({ presets, dispatch }) => {
         placeholder="-- Select a Preset --"
         value={selectedPresetName}
         onChange={(e, data) => {
-          console.log(data.value);
           setSelectedPresetName(data.value);
           setSelectedPresetId(data.value);
         }}
         options={presets.map(preset => {
-          console.log(preset);
           return {
             key: preset.id,
             value: preset.id,

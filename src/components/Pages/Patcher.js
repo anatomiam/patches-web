@@ -22,6 +22,9 @@ const Patcher = ({ pedals, presets }) => {
   const { width, height, color } = localState.pedalDetails;
   const { knobs } = localState;
   const { selectedComponentId, selectedComponentAngle } = localState;
+  const pedalPresets = presets.filter(preset => {
+    return preset.pedal.id === localState.pedalDetails.id;
+  });
 
   return (
     <DivContainer>
@@ -52,7 +55,7 @@ const Patcher = ({ pedals, presets }) => {
         <DivPedalSelector>
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </DivPedalSelector>
-        <AvailablePresets presets={presets} dispatch={dispatch} />
+        <AvailablePresets presets={pedalPresets} dispatch={dispatch} />
         <DivSubmit>
           <CreatePresetButton localState={localState} />
         </DivSubmit>

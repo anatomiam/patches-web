@@ -18,6 +18,24 @@ export const reducer = (state, action) => {
           knobs: action.pedal.knobs
         }
       };
+    case "SELECT_PRESET":
+      // TODO refactor this
+      const updatedAngles = state.localState.knobs.map(knob => {
+        const foundKnob = action.preset.patches.find(patch => {
+          return knob.id === patch.knob.id;
+        });
+        return foundKnob
+          ? Object.assign({}, knob, { angle: foundKnob.angle })
+          : knob;
+      });
+
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          knobs: updatedAngles
+        }
+      };
     case "SET_SELECTED_COMPONENT_ID":
       return {
         ...state,
