@@ -244,3 +244,23 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
 	   angle
        }
    }
+
+* DONE [#A] Set up applying patches to pedals                   :patcher:web:
+  CLOSED: [2019-09-20 Fri 07:43]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-20 Fri 07:43
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Set up select component for patches                 :patcher:web:
+  CLOSED: [2019-09-20 Fri 07:43]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-20 Fri 07:43
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

@@ -1,6 +1,6 @@
 import React from "react";
-import gql from "graphql-tag";
-import { useMutation } from "react-apollo-hooks";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
 import { map, pick, keys, filter } from "lodash";
 
@@ -31,7 +31,7 @@ const CREATE_PRESET = gql`
 
 export const CreatePresetButton = React.memo(({ localState }) => {
   const { builder, knobs, pedalDetails, patchDetails } = localState;
-  const createPreset = useMutation(CREATE_PRESET);
+  const [createPreset] = useMutation(CREATE_PRESET);
 
   // grab only id and angle from knobs,
   // remove anything that doesn't have an angle set

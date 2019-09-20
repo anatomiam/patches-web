@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { resolvers, typeDefs } from "./state/resolvers";
-import { ApolloProvider } from "react-apollo-hooks";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -21,10 +21,6 @@ const client = new ApolloClient({
   typeDefs,
   resolvers
 });
-
-client.resetStore();
-// cache.writeData({ data: pedals });
-// client.onResetStore(() => cache.writeData({ data: pedals }));
 
 ReactDOM.render(
   <ApolloProvider client={client}>
