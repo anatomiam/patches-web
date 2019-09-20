@@ -264,3 +264,14 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#C] Updgrade to react-apollo v3                     :maintenance:web:
+  CLOSED: [2019-09-20 Fri 08:39]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-20 Fri 08:39
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - https://www.apollographql.com/docs/react/hooks-migration/

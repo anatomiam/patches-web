@@ -1,6 +1,4 @@
 * Pre-Alpha
-** STARTED [#C] Updgrade to react-apollo v3                 :maintenance:web:
-   - https://www.apollographql.com/docs/react/hooks-migration/
 ** TODO [#B] Set up deleting knobs                                   :server:
 ** TODO [#B] Set up deleting knobs                              :builder:web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
