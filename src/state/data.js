@@ -198,10 +198,14 @@ export const localState = {
   selectedComponentAngle: 0,
   updatedKnobAngles: [],
   knobs: [],
+  patchDetails: {
+    name: "",
+    Description: ""
+  },
   pedalDetails: {
-    name: "Template",
-    height: 400,
-    width: 200,
+    name: "",
+    height: 0,
+    width: 0,
     color: "#d4d7dd"
   }
 };

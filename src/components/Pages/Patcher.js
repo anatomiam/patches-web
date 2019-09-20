@@ -2,10 +2,10 @@ import React from "react";
 import { AvailablePedals } from "../Forms/AvailablePedals";
 import { AvailablePresets } from "../Forms/AvailablePresets";
 import { ComponentInfo } from "../Forms/ComponentInfo";
+import { PatchForm } from "../Forms/PatchForm";
 import { Pedal } from "../Parts/Pedal";
 import "../../index.css";
 import { useStateValue } from "../../state/StateProvider";
-import { Form, TextArea } from "semantic-ui-react";
 import { CreatePresetButton } from "../Forms/CreatePresetButton";
 import {
   DivContainer,
@@ -20,8 +20,8 @@ import {
 const Patcher = ({ pedals, presets }) => {
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, color } = localState.pedalDetails;
-  const { knobs } = localState;
-  const { selectedComponentId, selectedComponentAngle } = localState;
+  const { knobs, selectedComponentId, selectedComponentAngle } = localState;
+  const { name, description } = localState.patchDetails;
   const pedalPresets = presets.filter(preset => {
     return preset.pedal.id === localState.pedalDetails.id;
   });
@@ -40,9 +40,11 @@ const Patcher = ({ pedals, presets }) => {
       </DivPedal>
       <DivTools>
         <DivNotes>
-          <Form>
-            <TextArea placeholder="Tell us more" />
-          </Form>
+          <PatchForm
+            name={name}
+            description={description}
+            dispatch={dispatch}
+          />
         </DivNotes>
         <DivDetails>
           <ComponentInfo

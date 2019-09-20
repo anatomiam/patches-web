@@ -29,10 +29,15 @@ export const reducer = (state, action) => {
           : knob;
       });
 
+      console.log(action.preset);
       return {
         ...state,
         localState: {
           ...state.localState,
+          patchDetails: {
+            name: action.preset.name,
+            description: action.preset.description
+          },
           knobs: updatedAngles
         }
       };
@@ -66,6 +71,14 @@ export const reducer = (state, action) => {
         localState: {
           ...state.localState,
           pedalDetails: action.pedalDetails
+        }
+      };
+    case "SET_PATCH_DETAILS":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          patchDetails: action.patchDetails
         }
       };
     case "ADD_KNOB":

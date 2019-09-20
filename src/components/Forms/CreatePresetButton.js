@@ -30,7 +30,7 @@ const CREATE_PRESET = gql`
 `;
 
 export const CreatePresetButton = React.memo(({ localState }) => {
-  const { builder, knobs, pedalDetails } = localState;
+  const { builder, knobs, pedalDetails, patchDetails } = localState;
   const createPreset = useMutation(CREATE_PRESET);
 
   // grab only id and angle from knobs,
@@ -62,8 +62,8 @@ export const CreatePresetButton = React.memo(({ localState }) => {
               variables: {
                 user: builder,
                 pedal: pedalDetails.id,
-                name: "Front End",
-                description: "From the Front!",
+                name: patchDetails.name,
+                description: patchDetails.description,
                 patches: patchesToCreate
               }
             });
