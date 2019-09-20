@@ -53,25 +53,23 @@ export const CreatePresetButton = React.memo(({ localState }) => {
   );
 
   return (
-    <>
-      <Form>
-        <Button
-          onClick={event => {
-            event.preventDefault();
-            createPreset({
-              variables: {
-                user: builder,
-                pedal: pedalDetails.id,
-                name: patchDetails.name,
-                description: patchDetails.description,
-                patches: patchesToCreate
-              }
-            });
-          }}
-        >
-          Save Preset
-        </Button>
-      </Form>
-    </>
+    <Form>
+      <Button
+        onClick={event => {
+          event.preventDefault();
+          createPreset({
+            variables: {
+              user: builder,
+              pedal: pedalDetails.id,
+              name: patchDetails.name,
+              description: patchDetails.description,
+              patches: patchesToCreate
+            }
+          });
+        }}
+      >
+        Save Preset
+      </Button>
+    </Form>
   );
 });

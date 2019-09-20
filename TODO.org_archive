@@ -275,3 +275,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_TODO: DONE
   :END:
   - https://www.apollographql.com/docs/react/hooks-migration/
+
+* DONE [#B] Set up deleting knobs                               :builder:web:
+  CLOSED: [2019-09-20 Fri 09:05]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-20 Fri 09:05
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

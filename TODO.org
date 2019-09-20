@@ -1,6 +1,5 @@
 * Pre-Alpha
 ** TODO [#B] Set up deleting knobs                                   :server:
-** TODO [#B] Set up deleting knobs                              :builder:web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values                             :server:
 ** TODO [#B] Set up updating knob values                        :builder:web:

@@ -89,6 +89,18 @@ export const reducer = (state, action) => {
           knobs: [...state.localState.knobs, action.knob]
         }
       };
+    case "DELETE_KNOB":
+      const updatedKnobs3 = state.localState.knobs.filter(knob => {
+        return knob.id !== action.selectedComponentId;
+      });
+
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          knobs: updatedKnobs3
+        }
+      };
     case "UPDATE_KNOB_ANGLE":
       // TODO loop through knobs to create or update
       // select by id

@@ -47,26 +47,24 @@ export const CreatePedalButton = React.memo(({ localState }) => {
   });
 
   return (
-    <>
-      <Form>
-        <Button
-          onClick={event => {
-            event.preventDefault();
-            createPedal({
-              variables: {
-                name,
-                builder,
-                width,
-                height,
-                color,
-                knobs: knobsToCreate
-              }
-            });
-          }}
-        >
-          Save Pedal
-        </Button>
-      </Form>
-    </>
+    <Form>
+      <Button
+        onClick={event => {
+          event.preventDefault();
+          createPedal({
+            variables: {
+              name,
+              builder,
+              width,
+              height,
+              color,
+              knobs: knobsToCreate
+            }
+          });
+        }}
+      >
+        Save Pedal
+      </Button>
+    </Form>
   );
 });
