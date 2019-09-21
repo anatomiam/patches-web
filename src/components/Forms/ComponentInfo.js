@@ -1,14 +1,9 @@
 import React from "react";
+import { Table } from "semantic-ui-react";
 import { map } from "lodash";
 
 export const ComponentInfo = React.memo(
-  ({
-    knobs,
-    selectedComponentId,
-    selectedComponentAngle,
-    pedalDetails,
-    dispatch
-  }) => {
+  ({ knobs, selectedComponentId, pedalDetails, dispatch }) => {
     // default to showing pedal info
     const selectedComponent = selectedComponentId
       ? knobs.find(knob => {
@@ -16,17 +11,24 @@ export const ComponentInfo = React.memo(
         })
       : pedalDetails;
     return (
-      <div className="component-info">
-        <div className="description">
+      <Table size="small">
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Key</Table.HeaderCell>
+            <Table.HeaderCell>Value</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {map(selectedComponent, (value, key) => {
             return (
-              <p key={Math.random()}>
-                <strong>{key}</strong>: {value}
-              </p>
+              <Table.Row key={Math.random()}>
+                <Table.Cell>{key}</Table.Cell>
+                <Table.Cell>{value}</Table.Cell>
+              </Table.Row>
             );
           })}
-        </div>
-      </div>
+        </Table.Body>
+      </Table>
     );
   }
 );
