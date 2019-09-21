@@ -39,6 +39,10 @@ const Patcher = ({ pedals, presets }) => {
         />
       </DivPedal>
       <DivTools>
+        <DivPedalSelector>
+          <AvailablePedals pedals={pedals} dispatch={dispatch} />
+          <AvailablePresets presets={pedalPresets} dispatch={dispatch} />
+        </DivPedalSelector>
         <DivNotes>
           <PatchForm
             name={name}
@@ -54,10 +58,6 @@ const Patcher = ({ pedals, presets }) => {
             selectedComponentAngle={selectedComponentAngle}
           />
         </DivDetails>
-        <DivPedalSelector>
-          <AvailablePedals pedals={pedals} dispatch={dispatch} />
-        </DivPedalSelector>
-        <AvailablePresets presets={pedalPresets} dispatch={dispatch} />
         <DivSubmit>
           <CreatePresetButton localState={localState} />
         </DivSubmit>

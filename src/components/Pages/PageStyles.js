@@ -44,63 +44,22 @@ export const DivPedal = styled.div`
 
 export const DivTools = styled.div`
   grid-column: 1 / 6;
-  place-self: start center;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(3, minmax(75px, 125px));
+  display: flex;
+  flex-direction: column;
   @media only screen and (min-width: ${size.tablet}) {
     grid-column: 1 / 4;
     grid-row: 1 / 13;
-    grid-template-rows: repeat(12, minmax(25px, 100px));
   }
 `;
 
-export const DivForm = styled.div`
-  grid-column: 1 / 4;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 2 / 7;
-  }
-`;
+export const DivForm = styled.div``;
 
-export const DivDetails = styled.div`
-  grid-column: 1 / 4;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 7 / 9;
-  }
-`;
+export const DivDetails = styled.div``;
 
-export const DivPedalDetails = styled.div`
-  grid-column: 1 / 4;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 9 / 11;
-  }
-`;
+export const DivPedalDetails = styled.div``;
 
-export const DivPedalSelector = styled.div`
-  grid-column: 1 / 4;
-  place-self: center;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
-  }
-`;
+export const DivPedalSelector = styled.div``;
 
-export const DivSubmit = styled.div`
-  grid-column: 1 / 4;
-  place-self: center end;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 11 / 12;
-  }
-`;
+export const DivSubmit = styled.div``;
 
-export const DivNotes = styled.div`
-  grid-column: 1 / 4;
-  @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
-    grid-row: 2 / 7;
-  }
-`;
+export const DivNotes = styled.div``;
