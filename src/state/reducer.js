@@ -1,6 +1,6 @@
-import { pedal, localState } from "./data";
+import { localState } from "./data";
 
-export const initialState = { pedal, localState };
+export const initialState = { localState };
 export const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_PEDAL":
@@ -15,7 +15,8 @@ export const reducer = (state, action) => {
             height: action.pedal.height,
             color: action.pedal.color
           },
-          knobs: action.pedal.knobs
+          knobs: action.pedal.knobs,
+          isNewPedal: false
         }
       };
     case "SELECT_PRESET":
