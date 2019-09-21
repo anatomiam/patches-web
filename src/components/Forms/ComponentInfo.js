@@ -11,7 +11,7 @@ export const ComponentInfo = React.memo(
         })
       : pedalDetails;
     return (
-      <Table size="small">
+      <Table size="small" unstackable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Key</Table.HeaderCell>
