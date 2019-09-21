@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AddKnobForm } from "../Forms/AddKnobForm";
-import { DeleteSelectedKnobButton } from "../Forms/DeleteSelectedKnobButton";
 import { AddSwitchForm } from "../Forms/AddSwitchForm";
 import { AvailablePedals } from "../Forms/AvailablePedals";
 import { ComponentInfo } from "../Forms/ComponentInfo";
@@ -103,7 +102,6 @@ const Builder = ({ pedals }) => {
             pedalDetails={localState.pedalDetails}
           />
         </DivDetails>
-        <DeleteSelectedKnobButton localState={localState} dispatch={dispatch} />
         <DivSubmit>
           <CreatePedalButton localState={localState} />
         </DivSubmit>

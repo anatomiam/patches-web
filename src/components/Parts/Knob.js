@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Popup } from "semantic-ui-react";
+import { DeleteSelectedKnobButton } from "../Forms/DeleteSelectedKnobButton";
 
 const KnobDiv = styled(motion.div)`
   position: absolute;
@@ -49,36 +51,49 @@ export const Knob = React.memo(
     // export with flatten transform
 
     return (
-      <KnobDiv
-        width={r * 2}
-        height={r * 2}
-        left={cx - r}
-        top={cy - r}
-        {...sharedProps}
-        {...(builder ? builderProps : {})}
-        {...(patcher ? patcherProps : {})}
+      <Popup
+        size="mini"
+        style={{
+          borderRadius: "2px",
+          opacity: 1,
+          padding: "6px"
+        }}
+        trigger={
+          <KnobDiv
+            width={r * 2}
+            height={r * 2}
+            left={cx - r}
+            top={cy - r}
+            {...sharedProps}
+            {...(builder ? builderProps : {})}
+            {...(patcher ? patcherProps : {})}
+          >
+            <svg width={r * 2} height={r * 2}>
+              <g>
+                <circle
+                  className="knob component"
+                  cx={r}
+                  cy={r}
+                  r={r}
+                  fill={color}
+                />
+                <line
+                  x1={r}
+                  y1={r / 4}
+                  x2={r}
+                  y2={(3.25 * r) / 4}
+                  stroke="black"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                />
+              </g>
+            </svg>
+          </KnobDiv>
+        }
+        on="click"
       >
-        <svg width={r * 2} height={r * 2}>
-          <g>
-            <circle
-              className="knob component"
-              cx={r}
-              cy={r}
-              r={r}
-              fill={color}
-            />
-            <line
-              x1={r}
-              y1={r / 4}
-              x2={r}
-              y2={(3.25 * r) / 4}
-              stroke="black"
-              strokeWidth="1"
-              strokeLinecap="round"
-            />
-          </g>
-        </svg>
-      </KnobDiv>
+        <DeleteSelectedKnobButton dispatch={dispatch} knobId={id} />
+      </Popup>
     );
   }
 );
