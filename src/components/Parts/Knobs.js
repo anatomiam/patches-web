@@ -14,6 +14,8 @@ export const Knobs = React.memo(({ knobs, builder, patcher, dispatch }) => {
                 key={Math.random()}
                 footSwitchDetails={knob}
                 dispatch={dispatch}
+                builder={builder}
+                patcher={patcher}
               />
             );
           case "Knob":
