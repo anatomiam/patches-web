@@ -32,6 +32,8 @@ export const Knobs = React.memo(({ knobs, builder, patcher, dispatch }) => {
                 key={Math.random()}
                 switchDetails={knob}
                 dispatch={dispatch}
+                builder={builder}
+                patcher={patcher}
               />
             );
           default:
