@@ -1,21 +1,34 @@
-import React from "react";
-import { Button } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Button, Input } from "semantic-ui-react";
 
 export const UpdateCxButton = React.memo(({ knobId, cx, dispatch }) => {
+  const [updatedCx, setUpdatedCx] = useState(cx);
+
   return (
-    <Button
-      icon="resize horizontal"
+    <Input
       size="mini"
-      className="icon-pointer"
-      color="blue"
-      onClick={event => {
-        event.preventDefault();
-        dispatch({
-          type: "UPDATE_CX",
-          selectedComponentId: knobId,
-          cx
-        });
+      type="number"
+      placeholder="Update cx"
+      onChange={event => {
+        setUpdatedCx(event.target.value);
       }}
+      value={updatedCx}
+      action={
+        <Button
+          icon="add"
+          size="mini"
+          className="icon-pointer"
+          onClick={event => {
+            event.preventDefault();
+            console.log(updatedCx);
+            dispatch({
+              type: "UPDATE_CX",
+              selectedComponentId: knobId,
+              cx: updatedCx
+            });
+          }}
+        />
+      }
     />
   );
 });
