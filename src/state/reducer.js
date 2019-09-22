@@ -111,26 +111,32 @@ export const reducer = (state, action) => {
           knobsToDelete: [...state.localState.knobsToDelete, toDelete]
         }
       };
-    case "UPDATE_KNOB_ANGLE":
-      // TODO loop through knobs to create or update
-      // select by id
-      // if doesnt exist, create
-      // if exists, update
-      const knobsCopy2 = state.localState.updatedKnobAngles.slice();
-      const updatedKnobs2 = knobsCopy2.map(knob => {
-        if (knob.id !== action.knobId) {
-          return knob;
-        }
-        return { ...knob, angle: action.angle };
-      });
-
+    case "START_FROM_SCRATCH":
       return {
         ...state,
         localState: {
           ...state.localState,
-          updatedKnobAngles: updatedKnobs2
+          isNewPedal: true,
+          selectedComponentId: null,
+          selectedComponentAngle: 0,
+          updatedKnobAngles: [],
+          knobs: [],
+          knobsToCreate: [],
+          knobsToDelete: [],
+          knobsToUpdate: [],
+          patchDetails: {
+            name: "",
+            description: ""
+          },
+          pedalDetails: {
+            name: "",
+            height: 0,
+            width: 0,
+            color: "#d4d7dd"
+          }
         }
       };
+
     default:
       return state;
   }

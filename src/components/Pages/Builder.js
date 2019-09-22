@@ -8,6 +8,7 @@ import { PedalForm } from "../Forms/PedalForm";
 import { useStateValue } from "../../state/StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
 import { UpdatePedalButton } from "../Forms/UpdatePedalButton";
+import { StartFromScratchButton } from "../Forms/StartFromScratchButton";
 import { Accordion, Icon } from "semantic-ui-react";
 import {
   DivContainer,
@@ -114,6 +115,9 @@ const Builder = ({ pedals }) => {
           ) : (
             <UpdatePedalButton localState={localState} />
           )}
+        </DivSubmit>
+        <DivSubmit>
+          <StartFromScratchButton dispatch={dispatch} />
         </DivSubmit>
       </DivTools>
     </DivContainer>

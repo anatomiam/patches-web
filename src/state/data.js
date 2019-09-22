@@ -33,7 +33,7 @@ export const localState = {
   ],
   patchDetails: {
     name: "",
-    Description: ""
+    description: ""
   },
   pedalDetails: {
     name: "",
