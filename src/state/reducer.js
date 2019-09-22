@@ -91,15 +91,19 @@ export const reducer = (state, action) => {
         }
       };
     case "DELETE_KNOB":
+      // TODO return whole knob object to enable `undo` ?
       const updatedKnobs3 = state.localState.knobs.filter(knob => {
         return knob.id !== action.selectedComponentId;
       });
-
+      const toDelete = state.localState.isNewPedal
+        ? {}
+        : { id: action.selectedComponentId };
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: updatedKnobs3
+          knobs: updatedKnobs3,
+          knobsToDelete: [...state.localState.knobsToDelete, toDelete]
         }
       };
     case "UPDATE_KNOB_ANGLE":

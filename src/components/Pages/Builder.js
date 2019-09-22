@@ -22,8 +22,12 @@ import {
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, name, color } = localState.pedalDetails;
-  const { knobs } = localState;
-  const { selectedComponentId, selectedComponentAngle } = localState;
+  const {
+    knobs,
+    isNewPedal,
+    selectedComponentId,
+    selectedComponentAngle
+  } = localState;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClick = (e, titleProps) => {
@@ -104,8 +108,11 @@ const Builder = ({ pedals }) => {
           />
         </DivDetails>
         <DivSubmit>
-          <CreatePedalButton localState={localState} />
-          <UpdatePedalButton localState={localState} />
+          {isNewPedal ? (
+            <CreatePedalButton localState={localState} />
+          ) : (
+            <UpdatePedalButton localState={localState} />
+          )}
         </DivSubmit>
       </DivTools>
     </DivContainer>

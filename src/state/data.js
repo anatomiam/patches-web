@@ -25,7 +25,7 @@ export const localState = {
       angle: 0
     }
   ],
-  knobsToDelete: [{ id: "ck0s3w9yu06c20789gb9r6l8m" }],
+  knobsToDelete: [],
   knobsToUpdate: [
     {
       id: "ck0s3w9z206c40789tfnoe6hv",

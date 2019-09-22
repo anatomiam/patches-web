@@ -4,7 +4,7 @@ import { ValidationErrors } from "./ValidationErrors";
 import { DivLabeledColorPicker, InputColorPicker } from "../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty } from "lodash";
+import { isEmpty, uniqueId } from "lodash";
 
 const AddKnobFormSchema = Yup.object().shape({
   cx: Yup.number()
@@ -29,9 +29,7 @@ const AddKnobFormSchema = Yup.object().shape({
     .required("Description is required")
 });
 
-export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
-  const tempId = Math.random();
-
+export const AddKnobForm = React.memo(({ dispatch }) => {
   return (
     <Formik
       initialValues={{
@@ -56,7 +54,7 @@ export const AddKnobForm = React.memo(({ saveKnob, dispatch }) => {
             angle: values.angle,
             color: values.color,
             description: values.description,
-            id: tempId
+            id: uniqueId("knob-")
           }
         });
         setSubmitting(false);
