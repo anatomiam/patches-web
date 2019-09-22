@@ -83,6 +83,14 @@ export const reducer = (state, action) => {
           patchDetails: action.patchDetails
         }
       };
+    case "DRAG_KNOB":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          drag: !state.localState.drag
+        }
+      };
     case "ADD_KNOB":
       const toCreate = state.localState.isNewPedal
         ? {}
@@ -113,6 +121,8 @@ export const reducer = (state, action) => {
       };
     case "UPDATE_CX":
       // TODO return whole knob object to enable `undo` ?
+      console.log(action);
+
       const updatedKnobs4 = state.localState.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -137,6 +147,7 @@ export const reducer = (state, action) => {
           isNewPedal: true,
           selectedComponentId: null,
           selectedComponentAngle: 0,
+          drag: false,
           updatedKnobAngles: [],
           knobs: [],
           knobsToCreate: [],

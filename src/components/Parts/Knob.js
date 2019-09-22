@@ -9,6 +9,8 @@ const KnobDiv = styled(motion.div)`
   position: absolute;
   border-radius: 50%;
   touch-action: none;
+  outline: ${props => (props.drag ? "solid 5px orange" : "")};
+  outline-offset: ${props => (props.drag ? "1px" : "")};
   width: ${props => props.width + "px"};
   height: ${props => props.height + "px"};
   left: ${props => props.left + "px"};
@@ -16,7 +18,7 @@ const KnobDiv = styled(motion.div)`
 `;
 
 export const Knob = React.memo(
-  ({ knobDetails, builder, patcher, dispatch }) => {
+  ({ knobDetails, builder, patcher, drag, dispatch }) => {
     const { angle, cx, cy, r, id, color } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
@@ -27,7 +29,19 @@ export const Knob = React.memo(
         });
       }
     };
-    const builderProps = {};
+    const builderProps = {
+      drag: drag,
+      onDrag: (event, info) => {
+        console.log(info.offset.x + cx);
+      },
+      onDragEnd: (event, info) => {
+        dispatch({
+          type: "UPDATE_CX",
+          selectedComponentId: id,
+          cx: info.offset.x + cx
+        });
+      }
+    };
     const patcherProps = {
       animate: {
         rotate: angle + angleAdjust

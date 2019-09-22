@@ -3,6 +3,7 @@ export const localState = {
   isNewPedal: true,
   selectedComponentId: null,
   selectedComponentAngle: 0,
+  drag: false,
   updatedKnobAngles: [],
   knobs: [],
   knobsToCreate: [],

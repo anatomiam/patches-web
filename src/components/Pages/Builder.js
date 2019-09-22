@@ -7,6 +7,7 @@ import { Pedal } from "../Parts/Pedal";
 import { PedalForm } from "../Forms/PedalForm";
 import { useStateValue } from "../../state/StateProvider";
 import { CreatePedalButton } from "../Forms/CreatePedalButton";
+import { DragKnobButton } from "../Forms/DragKnobButton";
 import { UpdatePedalButton } from "../Forms/UpdatePedalButton";
 import { StartFromScratchButton } from "../Forms/StartFromScratchButton";
 import { Accordion, Icon } from "semantic-ui-react";
@@ -27,7 +28,8 @@ const Builder = ({ pedals }) => {
     knobs,
     isNewPedal,
     selectedComponentId,
-    selectedComponentAngle
+    selectedComponentAngle,
+    drag
   } = localState;
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -46,6 +48,7 @@ const Builder = ({ pedals }) => {
           height={height}
           color={color}
           dispatch={dispatch}
+          drag={drag}
           builder
         />
       </DivPedal>
@@ -53,6 +56,7 @@ const Builder = ({ pedals }) => {
         <DivPedalSelector>
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </DivPedalSelector>
+        <DragKnobButton drag={drag} dispatch={dispatch} />
         <DivForm>
           <h2>{name}</h2>
           <Accordion styled>

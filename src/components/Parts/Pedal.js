@@ -11,7 +11,7 @@ const PedalDiv = styled(motion.div)`
 `;
 
 export const Pedal = React.memo(
-  ({ knobs, width, height, color, builder, patcher, dispatch }) => {
+  ({ knobs, width, height, color, builder, patcher, drag, dispatch }) => {
     return (
       <PedalDiv width={width} height={height} color={color}>
         <Knobs
@@ -21,6 +21,7 @@ export const Pedal = React.memo(
           height={height}
           builder={builder}
           patcher={patcher}
+          drag={drag}
         />
       </PedalDiv>
     );
