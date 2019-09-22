@@ -32,6 +32,7 @@ const AddKnobFormSchema = Yup.object().shape({
 export const AddKnobForm = React.memo(({ dispatch }) => {
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         cx: 0,
         cy: 0,

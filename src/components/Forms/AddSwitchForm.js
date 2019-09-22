@@ -29,6 +29,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
 
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         cx: 0,
         cy: 0,

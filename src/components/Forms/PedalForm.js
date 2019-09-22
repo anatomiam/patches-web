@@ -29,6 +29,7 @@ export const PedalForm = React.memo(
     const updateId = id ? { id } : {};
     return (
       <Formik
+        enableReinitialize
         initialValues={{
           width,
           height,

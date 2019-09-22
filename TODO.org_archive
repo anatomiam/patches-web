@@ -285,3 +285,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Update pedal form when loading a pedal              :builder:web:
+  CLOSED: [2019-09-21 Sat 23:15]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-21 Sat 23:15
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

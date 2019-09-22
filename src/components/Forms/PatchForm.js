@@ -19,6 +19,7 @@ const PatchFormSchema = Yup.object().shape({
 export const PatchForm = React.memo(({ name, description, dispatch }) => {
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         name,
         description
