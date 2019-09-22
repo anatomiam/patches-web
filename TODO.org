@@ -1,5 +1,5 @@
 * Pre-Alpha
-** TODO [#B] Set up updating knobs                                   :server:
+** STARTED [#B] Set up updating pedals                               :server:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values                             :server:
    - https://react.semantic-ui.com/collections/menu/
