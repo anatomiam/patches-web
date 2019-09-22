@@ -111,6 +111,24 @@ export const reducer = (state, action) => {
           knobsToDelete: [...state.localState.knobsToDelete, toDelete]
         }
       };
+    case "UPDATE_CX":
+      // TODO return whole knob object to enable `undo` ?
+      const updatedKnobs4 = state.localState.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : Object.assign({}, knob, { cx: action.cx });
+      });
+      const toUpdate = state.localState.isNewPedal
+        ? {}
+        : { id: action.selectedComponentId, details: { cx: action.cx } };
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          knobs: updatedKnobs4,
+          knobsToUpdate: [...state.localState.knobsToUpdate, toUpdate]
+        }
+      };
     case "START_FROM_SCRATCH":
       return {
         ...state,
