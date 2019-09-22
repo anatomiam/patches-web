@@ -5,26 +5,7 @@ export const localState = {
   selectedComponentAngle: 0,
   updatedKnobAngles: [],
   knobs: [],
-  knobsToCreate: [
-    {
-      type: "Knob",
-      description: "foff",
-      color: "#008000",
-      cx: 55,
-      cy: 50,
-      r: 15,
-      angle: 0
-    },
-    {
-      type: "Knob",
-      description: "foff",
-      color: "#008000",
-      cx: 50,
-      cy: 55,
-      r: 15,
-      angle: 0
-    }
-  ],
+  knobsToCreate: [],
   knobsToDelete: [],
   knobsToUpdate: [
     {

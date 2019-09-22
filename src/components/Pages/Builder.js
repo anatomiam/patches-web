@@ -21,7 +21,7 @@ import {
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
-  const { width, height, name, color } = localState.pedalDetails;
+  const { width, height, name, color, id } = localState.pedalDetails;
   const {
     knobs,
     isNewPedal,
@@ -65,6 +65,7 @@ const Builder = ({ pedals }) => {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
               <PedalForm
+                id={id}
                 width={width}
                 height={height}
                 name={name}

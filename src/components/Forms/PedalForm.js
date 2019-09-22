@@ -25,7 +25,8 @@ const PedalFormSchema = Yup.object().shape({
 });
 
 export const PedalForm = React.memo(
-  ({ width, height, name, color, dispatch }) => {
+  ({ width, height, name, color, id, dispatch }) => {
+    const updateId = id ? { id } : {};
     return (
       <Formik
         initialValues={{
@@ -41,6 +42,7 @@ export const PedalForm = React.memo(
           dispatch({
             type: "SET_PEDAL_DETAILS",
             pedalDetails: {
+              ...updateId,
               name: values.name,
               height: values.height,
               width: values.width,

@@ -1,4 +1,5 @@
 import { localState } from "./data";
+import { omit } from "lodash";
 
 export const initialState = { localState };
 export const reducer = (state, action) => {
@@ -83,11 +84,15 @@ export const reducer = (state, action) => {
         }
       };
     case "ADD_KNOB":
+      const toCreate = state.localState.isNewPedal
+        ? {}
+        : omit(action.knob, "id");
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: [...state.localState.knobs, action.knob]
+          knobs: [...state.localState.knobs, action.knob],
+          knobsToCreate: [...state.localState.knobsToCreate, toCreate]
         }
       };
     case "DELETE_KNOB":
