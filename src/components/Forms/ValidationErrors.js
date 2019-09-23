@@ -1,13 +1,13 @@
 import React from "react";
 import { Message } from "semantic-ui-react";
-import { map } from "lodash";
+import { map, uniqueId } from "lodash";
 
 export const ValidationErrors = React.memo(({ errors }) => {
   return (
     <Message color="yellow">
       <Message.List>
         {map(errors, (value, key) => {
-          return <Message.Item key={Math.random()}>{value}</Message.Item>;
+          return <Message.Item key={uniqueId("validation-errors-key-")}>{value}</Message.Item>;
         })}
       </Message.List>
     </Message>

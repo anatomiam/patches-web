@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import { map } from "lodash";
+import { map, uniqueId } from "lodash";
 
 export const ComponentInfo = React.memo(
   ({ knobs, selectedComponentId, pedalDetails, dispatch }) => {
@@ -21,7 +21,7 @@ export const ComponentInfo = React.memo(
         <Table.Body>
           {map(selectedComponent, (value, key) => {
             return (
-              <Table.Row key={Math.random()}>
+              <Table.Row key={uniqueId("component-info-key-")}>
                 <Table.Cell>{key}</Table.Cell>
                 <Table.Cell>{value}</Table.Cell>
               </Table.Row>

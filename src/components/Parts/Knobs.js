@@ -2,6 +2,7 @@ import React from "react";
 import { FootSwitch } from "./FootSwitch";
 import { Knob } from "./Knob";
 import { Switch } from "./Switch";
+import { uniqueId } from "lodash";
 
 export const Knobs = React.memo(
   ({ knobs, builder, patcher, drag, dispatch }) => {
@@ -12,7 +13,7 @@ export const Knobs = React.memo(
             case "FootSwitch":
               return (
                 <FootSwitch
-                  key={Math.random()}
+                  key={uniqueId("footswitch-key")}
                   footSwitchDetails={knob}
                   dispatch={dispatch}
                   builder={builder}
@@ -22,7 +23,7 @@ export const Knobs = React.memo(
             case "Knob":
               return (
                 <Knob
-                  key={Math.random()}
+                  key={uniqueId("knob-key-")}
                   knobDetails={knob}
                   dispatch={dispatch}
                   builder={builder}
@@ -33,7 +34,7 @@ export const Knobs = React.memo(
             case "Switch":
               return (
                 <Switch
-                  key={Math.random()}
+                  key={uniqueId("switch-key-")}
                   switchDetails={knob}
                   dispatch={dispatch}
                   builder={builder}

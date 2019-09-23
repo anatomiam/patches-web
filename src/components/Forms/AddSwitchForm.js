@@ -3,7 +3,7 @@ import { Button, Input, Form } from "semantic-ui-react";
 import { ValidationErrors } from "./ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty } from "lodash";
+import { isEmpty, uniqueId } from "lodash";
 
 const AddSwitchFormSchema = Yup.object().shape({
   cx: Yup.number()
@@ -25,8 +25,6 @@ const AddSwitchFormSchema = Yup.object().shape({
 });
 
 export const AddSwitchForm = React.memo(({ dispatch }) => {
-  const tempId = Math.random();
-
   return (
     <Formik
       enableReinitialize
@@ -48,7 +46,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
             cy: values.cy,
             width: values.width,
             description: values.description,
-            id: tempId
+            id: uniqueId("switch-")
           }
         });
         setSubmitting(false);

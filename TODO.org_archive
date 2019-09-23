@@ -315,3 +315,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Remove all Math.random() and generate actual uuid's :maintenance:
+  CLOSED: [2019-09-22 Sun 21:21]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-22 Sun 21:21
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

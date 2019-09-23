@@ -21,7 +21,6 @@
    - [[https://medium.com/@steveruiz/prototyping-a-switch-in-framer-part-i-e46f72ac64a6][like this?]]
 * Alpha
 ** TODO [#B] Refactor folder structure                      :maintenance:web:
-** STARTED [#B] Remove all Math.random() and generate actual uuid's :maintenance:
 ** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
