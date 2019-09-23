@@ -295,3 +295,23 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#C] Drag and Drop                                       :builder:web:
+  CLOSED: [2019-09-22 Sun 21:13]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-22 Sun 21:13
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#B] Set up updating pedals                                   :server:
+  CLOSED: [2019-09-22 Sun 21:13]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-22 Sun 21:13
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

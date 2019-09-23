@@ -1,6 +1,5 @@
 * Pre-Alpha
 ** TODO [#A] Fix bug where id is not correct when newly created knob is dragged :builder:web:bug:
-** STARTED [#B] Set up updating pedals                               :server:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values for existing patch      :server:
    - https://react.semantic-ui.com/collections/menu/
@@ -22,7 +21,7 @@
    - [[https://medium.com/@steveruiz/prototyping-a-switch-in-framer-part-i-e46f72ac64a6][like this?]]
 * Alpha
 ** TODO [#B] Refactor folder structure                      :maintenance:web:
-** TODO [#B] Remove all Math.random() and generate actual uuid's :maintenance:
+** STARTED [#B] Remove all Math.random() and generate actual uuid's :maintenance:
 ** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
@@ -31,7 +30,6 @@
 ** TODO [#B] Add tests                                      :maintenance:web:
 ** TODO [#C] Create example pedals                                   :server:
 ** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
-** TODO [#C] Drag and Drop                                      :builder:web:
 ** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 ** TODO [#C] Create default template pedal dimensions           :builder:web:
    - use pedalplaygrounds dimensions
