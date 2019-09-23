@@ -1,4 +1,5 @@
 * Pre-Alpha
+** TODO [#A] Fix bug where id is not correct when newly created knob is dragged :builder:web:bug:
 ** STARTED [#B] Set up updating pedals                               :server:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values for existing patch      :server:

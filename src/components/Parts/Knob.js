@@ -17,6 +17,10 @@ const KnobDiv = styled(motion.div)`
   top: ${props => props.top + "px"};
 `;
 
+const gridLock = (target, step) => {
+  return Math.round(target / step) * step;
+};
+
 export const Knob = React.memo(
   ({ knobDetails, builder, patcher, drag, dispatch }) => {
     const { angle, cx, cy, r, id, color } = knobDetails;
@@ -38,12 +42,12 @@ export const Knob = React.memo(
         dispatch({
           type: "UPDATE_CX",
           selectedComponentId: id,
-          cx: info.offset.x + cx
+          cx: gridLock(info.offset.x + cx, 5)
         });
         dispatch({
           type: "UPDATE_CY",
           selectedComponentId: id,
-          cy: info.offset.y + cy
+          cy: gridLock(info.offset.y + cy, 5)
         });
       }
     };
