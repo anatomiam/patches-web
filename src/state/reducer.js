@@ -26,9 +26,7 @@ export const reducer = (state, action) => {
         const foundKnob = action.preset.patches.find(patch => {
           return knob.id === patch.knob.id;
         });
-        return foundKnob
-          ? Object.assign({}, knob, { angle: foundKnob.angle })
-          : knob;
+        return foundKnob ? { ...knob, angle: foundKnob.angle } : knob;
       });
 
       console.log(action.preset);
@@ -126,7 +124,7 @@ export const reducer = (state, action) => {
       const updatedKnobs4 = state.localState.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
-          : Object.assign({}, knob, { cx: action.cx });
+          : { ...knob, cx: action.cx };
       });
       const toUpdate = state.localState.isNewPedal
         ? {}
