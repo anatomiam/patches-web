@@ -40,6 +40,11 @@ export const Knob = React.memo(
           selectedComponentId: id,
           cx: info.offset.x + cx
         });
+        dispatch({
+          type: "UPDATE_CY",
+          selectedComponentId: id,
+          cy: info.offset.y + cy
+        });
       }
     };
     const patcherProps = {

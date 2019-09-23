@@ -118,23 +118,37 @@ export const reducer = (state, action) => {
         }
       };
     case "UPDATE_CX":
-      // TODO return whole knob object to enable `undo` ?
-      console.log(action);
-
-      const updatedKnobs4 = state.localState.knobs.map(knob => {
+      const knobsUpdatedCx = state.localState.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
           : { ...knob, cx: action.cx };
       });
-      const toUpdate = state.localState.isNewPedal
+      const updatedCx = state.localState.isNewPedal
         ? {}
         : { id: action.selectedComponentId, details: { cx: action.cx } };
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: updatedKnobs4,
-          knobsToUpdate: [...state.localState.knobsToUpdate, toUpdate]
+          knobs: knobsUpdatedCx,
+          knobsToUpdate: [...state.localState.knobsToUpdate, updatedCx]
+        }
+      };
+    case "UPDATE_CY":
+      const knobsUpdatedCy = state.localState.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, cy: action.cy };
+      });
+      const updatedCy = state.localState.isNewPedal
+        ? {}
+        : { id: action.selectedComponentId, details: { cy: action.cy } };
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          knobs: knobsUpdatedCy,
+          knobsToUpdate: [...state.localState.knobsToUpdate, updatedCy]
         }
       };
     case "START_FROM_SCRATCH":
