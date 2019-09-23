@@ -5,19 +5,19 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
 
-const UpdateCxButtonSchema = Yup.object().shape({
+const UpdateCxInputSchema = Yup.object().shape({
   cx: Yup.number()
     .min(0, "Center X cannot be a negative number")
     .max(750, "Center X cannot be greater than 750 pixels")
     .required("Center X is required")
 });
 
-export const UpdateCxButton = React.memo(({ knobId, cx, dispatch }) => {
+export const UpdateCxInput = React.memo(({ knobId, cx, dispatch }) => {
   return (
     <Formik
       enableReinitialize
       initialValues={{ cx }}
-      validationSchema={UpdateCxButtonSchema}
+      validationSchema={UpdateCxInputSchema}
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {

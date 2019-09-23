@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Popup } from "semantic-ui-react";
 import { DeleteSelectedKnobButton } from "../Forms/DeleteSelectedKnobButton";
-import { UpdateCxButton } from "../Forms/UpdateCxButton";
+import { UpdateCxInput } from "../Forms/UpdateCxInput";
 
 const KnobDiv = styled(motion.div)`
   position: absolute;
@@ -118,7 +118,7 @@ export const Knob = React.memo(
         }
         on="click"
       >
-        <UpdateCxButton dispatch={dispatch} knobId={id} cx={cx} />
+        <UpdateCxInput dispatch={dispatch} knobId={id} cx={cx} />
         <DeleteSelectedKnobButton dispatch={dispatch} knobId={id} />
       </Popup>
     );
