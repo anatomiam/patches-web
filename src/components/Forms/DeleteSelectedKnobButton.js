@@ -4,10 +4,11 @@ import { Button } from "semantic-ui-react";
 export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
   return (
     <Button
-      icon="delete"
+      content="Delete Knob"
       size="mini"
       className="icon-pointer"
       color="red"
+      fluid
       onClick={event => {
         event.preventDefault();
         dispatch({

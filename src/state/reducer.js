@@ -123,6 +123,7 @@ export const reducer = (state, action) => {
           ? knob
           : { ...knob, cx: action.cx };
       });
+      // TODO handle new knobs on existing pedals that are moved
       const updatedCx = state.localState.isNewPedal
         ? {}
         : { id: action.selectedComponentId, details: { cx: action.cx } };
