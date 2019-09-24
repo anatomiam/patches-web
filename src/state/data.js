@@ -7,9 +7,7 @@ export const localState = {
   tapKnobsIn: false,
   updatedKnobAngles: [],
   knobs: [],
-  knobsToCreate: [],
-  knobsToDelete: [],
-  knobsToUpdate: [],
+  originalKnobs: [],
   patchDetails: {
     name: "",
     description: ""

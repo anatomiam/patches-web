@@ -2,18 +2,10 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
-import { map, pick, keys } from "lodash";
-
-const knobsModel = {
-  type: null,
-  description: null,
-  color: null,
-  cx: null,
-  cy: null,
-  r: null,
-  angle: null,
-  width: null
-};
+import {
+  knobsToCreateModel,
+  restructureKnobsToCreate
+} from "../../state/helpers";
 
 const CREATE_PEDAL = gql`
   mutation CreatePedal(
@@ -41,10 +33,7 @@ export const CreatePedalButton = React.memo(({ localState }) => {
   const { knobs, builder } = localState;
   const { name, width, height, color } = localState.pedalDetails;
   const [createPedal] = useMutation(CREATE_PEDAL);
-  const knobsToCreate = map(knobs, knob => {
-    // return object of shape 'knobsModel'
-    return pick(knob, keys(knobsModel));
-  });
+  const knobsToCreate = restructureKnobsToCreate(knobs, knobsToCreateModel);
 
   return (
     <Form>

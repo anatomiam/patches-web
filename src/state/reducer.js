@@ -1,38 +1,4 @@
 import { localState } from "./data";
-import { omit, filter, map, findIndex, isEqual, compact } from "lodash";
-
-const getUpdatedKnobs = (oldKnobs, newKnobs) => {
-  const knobsToUpdate = map(oldKnobs, oldKnob => {
-    const index = findIndex(newKnobs, { id: oldKnob.id });
-    if (index === -1) {
-      return false;
-    } else if (isEqual(oldKnob, newKnobs[index])) {
-      return false;
-    } else {
-      return { ...oldKnob, ...newKnobs[index] };
-    }
-  });
-
-  return compact(knobsToUpdate);
-};
-
-const getDeletedKnobs = (oldKnobs, newKnobs) => {
-  return filter(oldKnobs, oldKnob => {
-    const index = findIndex(newKnobs, { id: oldKnob.id });
-    if (index === -1) {
-      return oldKnob;
-    }
-  });
-};
-
-const getNewKnobs = (oldKnobs, newKnobs) => {
-  return filter(newKnobs, newKnob => {
-    const index = findIndex(oldKnobs, { id: newKnob.id });
-    if (index === -1) {
-      return newKnob;
-    }
-  });
-};
 
 export const initialState = { localState };
 export const reducer = (state, action) => {
@@ -63,7 +29,6 @@ export const reducer = (state, action) => {
         return foundKnob ? { ...knob, angle: foundKnob.angle } : knob;
       });
 
-      console.log(action.preset);
       return {
         ...state,
         localState: {
@@ -85,8 +50,7 @@ export const reducer = (state, action) => {
       };
     case "SET_SELECTED_COMPONENT_ANGLE":
       // TODO only update single knob instead of whole set?
-      const knobsCopy = state.localState.knobs.slice();
-      const updatedKnobs = knobsCopy.map(knob => {
+      const updatedKnobs = state.localState.knobs.map(knob => {
         if (knob.id !== action.knobId) {
           return knob;
         }
@@ -132,31 +96,22 @@ export const reducer = (state, action) => {
         }
       };
     case "ADD_KNOB":
-      const toCreate = state.localState.isNewPedal
-        ? {}
-        : omit(action.knob, "id");
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: [...state.localState.knobs, action.knob],
-          knobsToCreate: [...state.localState.knobsToCreate, toCreate]
+          knobs: [...state.localState.knobs, action.knob]
         }
       };
     case "DELETE_KNOB":
-      // TODO return whole knob object to enable `undo` ?
-      const updatedKnobs3 = state.localState.knobs.filter(knob => {
+      const knobsUpdatedDeleted = state.localState.knobs.filter(knob => {
         return knob.id !== action.selectedComponentId;
       });
-      const toDelete = state.localState.isNewPedal
-        ? {}
-        : { id: action.selectedComponentId };
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: updatedKnobs3,
-          knobsToDelete: [...state.localState.knobsToDelete, toDelete]
+          knobs: knobsUpdatedDeleted
         }
       };
     case "UPDATE_CX":
@@ -165,16 +120,11 @@ export const reducer = (state, action) => {
           ? knob
           : { ...knob, cx: action.cx };
       });
-      // TODO handle new knobs on existing pedals that are moved
-      const updatedCx = state.localState.isNewPedal
-        ? {}
-        : { id: action.selectedComponentId, details: { cx: action.cx } };
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: knobsUpdatedCx,
-          knobsToUpdate: [...state.localState.knobsToUpdate, updatedCx]
+          knobs: knobsUpdatedCx
         }
       };
     case "UPDATE_CY":
@@ -183,15 +133,11 @@ export const reducer = (state, action) => {
           ? knob
           : { ...knob, cy: action.cy };
       });
-      const updatedCy = state.localState.isNewPedal
-        ? {}
-        : { id: action.selectedComponentId, details: { cy: action.cy } };
       return {
         ...state,
         localState: {
           ...state.localState,
-          knobs: knobsUpdatedCy,
-          knobsToUpdate: [...state.localState.knobsToUpdate, updatedCy]
+          knobs: knobsUpdatedCy
         }
       };
     case "START_FROM_SCRATCH":
@@ -206,9 +152,6 @@ export const reducer = (state, action) => {
           updatedKnobAngles: [],
           knobs: [],
           originalKnobs: [],
-          knobsToCreate: [],
-          knobsToDelete: [],
-          knobsToUpdate: [],
           patchDetails: {
             name: "",
             description: ""
