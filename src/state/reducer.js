@@ -1,5 +1,5 @@
 import { localState } from "./data";
-import { omit, map, findIndex, isEqual, compact } from "lodash";
+import { omit, filter, map, findIndex, isEqual, compact } from "lodash";
 
 const getUpdatedKnobs = (oldKnobs, newKnobs) => {
   const knobsToUpdate = map(oldKnobs, oldKnob => {
@@ -14,6 +14,24 @@ const getUpdatedKnobs = (oldKnobs, newKnobs) => {
   });
 
   return compact(knobsToUpdate);
+};
+
+const getDeletedKnobs = (oldKnobs, newKnobs) => {
+  return filter(oldKnobs, oldKnob => {
+    const index = findIndex(newKnobs, { id: oldKnob.id });
+    if (index === -1) {
+      return oldKnob;
+    }
+  });
+};
+
+const getNewKnobs = (oldKnobs, newKnobs) => {
+  return filter(newKnobs, newKnob => {
+    const index = findIndex(oldKnobs, { id: newKnob.id });
+    if (index === -1) {
+      return newKnob;
+    }
+  });
 };
 
 export const initialState = { localState };
