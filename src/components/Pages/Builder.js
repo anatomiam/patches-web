@@ -20,6 +20,7 @@ import {
   DivSubmit,
   DivTools
 } from "./PageStyles";
+import { TapKnobsInButton } from "../Forms/tapKnobsInButton";
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
@@ -29,7 +30,8 @@ const Builder = ({ pedals }) => {
     isNewPedal,
     selectedComponentId,
     selectedComponentAngle,
-    drag
+    drag,
+    tapKnobsIn
   } = localState;
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -49,6 +51,7 @@ const Builder = ({ pedals }) => {
           color={color}
           dispatch={dispatch}
           drag={drag}
+          tapKnobsIn={tapKnobsIn}
           builder
         />
       </DivPedal>
@@ -57,6 +60,7 @@ const Builder = ({ pedals }) => {
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
         </DivPedalSelector>
         <DragKnobButton drag={drag} dispatch={dispatch} />
+        <TapKnobsInButton tapKnobsIn={tapKnobsIn} dispatch={dispatch} />
         <DivForm>
           <h2>{name}</h2>
           <Accordion styled>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Knobs } from "./Knobs";
 import styled from "styled-components";
+import { uniqueId } from "lodash";
 import { motion } from "framer-motion";
 
 const PedalDiv = styled(motion.div)`
@@ -11,9 +12,42 @@ const PedalDiv = styled(motion.div)`
 `;
 
 export const Pedal = React.memo(
-  ({ knobs, width, height, color, builder, patcher, drag, dispatch }) => {
+  ({
+    knobs,
+    width,
+    height,
+    color,
+    builder,
+    patcher,
+    drag,
+    tapKnobsIn,
+    dispatch
+  }) => {
+    const tapKnobsProps = {
+      onTap: (event, info) => {
+        dispatch({
+          type: "ADD_KNOB",
+          knob: {
+            type: "Knob",
+            cx: event.offsetX,
+            cy: event.offsetY,
+            r: 20,
+            angle: 0,
+            color: "#A9A9A9",
+            description: "Knob",
+            id: uniqueId("knob-")
+          }
+        });
+      }
+    };
+
     return (
-      <PedalDiv width={width} height={height} color={color}>
+      <PedalDiv
+        width={width}
+        height={height}
+        color={color}
+        {...(tapKnobsIn ? tapKnobsProps : {})}
+      >
         <Knobs
           knobs={knobs}
           dispatch={dispatch}
@@ -22,6 +56,7 @@ export const Pedal = React.memo(
           builder={builder}
           patcher={patcher}
           drag={drag}
+          tapKnobsIn={tapKnobsIn}
         />
       </PedalDiv>
     );

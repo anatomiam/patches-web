@@ -4,6 +4,7 @@ export const localState = {
   selectedComponentId: null,
   selectedComponentAngle: 0,
   drag: false,
+  tapKnobsIn: false,
   updatedKnobAngles: [],
   knobs: [],
   knobsToCreate: [],

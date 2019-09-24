@@ -5,7 +5,7 @@ import { Switch } from "./Switch";
 import { uniqueId } from "lodash";
 
 export const Knobs = React.memo(
-  ({ knobs, builder, patcher, drag, dispatch }) => {
+  ({ knobs, builder, patcher, drag, tapKnobsIn, dispatch }) => {
     return (
       <>
         {knobs.map(knob => {
@@ -29,6 +29,7 @@ export const Knobs = React.memo(
                   builder={builder}
                   patcher={patcher}
                   drag={drag}
+                  tapKnobsIn={tapKnobsIn}
                 />
               );
             case "Switch":

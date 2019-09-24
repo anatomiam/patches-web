@@ -7,6 +7,7 @@ import { UpdateCxInput } from "../Forms/UpdateCxInput";
 import { UpdateCyInput } from "../Forms/UpdateCyInput";
 
 const KnobDiv = styled(motion.div)`
+  pointer-events: ${props => (props.disableKnobs ? "none" : "")};
   position: absolute;
   border-radius: 50%;
   touch-action: none;
@@ -23,7 +24,7 @@ const gridLock = (target, step) => {
 };
 
 export const Knob = React.memo(
-  ({ knobDetails, builder, patcher, drag, dispatch }) => {
+  ({ knobDetails, builder, patcher, drag, tapKnobsIn, dispatch }) => {
     const { angle, cx, cy, r, id, color } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
@@ -87,6 +88,7 @@ export const Knob = React.memo(
         }}
         trigger={
           <KnobDiv
+            disableKnobs={tapKnobsIn}
             width={r * 2}
             height={r * 2}
             left={cx - r}

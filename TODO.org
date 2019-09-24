@@ -39,7 +39,7 @@
 ** TODO [#B] Set up query pedals by user                             :server:
 ** TODO [#C] Screenshots of how to get started          :getting:started:web:
 ** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                   :patcher:web:ux:
-** TODO [#C] Click to create components                         :builder:web:
+** STARTED [#C] Click to create components                      :builder:web:
 ** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
 ** TODO [#C] CI/CD Pipeline                                 :maintenance:web:
 ** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:

@@ -89,6 +89,14 @@ export const reducer = (state, action) => {
           drag: !state.localState.drag
         }
       };
+    case "TAP_KNOB":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          tapKnobsIn: !state.localState.tapKnobsIn
+        }
+      };
     case "ADD_KNOB":
       const toCreate = state.localState.isNewPedal
         ? {}
