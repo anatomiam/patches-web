@@ -1,5 +1,20 @@
 import { localState } from "./data";
-import { omit } from "lodash";
+import { omit, map, findIndex, isEqual, compact } from "lodash";
+
+const getUpdatedKnobs = (oldKnobs, newKnobs) => {
+  const knobsToUpdate = map(oldKnobs, oldKnob => {
+    const index = findIndex(newKnobs, { id: oldKnob.id });
+    if (index === -1) {
+      return false;
+    } else if (isEqual(oldKnob, newKnobs[index])) {
+      return false;
+    } else {
+      return { ...oldKnob, ...newKnobs[index] };
+    }
+  });
+
+  return compact(knobsToUpdate);
+};
 
 export const initialState = { localState };
 export const reducer = (state, action) => {
@@ -17,6 +32,7 @@ export const reducer = (state, action) => {
             color: action.pedal.color
           },
           knobs: action.pedal.knobs,
+          originalKnobs: action.pedal.knobs,
           isNewPedal: false
         }
       };
@@ -171,6 +187,7 @@ export const reducer = (state, action) => {
           drag: false,
           updatedKnobAngles: [],
           knobs: [],
+          originalKnobs: [],
           knobsToCreate: [],
           knobsToDelete: [],
           knobsToUpdate: [],
