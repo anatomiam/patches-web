@@ -71,3 +71,11 @@ export const restructureKnobsToCreate = (knobs, model) => {
     return pick(knob, keys(model));
   });
 };
+
+export const flattenKnobObjects = knobs => {
+  return knobs
+    .map(knob => {
+      return { [knob.id]: knob.description };
+    })
+    .reduce((obj, knob) => ({ ...obj, ...knob }), {});
+};

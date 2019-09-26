@@ -3,7 +3,8 @@ import { Button, Input, Form, TextArea } from "semantic-ui-react";
 import { ValidationErrors } from "./ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty, uniqueId } from "lodash";
+import { isEmpty } from "lodash";
+import { flattenKnobObjects } from "../../state/helpers";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -18,15 +19,8 @@ const PatchFormSchema = Yup.object().shape({
 
 export const PatchForm = React.memo(
   ({ name, description, selectedComponentId, knobs, dispatch }) => {
-    const knobNotes = knobs
-      .map(knob => {
-        return { [knob.id]: knob.description };
-      })
-      .reduce((obj, knob) => ({ ...obj, ...knob }), {});
-
+    const knobNotes = flattenKnobObjects(knobs);
     const initialValues = { ...{}, name, description, ...knobNotes };
-
-    console.log(initialValues);
     return (
       <Formik
         enableReinitialize
@@ -39,7 +33,8 @@ export const PatchForm = React.memo(
             type: "SET_PATCH_DETAILS",
             patchDetails: {
               name: values.name,
-              description: values.description
+              description: values.description,
+              knobNotes: values.knobNotes
             }
           });
           setSubmitting(false);
@@ -63,8 +58,8 @@ export const PatchForm = React.memo(
             <Form.Field>
               <Input
                 id="name"
-                label="Name"
-                placeholder="Set Name"
+                label="Patch Name"
+                placeholder="Name"
                 name="name"
                 type="text"
                 onChange={handleChange}
@@ -75,7 +70,7 @@ export const PatchForm = React.memo(
               <TextArea
                 id="description"
                 label="Description"
-                placeholder="Set Description"
+                placeholder="Add patch notes"
                 name="description"
                 onChange={handleChange}
                 value={values.description}
@@ -90,7 +85,7 @@ export const PatchForm = React.memo(
                     placeholder={`Add knob notes`}
                     name={knob.id}
                     onChange={handleChange}
-                    value={values[knob.id]}
+                    value={values[`knobNotes.${knob.id}`]}
                     style={{
                       display:
                         knob.id === selectedComponentId
