@@ -48,6 +48,8 @@ const Patcher = ({ pedals, presets }) => {
             name={name}
             description={description}
             dispatch={dispatch}
+            knobs={knobs}
+            selectedComponentId={selectedComponentId}
           />
         </DivNotes>
         <DivDetails>
