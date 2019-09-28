@@ -1,5 +1,6 @@
 * Pre-Alpha
-** TODO [#A] Fix bug where id is not correct when newly created knob is dragged :builder:web:bug:
+** TODO [#A] Fix bug that updates knob angle in patcher mode :builder:patcher:web:bug:
+   - to trigger, modify a knob on an existing pedal, switch to patcher mode, twist knobs, and save. 
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values for existing patch      :server:
    - https://react.semantic-ui.com/collections/menu/
@@ -39,7 +40,6 @@
 ** TODO [#B] Set up query pedals by user                             :server:
 ** TODO [#C] Screenshots of how to get started          :getting:started:web:
 ** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                   :patcher:web:ux:
-** STARTED [#C] Click to create components                      :builder:web:
 ** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
 ** TODO [#C] CI/CD Pipeline                                 :maintenance:web:
 ** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
