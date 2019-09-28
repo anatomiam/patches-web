@@ -3,8 +3,12 @@ import { Button, Input, Form, TextArea } from "semantic-ui-react";
 import { ValidationErrors } from "./ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty } from "lodash";
-import { flattenKnobObjects } from "../../state/helpers";
+import { isEmpty, pick, omit } from "lodash";
+import {
+  flattenKnobObjects,
+  flattenKnobNotes,
+  unflattenKnobNotes
+} from "../../state/helpers";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -18,9 +22,28 @@ const PatchFormSchema = Yup.object().shape({
 });
 
 export const PatchForm = React.memo(
-  ({ name, description, selectedComponentId, knobs, dispatch }) => {
-    const knobNotes = flattenKnobObjects(knobs);
-    const initialValues = { ...{}, name, description, ...knobNotes };
+  ({ patchDetails, selectedComponentId, knobs, dispatch }) => {
+    const { name, description } = patchDetails.patchNotes;
+
+    // const initialKnobNotes = patchDetails.knobNotes.length
+    //   ? patchDetails.knobNotes
+    //   : flattenKnobObjects(knobs);
+
+    // flatten form values for formik
+    // this is un-flattened on submit
+    const initialValues = {
+      ...{},
+      name,
+      description,
+      ...patchDetails.knobNotes
+    };
+    // const initialValues = {
+    //   ...{},
+    //   name,
+    //   description,
+    //   ...initialKnobNotes
+    // };
+
     return (
       <Formik
         enableReinitialize
@@ -29,12 +52,17 @@ export const PatchForm = React.memo(
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
+          // const knobNotes = unflattenKnobNotes(
+          //   omit(values, ["name", "description"])
+          // );
+          const knobNotes = omit(values, ["name", "description"]);
+          const patchNotes = pick(values, ["name", "description"]);
+
           dispatch({
             type: "SET_PATCH_DETAILS",
             patchDetails: {
-              name: values.name,
-              description: values.description,
-              knobNotes: values.knobNotes
+              patchNotes,
+              knobNotes
             }
           });
           setSubmitting(false);
@@ -85,7 +113,7 @@ export const PatchForm = React.memo(
                     placeholder={`Add knob notes`}
                     name={knob.id}
                     onChange={handleChange}
-                    value={values[`knobNotes.${knob.id}`]}
+                    value={values[knob.id]}
                     style={{
                       display:
                         knob.id === selectedComponentId

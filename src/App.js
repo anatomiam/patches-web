@@ -24,6 +24,7 @@ const PRESET_QUERY = gql`
           id
         }
         angle
+        notes
       }
     }
   }

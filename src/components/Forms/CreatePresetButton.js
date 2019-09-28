@@ -6,7 +6,8 @@ import { map, pick, keys, filter } from "lodash";
 
 const patchesModel = {
   id: null,
-  angle: null
+  angle: null,
+  notes: null
 };
 
 const CREATE_PRESET = gql`
@@ -31,26 +32,33 @@ const CREATE_PRESET = gql`
 
 export const CreatePresetButton = React.memo(({ localState }) => {
   const { builder, knobs, pedalDetails, patchDetails } = localState;
+  const { patchNotes, knobNotes } = patchDetails;
   const [createPreset] = useMutation(CREATE_PRESET);
 
+  // TODO clean this up
   // grab only id and angle from knobs,
+  const pickedKnobs = map(knobs, knob => {
+    return pick(knob, keys(patchesModel));
+  });
   // remove anything that doesn't have an angle set
+  // const filteredKnobs = filter(pickedKnobs, knob => knob.angle !== null);
+  const filteredKnobs = pickedKnobs;
+  // Add knob notes
+  const addedKnobNotes = map(filteredKnobs, knob => {
+    return {
+      notes: pick(knobNotes, [knob.id])[knob.id],
+      ...knob
+    };
+  });
+
   // change 'id' key to 'knob' to fit patch model
-  // TODO put in reducer?
-  const patchesToCreate = map(
-    filter(
-      map(knobs, knob => {
-        return pick(knob, keys(patchesModel));
-      }),
-      knob => knob.angle !== null
-    ),
-    patch => {
-      return {
-        knob: patch.id,
-        angle: patch.angle
-      };
-    }
-  );
+  const patchesToCreate = map(addedKnobNotes, patch => {
+    return {
+      knob: patch.id,
+      angle: patch.angle,
+      notes: patch.notes
+    };
+  });
 
   return (
     <Form>
@@ -61,8 +69,8 @@ export const CreatePresetButton = React.memo(({ localState }) => {
             variables: {
               user: builder,
               pedal: pedalDetails.id,
-              name: patchDetails.name,
-              description: patchDetails.description,
+              name: patchNotes.name,
+              description: patchNotes.description,
               patches: patchesToCreate
             }
           });

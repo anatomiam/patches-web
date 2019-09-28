@@ -9,8 +9,11 @@ export const localState = {
   knobs: [],
   originalKnobs: [],
   patchDetails: {
-    name: "",
-    description: ""
+    patchNotes: {
+      name: "",
+      description: ""
+    },
+    knobNotes: []
   },
   pedalDetails: {
     name: "",

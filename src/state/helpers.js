@@ -79,3 +79,17 @@ export const flattenKnobObjects = knobs => {
     })
     .reduce((obj, knob) => ({ ...obj, ...knob }), {});
 };
+
+export const flattenKnobNotes = patches => {
+  return patches
+    .map(patch => {
+      return { [patch.knob.id]: patch.notes };
+    })
+    .reduce((obj, knob) => ({ ...obj, ...knob }), {});
+};
+
+export const unflattenKnobNotes = patches => {
+  return Object.entries(patches).map(patch => {
+    return { knob: { id: patch[0] }, notes: patch[1] };
+  });
+};

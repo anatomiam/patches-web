@@ -1,9 +1,11 @@
 import { localState } from "./data";
+import { flattenKnobNotes, flattenKnobObjects } from "./helpers";
 
 export const initialState = { localState };
 export const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_PEDAL":
+      const initialKnobNotes = flattenKnobObjects(action.pedal.knobs);
       return {
         ...state,
         localState: {
@@ -17,6 +19,10 @@ export const reducer = (state, action) => {
           },
           knobs: action.pedal.knobs,
           originalKnobs: action.pedal.knobs,
+          patchDetails: {
+            patchNotes: localState.patchDetails.patchNotes,
+            knobNotes: initialKnobNotes
+          },
           isNewPedal: false
         }
       };
@@ -29,14 +35,18 @@ export const reducer = (state, action) => {
         return foundKnob ? { ...knob, angle: foundKnob.angle } : knob;
       });
 
+      const patchNotes = {
+        name: action.preset.name,
+        description: action.preset.description
+      };
+      // handle reforming patchDetails for form here?
+      const knobNotes = flattenKnobNotes(action.preset.patches);
+
       return {
         ...state,
         localState: {
           ...state.localState,
-          patchDetails: {
-            name: action.preset.name,
-            description: action.preset.description
-          },
+          patchDetails: { patchNotes, knobNotes },
           knobs: updatedAngles
         }
       };

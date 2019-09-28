@@ -20,8 +20,13 @@ import {
 const Patcher = ({ pedals, presets }) => {
   const [{ localState }, dispatch] = useStateValue();
   const { width, height, color } = localState.pedalDetails;
-  const { knobs, selectedComponentId, selectedComponentAngle } = localState;
-  const { name, description } = localState.patchDetails;
+  const {
+    knobs,
+    patchDetails,
+    selectedComponentId,
+    selectedComponentAngle
+  } = localState;
+
   const pedalPresets = presets.filter(preset => {
     return preset.pedal.id === localState.pedalDetails.id;
   });
@@ -45,8 +50,7 @@ const Patcher = ({ pedals, presets }) => {
         </DivPedalSelector>
         <DivNotes>
           <PatchForm
-            name={name}
-            description={description}
+            patchDetails={patchDetails}
             dispatch={dispatch}
             knobs={knobs}
             selectedComponentId={selectedComponentId}
