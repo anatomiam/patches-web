@@ -21,7 +21,6 @@
 ** TODO [#C] Switch component 'steps'                        :patcher:web:ux:
    - [[https://medium.com/@steveruiz/prototyping-a-switch-in-framer-part-i-e46f72ac64a6][like this?]]
 * Alpha
-** STARTED [#B] Refactor folder structure                   :maintenance:web:
 ** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
@@ -54,48 +53,3 @@
    - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
 
      
-*  New Structure
-- src
-  - components
-    - deviceComponents
-      - body
-        - bodyContainer
-        - bodyView
-      - knobs
-        - knobsContainer
-        - knobsView
-        - knobView
-        - knobContainer
-      - switch
-        - switchContainer
-        - switchView
-      - footswitch
-        - footSwitchContainer
-        - footSwitchView
-    - forms
-      - shared
-      - login
-      - builder
-      - patcher
-      - viewer
-    - modes
-      - login
-        - loginContainer
-        - loginView
-      - builder
-        - builderContainer
-        - builderView
-      - patcher
-        - patcherContainer
-        - patcherView
-      - viewer
-        - viewerContainer
-        - viewerView
-  - state
-    - reducer
-    - provider
-    - initialState
-  - helpers
-  - app
-  - index
-    

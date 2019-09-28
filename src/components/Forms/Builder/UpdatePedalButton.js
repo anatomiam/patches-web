@@ -11,7 +11,7 @@ import {
   restructureUpdatedKnobs,
   restructureKnobsToCreate,
   restructureDeletedKnobs
-} from "../../../state/helpers";
+} from "../../../helpers/helpers";
 
 const UPDATE_PEDAL = gql`
   mutation UpdatePedal(
