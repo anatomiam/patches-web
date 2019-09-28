@@ -1,10 +1,10 @@
 import React from "react";
-import { FootSwitch } from "./FootSwitch";
-import { Knob } from "./Knob";
-import { Switch } from "./Switch";
+import { FootSwitch } from "./Switches/FootSwitch";
+import { Knob } from "./Knobs/Knob";
+import { Switch } from "./Switches/Switch";
 import { uniqueId } from "lodash";
 
-export const Knobs = React.memo(
+export const ComponentSwitcher = React.memo(
   ({ knobs, builder, patcher, drag, tapKnobsIn, dispatch }) => {
     return (
       <>

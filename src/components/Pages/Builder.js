@@ -3,7 +3,7 @@ import { AddKnobForm } from "../Forms/Builder/AddKnobForm";
 import { AddSwitchForm } from "../Forms/Builder/AddSwitchForm";
 import { AvailablePedals } from "../Forms/Shared/AvailablePedals";
 import { ComponentInfo } from "../Forms/Shared/ComponentInfo";
-import { Pedal } from "../Parts/Pedal";
+import { Pedal } from "../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../Forms/Builder/PedalForm";
 import { useStateValue } from "../../state/StateProvider";
 import { CreatePedalButton } from "../Forms/Builder/CreatePedalButton";

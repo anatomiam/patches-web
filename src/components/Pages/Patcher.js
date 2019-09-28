@@ -3,7 +3,7 @@ import { AvailablePedals } from "../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../Forms/Patcher/AvailablePresets";
 import { ComponentInfo } from "../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../Forms/Patcher/PatchForm";
-import { Pedal } from "../Parts/Pedal";
+import { Pedal } from "../DeviceComponents/Body/Pedal";
 import "../../index.css";
 import { useStateValue } from "../../state/StateProvider";
 import { CreatePresetButton } from "../Forms/Patcher/CreatePresetButton";

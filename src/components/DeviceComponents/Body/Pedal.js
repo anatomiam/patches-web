@@ -1,5 +1,5 @@
 import React from "react";
-import { Knobs } from "./Knobs";
+import { ComponentSwitcher } from "../ComponentSwitcher";
 import styled from "styled-components";
 import { uniqueId } from "lodash";
 import { motion } from "framer-motion";
@@ -48,7 +48,7 @@ export const Pedal = React.memo(
         color={color}
         {...(tapKnobsIn ? tapKnobsProps : {})}
       >
-        <Knobs
+        <ComponentSwitcher
           knobs={knobs}
           dispatch={dispatch}
           width={width}
