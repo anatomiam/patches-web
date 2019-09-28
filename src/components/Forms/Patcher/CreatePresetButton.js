@@ -2,7 +2,7 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
-import { getPatchesToCreate } from "../../../helpers/helpers";
+import { getPatchesToCreate } from "../../../helpers/Helpers";
 
 const CREATE_PRESET = gql`
   mutation CreatePreset(

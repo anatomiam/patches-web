@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { resolvers, typeDefs } from "./state/resolvers";
+import { resolvers, typeDefs } from "./state/Resolvers";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";

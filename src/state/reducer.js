@@ -1,5 +1,5 @@
-import { localState } from "./data";
-import { flattenKnobNotes, flattenKnobObjects } from "../helpers/helpers";
+import { localState } from "./Data";
+import { flattenKnobNotes, flattenKnobObjects } from "../helpers/Helpers";
 
 export const initialState = { localState };
 export const reducer = (state, action) => {
