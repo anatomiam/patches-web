@@ -1,30 +1,30 @@
 import React from "react";
 import { Button, Input, Form } from "semantic-ui-react";
-import { ValidationErrors } from "./ValidationErrors";
+import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
 
-const UpdateCxInputSchema = Yup.object().shape({
-  cx: Yup.number()
-    .min(0, "Center X cannot be a negative number")
-    .max(750, "Center X cannot be greater than 750 pixels")
-    .required("Center X is required")
+const UpdateCyInputSchema = Yup.object().shape({
+  cy: Yup.number()
+    .min(0, "Center Y cannot be a negative number")
+    .max(750, "Center Y cannot be greater than 750 pixels")
+    .required("Center Y is required")
 });
 
-export const UpdateCxInput = React.memo(({ knobId, cx, dispatch }) => {
+export const UpdateCyInput = React.memo(({ knobId, cy, dispatch }) => {
   return (
     <Formik
       enableReinitialize
-      initialValues={{ cx }}
-      validationSchema={UpdateCxInputSchema}
+      initialValues={{ cy }}
+      validationSchema={UpdateCyInputSchema}
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
         dispatch({
-          type: "UPDATE_CX",
+          type: "UPDATE_CY",
           selectedComponentId: knobId,
-          cx: values.cx
+          cy: values.cy
         });
         setSubmitting(false);
       }}
@@ -39,17 +39,17 @@ export const UpdateCxInput = React.memo(({ knobId, cx, dispatch }) => {
           <Form.Field>
             <Input
               size="mini"
-              id="cx"
-              placeholder="Update cx"
-              name="cx"
+              id="cy"
+              placeholder="Update cy"
+              name="cy"
               type="number"
-              value={values.cx}
+              value={values.cy}
               onChange={handleChange}
               action={
                 <Button
-                  icon="resize horizontal"
+                  icon="resize vertical"
                   size="mini"
-                  color="blue"
+                  color="green"
                   className="icon-pointer"
                   type="submit"
                   disabled={isSubmitting}

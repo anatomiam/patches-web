@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Form } from "semantic-ui-react";
-import { ValidationErrors } from "./ValidationErrors";
+import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";

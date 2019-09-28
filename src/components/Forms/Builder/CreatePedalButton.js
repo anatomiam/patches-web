@@ -5,7 +5,7 @@ import { Button, Form } from "semantic-ui-react";
 import {
   knobsToCreateModel,
   restructureKnobsToCreate
-} from "../../state/helpers";
+} from "../../../state/helpers";
 
 const CREATE_PEDAL = gql`
   mutation CreatePedal(

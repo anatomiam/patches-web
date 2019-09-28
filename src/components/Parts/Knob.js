@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Popup } from "semantic-ui-react";
-import { DeleteSelectedKnobButton } from "../Forms/DeleteSelectedKnobButton";
-import { UpdateCxInput } from "../Forms/UpdateCxInput";
-import { UpdateCyInput } from "../Forms/UpdateCyInput";
+import { DeleteSelectedKnobButton } from "../Forms/Builder/DeleteSelectedKnobButton";
+import { UpdateCxInput } from "../Forms/Builder/UpdateCxInput";
+import { UpdateCyInput } from "../Forms/Builder/UpdateCyInput";
 
 const KnobDiv = styled(motion.div)`
   pointer-events: ${props => (props.disableKnobs ? "none" : "")};

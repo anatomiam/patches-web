@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { AddKnobForm } from "../Forms/AddKnobForm";
-import { AddSwitchForm } from "../Forms/AddSwitchForm";
-import { AvailablePedals } from "../Forms/AvailablePedals";
-import { ComponentInfo } from "../Forms/ComponentInfo";
+import { AddKnobForm } from "../Forms/Builder/AddKnobForm";
+import { AddSwitchForm } from "../Forms/Builder/AddSwitchForm";
+import { AvailablePedals } from "../Forms/Shared/AvailablePedals";
+import { ComponentInfo } from "../Forms/Shared/ComponentInfo";
 import { Pedal } from "../Parts/Pedal";
-import { PedalForm } from "../Forms/PedalForm";
+import { PedalForm } from "../Forms/Builder/PedalForm";
 import { useStateValue } from "../../state/StateProvider";
-import { CreatePedalButton } from "../Forms/CreatePedalButton";
-import { DragKnobButton } from "../Forms/DragKnobButton";
-import { UpdatePedalButton } from "../Forms/UpdatePedalButton";
-import { StartFromScratchButton } from "../Forms/StartFromScratchButton";
+import { CreatePedalButton } from "../Forms/Builder/CreatePedalButton";
+import { DragKnobButton } from "../Forms/Builder/DragKnobButton";
+import { UpdatePedalButton } from "../Forms/Builder/UpdatePedalButton";
+import { StartFromScratchButton } from "../Forms/Builder/StartFromScratchButton";
 import { Accordion, Icon } from "semantic-ui-react";
 import {
   DivContainer,
@@ -20,7 +20,7 @@ import {
   DivSubmit,
   DivTools
 } from "./PageStyles";
-import { TapKnobsInButton } from "../Forms/tapKnobsInButton";
+import { TapKnobsInButton } from "../Forms/Builder/tapKnobsInButton";
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();

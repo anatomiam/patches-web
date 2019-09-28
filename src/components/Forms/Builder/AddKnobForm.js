@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
-import { ValidationErrors } from "./ValidationErrors";
-import { DivLabeledColorPicker, InputColorPicker } from "../Pages/PageStyles";
+import { ValidationErrors } from "../Shared/ValidationErrors";
+import { DivLabeledColorPicker, InputColorPicker } from "../../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";
