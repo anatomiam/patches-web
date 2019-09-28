@@ -23,7 +23,7 @@ const PRESET_QUERY = gql`
         knob {
           id
         }
-        angle
+        position
         notes
       }
     }
@@ -46,7 +46,7 @@ const PEDAL_QUERY = gql`
         cx
         cy
         r
-        angle
+        position
         width
       }
     }

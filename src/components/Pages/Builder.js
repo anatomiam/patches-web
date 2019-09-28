@@ -29,7 +29,7 @@ const Builder = ({ pedals }) => {
     knobs,
     isNewPedal,
     selectedComponentId,
-    selectedComponentAngle,
+    selectedComponentPosition,
     drag,
     tapKnobsIn
   } = localState;
@@ -113,7 +113,7 @@ const Builder = ({ pedals }) => {
             knobs={knobs}
             dispatch={dispatch}
             selectedComponentId={selectedComponentId}
-            selectedComponentAngle={selectedComponentAngle}
+            selectedComponentPosition={selectedComponentPosition}
             pedalDetails={localState.pedalDetails}
           />
         </DivDetails>

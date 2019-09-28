@@ -25,7 +25,7 @@ const gridLock = (target, step) => {
 
 export const Knob = React.memo(
   ({ knobDetails, builder, patcher, drag, tapKnobsIn, dispatch }) => {
-    const { angle, cx, cy, r, id, color } = knobDetails;
+    const { position, cx, cy, r, id, color } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
       onTapStart: event => {
@@ -55,7 +55,7 @@ export const Knob = React.memo(
     };
     const patcherProps = {
       animate: {
-        rotate: angle + angleAdjust
+        rotate: position + angleAdjust
       },
       initial: false,
       whileHover: { scale: 1.1 },
@@ -65,8 +65,8 @@ export const Knob = React.memo(
       },
       onPanEnd: () => {
         dispatch({
-          type: "SET_SELECTED_COMPONENT_ANGLE",
-          angle: angle + angleAdjust,
+          type: "SET_SELECTED_COMPONENT_POSITION",
+          position: position + angleAdjust,
           knobId: id
         });
       }

@@ -32,7 +32,7 @@ export const Pedal = React.memo(
             cx: event.offsetX,
             cy: event.offsetY,
             r: 20,
-            angle: 0,
+            position: 0,
             color: "#A9A9A9",
             description: "Knob",
             id: uniqueId("knob-")

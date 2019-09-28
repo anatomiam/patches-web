@@ -19,7 +19,7 @@ const AddKnobFormSchema = Yup.object().shape({
     .min(1, "Radius must be at least 1")
     .max(750, "Radius cannot be greater than 750 pixels")
     .required("Radius is required"),
-  angle: Yup.string().required("Angle is required"),
+  position: Yup.string().required("Position is required"),
   color: Yup.string()
     .length(7, "Color must be the hex code format (#000000) ")
     .required("Color is required"),
@@ -37,7 +37,7 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
         cx: 0,
         cy: 0,
         r: 0,
-        angle: 0,
+        position: 0,
         color: "#A9A9A9",
         description: ""
       }}
@@ -52,7 +52,7 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
             cx: values.cx,
             cy: values.cy,
             r: values.r,
-            angle: values.angle,
+            position: values.position,
             color: values.color,
             description: values.description,
             id: uniqueId("knob-")
@@ -111,13 +111,13 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
           </Form.Field>
           <Form.Field>
             <Input
-              id="angle"
-              label="Angle"
-              placeholder="Set angle"
-              name="angle"
+              id="position"
+              label="Position"
+              placeholder="Set position"
+              name="position"
               type="number"
               onChange={handleChange}
-              value={values.angle}
+              value={values.position}
             />
           </Form.Field>
           <Form.Field>

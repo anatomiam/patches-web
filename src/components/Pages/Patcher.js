@@ -24,7 +24,7 @@ const Patcher = ({ pedals, presets }) => {
     knobs,
     patchDetails,
     selectedComponentId,
-    selectedComponentAngle
+    selectedComponentPosition
   } = localState;
 
   const pedalPresets = presets.filter(preset => {
@@ -61,7 +61,7 @@ const Patcher = ({ pedals, presets }) => {
             knobs={knobs}
             dispatch={dispatch}
             selectedComponentId={selectedComponentId}
-            selectedComponentAngle={selectedComponentAngle}
+            selectedComponentPosition={selectedComponentPosition}
           />
         </DivDetails>
         <DivSubmit>

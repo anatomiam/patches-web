@@ -6,7 +6,7 @@ import { map, pick, keys, filter } from "lodash";
 
 const patchesModel = {
   id: null,
-  angle: null,
+  position: null,
   notes: null
 };
 
@@ -36,12 +36,12 @@ export const CreatePresetButton = React.memo(({ localState }) => {
   const [createPreset] = useMutation(CREATE_PRESET);
 
   // TODO clean this up
-  // grab only id and angle from knobs,
+  // grab only id and position from knobs,
   const pickedKnobs = map(knobs, knob => {
     return pick(knob, keys(patchesModel));
   });
-  // remove anything that doesn't have an angle set
-  // const filteredKnobs = filter(pickedKnobs, knob => knob.angle !== null);
+  // remove anything that doesn't have an position set
+  // const filteredKnobs = filter(pickedKnobs, knob => knob.position !== null);
   const filteredKnobs = pickedKnobs;
   // Add knob notes
   const addedKnobNotes = map(filteredKnobs, knob => {
@@ -55,7 +55,7 @@ export const CreatePresetButton = React.memo(({ localState }) => {
   const patchesToCreate = map(addedKnobNotes, patch => {
     return {
       knob: patch.id,
-      angle: patch.angle,
+      position: patch.position,
       notes: patch.notes
     };
   });

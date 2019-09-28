@@ -2,10 +2,10 @@ export const localState = {
   builder: "cju66ydwl000y0738rs8jz7yv",
   isNewPedal: true,
   selectedComponentId: null,
-  selectedComponentAngle: 0,
+  selectedComponentPosition: 0,
   drag: false,
   tapKnobsIn: false,
-  updatedKnobAngles: [],
+  updatedKnobPositions: [],
   knobs: [],
   originalKnobs: [],
   patchDetails: {

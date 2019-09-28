@@ -28,11 +28,11 @@ export const reducer = (state, action) => {
       };
     case "SELECT_PRESET":
       // TODO refactor this
-      const updatedAngles = state.localState.knobs.map(knob => {
+      const updatedPositions = state.localState.knobs.map(knob => {
         const foundKnob = action.preset.patches.find(patch => {
           return knob.id === patch.knob.id;
         });
-        return foundKnob ? { ...knob, angle: foundKnob.angle } : knob;
+        return foundKnob ? { ...knob, position: foundKnob.position } : knob;
       });
 
       const patchNotes = {
@@ -47,7 +47,7 @@ export const reducer = (state, action) => {
         localState: {
           ...state.localState,
           patchDetails: { patchNotes, knobNotes },
-          knobs: updatedAngles
+          knobs: updatedPositions
         }
       };
     case "SET_SELECTED_COMPONENT_ID":
@@ -58,13 +58,13 @@ export const reducer = (state, action) => {
           selectedComponentId: action.id
         }
       };
-    case "SET_SELECTED_COMPONENT_ANGLE":
+    case "SET_SELECTED_COMPONENT_POSITION":
       // TODO only update single knob instead of whole set?
       const updatedKnobs = state.localState.knobs.map(knob => {
         if (knob.id !== action.knobId) {
           return knob;
         }
-        return { ...knob, angle: action.angle };
+        return { ...knob, position: action.position };
       });
       return {
         ...state,
@@ -157,9 +157,9 @@ export const reducer = (state, action) => {
           ...state.localState,
           isNewPedal: true,
           selectedComponentId: null,
-          selectedComponentAngle: 0,
+          selectedComponentPosition: 0,
           drag: false,
-          updatedKnobAngles: [],
+          updatedKnobPositions: [],
           knobs: [],
           originalKnobs: [],
           patchDetails: {
