@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Builder from "./components/Pages/Builder";
-import Patcher from "./components/Pages/Patcher";
-import Landing from "./components/Pages/Landing";
+import Builder from "./components/Modes/Builder/Builder";
+import Patcher from "./components/Modes/Patcher/Patcher";
+import Landing from "./components/Modes/General/Landing";
 import { reducer, initialState } from "./state/reducer";
 import { StateProvider } from "./state/StateProvider";
 import { useQuery } from "@apollo/react-hooks";
