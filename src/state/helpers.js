@@ -1,4 +1,4 @@
-import { filter, map, findIndex, isEqual, compact, pick, keys } from "lodash";
+import { filter, findIndex, isEqual, compact, pick, keys } from "lodash";
 
 export const knobsToCreateModel = {
   type: null,
@@ -21,8 +21,14 @@ export const knobsToUpdateModel = {
   width: null
 };
 
+const patchesModel = {
+  id: null,
+  position: null,
+  notes: null
+};
+
 export const getUpdatedKnobs = (oldKnobs, newKnobs) => {
-  const knobsToUpdate = map(oldKnobs, oldKnob => {
+  const knobsToUpdate = oldKnobs.map(oldKnob => {
     const index = findIndex(newKnobs, { id: oldKnob.id });
     if (index === -1) {
       return false;
@@ -55,19 +61,19 @@ export const getNewKnobs = (oldKnobs, newKnobs) => {
 };
 
 export const restructureDeletedKnobs = knobs => {
-  return map(knobs, knob => {
+  return knobs.map(knob => {
     return { id: knob.id };
   });
 };
 
 export const restructureUpdatedKnobs = (knobs, model) => {
-  return map(knobs, knob => {
+  return knobs.map(knob => {
     return { id: knob.id, details: pick(knob, keys(model)) };
   });
 };
 
 export const restructureKnobsToCreate = (knobs, model) => {
-  return map(knobs, knob => {
+  return knobs.map(knob => {
     return pick(knob, keys(model));
   });
 };
@@ -75,7 +81,7 @@ export const restructureKnobsToCreate = (knobs, model) => {
 export const flattenKnobObjects = knobs => {
   return knobs
     .map(knob => {
-      return { [knob.id]: knob.description };
+      return { [knob.id]: "" };
     })
     .reduce((obj, knob) => ({ ...obj, ...knob }), {});
 };
@@ -92,4 +98,27 @@ export const unflattenKnobNotes = patches => {
   return Object.entries(patches).map(patch => {
     return { knob: { id: patch[0] }, notes: patch[1] };
   });
+};
+
+// TODO clean this up
+// grab only id, position, and notes from knobs,
+// change 'id' key to 'knob' to fit patch model
+export const getPatchesToCreate = (knobs, knobNotes) => {
+  return knobs
+    .map(knob => {
+      return pick(knob, keys(patchesModel));
+    })
+    .map(knob => {
+      return {
+        notes: pick(knobNotes, [knob.id])[knob.id],
+        ...knob
+      };
+    })
+    .map(patch => {
+      return {
+        knob: patch.id,
+        position: patch.position,
+        notes: patch.notes
+      };
+    });
 };
