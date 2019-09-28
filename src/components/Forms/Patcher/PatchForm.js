@@ -4,11 +4,6 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, pick, omit } from "lodash";
-import {
-  flattenKnobObjects,
-  flattenKnobNotes,
-  unflattenKnobNotes
-} from "../../../state/helpers";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
