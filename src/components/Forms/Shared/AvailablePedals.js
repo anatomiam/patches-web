@@ -1,45 +1,30 @@
 import React, { useState } from "react";
-import { Select, Button } from "semantic-ui-react";
+import { Select } from "semantic-ui-react";
 
 export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
-  const [selectedPedalId, setSelectedPedalId] = useState("");
   const [selectedPedalName, setSelectedPedalName] = useState("");
 
-  const selectedPedalDetails = selectedPedalId
-    ? pedals.find(pedal => {
-        return pedal.id === selectedPedalId;
-      })
-    : null;
-
   return (
-    <form
-      onSubmit={event => {
-        // Is the submit button necessary?
-        event.preventDefault();
+    <Select
+      placeholder="-- Select a Pedal --"
+      value={selectedPedalName}
+      onChange={(e, data) => {
+        setSelectedPedalName(data.value);
+        const selectedPedal = pedals.find(pedal => {
+          return pedal.id === data.value;
+        });
         dispatch({
           type: "SELECT_PEDAL",
-          pedal: selectedPedalDetails
+          pedal: selectedPedal
         });
       }}
-    >
-      <Select
-        placeholder="-- Select a Pedal --"
-        value={selectedPedalName}
-        onChange={(e, data) => {
-          setSelectedPedalName(data.value);
-          setSelectedPedalId(data.value);
-        }}
-        options={pedals.map(pedal => {
-          return {
-            key: pedal.id,
-            value: pedal.id,
-            text: pedal.name
-          };
-        })}
-      />
-      <Button size="mini" type="submit">
-        Submit
-      </Button>
-    </form>
+      options={pedals.map(pedal => {
+        return {
+          key: pedal.id,
+          value: pedal.id,
+          text: pedal.name
+        };
+      })}
+    />
   );
 });

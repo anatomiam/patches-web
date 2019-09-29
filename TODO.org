@@ -7,15 +7,9 @@
    - https://react.semantic-ui.com/elements/button/
    - https://react.semantic-ui.com/modules/popup/
 ** TODO [#B] Set up updating knob values for existing patch     :builder:web:
-** TODO [#B] Hook up Notes read/write                           :patcher:web:
-** TODO [#B] Set up notes db table                                   :server:
-   - [ ] pedal notes
-   - [ ] knob notes
-   - [ ] patch notes
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
 ** TODO [#B] Add on/off/whateverelse indicators                 :builder:web:
-** TODO [#B] Update Select components with Formik       :patcher:builder:web:
 ** TODO [#B] Improve names of in general                    :maintenance:web:
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 ** TODO [#C] Switch component 'steps'                        :patcher:web:ux:

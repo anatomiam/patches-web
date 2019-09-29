@@ -335,3 +335,36 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Set up notes db table                                    :server:
+  CLOSED: [2019-09-28 Sat 20:50]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-28 Sat 20:50
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [ ] pedal notes
+  - [X] knob notes
+  - [X] patch notes
+
+* DONE [#B] Hook up Notes read/write                            :patcher:web:
+  CLOSED: [2019-09-28 Sat 20:50]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-28 Sat 20:50
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#B] Update Select components with Formik        :patcher:builder:web:
+  CLOSED: [2019-09-28 Sat 21:09]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-09-28 Sat 21:09
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
