@@ -61,9 +61,10 @@ export const Knob = React.memo(
         setAngleAdjust(info.offset.y);
       },
       onPanEnd: () => {
+        // knob angle will always be between 0 and 360 degrees
         dispatch({
           type: "SET_SELECTED_COMPONENT_POSITION",
-          position: position + angleAdjust,
+          position: (((position + angleAdjust) % 360) + 360) % 360,
           knobId: id
         });
       }
