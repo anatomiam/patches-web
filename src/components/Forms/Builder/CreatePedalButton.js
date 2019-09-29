@@ -2,6 +2,7 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 import {
   knobsToCreateModel,
   restructureKnobsToCreate
@@ -57,3 +58,7 @@ export const CreatePedalButton = React.memo(({ localState }) => {
     </Form>
   );
 });
+
+CreatePedalButton.propTypes = {
+  localState: PropTypes.object
+};

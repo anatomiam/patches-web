@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { PropTypes } from "prop-types";
 
 const SwitchDiv = styled(motion.div)`
   position: absolute;
@@ -87,3 +88,10 @@ export const Switch = React.memo(
     );
   }
 );
+
+Switch.propTypes = {
+  switchDetails: PropTypes.object,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool,
+  dispatch: PropTypes.func
+};

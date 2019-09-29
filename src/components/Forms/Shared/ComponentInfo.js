@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
 import { map, uniqueId } from "lodash";
+import { PropTypes } from "prop-types";
 
 export const ComponentInfo = React.memo(
   ({ knobs, selectedComponentId, pedalDetails, dispatch }) => {
@@ -32,3 +33,10 @@ export const ComponentInfo = React.memo(
     );
   }
 );
+
+ComponentInfo.propTypes = {
+  knobs: PropTypes.array,
+  selectedComponentId: PropTypes.string,
+  pedalDetails: PropTypes.object,
+  dispatch: PropTypes.func
+};

@@ -3,6 +3,7 @@ import { FootSwitch } from "./Switches/FootSwitch";
 import { Knob } from "./Knobs/Knob";
 import { Switch } from "./Switches/Switch";
 import { uniqueId } from "lodash";
+import { PropTypes } from "prop-types";
 
 export const ComponentSwitcher = React.memo(
   ({ knobs, builder, patcher, drag, tapKnobsIn, dispatch }) => {
@@ -50,3 +51,12 @@ export const ComponentSwitcher = React.memo(
     );
   }
 );
+
+ComponentSwitcher.propTypes = {
+  knobDetails: PropTypes.object,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool,
+  drag: PropTypes.bool,
+  tapKnobsIn: PropTypes.bool,
+  dispatch: PropTypes.func
+};

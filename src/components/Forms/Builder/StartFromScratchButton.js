@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const StartFromScratchButton = React.memo(({ dispatch }) => {
   return (
@@ -17,3 +18,7 @@ export const StartFromScratchButton = React.memo(({ dispatch }) => {
     </Form>
   );
 });
+
+StartFromScratchButton.propTypes = {
+  dispatch: PropTypes.func
+};

@@ -4,6 +4,7 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
+import { PropTypes } from "prop-types";
 
 const UpdateCyInputSchema = Yup.object().shape({
   cy: Yup.number()
@@ -63,3 +64,9 @@ export const UpdateCyInput = React.memo(({ knobId, cy, dispatch }) => {
     </Formik>
   );
 });
+
+UpdateCyInput.propTypes = {
+  knobId: PropTypes.string,
+  cy: PropTypes.number,
+  dispatch: PropTypes.func
+};

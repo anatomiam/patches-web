@@ -1,6 +1,12 @@
 * Pre-Alpha
 ** TODO [#A] Fix bug that updates knob angle in patcher mode :builder:patcher:web:bug:
    - to trigger, modify a knob on an existing pedal, switch to patcher mode, twist knobs, and save. 
+** TODO [#A] Fix scale/drag issue                           :builder:web:bug:
+   - probably just need to multiple/divide the scale by the offset
+** TODO [#A] Fix TypeError bug                              :patcher:web:bug:
+   - to trigger, select a pedal in Builder mode
+   - start from scratch
+   - switch to patcher mode
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up updating knob values for existing patch      :server:
    - https://react.semantic-ui.com/collections/menu/

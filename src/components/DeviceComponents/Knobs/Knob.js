@@ -6,6 +6,7 @@ import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnob
 import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
 import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
 import { gridLock } from "../../../helpers/Helpers";
+import { PropTypes } from "prop-types";
 
 const KnobDiv = styled(motion.div)`
   pointer-events: ${props => (props.disableKnobs ? "none" : "")};
@@ -126,3 +127,12 @@ export const Knob = React.memo(
     );
   }
 );
+
+Knob.propTypes = {
+  knobDetails: PropTypes.object,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool,
+  drag: PropTypes.bool,
+  tapKnobsIn: PropTypes.bool,
+  dispatch: PropTypes.func
+};

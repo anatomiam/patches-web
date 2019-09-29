@@ -1,10 +1,14 @@
 import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
-import { DivLabeledColorPicker, InputColorPicker } from "../../Modes/PageStyles";
+import {
+  DivLabeledColorPicker,
+  InputColorPicker
+} from "../../Modes/PageStyles";
 import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
+import { PropTypes } from "prop-types";
 
 const PedalFormSchema = Yup.object().shape({
   width: Yup.number()
@@ -130,3 +134,12 @@ export const PedalForm = React.memo(
     );
   }
 );
+
+PedalForm.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  name: PropTypes.string,
+  color: PropTypes.string,
+  id: PropTypes.string,
+  dispatch: PropTypes.func
+};

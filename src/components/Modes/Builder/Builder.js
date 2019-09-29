@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import { AvailablePedals } from "../../Forms/Shared/AvailablePedals";
@@ -134,5 +135,7 @@ const Builder = ({ pedals }) => {
     </DivContainer>
   );
 };
+
+Builder.propTypes = { pedals: PropTypes.array };
 
 export default Builder;

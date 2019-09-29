@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
   return (
@@ -19,3 +20,8 @@ export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
     />
   );
 });
+
+DeleteSelectedKnobButton.propTypes = {
+  knobId: PropTypes.string,
+  dispatch: PropTypes.func
+};

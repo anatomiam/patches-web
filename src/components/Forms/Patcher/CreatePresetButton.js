@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
 import { getPatchesToCreate } from "../../../helpers/Helpers";
+import { PropTypes } from "prop-types";
 
 const CREATE_PRESET = gql`
   mutation CreatePreset(
@@ -51,3 +52,5 @@ export const CreatePresetButton = React.memo(({ localState }) => {
     </Form>
   );
 });
+
+CreatePresetButton.propTypes = { localState: PropTypes.object };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const Scaler = React.memo(({ scale, dispatch }) => {
   return (
@@ -18,3 +19,5 @@ export const Scaler = React.memo(({ scale, dispatch }) => {
     </div>
   );
 });
+
+Scaler.propTypes = { scale: PropTypes.number, dispatch: PropTypes.func };

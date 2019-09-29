@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Select } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const AvailablePresets = React.memo(({ presets, dispatch }) => {
   const [selectedPresetName, setSelectedPresetName] = useState("");
@@ -27,3 +28,8 @@ export const AvailablePresets = React.memo(({ presets, dispatch }) => {
     />
   );
 });
+
+AvailablePresets.propTypes = {
+  presets: PropTypes.array,
+  dispatch: PropTypes.func
+};

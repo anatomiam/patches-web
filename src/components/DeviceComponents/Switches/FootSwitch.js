@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { PropTypes } from "prop-types";
 
 const FootSwitchDiv = styled(motion.div)`
   position: absolute;
@@ -52,3 +53,10 @@ export const FootSwitch = React.memo(
     );
   }
 );
+
+FootSwitch.propTypes = {
+  footSwitchDetails: PropTypes.object,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool,
+  dispatch: PropTypes.func
+};

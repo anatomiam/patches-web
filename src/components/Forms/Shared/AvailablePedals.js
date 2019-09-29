@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Select } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
   const [selectedPedalName, setSelectedPedalName] = useState("");
@@ -28,3 +29,8 @@ export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
     />
   );
 });
+
+AvailablePedals.propTypes = {
+  pedals: PropTypes.array,
+  dispatch: PropTypes.func
+};

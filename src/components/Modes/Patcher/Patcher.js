@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import { AvailablePedals } from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
 import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
@@ -74,5 +75,7 @@ const Patcher = ({ pedals, presets }) => {
     </DivContainer>
   );
 };
+
+Patcher.propTypes = { pedals: PropTypes.array, presets: PropTypes.array };
 
 export default Patcher;

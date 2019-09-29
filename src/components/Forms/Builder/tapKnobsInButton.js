@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const TapKnobsInButton = React.memo(({ tapKnobsIn, dispatch }) => {
   return (
@@ -16,3 +17,8 @@ export const TapKnobsInButton = React.memo(({ tapKnobsIn, dispatch }) => {
     />
   );
 });
+
+TapKnobsInButton.propTypes = {
+  tapKnobsIn: PropTypes.bool,
+  dispatch: PropTypes.func
+};

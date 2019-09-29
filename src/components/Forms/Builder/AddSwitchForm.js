@@ -4,6 +4,7 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";
+import { PropTypes } from "prop-types";
 
 const AddSwitchFormSchema = Yup.object().shape({
   cx: Yup.number()
@@ -123,3 +124,5 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
     </Formik>
   );
 });
+
+AddSwitchForm.propTypes = { dispatch: PropTypes.func };

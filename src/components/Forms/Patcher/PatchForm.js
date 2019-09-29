@@ -4,6 +4,7 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, pick, omit } from "lodash";
+import { PropTypes } from "prop-types";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -132,3 +133,10 @@ export const PatchForm = React.memo(
     );
   }
 );
+
+PatchForm.propTypes = {
+  patchDetails: PropTypes.object,
+  selectedComponentId: PropTypes.string,
+  knobs: PropTypes.array,
+  dispatch: PropTypes.func
+};

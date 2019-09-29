@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 
 export const DragKnobButton = React.memo(({ drag, dispatch }) => {
   return (
@@ -16,3 +17,8 @@ export const DragKnobButton = React.memo(({ drag, dispatch }) => {
     />
   );
 });
+
+DragKnobButton.propTypes = {
+  drag: PropTypes.bool,
+  dispatch: PropTypes.func
+};

@@ -3,6 +3,7 @@ import { ComponentSwitcher } from "../ComponentSwitcher";
 import styled from "styled-components";
 import { uniqueId } from "lodash";
 import { motion } from "framer-motion";
+import { PropTypes } from "prop-types";
 
 const PedalDiv = styled(motion.div)`
   position: relative;
@@ -62,3 +63,15 @@ export const Pedal = React.memo(
     );
   }
 );
+
+Pedal.propTypes = {
+  knobs: PropTypes.array,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  color: PropTypes.string,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool,
+  drag: PropTypes.bool,
+  tapKnobsIn: PropTypes.bool,
+  dispatch: PropTypes.func
+};

@@ -1,10 +1,14 @@
 import React from "react";
 import { Button, Input, Form, Label } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
-import { DivLabeledColorPicker, InputColorPicker } from "../../Modes/PageStyles";
+import {
+  DivLabeledColorPicker,
+  InputColorPicker
+} from "../../Modes/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";
+import { PropTypes } from "prop-types";
 
 const AddKnobFormSchema = Yup.object().shape({
   cx: Yup.number()
@@ -159,3 +163,5 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
     </Formik>
   );
 });
+
+AddKnobForm.propTypes = { dispatch: PropTypes.func };
