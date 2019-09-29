@@ -5,6 +5,7 @@ import { Popup } from "semantic-ui-react";
 import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnobButton";
 import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
 import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
+import { gridLock } from "../../../helpers/Helpers";
 
 const KnobDiv = styled(motion.div)`
   pointer-events: ${props => (props.disableKnobs ? "none" : "")};
@@ -18,10 +19,6 @@ const KnobDiv = styled(motion.div)`
   left: ${props => props.left + "px"};
   top: ${props => props.top + "px"};
 `;
-
-const gridLock = (target, step) => {
-  return Math.round(target / step) * step;
-};
 
 export const Knob = React.memo(
   ({ knobDetails, builder, patcher, drag, tapKnobsIn, dispatch }) => {

@@ -27,6 +27,10 @@ const patchesModel = {
   notes: null
 };
 
+export const gridLock = (target, step) => {
+  return Math.round(target / step) * step;
+};
+
 export const getUpdatedKnobs = (oldKnobs, newKnobs) => {
   const knobsToUpdate = oldKnobs.map(oldKnob => {
     const index = findIndex(newKnobs, { id: oldKnob.id });
