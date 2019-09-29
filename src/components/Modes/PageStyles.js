@@ -31,6 +31,7 @@ export const DivContainer = styled.div`
 `;
 
 export const DivPedal = styled.div`
+  transform: ${props => `scale(${props.scale})`};
   grid-column: 1 / 6;
   place-self: start center;
   @media only screen and (min-width: ${size.tablet}) {

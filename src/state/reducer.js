@@ -105,6 +105,14 @@ export const reducer = (state, action) => {
           tapKnobsIn: !state.localState.tapKnobsIn
         }
       };
+    case "SET_SCALE":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          scale: action.scale
+        }
+      };
     case "ADD_KNOB":
       return {
         ...state,
@@ -159,6 +167,7 @@ export const reducer = (state, action) => {
           selectedComponentId: null,
           selectedComponentPosition: 0,
           drag: false,
+          scale: 1,
           updatedKnobPositions: [],
           knobs: [],
           originalKnobs: [],

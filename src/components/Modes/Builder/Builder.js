@@ -10,6 +10,7 @@ import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { DragKnobButton } from "../../Forms/Builder/DragKnobButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { StartFromScratchButton } from "../../Forms/Builder/StartFromScratchButton";
+import { Scaler } from "../General/Scaler";
 import { Accordion, Icon } from "semantic-ui-react";
 import {
   DivContainer,
@@ -27,6 +28,7 @@ const Builder = ({ pedals }) => {
   const { width, height, name, color, id } = localState.pedalDetails;
   const {
     knobs,
+    scale,
     isNewPedal,
     selectedComponentId,
     selectedComponentPosition,
@@ -43,7 +45,7 @@ const Builder = ({ pedals }) => {
 
   return (
     <DivContainer>
-      <DivPedal>
+      <DivPedal scale={scale}>
         <Pedal
           knobs={knobs}
           width={width}
@@ -61,6 +63,7 @@ const Builder = ({ pedals }) => {
         </DivPedalSelector>
         <DragKnobButton drag={drag} dispatch={dispatch} />
         <TapKnobsInButton tapKnobsIn={tapKnobsIn} dispatch={dispatch} />
+        <Scaler scale={scale} dispatch={dispatch} />
         <DivForm>
           <h2>{name}</h2>
           <Accordion styled>

@@ -5,6 +5,7 @@ export const localState = {
   selectedComponentPosition: 0,
   drag: false,
   tapKnobsIn: false,
+  scale: 1,
   updatedKnobPositions: [],
   knobs: [],
   originalKnobs: [],

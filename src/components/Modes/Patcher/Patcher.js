@@ -7,6 +7,7 @@ import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import "../../../index.css";
 import { useStateValue } from "../../../state/StateProvider";
 import { CreatePresetButton } from "../../Forms/Patcher/CreatePresetButton";
+import { Scaler } from "../General/Scaler";
 import {
   DivContainer,
   DivDetails,
@@ -22,6 +23,7 @@ const Patcher = ({ pedals, presets }) => {
   const { width, height, color } = localState.pedalDetails;
   const {
     knobs,
+    scale,
     patchDetails,
     selectedComponentId,
     selectedComponentPosition
@@ -33,7 +35,7 @@ const Patcher = ({ pedals, presets }) => {
 
   return (
     <DivContainer>
-      <DivPedal>
+      <DivPedal scale={scale}>
         <Pedal
           knobs={knobs}
           width={width}
@@ -48,6 +50,7 @@ const Patcher = ({ pedals, presets }) => {
           <AvailablePedals pedals={pedals} dispatch={dispatch} />
           <AvailablePresets presets={pedalPresets} dispatch={dispatch} />
         </DivPedalSelector>
+        <Scaler scale={scale} dispatch={dispatch} />
         <DivNotes>
           <PatchForm
             patchDetails={patchDetails}
