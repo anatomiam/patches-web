@@ -37,17 +37,19 @@ export const Switch = React.memo(
           type: "SET_SELECTED_COMPONENT_ID",
           id
         });
+      }
+    };
+    const builderProps = {};
+    const patcherProps = {
+      whileHover: { scale: 1.1 },
+      whileTap: { scale: 0.95 },
+      onTapStart: event => {
         dispatch({
           type: "SET_SELECTED_COMPONENT_POSITION",
           knobId: id,
           position: (position + 1) % numberOfPositions
         });
       }
-    };
-    const builderProps = {};
-    const patcherProps = {
-      whileHover: { scale: 1.1 },
-      whileTap: { scale: 0.95 }
     };
 
     return (

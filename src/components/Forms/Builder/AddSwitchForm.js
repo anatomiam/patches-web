@@ -46,6 +46,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
             cx: values.cx,
             cy: values.cy,
             width: values.width,
+            position: 0,
             description: values.description,
             id: uniqueId("switch-")
           }
