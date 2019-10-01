@@ -14,7 +14,7 @@ const SwitchDiv = styled(motion.div)`
 export const Switch = React.memo(
   ({ switchDetails, builder, patcher, dispatch }) => {
     // TODO better names for these variables
-    const { cx, cy, width, id } = switchDetails;
+    const { cx, cy, width, id, position } = switchDetails;
     const x = cx;
     const y = cy;
     const _width = width;
@@ -25,19 +25,22 @@ export const Switch = React.memo(
     const _cx = x - _width / 2;
     const _cy = y - height / 2;
     const r = rx * 0.75;
-    // const numberOfPositions = 3;
-    // const positions = {
-    //   2: [x - _width / 4, x + _width / 4],
-    //   3: [x - _width / 4, x, x + _width / 4],
-    //   4: [x - _width / 4, x - _width / 8, x + _width / 8, x + _width / 4]
-    // };
-    // const position = positions[numberOfPositions];
+    const numberOfPositions = 3;
+    const switchPositions = {
+      3: [r * 1.3, width / 2, width - r * 1.3]
+    };
+    const switchPosition = switchPositions[numberOfPositions];
 
     const sharedProps = {
       onTapStart: event => {
         dispatch({
           type: "SET_SELECTED_COMPONENT_ID",
           id
+        });
+        dispatch({
+          type: "SET_SELECTED_COMPONENT_POSITION",
+          knobId: id,
+          position: (position + 1) % numberOfPositions
         });
       }
     };
@@ -71,7 +74,7 @@ export const Switch = React.memo(
             />
             <circle
               className="knob component"
-              cx={rx}
+              cx={switchPosition[position]}
               cy={rx}
               r={r}
               fill="darkgrey"
