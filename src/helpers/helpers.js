@@ -8,6 +8,7 @@ export const knobsToCreateModel = {
   cy: null,
   r: null,
   position: null,
+  step: null,
   width: null
 };
 
@@ -18,6 +19,7 @@ export const knobsToUpdateModel = {
   cy: null,
   r: null,
   position: null,
+  step: null,
   width: null
 };
 

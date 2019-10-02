@@ -368,3 +368,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Decide if I need 'step' on Patches, if not, remove :builder:server:
+  CLOSED: [2019-10-02 Wed 12:51]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-10-02 Wed 12:51
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

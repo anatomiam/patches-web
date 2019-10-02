@@ -47,6 +47,7 @@ const PEDAL_QUERY = gql`
         cy
         r
         position
+        steps
         width
       }
     }
