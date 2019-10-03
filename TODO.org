@@ -16,11 +16,9 @@
 ** TODO [#B] Set up updating knob values for existing patch     :builder:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
-** TODO [#B] Add on/off/whateverelse indicators                 :builder:web:
+** STARTED [#B] Add on/off/whateverelse indicators              :builder:web:
 ** TODO [#B] Improve names of in general                    :maintenance:web:
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
-** STARTED [#C] Switch component 'steps'                     :patcher:web:ux:
-   - [[https://medium.com/@steveruiz/prototyping-a-switch-in-framer-part-i-e46f72ac64a6][like this?]]
 * Alpha
 ** TODO [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
 ** TODO [#B] Set up user login                                       :server:

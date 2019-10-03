@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
+import { AddIndicatorForm } from "../../Forms/Builder/AddIndicatorForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import { AvailablePedals } from "../../Forms/Shared/AvailablePedals";
 import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
@@ -109,6 +110,17 @@ const Builder = ({ pedals }) => {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
               <AddSwitchForm dispatch={dispatch} />
+            </Accordion.Content>
+            <Accordion.Title
+              active={activeIndex === 3}
+              index={3}
+              onClick={handleClick}
+            >
+              <Icon name="toggle on" />
+              Add an Indicator
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 3}>
+              <AddIndicatorForm dispatch={dispatch} />
             </Accordion.Content>
           </Accordion>
         </DivForm>

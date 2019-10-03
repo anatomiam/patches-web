@@ -2,6 +2,7 @@ import React from "react";
 import { FootSwitch } from "./Switches/FootSwitch";
 import { Knob } from "./Knobs/Knob";
 import { Switch } from "./Switches/Switch";
+import { Indicator } from "./Switches/Indicator";
 import { uniqueId } from "lodash";
 import { PropTypes } from "prop-types";
 
@@ -16,6 +17,16 @@ export const ComponentSwitcher = React.memo(
                 <FootSwitch
                   key={uniqueId("footswitch-key")}
                   footSwitchDetails={knob}
+                  dispatch={dispatch}
+                  builder={builder}
+                  patcher={patcher}
+                />
+              );
+            case "Indicator":
+              return (
+                <Indicator
+                  key={uniqueId("indicator-key")}
+                  indicatorDetails={knob}
                   dispatch={dispatch}
                   builder={builder}
                   patcher={patcher}
