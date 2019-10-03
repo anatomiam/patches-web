@@ -19,6 +19,10 @@ const AddSwitchFormSchema = Yup.object().shape({
     .min(1, "Width must be at least 1")
     .max(750, "Width cannot be greater than 750 pixels")
     .required("Width is required"),
+  steps: Yup.number()
+    .min(2, "Steps must be at least 2")
+    .max(3, "Steps cannot be greater than 3")
+    .required("Steps is required"),
   description: Yup.string()
     .min(2, "Description must be at least 2 characters long.")
     .max(50, "Description must be less than 50 characters long")
@@ -33,6 +37,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         cx: 0,
         cy: 0,
         width: 0,
+        steps: 2,
         description: ""
       }}
       validationSchema={AddSwitchFormSchema}
@@ -47,6 +52,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
             cy: values.cy,
             width: values.width,
             position: 0,
+            steps: values.steps,
             description: values.description,
             id: uniqueId("switch-")
           }
@@ -62,7 +68,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         handleReset,
         isSubmitting,
         handleSubmit
-      }) => (
+            }) => (
         <Form
           onSubmit={event => {
             event.preventDefault();
@@ -100,6 +106,17 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
               type="number"
               onChange={handleChange}
               value={values.width}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              id="steps"
+              label="Steps"
+              placeholder="Set Steps"
+              name="steps"
+              type="number"
+              onChange={handleChange}
+              value={values.steps}
             />
           </Form.Field>
           <Form.Field>

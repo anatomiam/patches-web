@@ -14,7 +14,7 @@ const SwitchDiv = styled(motion.div)`
 export const Switch = React.memo(
   ({ switchDetails, builder, patcher, dispatch }) => {
     // TODO better names for these variables
-    const { cx, cy, width, id, position } = switchDetails;
+    const { cx, cy, width, id, position, steps } = switchDetails;
     const x = cx;
     const y = cy;
     const _width = width;
@@ -25,8 +25,9 @@ export const Switch = React.memo(
     const _cx = x - _width / 2;
     const _cy = y - height / 2;
     const r = rx * 0.75;
-    const numberOfPositions = 3;
+    const numberOfPositions = steps;
     const switchPositions = {
+      2: [r * 1.3, width - r * 1.3],
       3: [r * 1.3, width / 2, width - r * 1.3]
     };
     const switchPosition = switchPositions[numberOfPositions];
@@ -43,7 +44,7 @@ export const Switch = React.memo(
     const patcherProps = {
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
-      onTapStart: event => {
+      onTap: event => {
         dispatch({
           type: "SET_SELECTED_COMPONENT_POSITION",
           knobId: id,
