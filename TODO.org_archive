@@ -389,3 +389,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_TODO: DONE
   :END:
   - [[https://medium.com/@steveruiz/prototyping-a-switch-in-framer-part-i-e46f72ac64a6][like this?]]
+
+* DONE [#B] Set up updating knob values for existing patch      :builder:web:
+  CLOSED: [2019-10-04 Fri 08:53]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-10-04 Fri 08:53
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

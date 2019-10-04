@@ -9,11 +9,10 @@
    - start from scratch
    - switch to patcher mode
 ** TODO [#B] Set up patch information table                     :patcher:web:
-** TODO [#B] Set up updating knob values for existing patch      :server:
+** STARTED [#B] Set up updating knob values for existing patch       :server:
    - https://react.semantic-ui.com/collections/menu/
    - https://react.semantic-ui.com/elements/button/
    - https://react.semantic-ui.com/modules/popup/
-** TODO [#B] Set up updating knob values for existing patch     :builder:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
 ** STARTED [#B] Add on/off/whateverelse indicators              :builder:web:
