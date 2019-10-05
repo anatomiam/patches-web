@@ -8,6 +8,7 @@
    - to trigger, select a pedal in Builder mode
    - start from scratch
    - switch to patcher mode
+** TODO [#A] Replace calls to restructureDeletedKnobs with restructureKnobsToCreate, rename :patcher:web:maintenance:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
@@ -19,7 +20,7 @@
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
 ** TODO [#B] Set up form for entering SVG path                 :builder:web
    - add to accordian
-** TODO [#B] Add tests                                      :maintenance:web:
+** STARTED [#B] Add tests                                   :maintenance:web:
 ** TODO [#C] Create example pedals                                   :server:
 ** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
 ** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
