@@ -3,11 +3,7 @@ import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
-import {
-  patchesToUpdateModel,
-  getUpdatedKnobs,
-  restructureUpdatedKnobs
-} from "../../../helpers/Helpers";
+import { restructureUpdatedPatches } from "../../../helpers/Helpers";
 
 const UPDATE_PRESET = gql`
   mutation UpdatePreset(
@@ -16,10 +12,10 @@ const UPDATE_PRESET = gql`
     $description: String
     $patchesToUpdate: [UpdatePatchesInput]
   ) {
-    updatePedal(
+    updatePreset(
       id: $id
       name: $name
-      desctiption: $description
+      description: $description
       patchesToUpdate: $patchesToUpdate
     ) {
       id
@@ -28,14 +24,13 @@ const UPDATE_PRESET = gql`
 `;
 
 export const UpdatePresetButton = React.memo(({ localState }) => {
-  const { patches, originalPatches, presetDetails } = localState;
-  const { name, description, id } = presetDetails;
+  const { knobs, patchDetails } = localState;
+  const { patchNotes, knobNotes } = patchDetails;
+  const { description, name, id } = patchNotes;
+
   const [updatePreset] = useMutation(UPDATE_PRESET);
 
-  const patchesToUpdate = restructureUpdatedKnobs(
-    getUpdatedKnobs(originalPatches, patches),
-    patchesToUpdateModel
-  );
+  const patchesToUpdate = restructureUpdatedPatches(knobs, knobNotes);
 
   return (
     <Form>

@@ -8,6 +8,7 @@ import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import "../../../index.css";
 import { useStateValue } from "../../../state/StateProvider";
 import { CreatePresetButton } from "../../Forms/Patcher/CreatePresetButton";
+import { UpdatePresetButton } from "../../Forms/Patcher/UpdatePresetButton";
 import { Scaler } from "../General/Scaler";
 import {
   DivContainer,
@@ -70,6 +71,9 @@ const Patcher = ({ pedals, presets }) => {
         </DivDetails>
         <DivSubmit>
           <CreatePresetButton localState={localState} />
+        </DivSubmit>
+        <DivSubmit>
+          <UpdatePresetButton localState={localState} />
         </DivSubmit>
       </DivTools>
     </DivContainer>

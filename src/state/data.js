@@ -6,15 +6,15 @@ export const localState = {
   drag: false,
   tapKnobsIn: false,
   scale: 1,
-  updatedKnobPositions: [],
   knobs: [],
   originalKnobs: [],
   patchDetails: {
     patchNotes: {
       name: "",
-      description: ""
+      description: "",
+      id: ""
     },
-    knobNotes: []
+    knobNotes: {}
   },
   pedalDetails: {
     name: "",

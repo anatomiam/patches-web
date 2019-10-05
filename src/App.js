@@ -20,6 +20,7 @@ const PRESET_QUERY = gql`
         id
       }
       patches {
+        id
         knob {
           id
         }

@@ -116,6 +116,7 @@ export const getPatchesToCreate = (knobs, knobNotes) => {
     })
     .map(knob => {
       return {
+        // square brackets are around knob.id because pick takes an array as the second parameter
         notes: pick(knobNotes, [knob.id])[knob.id],
         ...knob
       };
@@ -127,4 +128,16 @@ export const getPatchesToCreate = (knobs, knobNotes) => {
         notes: patch.notes
       };
     });
+};
+
+export const restructureUpdatedPatches = (knobs, knobNotes) => {
+  return knobs.map(knob => {
+    return {
+      id: knob.patchId,
+      details: {
+        position: knob.position,
+        notes: knobNotes[knob.id]
+      }
+    };
+  });
 };

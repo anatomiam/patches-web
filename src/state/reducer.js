@@ -32,10 +32,13 @@ export const reducer = (state, action) => {
         const foundKnob = action.preset.patches.find(patch => {
           return knob.id === patch.knob.id;
         });
-        return foundKnob ? { ...knob, position: foundKnob.position } : knob;
+        return foundKnob
+          ? { ...knob, position: foundKnob.position, patchId: foundKnob.id }
+          : knob;
       });
 
       const patchNotes = {
+        id: action.preset.id,
         name: action.preset.name,
         description: action.preset.description
       };
@@ -47,7 +50,9 @@ export const reducer = (state, action) => {
         localState: {
           ...state.localState,
           patchDetails: { patchNotes, knobNotes },
-          knobs: updatedPositions
+          knobs: updatedPositions,
+          originalKnobs: updatedPositions,
+          patches: action.preset.patches
         }
       };
     case "SET_SELECTED_COMPONENT_ID":
@@ -168,12 +173,15 @@ export const reducer = (state, action) => {
           selectedComponentPosition: 0,
           drag: false,
           scale: 1,
-          updatedKnobPositions: [],
           knobs: [],
           originalKnobs: [],
           patchDetails: {
-            name: "",
-            description: ""
+            patchNotes: {
+              name: "",
+              description: "",
+              id: ""
+            },
+            knobNotes: {}
           },
           pedalDetails: {
             name: "",
