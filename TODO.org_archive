@@ -399,3 +399,26 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Set up updating knob values for existing patch           :server:
+  CLOSED: [2019-10-05 Sat 10:36]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-10-05 Sat 10:36
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - https://react.semantic-ui.com/collections/menu/
+  - https://react.semantic-ui.com/elements/button/
+  - https://react.semantic-ui.com/modules/popup/
+
+* DONE [#B] Add on/off/whateverelse indicators                  :builder:web:
+  CLOSED: [2019-10-05 Sat 10:36]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-10-05 Sat 10:36
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
