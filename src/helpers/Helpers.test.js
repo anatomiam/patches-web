@@ -1,12 +1,17 @@
 import {
+  flattenKnobObjects,
   flattenKnobNotes,
+  getPatchesToCreate,
+  getUpdatedKnobs,
+  getDeletedKnobs,
+  getNewKnobs,
   gridLock,
   knobsToUpdateModel,
   knobsToCreateModel,
   restructureDeletedKnobs,
   restructureUpdatedKnobs,
   restructureKnobsToCreate,
-  flattenKnobObjects
+  restructureUpdatedPatches
 } from "./Helpers";
 
 it("rounds to the nearest 'step'", () => {
@@ -363,4 +368,488 @@ it("creates an object from array of patches whos keys are the knobs ids, and not
   };
 
   expect(flattenKnobNotes(patches)).toEqual(flattenedNotes);
+});
+
+it("should combine knobs and knob notes into an array of objects for creating patches", () => {
+  const knobs = [
+    {
+      id: "ck19isb7z00df0789bhskhqgw",
+      type: "Knob",
+      description: "asdadf",
+      color: "#A9A9A9",
+      cx: 50,
+      cy: 50,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck19isb8600dh07898kjox85v",
+      type: "Switch",
+      description: "adadf",
+      color: null,
+      cx: 50,
+      cy: 85,
+      r: null,
+      position: 1,
+      steps: 3,
+      width: 25,
+      __typename: "Knob"
+    }
+  ];
+  const knobNotes = {
+    ck19isb7z00df0789bhskhqgw: "knob1",
+    ck19isb8600dh07898kjox85v: "switch"
+  };
+  const patchesToCreate = [
+    {
+      knob: "ck19isb7z00df0789bhskhqgw",
+      position: 0,
+      notes: "knob1"
+    },
+    {
+      knob: "ck19isb8600dh07898kjox85v",
+      position: 1,
+      notes: "switch"
+    }
+  ];
+  expect(getPatchesToCreate(knobs, knobNotes)).toEqual(patchesToCreate);
+});
+
+it("should combine knobs and knob notes into an array of objects for updating patches", () => {
+  const knobs = [
+    {
+      id: "ck19isb7z00df0789bhskhqgw",
+      type: "Knob",
+      description: "asdadf",
+      color: "#A9A9A9",
+      cx: 50,
+      cy: 50,
+      r: 20,
+      position: 66.33984375,
+      steps: 0,
+      width: null,
+      __typename: "Knob",
+      patchId: "ck19ist3i00e207896uw94wwh"
+    },
+    {
+      id: "ck19isb8600dh07898kjox85v",
+      type: "Switch",
+      description: "adadf",
+      color: null,
+      cx: 50,
+      cy: 85,
+      r: null,
+      position: 1,
+      steps: 3,
+      width: 25,
+      __typename: "Knob",
+      patchId: "ck19ist4400e50789ozhuhn3n"
+    }
+  ];
+  const knobNotes = {
+    ck19isb7z00df0789bhskhqgw: "knob",
+    ck19isb8600dh07898kjox85v: "switch"
+  };
+  const patchesToUpdate = [
+    {
+      id: "ck19ist3i00e207896uw94wwh",
+      details: {
+        position: 66.33984375,
+        notes: "knob"
+      }
+    },
+    {
+      id: "ck19ist4400e50789ozhuhn3n",
+      details: {
+        position: 1,
+        notes: "switch"
+      }
+    }
+  ];
+  expect(restructureUpdatedPatches(knobs, knobNotes)).toEqual(patchesToUpdate);
+});
+
+it("should create an array of knobs to update", () => {
+  const originalKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 220,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 130,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9t03uz0889hqdv6z7a",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 11.86328125,
+      cy: 15.86328125,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    }
+  ];
+  const newKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 265,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 190,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    },
+    {
+      type: "Knob",
+      cx: 15.9296875,
+      cy: 25.96484375,
+      r: 20,
+      position: 0,
+      color: "#A9A9A9",
+      description: "Knob",
+      id: "knob-139"
+    }
+  ];
+  const updatedKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 265,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 190,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    }
+  ];
+  expect(getUpdatedKnobs(originalKnobs, newKnobs)).toEqual(updatedKnobs);
+});
+
+it("should create an array of knobs to delete", () => {
+  const originalKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 220,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 130,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9t03uz0889hqdv6z7a",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 11.86328125,
+      cy: 15.86328125,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    }
+  ];
+  const newKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 265,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 190,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    },
+    {
+      type: "Knob",
+      cx: 15.9296875,
+      cy: 25.96484375,
+      r: 20,
+      position: 0,
+      color: "#A9A9A9",
+      description: "Knob",
+      id: "knob-139"
+    }
+  ];
+  const deletedKnobs = [
+    {
+      id: "ck145nh9t03uz0889hqdv6z7a",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 11.86328125,
+      cy: 15.86328125,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    }
+  ];
+  expect(getDeletedKnobs(originalKnobs, newKnobs)).toEqual(deletedKnobs);
+});
+
+it("should create an array of knobs to create", () => {
+  const originalKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 220,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 130,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9t03uz0889hqdv6z7a",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 11.86328125,
+      cy: 15.86328125,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    }
+  ];
+  const newKnobs = [
+    {
+      id: "ck145nh9m03uv0889nc8sltiz",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 265,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nh9q03ux0889ezes5pmg",
+      type: "Knob",
+      description: "Knob",
+      color: "#A9A9A9",
+      cx: 15,
+      cy: 190,
+      r: 20,
+      position: 0,
+      steps: 0,
+      width: null,
+      __typename: "Knob"
+    },
+    {
+      id: "ck145nha203v108893e7naq27",
+      type: "Switch",
+      description: "rrr",
+      color: null,
+      cx: 15,
+      cy: 100,
+      r: null,
+      position: 0,
+      steps: 3,
+      width: 70,
+      __typename: "Knob"
+    },
+    {
+      type: "Knob",
+      cx: 15.9296875,
+      cy: 25.96484375,
+      r: 20,
+      position: 0,
+      color: "#A9A9A9",
+      description: "Knob",
+      id: "knob-139"
+    }
+  ];
+  const knobsToCreate = [
+    {
+      type: "Knob",
+      cx: 15.9296875,
+      cy: 25.96484375,
+      r: 20,
+      position: 0,
+      color: "#A9A9A9",
+      description: "Knob",
+      id: "knob-139"
+    }
+  ];
+  expect(getNewKnobs(originalKnobs, newKnobs)).toEqual(knobsToCreate);
 });

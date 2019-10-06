@@ -100,12 +100,6 @@ export const flattenKnobNotes = patches => {
     .reduce((obj, knob) => ({ ...obj, ...knob }), {});
 };
 
-export const unflattenKnobNotes = patches => {
-  return Object.entries(patches).map(patch => {
-    return { knob: { id: patch[0] }, notes: patch[1] };
-  });
-};
-
 // TODO clean this up
 // grab only id, position, and notes from knobs,
 // change 'id' key to 'knob' to fit patch model

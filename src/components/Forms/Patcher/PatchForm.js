@@ -44,9 +44,6 @@ export const PatchForm = React.memo(
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
-          // const knobNotes = unflattenKnobNotes(
-          //   omit(values, ["name", "description"])
-          // );
           const knobNotes = omit(values, ["name", "description"]);
           const patchNotes = { id, ...pick(values, ["name", "description"]) };
 
