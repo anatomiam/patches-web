@@ -5,7 +5,7 @@ import { Button, Form } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
 import {
   knobsToCreateModel,
-  restructureKnobsToCreate
+  pickKeysFromArray
 } from "../../../helpers/Helpers";
 
 const CREATE_PEDAL = gql`
@@ -34,7 +34,7 @@ export const CreatePedalButton = React.memo(({ localState }) => {
   const { knobs, builder } = localState;
   const { name, width, height, color } = localState.pedalDetails;
   const [createPedal] = useMutation(CREATE_PEDAL);
-  const knobsToCreate = restructureKnobsToCreate(knobs, knobsToCreateModel);
+  const knobsToCreate = pickKeysFromArray(knobs, knobsToCreateModel);
 
   return (
     <Form>

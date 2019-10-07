@@ -8,7 +8,7 @@ import {
   gridLock,
   knobsToUpdateModel,
   knobsToCreateModel,
-  restructureDeletedKnobs,
+  pickKeysFromArray,
   restructureUpdatedKnobs,
   restructureKnobsToCreate,
   restructureUpdatedPatches
@@ -17,42 +17,6 @@ import {
 it("rounds to the nearest 'step'", () => {
   expect(gridLock(3.5, 5)).toEqual(5);
   expect(gridLock(142, 5)).toEqual(140);
-});
-
-it("returns an array of objects with only ids", () => {
-  const knobs = [
-    {
-      id: "ck19xy2ct00hu0789g21xtjj7",
-      type: "Knob",
-      description: "qwerqwer",
-      color: "#A9A9A9",
-      cx: 50,
-      cy: 50,
-      r: 25,
-      position: 0,
-      steps: 0,
-      width: null,
-      __typename: "Knob"
-    },
-    {
-      id: "ck19xy2dl00i007896wfjtxyl",
-      type: "Switch",
-      description: "asdf",
-      color: null,
-      cx: 50,
-      cy: 10,
-      r: null,
-      position: 0,
-      steps: 2,
-      width: 50,
-      __typename: "Knob"
-    }
-  ];
-  const deletedKnobs = [
-    { id: "ck19xy2ct00hu0789g21xtjj7" },
-    { id: "ck19xy2dl00i007896wfjtxyl" }
-  ];
-  expect(restructureDeletedKnobs(knobs)).toEqual(deletedKnobs);
 });
 
 it("restructures an array of knobs to update according to the defined model", () => {
@@ -221,9 +185,7 @@ it("restructures an array of knobs to create according to the defined model", ()
       width: 50
     }
   ];
-  expect(restructureKnobsToCreate(knobs, knobsToCreateModel)).toEqual(
-    updatedKnobs
-  );
+  expect(pickKeysFromArray(knobs, knobsToCreateModel)).toEqual(updatedKnobs);
 });
 
 it("creates an object from array of knobs whos keys are the knobs ids", () => {

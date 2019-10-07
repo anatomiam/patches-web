@@ -1,5 +1,8 @@
 import { filter, findIndex, isEqual, compact, pick, keys } from "lodash";
 
+export const knobsToDeleteModel = {
+  id: null
+};
 export const knobsToCreateModel = {
   type: null,
   description: null,
@@ -66,21 +69,15 @@ export const getNewKnobs = (oldKnobs, newKnobs) => {
   });
 };
 
-export const restructureDeletedKnobs = knobs => {
-  return knobs.map(knob => {
-    return { id: knob.id };
-  });
-};
-
 export const restructureUpdatedKnobs = (knobs, model) => {
   return knobs.map(knob => {
     return { id: knob.id, details: pick(knob, keys(model)) };
   });
 };
 
-export const restructureKnobsToCreate = (knobs, model) => {
-  return knobs.map(knob => {
-    return pick(knob, keys(model));
+export const pickKeysFromArray = (items, model) => {
+  return items.map(item => {
+    return pick(item, keys(model));
   });
 };
 

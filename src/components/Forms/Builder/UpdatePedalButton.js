@@ -5,13 +5,13 @@ import { Button, Form } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
 import {
   knobsToCreateModel,
+  knobsToDeleteModel,
   knobsToUpdateModel,
   getNewKnobs,
   getDeletedKnobs,
   getUpdatedKnobs,
   restructureUpdatedKnobs,
-  restructureKnobsToCreate,
-  restructureDeletedKnobs
+  pickKeysFromArray
 } from "../../../helpers/Helpers";
 
 const UPDATE_PEDAL = gql`
@@ -45,12 +45,13 @@ export const UpdatePedalButton = React.memo(({ localState }) => {
   const { name, width, height, color, id } = pedalDetails;
   const [updatePedal] = useMutation(UPDATE_PEDAL);
 
-  const knobsToCreate = restructureKnobsToCreate(
+  const knobsToCreate = pickKeysFromArray(
     getNewKnobs(originalKnobs, knobs),
     knobsToCreateModel
   );
-  const knobsToDelete = restructureDeletedKnobs(
-    getDeletedKnobs(originalKnobs, knobs)
+  const knobsToDelete = pickKeysFromArray(
+    getDeletedKnobs(originalKnobs, knobs),
+    knobsToDeleteModel
   );
   const knobsToUpdate = restructureUpdatedKnobs(
     getUpdatedKnobs(originalKnobs, knobs),
