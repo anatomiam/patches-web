@@ -45,8 +45,6 @@ export const DivPedal = styled.div`
 
 export const DivTools = styled.div`
   grid-column: 1 / 6;
-  display: flex;
-  flex-direction: column;
   @media only screen and (min-width: ${size.tablet}) {
     grid-column: 1 / 4;
     grid-row: 1 / 13;

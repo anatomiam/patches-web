@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Select } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
 
 export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
   const [selectedPedalName, setSelectedPedalName] = useState("");
 
   return (
-    <Select
+    <Dropdown
+      search
+      selection
       placeholder="-- Select a Pedal --"
       value={selectedPedalName}
       onChange={(e, data) => {

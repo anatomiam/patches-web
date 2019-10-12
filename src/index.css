@@ -2,3 +2,7 @@
 .icon-pointer {
   cursor: pointer;
 }
+
+.crosshair {
+  cursor: crosshair;
+}

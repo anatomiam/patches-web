@@ -10,14 +10,12 @@ import { PedalForm } from "../../Forms/Builder/PedalForm";
 import { useStateValue } from "../../../state/StateProvider";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
-import { StartFromScratchButton } from "../../Forms/Builder/StartFromScratchButton";
 import { Scaler } from "../General/Scaler";
-import { Icon, Menu, Popup } from "semantic-ui-react";
+import { Icon, Menu, Button, Popup } from "semantic-ui-react";
 import {
   DivContainer,
   DivDetails,
   DivPedal,
-  DivSubmit,
   DivTools
 } from "../PageStyles";
 
@@ -104,7 +102,6 @@ const Builder = ({ pedals }) => {
               />
             }
           />
-
           <Popup
             inverted
             basic
@@ -186,7 +183,7 @@ const Builder = ({ pedals }) => {
             <Icon
               name={drag ? "hand rock" : "hand paper"}
               className="icon-pointer"
-              color={drag ? "orange" : "white"}
+              color={drag ? "orange" : null}
             />
           </Menu.Item>
           <Menu.Item
@@ -204,9 +201,61 @@ const Builder = ({ pedals }) => {
             <Icon
               name={tapKnobsIn ? "add circle" : "times circle"}
               className="icon-pointer"
-              color={tapKnobsIn ? "yellow" : "white"}
+              color={tapKnobsIn ? "yellow" : null}
             />
           </Menu.Item>
+          <Popup
+            inverted
+            basic
+            on="click"
+            offset="50px, -50px"
+            style={{ marginLeft: "7px" }}
+            trigger={
+              <Menu.Item
+                name="start over"
+                active={activeItem === "start over"}
+                onClick={() => setActiveItem("start over")}
+              >
+                <Icon name="trash" className="icon-pointer" />
+              </Menu.Item>
+            }
+            content={
+              <Button
+                size="mini"
+                color="red"
+                content="Start from scratch?"
+                onClick={() => {
+                  dispatch({
+                    type: "START_FROM_SCRATCH"
+                  });
+                  setActiveItem("");
+                }}
+              />
+            }
+          />
+          <Popup
+            inverted
+            basic
+            on="click"
+            offset="50px, -50px"
+            style={{ marginLeft: "7px" }}
+            trigger={
+              <Menu.Item
+                name="save"
+                active={activeItem === "save"}
+                onClick={() => setActiveItem("save")}
+              >
+                <Icon name="save" className="icon-pointer" />
+              </Menu.Item>
+            }
+            content={
+              isNewPedal ? (
+                <CreatePedalButton localState={localState} />
+              ) : (
+                <UpdatePedalButton localState={localState} />
+              )
+            }
+          />
         </Menu>
 
         <Scaler scale={scale} dispatch={dispatch} />
@@ -219,16 +268,6 @@ const Builder = ({ pedals }) => {
             pedalDetails={localState.pedalDetails}
           />
         </DivDetails>
-        <DivSubmit>
-          {isNewPedal ? (
-            <CreatePedalButton localState={localState} />
-          ) : (
-            <UpdatePedalButton localState={localState} />
-          )}
-        </DivSubmit>
-        <DivSubmit>
-          <StartFromScratchButton dispatch={dispatch} />
-        </DivSubmit>
       </DivTools>
     </DivContainer>
   );

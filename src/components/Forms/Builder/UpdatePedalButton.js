@@ -61,6 +61,8 @@ export const UpdatePedalButton = React.memo(({ localState }) => {
   return (
     <Form>
       <Button
+        size="mini"
+        color="green"
         onClick={event => {
           event.preventDefault();
           updatePedal({

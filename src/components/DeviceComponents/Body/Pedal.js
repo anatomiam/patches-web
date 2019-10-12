@@ -25,6 +25,7 @@ export const Pedal = React.memo(
     dispatch
   }) => {
     const tapKnobsProps = {
+      className: "crosshair",
       onTap: (event, info) => {
         dispatch({
           type: "ADD_KNOB",

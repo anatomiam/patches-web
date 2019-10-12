@@ -39,6 +39,8 @@ export const CreatePedalButton = React.memo(({ localState }) => {
   return (
     <Form>
       <Button
+        size="mini"
+        color="green"
         onClick={event => {
           event.preventDefault();
           createPedal({
