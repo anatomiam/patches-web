@@ -1,46 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../index.css";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Menu, Icon, Popup } from "semantic-ui-react";
+import { PedalForm } from "../../Forms/Builder/PedalForm";
 
-const Pedal = styled(motion.div)`
-  width: 300px;
-  height: 400px;
-  border: 2px solid steelblue;
-  border-radius: 3%;
-`;
-
-const Knob = styled(motion.div)`
-  position: relative;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  top: 50px;
-  left: 50px;
+const DIV = styled(motion.div)`
+  padding: 5px;
 `;
 
 const Landing = () => {
-  const transition = {
-    min: 0,
-    max: 300,
-    restDelta: 10,
-    power: 0,
-    // Snap calculated target to nearest 50 pixels
-    modifyTarget: target => Math.round(target / 100) * 100
-  };
+  const [activeItem, setActiveItem] = useState("");
   return (
-    <Pedal>
-      <Knob
-        dragTransition={transition}
-        // whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.8 }}
-        drag
-      >
-        <svg width="50px" height="50px">
-          <circle cx={25} cy={25} r={25} stroke="red" fill="none" />
-        </svg>
-      </Knob>
-    </Pedal>
+    <DIV>
+      <Menu icon vertical borderless pointing inverted>
+        <Popup
+          inverted
+          basic
+          on="click"
+          offset="50px, -50px"
+          style={{ marginLeft: "7px" }}
+          trigger={
+            <Menu.Item
+              name="gamepad"
+              active={activeItem === "gamepad"}
+              onClick={() =>
+                activeItem !== "gamepad"
+                  ? setActiveItem("gamepad")
+                  : setActiveItem("")
+              }
+            >
+              <Icon name="gamepad" />
+            </Menu.Item>
+          }
+          content={<PedalForm />}
+        />
+
+        <Menu.Item
+          name="video camera"
+          active={activeItem === "video camera"}
+          onClick={() =>
+            activeItem !== "video camera"
+              ? setActiveItem("video camera")
+              : setActiveItem("")
+          }
+        >
+          <Icon name="video camera" />
+        </Menu.Item>
+        <Menu.Item
+          name="video play"
+          active={activeItem === "video play"}
+          onClick={() =>
+            activeItem !== "video play"
+              ? setActiveItem("video play")
+              : setActiveItem("")
+          }
+        >
+          <Icon name="video play" />
+        </Menu.Item>
+      </Menu>
+    </DIV>
   );
 };
 

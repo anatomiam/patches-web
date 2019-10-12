@@ -10,7 +10,6 @@ import {
   knobsToCreateModel,
   pickKeysFromArray,
   restructureUpdatedKnobs,
-  restructureKnobsToCreate,
   restructureUpdatedPatches
 } from "./Helpers";
 
