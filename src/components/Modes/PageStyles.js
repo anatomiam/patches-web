@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const size = {
   mobileS: "320px",
@@ -35,25 +36,28 @@ export const DivPedal = styled.div`
   grid-column: 1 / 6;
   place-self: start center;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 4 / 8;
+    grid-column: 2 / 8;
     grid-row: 1 / 13;
   }
   @media only screen and (min-width: ${size.laptop}) {
-    grid-column: 4 / 10;
+    grid-column: 2 / 10;
   }
 `;
 
 export const DivTools = styled.div`
   grid-column: 1 / 6;
+  position: fixed;
+  top: 100px;
+  left: 5px;
   @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 2;
     grid-row: 1 / 13;
   }
 `;
 
 export const DivForm = styled.div``;
 
-export const DivDetails = styled.div``;
+export const DivDetails = styled(motion.div)``;
 
 export const DivPedalDetails = styled.div``;
 

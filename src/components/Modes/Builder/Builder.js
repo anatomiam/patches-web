@@ -12,12 +12,7 @@ import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";
 import { Icon, Menu, Button, Popup } from "semantic-ui-react";
-import {
-  DivContainer,
-  DivDetails,
-  DivPedal,
-  DivTools
-} from "../PageStyles";
+import { DivContainer, DivDetails, DivPedal, DivTools } from "../PageStyles";
 
 const Builder = ({ pedals }) => {
   const [{ localState }, dispatch] = useStateValue();
@@ -257,18 +252,17 @@ const Builder = ({ pedals }) => {
             }
           />
         </Menu>
-
-        <Scaler scale={scale} dispatch={dispatch} />
-        <DivDetails>
-          <ComponentInfo
-            knobs={knobs}
-            dispatch={dispatch}
-            selectedComponentId={selectedComponentId}
-            selectedComponentPosition={selectedComponentPosition}
-            pedalDetails={localState.pedalDetails}
-          />
-        </DivDetails>
       </DivTools>
+      <DivDetails drag={true} dragMomentum={false}>
+        <ComponentInfo
+          knobs={knobs}
+          dispatch={dispatch}
+          selectedComponentId={selectedComponentId}
+          selectedComponentPosition={selectedComponentPosition}
+          pedalDetails={localState.pedalDetails}
+        />
+      </DivDetails>
+      <Scaler scale={scale} dispatch={dispatch} />
     </DivContainer>
   );
 };
