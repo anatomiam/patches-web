@@ -432,3 +432,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
+  CLOSED: [2019-11-02 Sat 11:45]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-02 Sat 11:45
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

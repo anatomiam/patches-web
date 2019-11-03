@@ -14,8 +14,9 @@
 ** TODO [#B] Improve names of in general                    :maintenance:web:
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 * Alpha
-** STARTED [#A] Improve toolbar - model after whimsical - [[https://react.semantic-ui.com/modules/popup/#variations-flowing][relevant semantic component]] :builder:web:
-** TODO [#B] Set up user login                                       :server:
+** STARTED [#B] Set up user login                                    :server:
+** TODO [#A] Store jwt in httponly cookies                  :auth:web:server:
+** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
 ** TODO [#B] Set up form for entering SVG path                 :builder:web
    - add to accordian
