@@ -1,10 +1,23 @@
 import React from "react";
 import { Button, Input, Form } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
 import { withRouter } from "react-router";
+
+const SIGNUP = gql`
+  mutation Signup($email: String!, $password: String!, $name: String!) {
+    signup(name: $name, email: $email, password: $password) {
+      token
+      user {
+        id
+      }
+    }
+  }
+`;
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
@@ -19,6 +32,7 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUpForm = React.memo(({ history }) => {
+  const [signup] = useMutation(SIGNUP);
   return (
     <Formik
       enableReinitialize
@@ -30,8 +44,16 @@ const SignUpForm = React.memo(({ history }) => {
       validationSchema={SignUpSchema}
       validateOnChange={false}
       validateOnBlur={false}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting }) => {
         console.log(values);
+        const response = await signup({
+          variables: {
+            name: values.username,
+            email: values.email,
+            password: values.password
+          }
+        });
+        console.log(response);
         // history.push("/");
         setSubmitting(false);
       }}
