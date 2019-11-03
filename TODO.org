@@ -31,6 +31,7 @@
 ** TODO [#C] Create default template pedal dimensions           :builder:web:
    - use pedalplaygrounds dimensions
 * Beta
+** TODO [#B] Figure out why setting cookie path fails :maintenance:server:bug:
 ** TODO [#B] Set up 'graph paper' for pedal background          :builder:web:
 ** TODO [#B] Set up Browser page                                :browser:web:
    - first step: display a list of patch names / descriptions
