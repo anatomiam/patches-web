@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Builder from "./components/Modes/Builder/Builder";
 import Patcher from "./components/Modes/Patcher/Patcher";
 import Landing from "./components/Modes/General/Landing";
+import Login from "./components/Modes/General/Login";
 import { reducer, initialState } from "./state/Reducer";
 import { StateProvider } from "./state/StateProvider";
 import { useQuery } from "@apollo/react-hooks";
@@ -101,6 +102,13 @@ const App = () => {
               active={activeTab === "patcher"}
               onClick={() => setActiveTab("patcher")}
             />
+            <Menu.Item
+              as={Link}
+              to="/login"
+              name="login"
+              active={activeTab === "login"}
+              onClick={() => setActiveTab("login")}
+            />
           </Menu>
         </Segment>
 
@@ -118,6 +126,7 @@ const App = () => {
             />
           )}
         />
+        <Route path="/login" render={() => <Login />} />
       </Router>
     </StateProvider>
   );

@@ -4,6 +4,7 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
+import { withRouter } from "react-router";
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
@@ -17,7 +18,7 @@ const SignUpSchema = Yup.object().shape({
     .required("Required")
 });
 
-export const SignUpForm = React.memo(() => {
+const SignUpForm = React.memo(({ history }) => {
   return (
     <Formik
       enableReinitialize
@@ -31,6 +32,7 @@ export const SignUpForm = React.memo(() => {
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
         console.log(values);
+        // history.push("/");
         setSubmitting(false);
       }}
     >
@@ -94,3 +96,5 @@ export const SignUpForm = React.memo(() => {
     </Formik>
   );
 });
+
+export const SignUpFormWithRouter = withRouter(SignUpForm);
