@@ -45,16 +45,19 @@ const SignUpForm = React.memo(({ history }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={async (values, { setSubmitting }) => {
-        console.log(values);
-        const response = await signup({
-          variables: {
-            name: values.username,
-            email: values.email,
-            password: values.password
-          }
-        });
-        console.log(response);
-        // history.push("/");
+        try {
+          const response = await signup({
+            variables: {
+              name: values.username,
+              email: values.email,
+              password: values.password
+            }
+          });
+          console.log(response);
+          // history.push("/");
+        } catch (e) {
+          console.log(e);
+        }
         setSubmitting(false);
       }}
     >
@@ -86,7 +89,7 @@ const SignUpForm = React.memo(({ history }) => {
           </Form.Field>
           <Form.Field>
             <Input
-              id="email"
+              id="signup-email"
               label="Email"
               placeholder="Set Email"
               name="email"
@@ -97,7 +100,7 @@ const SignUpForm = React.memo(({ history }) => {
           </Form.Field>
           <Form.Field>
             <Input
-              id="password"
+              id="signup-password"
               label="Password"
               placeholder="Set Password"
               name="password"
