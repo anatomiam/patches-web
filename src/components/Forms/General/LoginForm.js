@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Input, Form } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
+import { setAccessToken } from "../../../state/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";
@@ -46,8 +47,10 @@ const LoginForm = React.memo(({ history }) => {
               password: values.password
             }
           });
+          if (response && response.data) {
+            setAccessToken(response.data.login.token);
+          }
           // history.push("/");
-          console.log(response);
         } catch (e) {
           console.log(e);
         }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Builder from "./components/Modes/Builder/Builder";
 import Patcher from "./components/Modes/Patcher/Patcher";
 import Landing from "./components/Modes/General/Landing";
@@ -10,6 +10,7 @@ import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
+import { setAccessToken } from "./state/Auth";
 
 const PRESET_QUERY = gql`
   query PresetsByUser($userId: ID!) {
@@ -70,6 +71,16 @@ const App = () => {
   } = useQuery(PRESET_QUERY, {
     variables: { userId: "cju66ydwl000y0738rs8jz7yv" }
   });
+
+  useEffect(() => {
+    fetch("http://localhost:4000/refresh_token", {
+      method: "POST",
+      credentials: "include"
+    }).then(async res => {
+      const { accessToken } = await res.json();
+      setAccessToken(accessToken);
+    });
+  }, []);
 
   if (pedalsLoading) return "Loading Pedals...";
   if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
