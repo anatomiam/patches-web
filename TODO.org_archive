@@ -442,3 +442,23 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#B] Set up user login                                        :server:
+  CLOSED: [2019-11-05 Tue 07:51]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-05 Tue 07:51
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Store jwt in httponly cookies                   :auth:web:server:
+  CLOSED: [2019-11-05 Tue 07:51]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-05 Tue 07:52
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:

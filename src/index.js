@@ -19,21 +19,12 @@ import jwtDecode from "jwt-decode";
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "accessToken",
   isTokenValidOrUndefined: () => {
-    const token = getAccessToken();
-
-    if (!token) {
-      return true;
-    }
-
     try {
+      // returning false means the token needs to be refreshed
+      // returning true means do nothing and continue
+      const token = getAccessToken();
       const { exp } = jwtDecode(token);
-      if (Date.now() >= exp * 1000) {
-        console.log("need to refresh now");
-        return false;
-      } else {
-        console.log("don't need to refresh");
-        return true;
-      }
+      return Date.now() >= exp * 1000 && token ? false : true;
     } catch {
       return false;
     }
@@ -45,7 +36,6 @@ const tokenRefreshLink = new TokenRefreshLink({
     });
   },
   handleFetch: accessToken => {
-    console.log("setting token");
     setAccessToken(accessToken);
   },
   handleError: err => {

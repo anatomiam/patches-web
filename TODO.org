@@ -8,6 +8,7 @@
    - to trigger, select a pedal in Builder mode
    - start from scratch
    - switch to patcher mode
+** TODO [#A] Clean up Login page                                        :web:
 ** TODO [#B] Set up Dependabot                       :web:server:maintenance:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
@@ -15,8 +16,6 @@
 ** TODO [#B] Improve names of in general                    :maintenance:web:
 ** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
 * Alpha
-** STARTED [#B] Set up user login                                    :server:
-** TODO [#A] Store jwt in httponly cookies                  :auth:web:server:
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
 ** TODO [#B] Set up form for entering SVG path                 :builder:web
