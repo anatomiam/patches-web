@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Builder from "./components/Modes/Builder/Builder";
-import Patcher from "./components/Modes/Patcher/Patcher";
-import Landing from "./components/Modes/General/Landing";
-import Login from "./components/Modes/General/Login";
+import Builder from "./components/Pages/Builder/Builder";
+import Patcher from "./components/Pages/Patcher/Patcher";
+import Landing from "./components/Pages/General/Landing";
+import Login from "./components/Pages/General/Login";
 import { reducer, initialState } from "./state/Reducer";
 import { StateProvider } from "./state/StateProvider";
 import { useQuery } from "@apollo/react-hooks";
@@ -72,6 +72,7 @@ const App = () => {
     variables: { userId: "cju66ydwl000y0738rs8jz7yv" }
   });
 
+  // this might not be necessary now that apollo links are set up
   useEffect(() => {
     fetch("http://localhost:4000/refresh_token", {
       method: "POST",

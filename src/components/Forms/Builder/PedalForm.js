@@ -3,7 +3,7 @@ import { Button, Input, Form, Label } from "semantic-ui-react";
 import {
   DivLabeledColorPicker,
   InputColorPicker
-} from "../../Modes/PageStyles";
+} from "../../Pages/PageStyles";
 import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";

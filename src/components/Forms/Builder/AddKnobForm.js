@@ -4,7 +4,7 @@ import { ValidationErrors } from "../Shared/ValidationErrors";
 import {
   DivLabeledColorPicker,
   InputColorPicker
-} from "../../Modes/PageStyles";
+} from "../../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";

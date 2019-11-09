@@ -57,12 +57,22 @@ export const DivTools = styled.div`
 
 export const DivForm = styled.div``;
 
-export const DivDetails = styled(motion.div)``;
+export const DivDetails = styled(motion.div)`
+  z-index: 10;
+  grid-column: 1 / 6;
+  grid-row: 4;
+  @media only screen and (min-width: ${size.tablet}) {
+    grid-column: 7 / 9;
+    grid-row: 1;
+  }
+  @media only screen and (min-width: ${size.laptop}) {
+    grid-column: 8 / 10;
+  }
+`;
 
 export const DivPedalDetails = styled.div``;
 
 export const DivPedalSelector = styled.div``;
 
 export const DivSubmit = styled.div``;
-
 export const DivNotes = styled.div``;

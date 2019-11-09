@@ -8,8 +8,7 @@
    - to trigger, select a pedal in Builder mode
    - start from scratch
    - switch to patcher mode
-** TODO [#A] Clean up Login page                                        :web:
-** TODO [#B] Set up Dependabot                       :web:server:maintenance:
+** STARTED [#A] Clean up Login page                                     :web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
