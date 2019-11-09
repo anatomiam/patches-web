@@ -46,7 +46,7 @@
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Stable Release
 * Nice to haves
-** TODO [#B] Refactor to Typescript                         :maintenance:web:
+** STARTED [#B] Refactor to Typescript                      :maintenance:web:
    - https://github.com/piotrwitek/react-redux-typescript-guide
    - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
 
