@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input, Form } from "semantic-ui-react";
+import { Button, Input, Form, Header } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
 import { setAccessToken } from "../../../state/Auth";
 import { gql } from "apollo-boost";
@@ -8,6 +8,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
 import { withRouter } from "react-router";
+import styled from "styled-components";
 
 const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
@@ -20,6 +21,10 @@ const LOGIN = gql`
   }
 `;
 
+const LoginDiv = styled.div`
+  width: 50%;
+`;
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address`")
@@ -30,80 +35,76 @@ const LoginSchema = Yup.object().shape({
 const LoginForm: React.FC<{ history: any }> = React.memo(({ history }) => {
   const [login] = useMutation(LOGIN);
   return (
-    <Formik
-      enableReinitialize
-      initialValues={{
-        email: "",
-        password: ""
-      }}
-      validationSchema={LoginSchema}
-      validateOnChange={false}
-      validateOnBlur={false}
-      onSubmit={async (values, { setSubmitting }) => {
-        try {
-          const response = await login({
-            variables: {
-              email: values.email,
-              password: values.password
+    <LoginDiv>
+      <Header as="h2" color="violet" textAlign="center">
+        Login to your account
+      </Header>
+      <Formik
+        enableReinitialize
+        initialValues={{
+          email: "",
+          password: ""
+        }}
+        validationSchema={LoginSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            const response = await login({
+              variables: {
+                email: values.email,
+                password: values.password
+              }
+            });
+            if (response && response.data) {
+              setAccessToken(response.data.login.token);
             }
-          });
-          if (response && response.data) {
-            setAccessToken(response.data.login.token);
+            // history.push("/");
+          } catch (e) {
+            console.log(e);
           }
-          // history.push("/");
-        } catch (e) {
-          console.log(e);
-        }
-        setSubmitting(false);
-      }}
-    >
-      {({
-        dirty,
-        values,
-        errors,
-        handleChange,
-        handleReset,
-        isSubmitting,
-        handleSubmit
-      }) => (
-        <Form
-          onSubmit={event => {
-            event.preventDefault();
-            handleSubmit();
-          }}
-        >
-          <Form.Field>
-            <Input
-              id="login-email"
-              label="Email"
-              placeholder="Set Email"
-              name="email"
-              type="text"
-              onChange={handleChange}
-              value={values.email}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Input
-              id="login-password"
-              label="Password"
-              placeholder="Set Password"
-              name="password"
-              type="password"
-              onChange={handleChange}
-              value={values.password}
-            />
-          </Form.Field>
-          <Button type="submit" disabled={isSubmitting}>
-            Login
-          </Button>
-          <Button type="button" disabled={!dirty} onClick={handleReset}>
-            Reset
-          </Button>
-          {!isEmpty(errors) ? <ValidationErrors errors={errors} /> : null}
-        </Form>
-      )}
-    </Formik>
+          setSubmitting(false);
+        }}
+      >
+        {({ values, errors, handleChange, isSubmitting, handleSubmit }) => (
+          <Form
+            onSubmit={event => {
+              event.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <Form.Field>
+              <Input
+                id="login-email"
+                icon="user"
+                iconPosition="left"
+                placeholder="Email"
+                name="email"
+                type="text"
+                onChange={handleChange}
+                value={values.email}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                id="login-password"
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                name="password"
+                type="password"
+                onChange={handleChange}
+                value={values.password}
+              />
+            </Form.Field>
+            <Button type="submit" color="violet" disabled={isSubmitting}>
+              Login
+            </Button>
+            {!isEmpty(errors) ? <ValidationErrors errors={errors} /> : null}
+          </Form>
+        )}
+      </Formik>
+    </LoginDiv>
   );
 });
 
