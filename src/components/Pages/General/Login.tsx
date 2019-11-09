@@ -13,7 +13,7 @@ const LoginDiv = styled.div`
 
 const Landing = () => {
   const loggedIn = false;
-  const [isNewUser, setIsNewUser] = useState(false);
+  const [isNewUser, setIsNewUser] = useState(true);
 
   return (
     <>
@@ -21,14 +21,20 @@ const Landing = () => {
         <LoginDiv>
           <LoginFormWithRouter />
           <Message>
-            Are you new here? <a onClick={() => setIsNewUser(true)}>Join Us</a>
+            Are you new here?{" "}
+            <a className="icon-pointer" onClick={() => setIsNewUser(true)}>
+              Join Us
+            </a>
           </Message>
         </LoginDiv>
       ) : (
         <LoginDiv>
           <SignUpFormWithRouter />
           <Message>
-            Already a user? <a onClick={() => setIsNewUser(false)}>Login</a>
+            Already a user?{" "}
+            <a className="icon-pointer" onClick={() => setIsNewUser(false)}>
+              Login
+            </a>
           </Message>
         </LoginDiv>
       )}
