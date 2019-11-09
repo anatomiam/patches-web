@@ -1,9 +1,12 @@
 import React from "react";
 import { Message } from "semantic-ui-react";
 import { map, uniqueId } from "lodash";
-import { PropTypes } from "prop-types";
+import { FormikErrors } from "formik";
+// import { PropTypes } from "prop-types";
 
-export const ValidationErrors = React.memo(({ errors }) => {
+export const ValidationErrors: React.FC<{
+  errors: FormikErrors<{}>;
+}> = React.memo(({ errors }) => {
   return (
     <Message color="yellow">
       <Message.List>
@@ -19,4 +22,4 @@ export const ValidationErrors = React.memo(({ errors }) => {
   );
 });
 
-ValidationErrors.propTypes = { errors: PropTypes.object };
+// ValidationErrors.propTypes = { errors: PropTypes.object };

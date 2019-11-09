@@ -11,7 +11,7 @@ const LOGOUT = gql`
   }
 `;
 
-const LogoutButton = React.memo(({ history }) => {
+const LogoutButton: React.FC<{ history: any }> = React.memo(({ history }) => {
   const [logout, { client }] = useMutation(LOGOUT);
   return (
     <Button

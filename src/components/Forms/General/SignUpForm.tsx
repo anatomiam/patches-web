@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Input, Form } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
-import { setAccessToken } from "../../../state/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";
@@ -9,9 +8,9 @@ import * as Yup from "yup";
 import { isEmpty } from "lodash";
 import { withRouter } from "react-router";
 
-const LOGIN = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+const SIGNUP = gql`
+  mutation Signup($email: String!, $password: String!, $name: String!) {
+    signup(name: $name, email: $email, password: $password) {
       token
       user {
         id
@@ -20,36 +19,41 @@ const LOGIN = gql`
   }
 `;
 
-const LoginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email address`")
+const SignUpSchema = Yup.object().shape({
+  username: Yup.string()
+    .max(200, "Username must be 200 characters or less")
     .required("Required"),
-  password: Yup.string().required("Required")
+  email: Yup.string()
+    .email("Invalid email addresss`")
+    .required("Required"),
+  password: Yup.string()
+    .max(200, "Password must be 200 characters or less")
+    .required("Required")
 });
 
-const LoginForm = React.memo(({ history }) => {
-  const [login] = useMutation(LOGIN);
+const SignUpForm: React.FC<{ history: any }> = React.memo(({ history }) => {
+  const [signup] = useMutation(SIGNUP);
   return (
     <Formik
       enableReinitialize
       initialValues={{
+        username: "",
         email: "",
         password: ""
       }}
-      validationSchema={LoginSchema}
+      validationSchema={SignUpSchema}
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
-          const response = await login({
+          const response = await signup({
             variables: {
+              name: values.username,
               email: values.email,
               password: values.password
             }
           });
-          if (response && response.data) {
-            setAccessToken(response.data.login.token);
-          }
+          console.log(response);
           // history.push("/");
         } catch (e) {
           console.log(e);
@@ -74,7 +78,18 @@ const LoginForm = React.memo(({ history }) => {
         >
           <Form.Field>
             <Input
-              id="login-email"
+              id="username"
+              label="Username"
+              placeholder="Set Username"
+              name="username"
+              type="text"
+              onChange={handleChange}
+              value={values.username}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              id="signup-email"
               label="Email"
               placeholder="Set Email"
               name="email"
@@ -85,7 +100,7 @@ const LoginForm = React.memo(({ history }) => {
           </Form.Field>
           <Form.Field>
             <Input
-              id="login-password"
+              id="signup-password"
               label="Password"
               placeholder="Set Password"
               name="password"
@@ -95,7 +110,7 @@ const LoginForm = React.memo(({ history }) => {
             />
           </Form.Field>
           <Button type="submit" disabled={isSubmitting}>
-            Login
+            Sign Up
           </Button>
           <Button type="button" disabled={!dirty} onClick={handleReset}>
             Reset
@@ -107,4 +122,4 @@ const LoginForm = React.memo(({ history }) => {
   );
 });
 
-export const LoginFormWithRouter = withRouter(LoginForm);
+export const SignUpFormWithRouter = withRouter(SignUpForm);
