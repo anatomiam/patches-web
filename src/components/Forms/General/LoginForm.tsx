@@ -7,8 +7,10 @@ import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
+
+interface Props extends RouteComponentProps {}
 
 const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
@@ -32,7 +34,7 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required("Required")
 });
 
-const LoginForm: React.FC<{ history: any }> = React.memo(({ history }) => {
+const LoginForm: React.FC<Props> = React.memo(({ history }) => {
   const [login] = useMutation(LOGIN);
   return (
     <LoginDiv>
@@ -59,7 +61,7 @@ const LoginForm: React.FC<{ history: any }> = React.memo(({ history }) => {
             if (response && response.data) {
               setAccessToken(response.data.login.token);
             }
-            // history.push("/");
+            history.push("/");
           } catch (e) {
             console.log(e);
           }

@@ -3,7 +3,9 @@ import { Button } from "semantic-ui-react";
 import { setAccessToken } from "../../../state/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+
+interface Props extends RouteComponentProps {}
 
 const LOGOUT = gql`
   mutation Logout {
@@ -11,7 +13,7 @@ const LOGOUT = gql`
   }
 `;
 
-const LogoutButton: React.FC<{ history: any }> = React.memo(({ history }) => {
+const LogoutButton: React.FC<Props> = React.memo(({ history }) => {
   const [logout, { client }] = useMutation(LOGOUT);
   return (
     <Button
