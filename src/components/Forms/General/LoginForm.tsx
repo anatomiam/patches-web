@@ -10,7 +10,9 @@ import { isEmpty } from "lodash";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps {
+  dispatch: <T>(arg: T) => void;
+}
 
 const LOGIN = gql`
   mutation Login($email: String!, $password: String!) {
@@ -34,7 +36,7 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required("Required")
 });
 
-const LoginForm: React.FC<Props> = React.memo(({ history }) => {
+const LoginForm: React.FC<Props> = React.memo(({ history, dispatch }) => {
   const [login] = useMutation(LOGIN);
   return (
     <LoginDiv>
@@ -60,12 +62,17 @@ const LoginForm: React.FC<Props> = React.memo(({ history }) => {
             });
             if (response && response.data) {
               setAccessToken(response.data.login.token);
+              setSubmitting(false);
+              dispatch({
+                type: "SET_IS_LOGGED_IN",
+                isLoggedIn: true
+              });
             }
             history.push("/");
           } catch (e) {
             console.log(e);
+            setSubmitting(false);
           }
-          setSubmitting(false);
         }}
       >
         {({ values, errors, handleChange, isSubmitting, handleSubmit }) => (

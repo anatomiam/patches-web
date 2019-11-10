@@ -88,8 +88,16 @@ const App = () => {
   if (presetsLoading) return "Loading Presets...";
   if (presetsError) return `Loading Presets Error! ${presetsError}`;
 
+  const initialStateWithAuth = {
+    ...initialState,
+    localState: {
+      ...initialState.localState,
+      isLoggedIn: isAuthenticated()
+    }
+  };
+
   return (
-    <StateProvider initialState={initialState} reducer={reducer}>
+    <StateProvider initialState={initialStateWithAuth} reducer={reducer}>
       <Router>
         <Segment inverted>
           <Menu inverted pointing secondary>

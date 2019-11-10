@@ -5,7 +5,9 @@ import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps {
+  dispatch: <T>(arg: T) => void;
+}
 
 const LOGOUT = gql`
   mutation Logout {
@@ -13,7 +15,7 @@ const LOGOUT = gql`
   }
 `;
 
-const LogoutButton: React.FC<Props> = React.memo(({ history }) => {
+const LogoutButton: React.FC<Props> = React.memo(({ history, dispatch }) => {
   const [logout, { client }] = useMutation(LOGOUT);
   return (
     <Button
@@ -24,11 +26,15 @@ const LogoutButton: React.FC<Props> = React.memo(({ history }) => {
       fluid
       onClick={async event => {
         event.preventDefault();
-        console.log("logging out");
         await logout();
         setAccessToken("");
-        console.log(localStorage);
-        // await client.resetStore();
+        dispatch({
+          type: "SET_IS_LOGGED_IN",
+          isLoggedIn: false
+        });
+        if (client) {
+          await client.resetStore();
+        }
         // history.push("/");
       }}
     />

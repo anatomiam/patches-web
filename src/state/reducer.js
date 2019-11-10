@@ -169,6 +169,7 @@ export const reducer = (state, action) => {
         localState: {
           ...state.localState,
           isNewPedal: true,
+          isLoggedIn: true,
           selectedComponentId: null,
           selectedComponentPosition: 0,
           drag: false,
@@ -189,6 +190,14 @@ export const reducer = (state, action) => {
             width: 0,
             color: "#d4d7dd"
           }
+        }
+      };
+    case "SET_IS_LOGGED_IN":
+      return {
+        ...state,
+        localState: {
+          ...state.localState,
+          isLoggedIn: action.isLoggedIn
         }
       };
 

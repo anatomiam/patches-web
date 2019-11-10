@@ -1,6 +1,7 @@
 export const localState = {
   builder: "cju66ydwl000y0738rs8jz7yv",
   isNewPedal: true,
+  isLoggedIn: false,
   selectedComponentId: null,
   selectedComponentPosition: 0,
   drag: false,

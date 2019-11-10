@@ -4,6 +4,7 @@ import { SignUpFormWithRouter } from "../../Forms/General/SignUpForm";
 import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
 import styled from "styled-components";
+import { useStateValue } from "../../../state/StateProvider";
 
 const LoginDiv = styled.div`
   display: flex;
@@ -11,15 +12,18 @@ const LoginDiv = styled.div`
   align-items: center;
 `;
 
-const Landing = () => {
-  const loggedIn = false;
+const Login = () => {
+  const [{ localState }, dispatch] = useStateValue();
+  const { isLoggedIn } = localState;
   const [isNewUser, setIsNewUser] = useState(true);
 
-  return (
-    <>
-      {!loggedIn && !isNewUser ? (
+  if (isLoggedIn) {
+    return <LogoutButtonWithRouter dispatch={dispatch} />;
+  } else {
+    if (!isLoggedIn && !isNewUser) {
+      return (
         <LoginDiv>
-          <LoginFormWithRouter />
+          <LoginFormWithRouter dispatch={dispatch} />
           <Message>
             Are you new here?{" "}
             <a className="icon-pointer" onClick={() => setIsNewUser(true)}>
@@ -27,7 +31,9 @@ const Landing = () => {
             </a>
           </Message>
         </LoginDiv>
-      ) : (
+      );
+    } else {
+      return (
         <LoginDiv>
           <SignUpFormWithRouter />
           <Message>
@@ -37,10 +43,9 @@ const Landing = () => {
             </a>
           </Message>
         </LoginDiv>
-      )}
-      {loggedIn ? <LogoutButtonWithRouter /> : null}
-    </>
-  );
+      );
+    }
+  }
 };
 
-export default Landing;
+export default Login;
