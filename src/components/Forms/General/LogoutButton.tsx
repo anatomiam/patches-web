@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
-import { setAccessToken } from "../../../state/Auth";
+import { setAccessToken } from "../../../auth/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { withRouter, RouteComponentProps } from "react-router-dom";

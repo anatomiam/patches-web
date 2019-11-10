@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Input, Form, Header } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
-import { setAccessToken } from "../../../state/Auth";
+import { setAccessToken } from "../../../auth/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";

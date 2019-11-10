@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { setAccessToken } from "./state/Auth";
+import { setAccessToken } from "./auth/Auth";
 import * as serviceWorker from "./serviceWorker";
 import { resolvers, typeDefs } from "./state/Resolvers";
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -13,21 +13,14 @@ import { onError } from "apollo-link-error";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
-import { getAccessToken } from "./state/Auth";
-import jwtDecode from "jwt-decode";
+import { getAccessToken, isAuthenticated } from "./auth/Auth";
 
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "accessToken",
   isTokenValidOrUndefined: () => {
-    try {
-      // returning false means the token needs to be refreshed
-      // returning true means do nothing and continue
-      const token = getAccessToken();
-      const { exp } = jwtDecode(token);
-      return Date.now() >= exp * 1000 && token ? false : true;
-    } catch {
-      return false;
-    }
+    // returning false means the token needs to be refreshed
+    // returning true means do nothing and continue
+    return isAuthenticated();
   },
   fetchAccessToken: () => {
     return fetch("http://localhost:4000/refresh_token", {

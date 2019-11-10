@@ -10,7 +10,7 @@ import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
-import { setAccessToken } from "./state/Auth";
+import { setAccessToken, isAuthenticated } from "./auth/Auth";
 
 const PRESET_QUERY = gql`
   query PresetsByUser($userId: ID!) {
