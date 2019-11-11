@@ -22,23 +22,21 @@ export const Pedal = React.memo(
     patcher,
     drag,
     tapKnobsIn,
+    addKnob,
     dispatch
   }) => {
     const tapKnobsProps = {
       className: "crosshair",
       onTap: (event, info) => {
-        dispatch({
-          type: "ADD_KNOB",
-          knob: {
-            type: "Knob",
-            cx: event.offsetX,
-            cy: event.offsetY,
-            r: 20,
-            position: 0,
-            color: "#A9A9A9",
-            description: "Knob",
-            id: uniqueId("knob-")
-          }
+        addKnob({
+          type: "Knob",
+          cx: event.offsetX,
+          cy: event.offsetY,
+          r: 20,
+          position: 0,
+          color: "#A9A9A9",
+          description: "Knob",
+          id: uniqueId("knob-")
         });
       }
     };
@@ -74,5 +72,5 @@ Pedal.propTypes = {
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
   tapKnobsIn: PropTypes.bool,
-  dispatch: PropTypes.func
+  addKnob: PropTypes.func
 };

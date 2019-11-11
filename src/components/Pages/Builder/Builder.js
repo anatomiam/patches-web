@@ -8,6 +8,7 @@ import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
 import { useStateValue } from "../../../state/StateProvider";
+import { addKnob, tapKnob, dragKnob } from "../../../state/actions/actions";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";
@@ -16,7 +17,7 @@ import { DivContainer, DivDetails, DivPedal, DivTools } from "../PageStyles";
 import { connect } from "react-redux";
 
 const Builder = props => {
-  const { pedals, localState } = props;
+  const { pedals, localState, addKnob, tapKnob, dragKnob } = props;
   const [, dispatch] = useStateValue();
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = localState.pedalDetails;
@@ -39,6 +40,7 @@ const Builder = props => {
           height={height}
           color={color}
           dispatch={dispatch}
+          addKnob={addKnob}
           drag={drag}
           tapKnobsIn={tapKnobsIn}
           builder
@@ -169,9 +171,7 @@ const Builder = props => {
             name="drag knob"
             active={activeItem === "drag knob"}
             onClick={() => {
-              dispatch({
-                type: "DRAG_KNOB"
-              });
+              dragKnob();
               activeItem !== "drag knob"
                 ? setActiveItem("drag knob")
                 : setActiveItem("");
@@ -187,9 +187,7 @@ const Builder = props => {
             name="tap knob in"
             active={activeItem === "tap knob in"}
             onClick={() => {
-              dispatch({
-                type: "TAP_KNOB"
-              });
+              tapKnob();
               activeItem !== "tap knob in"
                 ? setActiveItem("tap knob in")
                 : setActiveItem("");
@@ -277,7 +275,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { addKnob, tapKnob, dragKnob };
 
 export default connect(
   mapStateToProps,
