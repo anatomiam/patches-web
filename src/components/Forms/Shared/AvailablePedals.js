@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
+import { selectPedal } from "../../../state/actions/actions";
+import { connect } from "react-redux";
 
-export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
+const AvailablePedals = React.memo(props => {
+  console.log(props);
+  const { pedals, selectPedal } = props;
   const [selectedPedalName, setSelectedPedalName] = useState("");
 
   return (
@@ -16,10 +20,16 @@ export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
         const selectedPedal = pedals.find(pedal => {
           return pedal.id === data.value;
         });
-        dispatch({
-          type: "SELECT_PEDAL",
-          pedal: selectedPedal
-        });
+        const {
+          id,
+          name,
+          width,
+          height,
+          color,
+          knobs,
+          patchDetails
+        } = selectedPedal;
+        selectPedal(id, name, width, height, color, knobs, patchDetails);
       }}
       options={pedals.map(pedal => {
         return {
@@ -34,5 +44,16 @@ export const AvailablePedals = React.memo(({ pedals, dispatch }) => {
 
 AvailablePedals.propTypes = {
   pedals: PropTypes.array,
-  dispatch: PropTypes.func
+  selectPedal: PropTypes.func
 };
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {
+  selectPedal
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AvailablePedals);

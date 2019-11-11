@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { AvailablePedals } from "../../Forms/Shared/AvailablePedals";
+import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
 import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";

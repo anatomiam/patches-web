@@ -5,6 +5,9 @@ import Landing from "./components/Pages/General/Landing";
 import Login from "./components/Pages/General/Login";
 import { reducer, initialState } from "./state/Reducer";
 import { StateProvider } from "./state/StateProvider";
+import { Provider } from "react-redux";
+import store from "./state/store/store";
+
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -98,6 +101,7 @@ const App = () => {
 
   return (
     <StateProvider initialState={initialStateWithAuth} reducer={reducer}>
+    <Provider store={store}>
       <Router>
         <Segment inverted>
           <Menu inverted pointing secondary>
@@ -148,6 +152,7 @@ const App = () => {
         />
         <Route path="/login" render={() => <Login />} />
       </Router>
+    </Provider>
     </StateProvider>
   );
 };

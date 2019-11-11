@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddIndicatorForm } from "../../Forms/Builder/AddIndicatorForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
-import { AvailablePedals } from "../../Forms/Shared/AvailablePedals";
+import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
@@ -13,9 +13,11 @@ import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";
 import { Icon, Menu, Button, Popup } from "semantic-ui-react";
 import { DivContainer, DivDetails, DivPedal, DivTools } from "../PageStyles";
+import { connect } from "react-redux";
 
-const Builder = ({ pedals }) => {
-  const [{ localState }, dispatch] = useStateValue();
+const Builder = props => {
+  const { pedals, localState } = props;
+  const [, dispatch] = useStateValue();
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = localState.pedalDetails;
   const {
@@ -64,7 +66,7 @@ const Builder = ({ pedals }) => {
                 <Icon name="folder" />
               </Menu.Item>
             }
-            content={<AvailablePedals pedals={pedals} dispatch={dispatch} />}
+            content={<AvailablePedals pedals={pedals} />}
           />
           <Popup
             inverted
@@ -269,4 +271,15 @@ const Builder = ({ pedals }) => {
 
 Builder.propTypes = { pedals: PropTypes.array };
 
-export default Builder;
+const mapStateToProps = state => {
+  return {
+    localState: state.localState
+  };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Builder);
