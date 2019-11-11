@@ -5,63 +5,86 @@ import { Switch } from "./Switches/Switch";
 import { Indicator } from "./Switches/Indicator";
 import { uniqueId } from "lodash";
 import { PropTypes } from "prop-types";
+import {
+  setSelectedComponentId,
+  setSelectedComponentPosition,
+  updateCx,
+  updateCy,
+  deleteKnob
+} from "../../state/actions/actions";
+import { connect } from "react-redux";
 
-export const ComponentSwitcher = React.memo(
-  ({ knobs, builder, patcher, drag, tapKnobsIn, dispatch }) => {
-    return (
-      <>
-        {knobs.map(knob => {
-          switch (knob.type) {
-            case "FootSwitch":
-              return (
-                <FootSwitch
-                  key={uniqueId("footswitch-key")}
-                  footSwitchDetails={knob}
-                  dispatch={dispatch}
-                  builder={builder}
-                  patcher={patcher}
-                />
-              );
-            case "Indicator":
-              return (
-                <Indicator
-                  key={uniqueId("indicator-key")}
-                  indicatorDetails={knob}
-                  dispatch={dispatch}
-                  builder={builder}
-                  patcher={patcher}
-                />
-              );
-            case "Knob":
-              return (
-                <Knob
-                  key={uniqueId("knob-key-")}
-                  knobDetails={knob}
-                  dispatch={dispatch}
-                  builder={builder}
-                  patcher={patcher}
-                  drag={drag}
-                  tapKnobsIn={tapKnobsIn}
-                />
-              );
-            case "Switch":
-              return (
-                <Switch
-                  key={uniqueId("switch-key-")}
-                  switchDetails={knob}
-                  dispatch={dispatch}
-                  builder={builder}
-                  patcher={patcher}
-                />
-              );
-            default:
-              return null;
-          }
-        })}
-      </>
-    );
-  }
-);
+const ComponentSwitcher = React.memo(props => {
+  const {
+    knobs,
+    builder,
+    patcher,
+    drag,
+    tapKnobsIn,
+    setSelectedComponentId,
+    setSelectedComponentPosition,
+    updateCx,
+    updateCy,
+    deleteKnob
+  } = props;
+  return (
+    <>
+      {knobs.map(knob => {
+        switch (knob.type) {
+          case "FootSwitch":
+            return (
+              <FootSwitch
+                key={uniqueId("footswitch-key")}
+                footSwitchDetails={knob}
+                setSelectedComponentId={setSelectedComponentId}
+                builder={builder}
+                patcher={patcher}
+              />
+            );
+          case "Indicator":
+            return (
+              <Indicator
+                key={uniqueId("indicator-key")}
+                indicatorDetails={knob}
+                setSelectedComponentId={setSelectedComponentId}
+                builder={builder}
+                patcher={patcher}
+              />
+            );
+          case "Knob":
+            return (
+              <Knob
+                key={uniqueId("knob-key-")}
+                knobDetails={knob}
+                builder={builder}
+                setSelectedComponentId={setSelectedComponentId}
+                setSelectedComponentPosition={setSelectedComponentPosition}
+                updateCx={updateCx}
+                updateCy={updateCy}
+                deleteKnob={deleteKnob}
+                patcher={patcher}
+                drag={drag}
+                tapKnobsIn={tapKnobsIn}
+              />
+            );
+          case "Switch":
+            return (
+              <Switch
+                key={uniqueId("switch-key-")}
+                switchDetails={knob}
+                builder={builder}
+                patcher={patcher}
+                setSelectedComponentPosition={setSelectedComponentPosition}
+                setSelectedComponentId={setSelectedComponentId}
+              />
+            );
+          default:
+            return null;
+        }
+      })}
+    </>
+  );
+});
 
 ComponentSwitcher.propTypes = {
   knobDetails: PropTypes.object,
@@ -69,5 +92,28 @@ ComponentSwitcher.propTypes = {
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
   tapKnobsIn: PropTypes.bool,
-  dispatch: PropTypes.func
+  setSelectedComponentId: PropTypes.func,
+  setSelectedComponentPosition: PropTypes.func,
+  updateCx: PropTypes.func,
+  updateCy: PropTypes.func,
+  deleteKnob: PropTypes.func
 };
+
+const mapStateToProps = state => {
+  return {
+    localState: state.localState
+  };
+};
+
+const mapDispatchToProps = {
+  setSelectedComponentId,
+  setSelectedComponentPosition,
+  updateCx,
+  updateCy,
+  deleteKnob
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentSwitcher);

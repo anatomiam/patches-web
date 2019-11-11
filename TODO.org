@@ -8,6 +8,8 @@
    - to trigger, select a pedal in Builder mode
    - start from scratch
    - switch to patcher mode
+** TODO [#A] Fix onTapstart/onDrag issue                    :patcher:web:bug:
+   - caused by component rerendering when redux fires an action
 ** STARTED [#A] Clean up Login page                                     :web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
@@ -51,3 +53,5 @@
    - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
 
      
+** STARTED [#A] Refactor to Redux                           :maintenance:web:
+   

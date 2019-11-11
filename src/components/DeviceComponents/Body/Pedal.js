@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentSwitcher } from "../ComponentSwitcher";
+import ComponentSwitcher from "../ComponentSwitcher";
 import styled from "styled-components";
 import { uniqueId } from "lodash";
 import { motion } from "framer-motion";
@@ -22,8 +22,7 @@ export const Pedal = React.memo(
     patcher,
     drag,
     tapKnobsIn,
-    addKnob,
-    dispatch
+    addKnob
   }) => {
     const tapKnobsProps = {
       className: "crosshair",
@@ -50,7 +49,6 @@ export const Pedal = React.memo(
       >
         <ComponentSwitcher
           knobs={knobs}
-          dispatch={dispatch}
           width={width}
           height={height}
           builder={builder}

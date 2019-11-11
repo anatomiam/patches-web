@@ -13,7 +13,7 @@ const UpdateCxInputSchema = Yup.object().shape({
     .required("Center X is required")
 });
 
-export const UpdateCxInput = React.memo(({ knobId, cx, dispatch }) => {
+export const UpdateCxInput = React.memo(({ knobId, cx, updateCx }) => {
   return (
     <Formik
       enableReinitialize
@@ -22,11 +22,7 @@ export const UpdateCxInput = React.memo(({ knobId, cx, dispatch }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch({
-          type: "UPDATE_CX",
-          selectedComponentId: knobId,
-          cx: values.cx
-        });
+        updateCx(knobId, values.cx);
         setSubmitting(false);
       }}
     >

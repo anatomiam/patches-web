@@ -12,14 +12,11 @@ const IndicatorDiv = styled(motion.div)`
 `;
 
 export const Indicator = React.memo(
-  ({ indicatorDetails, builder, patcher, dispatch }) => {
+  ({ indicatorDetails, builder, patcher, setSelectedComponentId }) => {
     const { cx, cy, r, color, id } = indicatorDetails;
     const sharedProps = {
       onTapStart: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
+        setSelectedComponentId(id);
       }
     };
     const builderProps = {};

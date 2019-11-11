@@ -22,15 +22,25 @@ const KnobDiv = styled(motion.div)`
 `;
 
 export const Knob = React.memo(
-  ({ knobDetails, builder, patcher, drag, tapKnobsIn, dispatch }) => {
+  ({
+    knobDetails,
+    builder,
+    patcher,
+    drag,
+    tapKnobsIn,
+    setSelectedComponentId,
+    setSelectedComponentPosition,
+    updateCx,
+    updateCy,
+    deleteKnob
+  }) => {
     const { position, cx, cy, r, id, color } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
       onTapStart: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
+        // TODO entire app should not rerender when this fires
+        // this causes drag functions to fail
+        // setSelectedComponentId(id);
       }
     };
     const builderProps = {
@@ -39,16 +49,8 @@ export const Knob = React.memo(
         console.log(info.offset.x + cx);
       },
       onDragEnd: (event, info) => {
-        dispatch({
-          type: "UPDATE_CX",
-          selectedComponentId: id,
-          cx: gridLock(info.offset.x + cx, 5)
-        });
-        dispatch({
-          type: "UPDATE_CY",
-          selectedComponentId: id,
-          cy: gridLock(info.offset.y + cy, 5)
-        });
+        updateCx(id, gridLock(info.offset.x + cx, 5));
+        updateCy(id, gridLock(info.offset.y + cy, 5));
       }
     };
     const patcherProps = {
@@ -63,11 +65,10 @@ export const Knob = React.memo(
       },
       onPanEnd: () => {
         // knob angle will always be between 0 and 360 degrees
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_POSITION",
-          position: (((position + angleAdjust) % 360) + 360) % 360,
-          knobId: id
-        });
+        setSelectedComponentPosition(
+          id,
+          (((position + angleAdjust) % 360) + 360) % 360
+        );
       }
     };
     // set document width and height to 100x100,
@@ -120,9 +121,9 @@ export const Knob = React.memo(
         }
         on="click"
       >
-        <UpdateCxInput dispatch={dispatch} knobId={id} cx={cx} />
-        <UpdateCyInput dispatch={dispatch} knobId={id} cy={cy} />
-        <DeleteSelectedKnobButton dispatch={dispatch} knobId={id} />
+        <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} />
+        <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} />
+        <DeleteSelectedKnobButton deleteKnob={deleteKnob} knobId={id} />
       </Popup>
     );
   }
@@ -134,5 +135,9 @@ Knob.propTypes = {
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
   tapKnobsIn: PropTypes.bool,
-  dispatch: PropTypes.func
+  setSelectedComponentId: PropTypes.func,
+  setSelectedComponentPosition: PropTypes.func,
+  updateCx: PropTypes.func,
+  updateCy: PropTypes.func,
+  deleteKnob: PropTypes.func
 };

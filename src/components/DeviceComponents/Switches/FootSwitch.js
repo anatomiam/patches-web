@@ -12,14 +12,11 @@ const FootSwitchDiv = styled(motion.div)`
 `;
 
 export const FootSwitch = React.memo(
-  ({ footSwitchDetails, builder, patcher, dispatch }) => {
+  ({ footSwitchDetails, builder, patcher, setSelectedComponentId }) => {
     const { cx, cy, r, id } = footSwitchDetails;
     const sharedProps = {
       onTapStart: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
+        setSelectedComponentId(id);
       }
     };
     const builderProps = {};
@@ -58,5 +55,5 @@ FootSwitch.propTypes = {
   footSwitchDetails: PropTypes.object,
   builder: PropTypes.bool,
   patcher: PropTypes.bool,
-  dispatch: PropTypes.func
+  setSelectedComponentId: PropTypes.func
 };

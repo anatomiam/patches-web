@@ -12,7 +12,13 @@ const SwitchDiv = styled(motion.div)`
 `;
 
 export const Switch = React.memo(
-  ({ switchDetails, builder, patcher, dispatch }) => {
+  ({
+    switchDetails,
+    builder,
+    patcher,
+    setSelectedComponentId,
+    setSelectedComponentPosition
+  }) => {
     // TODO better names for these variables
     const { cx, cy, width, id, position, steps } = switchDetails;
     const x = cx;
@@ -34,10 +40,7 @@ export const Switch = React.memo(
 
     const sharedProps = {
       onTapStart: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_ID",
-          id
-        });
+        setSelectedComponentId(id);
       }
     };
     const builderProps = {};
@@ -45,11 +48,7 @@ export const Switch = React.memo(
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
       onTap: event => {
-        dispatch({
-          type: "SET_SELECTED_COMPONENT_POSITION",
-          knobId: id,
-          position: (position + 1) % numberOfPositions
-        });
+        setSelectedComponentPosition(id, (position + 1) % numberOfPositions);
       }
     };
 
@@ -81,12 +80,7 @@ export const Switch = React.memo(
               cy={rx}
               r={r}
               fill="darkgrey"
-              onClick={() =>
-                dispatch({
-                  type: "SET_SELECTED_COMPONENT",
-                  id
-                })
-              }
+              onClick={() => setSelectedComponentId(id)}
             />
           </g>
         </svg>
@@ -99,5 +93,6 @@ Switch.propTypes = {
   switchDetails: PropTypes.object,
   builder: PropTypes.bool,
   patcher: PropTypes.bool,
-  dispatch: PropTypes.func
+  setSelectedComponentId: PropTypes.func,
+  setSelectedComponentPosition: PropTypes.func
 };

@@ -39,7 +39,6 @@ const Builder = props => {
           width={width}
           height={height}
           color={color}
-          dispatch={dispatch}
           addKnob={addKnob}
           drag={drag}
           tapKnobsIn={tapKnobsIn}

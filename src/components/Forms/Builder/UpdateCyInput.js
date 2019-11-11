@@ -13,7 +13,7 @@ const UpdateCyInputSchema = Yup.object().shape({
     .required("Center Y is required")
 });
 
-export const UpdateCyInput = React.memo(({ knobId, cy, dispatch }) => {
+export const UpdateCyInput = React.memo(({ knobId, cy, updateCy }) => {
   return (
     <Formik
       enableReinitialize
@@ -22,11 +22,7 @@ export const UpdateCyInput = React.memo(({ knobId, cy, dispatch }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch({
-          type: "UPDATE_CY",
-          selectedComponentId: knobId,
-          cy: values.cy
-        });
+        updateCy(knobId, values.cy);
         setSubmitting(false);
       }}
     >
@@ -68,5 +64,5 @@ export const UpdateCyInput = React.memo(({ knobId, cy, dispatch }) => {
 UpdateCyInput.propTypes = {
   knobId: PropTypes.string,
   cy: PropTypes.number,
-  dispatch: PropTypes.func
+  updateCy: PropTypes.func
 };

@@ -85,9 +85,9 @@ export function updateCy(selectedComponentId, cy) {
 }
 
 export function startFromScratch() {
-  return { type: UPDATE_CY };
+  return { type: START_FROM_SCRATCH };
 }
 
 export function setIsLoggedIn(isLoggedIn) {
-  return { type: UPDATE_CY, isLoggedIn };
+  return { type: SET_IS_LOGGED_IN, isLoggedIn };
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
 
-export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
+export const DeleteSelectedKnobButton = React.memo(({ knobId, deleteKnob }) => {
   return (
     <Button
       content="Delete Knob"
@@ -12,10 +12,7 @@ export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
       fluid
       onClick={event => {
         event.preventDefault();
-        dispatch({
-          type: "DELETE_KNOB",
-          selectedComponentId: knobId
-        });
+        deleteKnob(knobId);
       }}
     />
   );
@@ -23,5 +20,5 @@ export const DeleteSelectedKnobButton = React.memo(({ knobId, dispatch }) => {
 
 DeleteSelectedKnobButton.propTypes = {
   knobId: PropTypes.string,
-  dispatch: PropTypes.func
+  deleteKnob: PropTypes.func
 };
