@@ -29,7 +29,7 @@ const PedalFormSchema = Yup.object().shape({
 });
 
 export const PedalForm = React.memo(
-  ({ width, height, name, color, id, dispatch }) => {
+  ({ width, height, name, color, id, setPedalDetails }) => {
     const updateId = id ? { id } : {};
     return (
       <Formik
@@ -44,15 +44,12 @@ export const PedalForm = React.memo(
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
-          dispatch({
-            type: "SET_PEDAL_DETAILS",
-            pedalDetails: {
-              ...updateId,
-              name: values.name,
-              height: values.height,
-              width: values.width,
-              color: values.color
-            }
+          setPedalDetails({
+            ...updateId,
+            name: values.name,
+            height: values.height,
+            width: values.width,
+            color: values.color
           });
           setSubmitting(false);
         }}
@@ -141,5 +138,5 @@ PedalForm.propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
   id: PropTypes.string,
-  dispatch: PropTypes.func
+  setPedalDetails: PropTypes.func
 };

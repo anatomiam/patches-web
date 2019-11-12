@@ -33,7 +33,7 @@ const AddKnobFormSchema = Yup.object().shape({
     .required("Description is required")
 });
 
-export const AddKnobForm = React.memo(({ dispatch }) => {
+export const AddKnobForm = React.memo(({ addKnob }) => {
   return (
     <Formik
       enableReinitialize
@@ -49,18 +49,15 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch({
-          type: "ADD_KNOB",
-          knob: {
-            type: "Knob",
-            cx: values.cx,
-            cy: values.cy,
-            r: values.r,
-            position: values.position,
-            color: values.color,
-            description: values.description,
-            id: uniqueId("knob-")
-          }
+        addKnob({
+          type: "Knob",
+          cx: values.cx,
+          cy: values.cy,
+          r: values.r,
+          position: values.position,
+          color: values.color,
+          description: values.description,
+          id: uniqueId("knob-")
         });
         setSubmitting(false);
       }}
@@ -164,4 +161,4 @@ export const AddKnobForm = React.memo(({ dispatch }) => {
   );
 });
 
-AddKnobForm.propTypes = { dispatch: PropTypes.func };
+AddKnobForm.propTypes = { addKnob: PropTypes.func };

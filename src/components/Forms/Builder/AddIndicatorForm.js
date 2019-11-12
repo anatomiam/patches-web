@@ -33,7 +33,7 @@ const AddIndicatorFormSchema = Yup.object().shape({
     .required("Description is required")
 });
 
-export const AddIndicatorForm = React.memo(({ dispatch }) => {
+export const AddIndicatorForm = React.memo(({ addKnob }) => {
   return (
     <Formik
       enableReinitialize
@@ -49,18 +49,15 @@ export const AddIndicatorForm = React.memo(({ dispatch }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch({
-          type: "ADD_KNOB",
-          knob: {
-            type: "Indicator",
-            cx: values.cx,
-            cy: values.cy,
-            r: values.r,
-            position: values.position,
-            color: values.color,
-            description: values.description,
-            id: uniqueId("knob-")
-          }
+        addKnob({
+          type: "Indicator",
+          cx: values.cx,
+          cy: values.cy,
+          r: values.r,
+          position: values.position,
+          color: values.color,
+          description: values.description,
+          id: uniqueId("knob-")
         });
         setSubmitting(false);
       }}
@@ -164,4 +161,4 @@ export const AddIndicatorForm = React.memo(({ dispatch }) => {
   );
 });
 
-AddIndicatorForm.propTypes = { dispatch: PropTypes.func };
+AddIndicatorForm.propTypes = { addKnob: PropTypes.func };

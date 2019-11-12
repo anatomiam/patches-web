@@ -29,7 +29,7 @@ const AddSwitchFormSchema = Yup.object().shape({
     .required("Description is required")
 });
 
-export const AddSwitchForm = React.memo(({ dispatch }) => {
+export const AddSwitchForm = React.memo(({ addKnob }) => {
   return (
     <Formik
       enableReinitialize
@@ -44,18 +44,15 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        dispatch({
-          type: "ADD_KNOB",
-          knob: {
-            type: "Switch",
-            cx: values.cx,
-            cy: values.cy,
-            width: values.width,
-            position: 0,
-            steps: values.steps,
-            description: values.description,
-            id: uniqueId("switch-")
-          }
+        addKnob({
+          type: "Switch",
+          cx: values.cx,
+          cy: values.cy,
+          width: values.width,
+          position: 0,
+          steps: values.steps,
+          description: values.description,
+          id: uniqueId("switch-")
         });
         setSubmitting(false);
       }}
@@ -68,7 +65,7 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
         handleReset,
         isSubmitting,
         handleSubmit
-            }) => (
+      }) => (
         <Form
           onSubmit={event => {
             event.preventDefault();
@@ -143,4 +140,4 @@ export const AddSwitchForm = React.memo(({ dispatch }) => {
   );
 });
 
-AddSwitchForm.propTypes = { dispatch: PropTypes.func };
+AddSwitchForm.propTypes = { addKnob: PropTypes.func };

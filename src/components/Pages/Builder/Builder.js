@@ -7,8 +7,14 @@ import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
-import { useStateValue } from "../../../state/StateProvider";
-import { addKnob, tapKnob, dragKnob } from "../../../state/actions/actions";
+import {
+  addKnob,
+  tapKnob,
+  dragKnob,
+  setPedalDetails,
+  startFromScratch,
+  setScale
+} from "../../../state/actions/actions";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";
@@ -17,8 +23,14 @@ import { DivContainer, DivDetails, DivPedal, DivTools } from "../PageStyles";
 import { connect } from "react-redux";
 
 const Builder = props => {
-  const { pedals, localState, addKnob, tapKnob, dragKnob } = props;
-  const [, dispatch] = useStateValue();
+  const {
+    pedals,
+    localState,
+    addKnob,
+    tapKnob,
+    dragKnob,
+    setPedalDetails
+  } = props;
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = localState.pedalDetails;
   const {
@@ -96,7 +108,7 @@ const Builder = props => {
                 height={height}
                 name={name}
                 color={color}
-                dispatch={dispatch}
+                setPedalDetails={setPedalDetails}
               />
             }
           />
@@ -120,7 +132,7 @@ const Builder = props => {
                 <Icon name="circle notch" />
               </Menu.Item>
             }
-            content={<AddKnobForm dispatch={dispatch} />}
+            content={<AddKnobForm addKnob={addKnob} />}
           />
           <Popup
             inverted
@@ -142,7 +154,7 @@ const Builder = props => {
                 <Icon name="toggle on" />
               </Menu.Item>
             }
-            content={<AddSwitchForm dispatch={dispatch} />}
+            content={<AddSwitchForm addKnob={addKnob} />}
           />
           <Popup
             inverted
@@ -164,7 +176,7 @@ const Builder = props => {
                 <Icon name="lightbulb" />
               </Menu.Item>
             }
-            content={<AddIndicatorForm dispatch={dispatch} />}
+            content={<AddIndicatorForm addKnob={addKnob} />}
           />
           <Menu.Item
             name="drag knob"
@@ -219,9 +231,7 @@ const Builder = props => {
                 color="red"
                 content="Start from scratch?"
                 onClick={() => {
-                  dispatch({
-                    type: "START_FROM_SCRATCH"
-                  });
+                  startFromScratch();
                   setActiveItem("");
                 }}
               />
@@ -260,7 +270,7 @@ const Builder = props => {
           pedalDetails={localState.pedalDetails}
         />
       </DivDetails>
-      <Scaler scale={scale} dispatch={dispatch} />
+      <Scaler scale={scale} setScale={setScale} />
     </DivContainer>
   );
 };
@@ -273,7 +283,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { addKnob, tapKnob, dragKnob };
+const mapDispatchToProps = { addKnob, tapKnob, dragKnob, setPedalDetails };
 
 export default connect(
   mapStateToProps,
