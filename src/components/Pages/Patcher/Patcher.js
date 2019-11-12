@@ -15,7 +15,7 @@ import {
   selectPreset,
   setScale,
   setPatchDetails
-} from "../../../state/actions/actions";
+} from "../../../state/Actions/Actions";
 import {
   DivContainer,
   DivDetails,

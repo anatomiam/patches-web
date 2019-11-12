@@ -14,7 +14,7 @@ import {
   UPDATE_CY,
   START_FROM_SCRATCH,
   SET_IS_LOGGED_IN
-} from "../actions/actions";
+} from "../Actions/Actions";
 import { localState } from "../Data";
 import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
 

@@ -5,7 +5,7 @@ import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { setIsLoggedIn } from "../../../state/actions/actions";
+import { setIsLoggedIn } from "../../../state/Actions/Actions";
 
 const LoginDiv = styled.div`
   display: flex;

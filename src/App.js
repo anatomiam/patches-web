@@ -3,17 +3,15 @@ import Builder from "./components/Pages/Builder/Builder";
 import Patcher from "./components/Pages/Patcher/Patcher";
 import Landing from "./components/Pages/General/Landing";
 import Login from "./components/Pages/General/Login";
-import { reducer, initialState } from "./state/Reducer";
-import { StateProvider } from "./state/StateProvider";
 import { Provider } from "react-redux";
-import store from "./state/store/store";
+import store from "./state/Store/Store";
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
-import { setAccessToken, isAuthenticated } from "./auth/Auth";
+import { setAccessToken } from "./auth/Auth";
 
 const PRESET_QUERY = gql`
   query PresetsByUser($userId: ID!) {
@@ -91,16 +89,8 @@ const App = () => {
   if (presetsLoading) return "Loading Presets...";
   if (presetsError) return `Loading Presets Error! ${presetsError}`;
 
-  const initialStateWithAuth = {
-    ...initialState,
-    localState: {
-      ...initialState.localState,
-      isLoggedIn: isAuthenticated()
-    }
-  };
-
+  // TODO update isLoggedIn bool
   return (
-    <StateProvider initialState={initialStateWithAuth} reducer={reducer}>
     <Provider store={store}>
       <Router>
         <Segment inverted>
@@ -153,7 +143,6 @@ const App = () => {
         <Route path="/login" render={() => <Login />} />
       </Router>
     </Provider>
-    </StateProvider>
   );
 };
 

@@ -14,7 +14,7 @@ import {
   setPedalDetails,
   startFromScratch,
   setScale
-} from "../../../state/actions/actions";
+} from "../../../state/Actions/Actions";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";

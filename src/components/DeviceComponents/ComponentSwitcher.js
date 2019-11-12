@@ -11,7 +11,7 @@ import {
   updateCx,
   updateCy,
   deleteKnob
-} from "../../state/actions/actions";
+} from "../../state/Actions/Actions";
 import { connect } from "react-redux";
 
 const ComponentSwitcher = React.memo(props => {
