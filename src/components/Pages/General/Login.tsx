@@ -4,26 +4,31 @@ import { SignUpFormWithRouter } from "../../Forms/General/SignUpForm";
 import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
 import styled from "styled-components";
-import { useStateValue } from "../../../state/StateProvider";
+import { connect } from "react-redux";
+import { setIsLoggedIn } from "../../../state/actions/actions";
 
 const LoginDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+interface Props {
+  localState: any;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
+}
 
-const Login = () => {
-  const [{ localState }, dispatch] = useStateValue();
+const Login: React.FC<Props> = props => {
+  const { localState, setIsLoggedIn } = props;
   const { isLoggedIn } = localState;
   const [isNewUser, setIsNewUser] = useState(true);
 
   if (isLoggedIn) {
-    return <LogoutButtonWithRouter dispatch={dispatch} />;
+    return <LogoutButtonWithRouter setIsLoggedIn={setIsLoggedIn} />;
   } else {
     if (!isLoggedIn && !isNewUser) {
       return (
         <LoginDiv>
-          <LoginFormWithRouter dispatch={dispatch} />
+          <LoginFormWithRouter setIsLoggedIn={setIsLoggedIn} />
           <Message>
             Are you new here?{" "}
             <a className="icon-pointer" onClick={() => setIsNewUser(true)}>
@@ -48,4 +53,15 @@ const Login = () => {
   }
 };
 
-export default Login;
+const mapStateToProps = (state: { localState: any }) => {
+  return {
+    localState: state.localState
+  };
+};
+
+const mapDispatchToProps = { setIsLoggedIn };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

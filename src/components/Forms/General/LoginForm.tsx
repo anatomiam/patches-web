@@ -11,7 +11,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
 interface Props extends RouteComponentProps {
-  dispatch: <T>(arg: T) => void;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 const LOGIN = gql`
@@ -36,7 +36,7 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required("Required")
 });
 
-const LoginForm: React.FC<Props> = React.memo(({ history, dispatch }) => {
+const LoginForm: React.FC<Props> = React.memo(({ history, setIsLoggedIn }) => {
   const [login] = useMutation(LOGIN);
   return (
     <LoginDiv>
@@ -63,10 +63,7 @@ const LoginForm: React.FC<Props> = React.memo(({ history, dispatch }) => {
             if (response && response.data) {
               setAccessToken(response.data.login.token);
               setSubmitting(false);
-              dispatch({
-                type: "SET_IS_LOGGED_IN",
-                isLoggedIn: true
-              });
+              setIsLoggedIn(true);
             }
             history.push("/");
           } catch (e) {

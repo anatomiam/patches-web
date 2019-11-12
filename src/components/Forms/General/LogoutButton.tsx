@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
 interface Props extends RouteComponentProps {
-  dispatch: <T>(arg: T) => void;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 const LOGOUT = gql`
@@ -15,30 +15,29 @@ const LOGOUT = gql`
   }
 `;
 
-const LogoutButton: React.FC<Props> = React.memo(({ history, dispatch }) => {
-  const [logout, { client }] = useMutation(LOGOUT);
-  return (
-    <Button
-      content="Logout"
-      size="mini"
-      className="icon-pointer"
-      color="grey"
-      fluid
-      onClick={async event => {
-        event.preventDefault();
-        await logout();
-        setAccessToken("");
-        dispatch({
-          type: "SET_IS_LOGGED_IN",
-          isLoggedIn: false
-        });
-        if (client) {
-          await client.resetStore();
-        }
-        // history.push("/");
-      }}
-    />
-  );
-});
+const LogoutButton: React.FC<Props> = React.memo(
+  ({ history, setIsLoggedIn }) => {
+    const [logout, { client }] = useMutation(LOGOUT);
+    return (
+      <Button
+        content="Logout"
+        size="mini"
+        className="icon-pointer"
+        color="grey"
+        fluid
+        onClick={async event => {
+          event.preventDefault();
+          await logout();
+          setAccessToken("");
+          setIsLoggedIn(false);
+          if (client) {
+            await client.resetStore();
+          }
+          // history.push("/");
+        }}
+      />
+    );
+  }
+);
 
 export const LogoutButtonWithRouter = withRouter(LogoutButton);
