@@ -472,3 +472,14 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Refactor to Redux                               :maintenance:web:
+  CLOSED: [2019-11-11 Mon 20:42]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-11 Mon 20:42
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Nice to haves
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+   
