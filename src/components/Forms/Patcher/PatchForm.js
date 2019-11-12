@@ -18,7 +18,7 @@ const PatchFormSchema = Yup.object().shape({
 });
 
 export const PatchForm = React.memo(
-  ({ patchDetails, selectedComponentId, knobs, dispatch }) => {
+  ({ patchDetails, selectedComponentId, knobs, setPatchDetails }) => {
     const { name, description, id } = patchDetails.patchNotes;
 
     // flatten form values for formik
@@ -47,12 +47,9 @@ export const PatchForm = React.memo(
           const knobNotes = omit(values, ["name", "description"]);
           const patchNotes = { id, ...pick(values, ["name", "description"]) };
 
-          dispatch({
-            type: "SET_PATCH_DETAILS",
-            patchDetails: {
-              patchNotes,
-              knobNotes
-            }
+          setPatchDetails({
+            patchNotes,
+            knobNotes
           });
           setSubmitting(false);
         }}
@@ -131,5 +128,5 @@ PatchForm.propTypes = {
   patchDetails: PropTypes.object,
   selectedComponentId: PropTypes.string,
   knobs: PropTypes.array,
-  dispatch: PropTypes.func
+  setPatchDetails: PropTypes.func
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Select } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
 
-export const AvailablePresets = React.memo(({ presets, dispatch }) => {
+export const AvailablePresets = React.memo(({ presets, selectPreset }) => {
   const [selectedPresetName, setSelectedPresetName] = useState("");
   return (
     <Select
@@ -13,10 +13,7 @@ export const AvailablePresets = React.memo(({ presets, dispatch }) => {
         const selectedPreset = presets.find(preset => {
           return preset.id === data.value;
         });
-        dispatch({
-          type: "SELECT_PRESET",
-          preset: selectedPreset
-        });
+        selectPreset(selectedPreset);
       }}
       options={presets.map(preset => {
         return {
@@ -31,5 +28,5 @@ export const AvailablePresets = React.memo(({ presets, dispatch }) => {
 
 AvailablePresets.propTypes = {
   presets: PropTypes.array,
-  dispatch: PropTypes.func
+  selectPreset: PropTypes.func
 };

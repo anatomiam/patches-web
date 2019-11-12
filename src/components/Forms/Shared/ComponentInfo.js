@@ -4,7 +4,7 @@ import { map, uniqueId } from "lodash";
 import { PropTypes } from "prop-types";
 
 export const ComponentInfo = React.memo(
-  ({ knobs, selectedComponentId, pedalDetails, dispatch }) => {
+  ({ knobs, selectedComponentId, pedalDetails }) => {
     // default to showing pedal info
     const selectedComponent = selectedComponentId
       ? knobs.find(knob => {
@@ -37,6 +37,5 @@ export const ComponentInfo = React.memo(
 ComponentInfo.propTypes = {
   knobs: PropTypes.array,
   selectedComponentId: PropTypes.string,
-  pedalDetails: PropTypes.object,
-  dispatch: PropTypes.func
+  pedalDetails: PropTypes.object
 };

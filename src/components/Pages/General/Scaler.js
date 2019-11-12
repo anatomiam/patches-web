@@ -10,22 +10,16 @@ const ScalerDiv = styled.div`
   padding: 5px;
 `;
 
-export const Scaler = React.memo(({ scale, dispatch }) => {
+export const Scaler = React.memo(({ scale, setScale }) => {
   return (
     <ScalerDiv>
-      <Button
-        icon="minus"
-        onClick={() => dispatch({ type: "SET_SCALE", scale: scale * 0.9 })}
-      />
+      <Button icon="minus" onClick={() => setScale(scale * 0.9)} />
       <span style={{ padding: "3px" }}>
         {parseFloat(scale * 100).toFixed(0) + "%"}
       </span>
-      <Button
-        icon="plus"
-        onClick={() => dispatch({ type: "SET_SCALE", scale: scale * 1.1 })}
-      />
+      <Button icon="plus" onClick={() => setScale(scale * 1.1)} />
     </ScalerDiv>
   );
 });
 
-Scaler.propTypes = { scale: PropTypes.number, dispatch: PropTypes.func };
+Scaler.propTypes = { scale: PropTypes.number, setScale: PropTypes.func };

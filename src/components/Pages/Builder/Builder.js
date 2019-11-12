@@ -255,7 +255,6 @@ const Builder = props => {
       <DivDetails drag={true} dragMomentum={false}>
         <ComponentInfo
           knobs={knobs}
-          dispatch={dispatch}
           selectedComponentId={selectedComponentId}
           selectedComponentPosition={selectedComponentPosition}
           pedalDetails={localState.pedalDetails}

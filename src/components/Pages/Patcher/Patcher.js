@@ -6,10 +6,16 @@ import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import "../../../index.css";
-import { useStateValue } from "../../../state/StateProvider";
 import { CreatePresetButton } from "../../Forms/Patcher/CreatePresetButton";
 import { UpdatePresetButton } from "../../Forms/Patcher/UpdatePresetButton";
 import { Scaler } from "../General/Scaler";
+import { connect } from "react-redux";
+import {
+  addKnob,
+  selectPreset,
+  setScale,
+  setPatchDetails
+} from "../../../state/actions/actions";
 import {
   DivContainer,
   DivDetails,
@@ -20,12 +26,21 @@ import {
   DivTools
 } from "../PageStyles";
 
-const Patcher = ({ pedals, presets }) => {
-  const [{ localState }, dispatch] = useStateValue();
+const Patcher = props => {
+  const {
+    pedals,
+    presets,
+    localState,
+    addKnob,
+    selectPreset,
+    setScale,
+    setPatchDetails
+  } = props;
   const { width, height, color } = localState.pedalDetails;
   const {
     knobs,
     scale,
+    tapKnobsIn,
     patchDetails,
     selectedComponentId,
     selectedComponentPosition
@@ -43,20 +58,24 @@ const Patcher = ({ pedals, presets }) => {
           width={width}
           height={height}
           color={color}
-          dispatch={dispatch}
+          addKnob={addKnob}
+          tapKnobsIn={tapKnobsIn}
           patcher
         />
       </DivPedal>
       <DivTools>
         <DivPedalSelector>
-          <AvailablePedals pedals={pedals} dispatch={dispatch} />
-          <AvailablePresets presets={pedalPresets} dispatch={dispatch} />
+          <AvailablePedals pedals={pedals} />
+          <AvailablePresets
+            presets={pedalPresets}
+            selectPreset={selectPreset}
+          />
         </DivPedalSelector>
-        <Scaler scale={scale} dispatch={dispatch} />
+        <Scaler scale={scale} setScale={setScale} />
         <DivNotes>
           <PatchForm
             patchDetails={patchDetails}
-            dispatch={dispatch}
+            setPatchDetails={setPatchDetails}
             knobs={knobs}
             selectedComponentId={selectedComponentId}
           />
@@ -64,9 +83,9 @@ const Patcher = ({ pedals, presets }) => {
         <DivDetails>
           <ComponentInfo
             knobs={knobs}
-            dispatch={dispatch}
             selectedComponentId={selectedComponentId}
             selectedComponentPosition={selectedComponentPosition}
+            pedalDetails={localState.pedalDetails}
           />
         </DivDetails>
         <DivSubmit>
@@ -82,4 +101,15 @@ const Patcher = ({ pedals, presets }) => {
 
 Patcher.propTypes = { pedals: PropTypes.array, presets: PropTypes.array };
 
-export default Patcher;
+const mapStateToProps = state => {
+  return {
+    localState: state.localState
+  };
+};
+
+const mapDispatchToProps = { addKnob, selectPreset, setScale, setPatchDetails };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Patcher);
