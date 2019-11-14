@@ -100,8 +100,9 @@ ComponentSwitcher.propTypes = {
 };
 
 const mapStateToProps = state => {
+  // need to reconcile bw builder and patcher
   return {
-    localState: state.localState
+    builderState: state.builderState
   };
 };
 
@@ -113,7 +114,4 @@ const mapDispatchToProps = {
   deleteKnob
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ComponentSwitcher);
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentSwitcher);

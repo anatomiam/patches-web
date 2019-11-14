@@ -30,9 +30,9 @@ const CREATE_PEDAL = gql`
   }
 `;
 
-export const CreatePedalButton = React.memo(({ localState }) => {
-  const { knobs, builder } = localState;
-  const { name, width, height, color } = localState.pedalDetails;
+export const CreatePedalButton = React.memo(({ builderState }) => {
+  const { knobs, builder } = builderState;
+  const { name, width, height, color } = builderState.pedalDetails;
   const [createPedal] = useMutation(CREATE_PEDAL);
   const knobsToCreate = pickKeysFromArray(knobs, knobsToCreateModel);
 
@@ -62,5 +62,5 @@ export const CreatePedalButton = React.memo(({ localState }) => {
 });
 
 CreatePedalButton.propTypes = {
-  localState: PropTypes.object
+  builderState: PropTypes.object
 };

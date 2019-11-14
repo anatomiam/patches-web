@@ -25,8 +25,8 @@ const CREATE_PRESET = gql`
   }
 `;
 
-export const CreatePresetButton = React.memo(({ localState }) => {
-  const { builder, knobs, pedalDetails, patchDetails } = localState;
+export const CreatePresetButton = React.memo(({ patcherState }) => {
+  const { builder, knobs, pedalDetails, patchDetails } = patcherState;
   const { patchNotes, knobNotes } = patchDetails;
   const [createPreset] = useMutation(CREATE_PRESET);
   const patchesToCreate = getPatchesToCreate(knobs, knobNotes);
@@ -53,4 +53,4 @@ export const CreatePresetButton = React.memo(({ localState }) => {
   );
 });
 
-CreatePresetButton.propTypes = { localState: PropTypes.object };
+CreatePresetButton.propTypes = { patcherState: PropTypes.object };

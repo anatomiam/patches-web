@@ -13,13 +13,13 @@ const LoginDiv = styled.div`
   align-items: center;
 `;
 interface Props {
-  localState: any;
+  patcherState: any;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 const Login: React.FC<Props> = props => {
-  const { localState, setIsLoggedIn } = props;
-  const { isLoggedIn } = localState;
+  const { patcherState, setIsLoggedIn } = props;
+  const { isLoggedIn } = patcherState;
   const [isNewUser, setIsNewUser] = useState(true);
 
   if (isLoggedIn) {
@@ -53,9 +53,9 @@ const Login: React.FC<Props> = props => {
   }
 };
 
-const mapStateToProps = (state: { localState: any }) => {
+const mapStateToProps = (state: { patcherState: any }) => {
   return {
-    localState: state.localState
+    patcherState: state.patcherState
   };
 };
 

@@ -25,14 +25,14 @@ import { connect } from "react-redux";
 const Builder = props => {
   const {
     pedals,
-    localState,
+    builderState,
     addKnob,
     tapKnob,
     dragKnob,
     setPedalDetails
   } = props;
   const [activeItem, setActiveItem] = useState("");
-  const { width, height, name, color, id } = localState.pedalDetails;
+  const { width, height, name, color, id } = builderState.pedalDetails;
   const {
     knobs,
     scale,
@@ -41,7 +41,7 @@ const Builder = props => {
     selectedComponentPosition,
     drag,
     tapKnobsIn
-  } = localState;
+  } = builderState;
 
   return (
     <DivContainer>
@@ -254,9 +254,9 @@ const Builder = props => {
             }
             content={
               isNewPedal ? (
-                <CreatePedalButton localState={localState} />
+                <CreatePedalButton builderState={builderState} />
               ) : (
-                <UpdatePedalButton localState={localState} />
+                <UpdatePedalButton builderState={builderState} />
               )
             }
           />
@@ -267,7 +267,7 @@ const Builder = props => {
           knobs={knobs}
           selectedComponentId={selectedComponentId}
           selectedComponentPosition={selectedComponentPosition}
-          pedalDetails={localState.pedalDetails}
+          pedalDetails={builderState.pedalDetails}
         />
       </DivDetails>
       <Scaler scale={scale} setScale={setScale} />
@@ -279,13 +279,16 @@ Builder.propTypes = { pedals: PropTypes.array };
 
 const mapStateToProps = state => {
   return {
-    localState: state.localState
+    builderState: state.builderState
   };
 };
 
-const mapDispatchToProps = { addKnob, tapKnob, dragKnob, setPedalDetails };
+const mapDispatchToProps = {
+  addKnob,
+  tapKnob,
+  dragKnob,
+  setPedalDetails,
+  setScale
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Builder);
+export default connect(mapStateToProps, mapDispatchToProps)(Builder);

@@ -23,8 +23,8 @@ const UPDATE_PRESET = gql`
   }
 `;
 
-export const UpdatePresetButton = React.memo(({ localState }) => {
-  const { knobs, patchDetails } = localState;
+export const UpdatePresetButton = React.memo(({ patcherState }) => {
+  const { knobs, patchDetails } = patcherState;
   const { patchNotes, knobNotes } = patchDetails;
   const { description, name, id } = patchNotes;
 
@@ -53,4 +53,4 @@ export const UpdatePresetButton = React.memo(({ localState }) => {
   );
 });
 
-UpdatePresetButton.propTypes = { localState: PropTypes.object };
+UpdatePresetButton.propTypes = { patcherState: PropTypes.object };

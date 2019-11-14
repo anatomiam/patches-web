@@ -40,8 +40,8 @@ const UPDATE_PEDAL = gql`
   }
 `;
 
-export const UpdatePedalButton = React.memo(({ localState }) => {
-  const { knobs, originalKnobs, pedalDetails } = localState;
+export const UpdatePedalButton = React.memo(({ builderState }) => {
+  const { knobs, originalKnobs, pedalDetails } = builderState;
   const { name, width, height, color, id } = pedalDetails;
   const [updatePedal] = useMutation(UPDATE_PEDAL);
 
@@ -85,4 +85,4 @@ export const UpdatePedalButton = React.memo(({ localState }) => {
   );
 });
 
-UpdatePedalButton.propTypes = { localState: PropTypes.object };
+UpdatePedalButton.propTypes = { builderState: PropTypes.object };

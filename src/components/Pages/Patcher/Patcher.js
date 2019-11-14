@@ -30,13 +30,13 @@ const Patcher = props => {
   const {
     pedals,
     presets,
-    localState,
+    patcherState,
     addKnob,
     selectPreset,
     setScale,
     setPatchDetails
   } = props;
-  const { width, height, color } = localState.pedalDetails;
+  const { width, height, color } = patcherState.pedalDetails;
   const {
     knobs,
     scale,
@@ -44,10 +44,10 @@ const Patcher = props => {
     patchDetails,
     selectedComponentId,
     selectedComponentPosition
-  } = localState;
+  } = patcherState;
 
   const pedalPresets = presets.filter(preset => {
-    return preset.pedal.id === localState.pedalDetails.id;
+    return preset.pedal.id === patcherState.pedalDetails.id;
   });
 
   return (
@@ -85,14 +85,14 @@ const Patcher = props => {
             knobs={knobs}
             selectedComponentId={selectedComponentId}
             selectedComponentPosition={selectedComponentPosition}
-            pedalDetails={localState.pedalDetails}
+            pedalDetails={patcherState.pedalDetails}
           />
         </DivDetails>
         <DivSubmit>
-          <CreatePresetButton localState={localState} />
+          <CreatePresetButton patcherState={patcherState} />
         </DivSubmit>
         <DivSubmit>
-          <UpdatePresetButton localState={localState} />
+          <UpdatePresetButton patcherState={patcherState} />
         </DivSubmit>
       </DivTools>
     </DivContainer>
@@ -103,7 +103,7 @@ Patcher.propTypes = { pedals: PropTypes.array, presets: PropTypes.array };
 
 const mapStateToProps = state => {
   return {
-    localState: state.localState
+    patcherState: state.patcherState
   };
 };
 
