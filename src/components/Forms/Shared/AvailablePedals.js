@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
-import { selectPedal } from "../../../state/Actions/Actions";
+import {
+  selectPedal,
+  selectPedalBuilder
+} from "../../../state/Actions/Actions";
 import { connect } from "react-redux";
 
 const AvailablePedals = React.memo(props => {
   console.log(props);
-  const { pedals, selectPedal } = props;
+  const { pedals, builder, selectPedal, selectPedalBuilder } = props;
   const [selectedPedalName, setSelectedPedalName] = useState("");
 
   return (
@@ -29,7 +32,18 @@ const AvailablePedals = React.memo(props => {
           knobs,
           patchDetails
         } = selectedPedal;
-        selectPedal(id, name, width, height, color, knobs, patchDetails);
+
+        builder
+          ? selectPedalBuilder(
+              id,
+              name,
+              width,
+              height,
+              color,
+              knobs,
+              patchDetails
+            )
+          : selectPedal(id, name, width, height, color, knobs, patchDetails);
       }}
       options={pedals.map(pedal => {
         return {
@@ -44,16 +58,17 @@ const AvailablePedals = React.memo(props => {
 
 AvailablePedals.propTypes = {
   pedals: PropTypes.array,
-  selectPedal: PropTypes.func
+  selectPedal: PropTypes.func,
+  selectPedalBuilder: PropTypes.func,
+  builder: PropTypes.bool,
+  patcher: PropTypes.bool
 };
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
-  selectPedal
+  selectPedal,
+  selectPedalBuilder
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AvailablePedals);
+export default connect(mapStateToProps, mapDispatchToProps)(AvailablePedals);

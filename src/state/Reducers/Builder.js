@@ -1,10 +1,7 @@
 import {
-  SELECT_PEDAL,
-  SELECT_PRESET,
+  SELECT_PEDAL_BUILDER,
   SET_SELECTED_COMPONENT_ID,
-  SET_SELECTED_COMPONENT_POSITION,
   SET_PEDAL_DETAILS,
-  SET_PATCH_DETAILS,
   DRAG_KNOB,
   TAP_KNOB,
   SET_SCALE,
@@ -20,7 +17,7 @@ import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
 
 function builderState(state = builderData, action) {
   switch (action.type) {
-    case SELECT_PEDAL:
+    case SELECT_PEDAL_BUILDER:
       console.log(action);
       const initialKnobNotes = flattenKnobObjects(action.knobs);
       return {
@@ -40,59 +37,16 @@ function builderState(state = builderData, action) {
         },
         isNewPedal: false
       };
-
-    // case SELECT_PRESET:
-    //   const updatedPositions = state.knobs.map(knob => {
-    //     const foundKnob = action.preset.patches.find(patch => {
-    //       return knob.id === patch.knob.id;
-    //     });
-    //     return foundKnob
-    //       ? { ...knob, position: foundKnob.position, patchId: foundKnob.id }
-    //       : knob;
-    //   });
-    //   const patchNotes = {
-    //     id: action.preset.id,
-    //     name: action.preset.name,
-    //     description: action.preset.description
-    //   };
-    //   // handle reforming patchDetails for form here?
-    //   const knobNotes = flattenKnobNotes(action.preset.patches);
-    //   return {
-    //     ...state,
-    //     patchDetails: { patchNotes, knobNotes },
-    //     knobs: updatedPositions,
-    //     originalKnobs: updatedPositions,
-    //     patches: action.preset.patches
-    //   };
-
     case SET_SELECTED_COMPONENT_ID:
       return {
         ...state,
         selectedComponentId: action.id
       };
-
-    // case SET_SELECTED_COMPONENT_POSITION:
-    //   // TODO only update single knob instead of whole set?
-    //   const updatedKnobs = state.knobs.map(knob => {
-    //     if (knob.id !== action.knobId) {
-    //       return knob;
-    //     }
-    //     return { ...knob, position: action.position };
-    //   });
-    //   return {
-    //     ...state,
-    //     knobs: updatedKnobs
-    //   };
     case SET_PEDAL_DETAILS:
       return {
         ...state,
         pedalDetails: action.pedalDetails
       };
-    // case SET_PATCH_DETAILS:
-    //   return {
-    //     ...state,
-    //     patchDetails: action.patchDetails
-    //   };
     case DRAG_KNOB:
       return {
         ...state,

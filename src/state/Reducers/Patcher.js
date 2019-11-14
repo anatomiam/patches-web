@@ -3,16 +3,8 @@ import {
   SELECT_PRESET,
   SET_SELECTED_COMPONENT_ID,
   SET_SELECTED_COMPONENT_POSITION,
-  SET_PEDAL_DETAILS,
   SET_PATCH_DETAILS,
-  DRAG_KNOB,
-  TAP_KNOB,
   SET_SCALE,
-  ADD_KNOB,
-  DELETE_KNOB,
-  UPDATE_CX,
-  UPDATE_CY,
-  START_FROM_SCRATCH,
   SET_IS_LOGGED_IN
 } from "../Actions/Actions";
 import { patcherData } from "../Data";
@@ -83,90 +75,16 @@ function patcherState(state = patcherData, action) {
         ...state,
         knobs: updatedKnobs
       };
-    // case SET_PEDAL_DETAILS:
-    //   return {
-    //     ...state,
-    //     pedalDetails: action.pedalDetails
-    //   };
     case SET_PATCH_DETAILS:
       return {
         ...state,
         patchDetails: action.patchDetails
       };
-    case DRAG_KNOB:
-      return {
-        ...state,
-        drag: !state.drag
-      };
-    // case TAP_KNOB:
-    //   return {
-    //     ...state,
-    //     tapKnobsIn: !state.tapKnobsIn
-    //   };
     case SET_SCALE:
       return {
         ...state,
         scale: action.scale
       };
-    // case ADD_KNOB:
-    //   return {
-    //     ...state,
-    //     knobs: [...state.knobs, action.knob]
-    //   };
-    // case DELETE_KNOB:
-    //   const knobsUpdatedDeleted = state.knobs.filter(knob => {
-    //     return knob.id !== action.selectedComponentId;
-    //   });
-    //   return {
-    //     ...state,
-    //     knobs: knobsUpdatedDeleted
-    //   };
-    // case UPDATE_CX:
-    //   const knobsUpdatedCx = state.knobs.map(knob => {
-    //     return knob.id !== action.selectedComponentId
-    //       ? knob
-    //       : { ...knob, cx: action.cx };
-    //   });
-    //   return {
-    //     ...state,
-    //     knobs: knobsUpdatedCx
-    //   };
-    // case UPDATE_CY:
-    //   const knobsUpdatedCy = state.knobs.map(knob => {
-    //     return knob.id !== action.selectedComponentId
-    //       ? knob
-    //       : { ...knob, cy: action.cy };
-    //   });
-    //   return {
-    //     ...state,
-    //     knobs: knobsUpdatedCy
-    //   };
-    // case START_FROM_SCRATCH:
-    //   return {
-    //     ...state,
-    //     isNewPedal: true,
-    //     isLoggedIn: true,
-    //     selectedComponentId: null,
-    //     selectedComponentPosition: 0,
-    //     drag: false,
-    //     scale: 1,
-    //     knobs: [],
-    //     originalKnobs: [],
-    //     patchDetails: {
-    //       patchNotes: {
-    //         name: "",
-    //         description: "",
-    //         id: ""
-    //       },
-    //       knobNotes: {}
-    //     },
-    //     pedalDetails: {
-    //       name: "",
-    //       height: 0,
-    //       width: 0,
-    //       color: "#d4d7dd"
-    //     }
-    //   };
     case SET_IS_LOGGED_IN:
       return {
         ...state,

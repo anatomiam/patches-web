@@ -79,7 +79,7 @@ const Builder = props => {
                 <Icon name="folder" />
               </Menu.Item>
             }
-            content={<AvailablePedals pedals={pedals} />}
+            content={<AvailablePedals pedals={pedals} builder />}
           />
           <Popup
             inverted

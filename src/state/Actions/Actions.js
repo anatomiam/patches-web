@@ -1,4 +1,6 @@
 export const SELECT_PEDAL = "SELECT_PEDAL";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SELECT_PEDAL_BUILDER = "SELECT_PEDAL_BUILDER";
 export const SELECT_PRESET = "SELECT_PRESET";
 export const SET_SELECTED_COMPONENT_ID = "SET_SELECTED_COMPONENT_ID";
 export const SET_SELECTED_COMPONENT_POSITION =
@@ -26,6 +28,27 @@ export function selectPedal(
 ) {
   return {
     type: SELECT_PEDAL,
+    id,
+    name,
+    width,
+    height,
+    color,
+    knobs,
+    patchDetails
+  };
+}
+
+export function selectPedalBuilder(
+  id,
+  name,
+  width,
+  height,
+  color,
+  knobs,
+  patchDetails
+) {
+  return {
+    type: SELECT_PEDAL_BUILDER,
     id,
     name,
     width,
@@ -90,4 +113,8 @@ export function startFromScratch() {
 
 export function setIsLoggedIn(isLoggedIn) {
   return { type: SET_IS_LOGGED_IN, isLoggedIn };
+}
+
+export function setCurrentPage(currentPage) {
+  return { type: SET_CURRENT_PAGE, currentPage };
 }

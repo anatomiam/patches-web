@@ -1,5 +1,5 @@
 export const patcherData = {
-  builderId: "cju66ydwl000y0738rs8jz7yv",
+  builder: "cju66ydwl000y0738rs8jz7yv",
   isNewPedal: true,
   isLoggedIn: false,
   selectedComponentId: null,
@@ -26,7 +26,7 @@ export const patcherData = {
 };
 
 export const builderData = {
-  builderId: "cju66ydwl000y0738rs8jz7yv",
+  builder: "cju66ydwl000y0738rs8jz7yv",
   isNewPedal: true,
   isLoggedIn: false,
   selectedComponentId: null,
@@ -50,5 +50,10 @@ export const builderData = {
     width: 0,
     color: "#d4d7dd"
   }
+};
 
-}
+export const sharedData = {
+  currentPage: "home",
+  isLoggedIn: false,
+  scale: 1
+};
