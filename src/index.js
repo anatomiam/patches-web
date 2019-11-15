@@ -14,6 +14,8 @@ import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import { getAccessToken, isAuthenticated } from "./auth/Auth";
+import { Provider } from "react-redux";
+import store from "./state/Store/Store";
 
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "accessToken",
@@ -68,7 +70,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+    <Provider store={store}>
     <App />
+    </Provider>
   </ApolloProvider>,
   document.getElementById("root")
 );

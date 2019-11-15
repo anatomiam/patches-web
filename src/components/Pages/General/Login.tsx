@@ -5,7 +5,7 @@ import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { setIsLoggedIn } from "../../../state/Actions/Actions";
+import { setIsLoggedIn, setCurrentPage } from "../../../state/Actions/Actions";
 
 const LoginDiv = styled.div`
   display: flex;
@@ -15,10 +15,11 @@ const LoginDiv = styled.div`
 interface Props {
   patcherState: any;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
+  setCurrentPage: (currentPage: string) => void;
 }
 
 const Login: React.FC<Props> = props => {
-  const { patcherState, setIsLoggedIn } = props;
+  const { patcherState, setIsLoggedIn, setCurrentPage } = props;
   const { isLoggedIn } = patcherState;
   const [isNewUser, setIsNewUser] = useState(true);
 
@@ -28,7 +29,10 @@ const Login: React.FC<Props> = props => {
     if (!isLoggedIn && !isNewUser) {
       return (
         <LoginDiv>
-          <LoginFormWithRouter setIsLoggedIn={setIsLoggedIn} />
+          <LoginFormWithRouter
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentPage={setCurrentPage}
+          />
           <Message>
             Are you new here?{" "}
             <a className="icon-pointer" onClick={() => setIsNewUser(true)}>
@@ -59,9 +63,6 @@ const mapStateToProps = (state: { patcherState: any }) => {
   };
 };
 
-const mapDispatchToProps = { setIsLoggedIn };
+const mapDispatchToProps = { setIsLoggedIn, setCurrentPage };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
