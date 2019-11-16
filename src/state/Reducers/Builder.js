@@ -4,7 +4,7 @@ import {
   SET_PEDAL_DETAILS,
   DRAG_KNOB,
   TAP_KNOB,
-  SET_SCALE,
+  SET_SCALE_BUILDER,
   ADD_KNOB,
   DELETE_KNOB,
   UPDATE_CX,
@@ -57,7 +57,7 @@ function builderState(state = builderData, action) {
         ...state,
         tapKnobsIn: !state.tapKnobsIn
       };
-    case SET_SCALE:
+    case SET_SCALE_BUILDER:
       return {
         ...state,
         scale: action.scale

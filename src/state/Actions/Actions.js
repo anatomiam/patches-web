@@ -10,6 +10,7 @@ export const SET_PATCH_DETAILS = "SET_PATCH_DETAILS";
 export const DRAG_KNOB = "DRAG_KNOB";
 export const TAP_KNOB = "TAP_KNOB";
 export const SET_SCALE = "SET_SCALE";
+export const SET_SCALE_BUILDER = "SET_SCALE_BUILDER";
 export const ADD_KNOB = "ADD_KNOB";
 export const DELETE_KNOB = "DELETE_KNOB";
 export const UPDATE_CX = "UPDATE_CX";
@@ -89,6 +90,10 @@ export function tapKnob() {
 
 export function setScale(scale) {
   return { type: SET_SCALE, scale };
+}
+
+export function setScaleBuilder(scale) {
+  return { type: SET_SCALE_BUILDER, scale };
 }
 
 export function addKnob(knob) {

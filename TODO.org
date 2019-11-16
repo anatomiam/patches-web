@@ -1,7 +1,4 @@
 * Pre-Alpha
-** TODO [#A] Fix scale/drag issue                           :builder:web:bug:
-   - probably just need to multiple/divide the scale by the offset
-   - or maybe not [[https://www.eleqtriq.com/2010/05/css-3d-matrix-transformations/][read this]], and [[http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/][maybe this]] too.
 ** TODO [#A] Fix onTapstart/onDrag issue                    :patcher:web:bug:
    - caused by component rerendering when redux fires an action
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:

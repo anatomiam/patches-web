@@ -13,7 +13,7 @@ import {
   dragKnob,
   setPedalDetails,
   startFromScratch,
-  setScale
+  setScaleBuilder
 } from "../../../state/Actions/Actions";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
@@ -29,7 +29,9 @@ const Builder = props => {
     addKnob,
     tapKnob,
     dragKnob,
-    setPedalDetails
+    setPedalDetails,
+    startFromScratch,
+    setScaleBuilder
   } = props;
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = builderState.pedalDetails;
@@ -270,7 +272,7 @@ const Builder = props => {
           pedalDetails={builderState.pedalDetails}
         />
       </DivDetails>
-      <Scaler scale={scale} setScale={setScale} />
+      <Scaler scale={scale} setScale={setScaleBuilder} />
     </DivContainer>
   );
 };
@@ -288,7 +290,8 @@ const mapDispatchToProps = {
   tapKnob,
   dragKnob,
   setPedalDetails,
-  setScale
+  setScaleBuilder,
+  startFromScratch
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Builder);
