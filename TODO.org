@@ -1,33 +1,28 @@
 * Pre-Alpha
-** TODO [#A] Fix bug that updates knob angle in patcher mode :builder:patcher:web:bug:
-   - to trigger, modify a knob on an existing pedal, switch to patcher mode, twist knobs, and save. 
 ** TODO [#A] Fix scale/drag issue                           :builder:web:bug:
    - probably just need to multiple/divide the scale by the offset
    - or maybe not [[https://www.eleqtriq.com/2010/05/css-3d-matrix-transformations/][read this]], and [[http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/][maybe this]] too.
-** TODO [#A] Fix TypeError bug                              :patcher:web:bug:
-   - to trigger, select a pedal in Builder mode
-   - start from scratch
-   - switch to patcher mode
 ** TODO [#A] Fix onTapstart/onDrag issue                    :patcher:web:bug:
    - caused by component rerendering when redux fires an action
-** STARTED [#A] Clean up Login page                                     :web:
+** TODO [#A] Clean up Patcher forms                             :patcher:web:
+** TODO [#A] User actual user ID instead of hardcoded one :patcher:web:server:
 ** TODO [#B] Set up patch information table                     :patcher:web:
+** TODO [#B] Fix scaler                                         :general:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
 ** TODO [#B] Improve names of in general                    :maintenance:web:
-** TODO [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
+** TODO [#B] Improve Builder form styles                       :builder::web:
+** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
 * Alpha
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
 ** TODO [#B] Set up form for entering SVG path                 :builder:web
-   - add to accordian
-** STARTED [#B] Set up Custom Path component                    :builder:web:
+** TODO [#B] Set up Custom Path component                       :builder:web:
 ** TODO [#B] Add more tests                                 :maintenance:web:
    - https://create-react-app.dev/docs/running-tests
    - https://github.com/testing-library/react-testing-library
    - https://jestjs.io/docs/en/expect.html#content
 ** TODO [#C] Create example pedals                                   :server:
-** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
 ** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 ** TODO [#C] Create default template pedal dimensions           :builder:web:
    - use pedalplaygrounds dimensions
@@ -53,3 +48,4 @@
    - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
 
      
+

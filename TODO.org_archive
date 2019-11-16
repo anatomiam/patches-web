@@ -483,3 +483,47 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_TODO: DONE
   :END:
    
+
+* DONE [#A] Clean up Login page                                         :web:
+  CLOSED: [2019-11-16 Sat 16:57]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-16 Sat 16:57
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+
+* DONE [#A] Fix bug that updates knob angle in patcher mode :builder:patcher:web:bug:
+  CLOSED: [2019-11-16 Sat 16:58]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-16 Sat 16:58
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - to trigger, modify a knob on an existing pedal, switch to patcher mode, twist knobs, and save. 
+
+* DONE [#A] Fix TypeError bug                               :patcher:web:bug:
+  CLOSED: [2019-11-16 Sat 17:01]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-16 Sat 17:01
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - to trigger, select a pedal in Builder mode
+  - start from scratch
+  - switch to patcher mode
+
+ DONE [#C] Refactor accordian animation with framer motion [[ https://codesandbox.io/s/framer-motion-accordion-qx958][like this]] :builder:web:ux:
+  CLOSED: [2019-11-16 Sat 17:03]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-16 Sat 17:03
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
