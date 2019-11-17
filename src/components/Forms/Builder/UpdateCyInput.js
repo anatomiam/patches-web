@@ -22,8 +22,8 @@ export const UpdateCyInput = React.memo(({ knobId, cy, updateCy }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        updateCy(knobId, values.cy);
         setSubmitting(false);
+        updateCy(knobId, values.cy);
       }}
     >
       {({ values, errors, handleChange, isSubmitting, handleSubmit }) => (

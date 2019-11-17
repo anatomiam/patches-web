@@ -22,8 +22,8 @@ export const UpdateCxInput = React.memo(({ knobId, cx, updateCx }) => {
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={(values, { setSubmitting }) => {
-        updateCx(knobId, values.cx);
         setSubmitting(false);
+        updateCx(knobId, values.cx);
       }}
     >
       {({ values, errors, handleChange, isSubmitting, handleSubmit }) => (

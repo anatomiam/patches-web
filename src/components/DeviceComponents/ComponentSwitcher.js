@@ -10,6 +10,7 @@ import {
   setSelectedComponentPosition,
   updateCx,
   updateCy,
+  updateDescription,
   deleteKnob
 } from "../../state/Actions/Actions";
 import { connect } from "react-redux";
@@ -25,6 +26,7 @@ const ComponentSwitcher = React.memo(props => {
     setSelectedComponentPosition,
     updateCx,
     updateCy,
+    updateDescription,
     deleteKnob
   } = props;
   return (
@@ -61,6 +63,7 @@ const ComponentSwitcher = React.memo(props => {
                 setSelectedComponentPosition={setSelectedComponentPosition}
                 updateCx={updateCx}
                 updateCy={updateCy}
+                updateDescription={updateDescription}
                 deleteKnob={deleteKnob}
                 patcher={patcher}
                 drag={drag}
@@ -111,6 +114,7 @@ const mapDispatchToProps = {
   setSelectedComponentPosition,
   updateCx,
   updateCy,
+  updateDescription,
   deleteKnob
 };
 

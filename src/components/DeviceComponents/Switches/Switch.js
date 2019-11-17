@@ -39,7 +39,7 @@ export const Switch = React.memo(
     const switchPosition = switchPositions[numberOfPositions];
 
     const sharedProps = {
-      onTapStart: event => {
+      onTap: event => {
         setSelectedComponentId(id);
       }
     };
@@ -80,7 +80,6 @@ export const Switch = React.memo(
               cy={rx}
               r={r}
               fill="darkgrey"
-              onClick={() => setSelectedComponentId(id)}
             />
           </g>
         </svg>

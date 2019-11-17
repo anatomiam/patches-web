@@ -9,6 +9,7 @@ import {
   DELETE_KNOB,
   UPDATE_CX,
   UPDATE_CY,
+  UPDATE_DESCRIPTION,
   START_FROM_SCRATCH,
   SET_IS_LOGGED_IN
 } from "../Actions/Actions";
@@ -94,6 +95,16 @@ function builderState(state = builderData, action) {
       return {
         ...state,
         knobs: knobsUpdatedCy
+      };
+    case UPDATE_DESCRIPTION:
+      const knobsUpdatedDescription = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, description: action.description };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedDescription
       };
     case START_FROM_SCRATCH:
       return {

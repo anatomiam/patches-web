@@ -15,6 +15,7 @@ export const ADD_KNOB = "ADD_KNOB";
 export const DELETE_KNOB = "DELETE_KNOB";
 export const UPDATE_CX = "UPDATE_CX";
 export const UPDATE_CY = "UPDATE_CY";
+export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const START_FROM_SCRATCH = "START_FROM_SCRATCH";
 export const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
 
@@ -110,6 +111,10 @@ export function updateCx(selectedComponentId, cx) {
 
 export function updateCy(selectedComponentId, cy) {
   return { type: UPDATE_CY, selectedComponentId, cy };
+}
+
+export function updateDescription(selectedComponentId, description) {
+  return { type: UPDATE_DESCRIPTION, selectedComponentId, description };
 }
 
 export function startFromScratch() {

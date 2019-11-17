@@ -5,6 +5,7 @@ import { Popup } from "semantic-ui-react";
 import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnobButton";
 import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
 import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
+import { UpdateDescriptionInput } from "../../Forms/Builder/UpdateDescriptionInput";
 import { gridLock } from "../../../helpers/Helpers";
 import { PropTypes } from "prop-types";
 
@@ -32,14 +33,13 @@ export const Knob = React.memo(
     setSelectedComponentPosition,
     updateCx,
     updateCy,
+    updateDescription,
     deleteKnob
   }) => {
-    const { position, cx, cy, r, id, color } = knobDetails;
+    const { position, cx, cy, r, id, color, description } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
-      onTapStart: event => {
-        // TODO entire app should not rerender when this fires
-        // this causes drag functions to fail
+      onTap: event => {
         // setSelectedComponentId(id);
       }
     };
@@ -51,6 +51,7 @@ export const Knob = React.memo(
       onDragEnd: (event, info) => {
         updateCx(id, gridLock(info.offset.x + cx, 5));
         updateCy(id, gridLock(info.offset.y + cy, 5));
+        setSelectedComponentId(id);
       }
     };
     const patcherProps = {
@@ -123,6 +124,11 @@ export const Knob = React.memo(
       >
         <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} />
         <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} />
+        <UpdateDescriptionInput
+          updateDescription={updateDescription}
+          knobId={id}
+          description={description}
+        />
         <DeleteSelectedKnobButton deleteKnob={deleteKnob} knobId={id} />
       </Popup>
     );
@@ -139,5 +145,6 @@ Knob.propTypes = {
   setSelectedComponentPosition: PropTypes.func,
   updateCx: PropTypes.func,
   updateCy: PropTypes.func,
+  updateDescription: PropTypes.func,
   deleteKnob: PropTypes.func
 };
