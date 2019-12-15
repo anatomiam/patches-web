@@ -11,6 +11,11 @@ import {
   updateCx,
   updateCy,
   updateDescription,
+  updatePosition,
+  updateSteps,
+  updateR,
+  updateWidth,
+  updateColor,
   deleteKnob
 } from "../../state/Actions/Actions";
 import { connect } from "react-redux";
@@ -27,6 +32,11 @@ const ComponentSwitcher = React.memo(props => {
     updateCx,
     updateCy,
     updateDescription,
+    updatePosition,
+    updateSteps,
+    updateR,
+    updateWidth,
+    updateColor,
     deleteKnob
   } = props;
   return (
@@ -64,6 +74,11 @@ const ComponentSwitcher = React.memo(props => {
                 updateCx={updateCx}
                 updateCy={updateCy}
                 updateDescription={updateDescription}
+                updatePosition={updatePosition}
+                updateSteps={updateSteps}
+                updateR={updateR}
+                updateWidth={updateWidth}
+                updateColor={updateColor}
                 deleteKnob={deleteKnob}
                 patcher={patcher}
                 drag={drag}
@@ -99,6 +114,11 @@ ComponentSwitcher.propTypes = {
   setSelectedComponentPosition: PropTypes.func,
   updateCx: PropTypes.func,
   updateCy: PropTypes.func,
+  updateDescription: PropTypes.func,
+  updatePosition: PropTypes.func,
+  updateSteps: PropTypes.func,
+  updateR: PropTypes.func,
+  updateWidth: PropTypes.func,
   deleteKnob: PropTypes.func
 };
 
@@ -115,6 +135,11 @@ const mapDispatchToProps = {
   updateCx,
   updateCy,
   updateDescription,
+  updatePosition,
+  updateSteps,
+  updateR,
+  updateWidth,
+  updateColor,
   deleteKnob
 };
 

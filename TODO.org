@@ -1,6 +1,8 @@
 * Pre-Alpha
-** TODO [#A] Fix onTapstart/onDrag issue                    :patcher:web:bug:
+** STARTED [#A] Fix onTapstart/onDrag issue                 :patcher:web:bug:
    - caused by component rerendering when redux fires an action
+   - maybe I should get rid of component info and just show values in the popup instead,
+     removing the need to dispatch an action on click?
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:
 ** TODO [#A] User actual user ID instead of hardcoded one :patcher:web:server:
 ** TODO [#B] Set up patch information table                     :patcher:web:

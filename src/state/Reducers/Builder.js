@@ -9,12 +9,17 @@ import {
   DELETE_KNOB,
   UPDATE_CX,
   UPDATE_CY,
+  UPDATE_POSITION,
+  UPDATE_STEPS,
+  UPDATE_R,
+  UPDATE_WIDTH,
   UPDATE_DESCRIPTION,
+  UPDATE_COLOR,
   START_FROM_SCRATCH,
   SET_IS_LOGGED_IN
 } from "../Actions/Actions";
 import { builderData } from "../Data";
-import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
+import { flattenKnobObjects } from "../../helpers/Helpers";
 
 function builderState(state = builderData, action) {
   switch (action.type) {
@@ -105,6 +110,56 @@ function builderState(state = builderData, action) {
       return {
         ...state,
         knobs: knobsUpdatedDescription
+      };
+    case UPDATE_POSITION:
+      const knobsUpdatedPosition = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, position: action.position };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedPosition
+      };
+    case UPDATE_STEPS:
+      const knobsUpdatedSteps = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, steps: action.steps };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedSteps
+      };
+    case UPDATE_R:
+      const knobsUpdatedR = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, r: action.r };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedR
+      };
+    case UPDATE_WIDTH:
+      const knobsUpdatedWidth = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, width: action.width };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedWidth
+      };
+    case UPDATE_COLOR:
+      const knobsUpdatedColor = state.knobs.map(knob => {
+        return knob.id !== action.selectedComponentId
+          ? knob
+          : { ...knob, color: action.color };
+      });
+      return {
+        ...state,
+        knobs: knobsUpdatedColor
       };
     case START_FROM_SCRATCH:
       return {

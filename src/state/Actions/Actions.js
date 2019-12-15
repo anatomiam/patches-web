@@ -16,6 +16,11 @@ export const DELETE_KNOB = "DELETE_KNOB";
 export const UPDATE_CX = "UPDATE_CX";
 export const UPDATE_CY = "UPDATE_CY";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
+export const UPDATE_POSITION = "UPDATE_POSITION";
+export const UPDATE_STEPS = "UPDATE_STEPS";
+export const UPDATE_R = "UPDATE_R";
+export const UPDATE_WIDTH = "UPDATE_WIDTH";
+export const UPDATE_COLOR = "UPDATE_COLOR";
 export const START_FROM_SCRATCH = "START_FROM_SCRATCH";
 export const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
 
@@ -115,6 +120,26 @@ export function updateCy(selectedComponentId, cy) {
 
 export function updateDescription(selectedComponentId, description) {
   return { type: UPDATE_DESCRIPTION, selectedComponentId, description };
+}
+
+export function updatePosition(selectedComponentId, position) {
+  return { type: UPDATE_POSITION, selectedComponentId, position };
+}
+
+export function updateSteps(selectedComponentId, steps) {
+  return { type: UPDATE_STEPS, selectedComponentId, steps };
+}
+
+export function updateR(selectedComponentId, r) {
+  return { type: UPDATE_R, selectedComponentId, r };
+}
+
+export function updateWidth(selectedComponentId, width) {
+  return { type: UPDATE_WIDTH, selectedComponentId, width };
+}
+
+export function updateColor(selectedComponentId, color) {
+  return { type: UPDATE_COLOR, selectedComponentId, color };
 }
 
 export function startFromScratch() {

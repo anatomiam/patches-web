@@ -6,6 +6,11 @@ import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnob
 import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
 import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
 import { UpdateDescriptionInput } from "../../Forms/Builder/UpdateDescriptionInput";
+import { UpdatePositionInput } from "../../Forms/Builder/UpdatePositionInput";
+import { UpdateStepsInput } from "../../Forms/Builder/UpdateStepsInput";
+import { UpdateRInput } from "../../Forms/Builder/UpdateRInput";
+import { UpdateWidthInput } from "../../Forms/Builder/UpdateWidthInput";
+import { UpdateColorInput } from "../../Forms/Builder/UpdateColorInput";
 import { gridLock } from "../../../helpers/Helpers";
 import { PropTypes } from "prop-types";
 
@@ -34,9 +39,24 @@ export const Knob = React.memo(
     updateCx,
     updateCy,
     updateDescription,
+    updatePosition,
+    updateSteps,
+    updateR,
+    updateWidth,
+    updateColor,
     deleteKnob
   }) => {
-    const { position, cx, cy, r, id, color, description } = knobDetails;
+    const {
+      position,
+      cx,
+      cy,
+      r,
+      id,
+      color,
+      description,
+      steps,
+      width
+    } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
       onTap: event => {
@@ -122,13 +142,44 @@ export const Knob = React.memo(
         }
         on="click"
       >
-        <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} />
-        <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} />
-        <UpdateDescriptionInput
-          updateDescription={updateDescription}
-          knobId={id}
-          description={description}
-        />
+        {cx ? <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} /> : null}
+        {cy ? <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} /> : null}
+        {description ? (
+          <UpdateDescriptionInput
+            updateDescription={updateDescription}
+            knobId={id}
+            description={description}
+          />
+        ) : null}
+        {position ? (
+          <UpdatePositionInput
+            updatePosition={updatePosition}
+            knobId={id}
+            position={position}
+          />
+        ) : null}
+        {steps ? (
+          <UpdateStepsInput
+            updateSteps={updateSteps}
+            knobId={id}
+            steps={steps}
+          />
+        ) : null}
+        {r ? <UpdateRInput updateR={updateR} knobId={id} r={r} /> : null}
+        {width ? (
+          <UpdateWidthInput
+            updateWidth={updateWidth}
+            knobId={id}
+            width={width}
+          />
+        ) : null}
+        {color ? (
+          <UpdateColorInput
+            updateColor={updateColor}
+            knobId={id}
+            color={color}
+          />
+        ) : null}
         <DeleteSelectedKnobButton deleteKnob={deleteKnob} knobId={id} />
       </Popup>
     );
@@ -146,5 +197,8 @@ Knob.propTypes = {
   updateCx: PropTypes.func,
   updateCy: PropTypes.func,
   updateDescription: PropTypes.func,
+  updatePosition: PropTypes.func,
+  updateSteps: PropTypes.func,
+  updateR: PropTypes.func,
   deleteKnob: PropTypes.func
 };
