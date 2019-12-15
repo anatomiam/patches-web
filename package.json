@@ -30,7 +30,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.3.0",
     "redux": "^4.0.4",
-    "semantic-ui-react": "^0.88.1",
+    "semantic-ui-react": "^0.88.2",
     "styled-components": "^4.3.2",
     "typescript": "^3.7.3",
     "yup": "^0.27.0"
