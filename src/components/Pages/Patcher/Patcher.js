@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
-import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
+// import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import "../../../index.css";
@@ -80,14 +80,14 @@ const Patcher = props => {
             selectedComponentId={selectedComponentId}
           />
         </DivNotes>
-        <DivDetails>
+        {/* <DivDetails>
           <ComponentInfo
             knobs={knobs}
             selectedComponentId={selectedComponentId}
             selectedComponentPosition={selectedComponentPosition}
             pedalDetails={patcherState.pedalDetails}
           />
-        </DivDetails>
+        </DivDetails> */}
         <DivSubmit>
           <CreatePresetButton patcherState={patcherState} />
         </DivSubmit>

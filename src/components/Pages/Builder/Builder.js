@@ -4,7 +4,7 @@ import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddIndicatorForm } from "../../Forms/Builder/AddIndicatorForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
-import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
+// import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
 import {
@@ -264,14 +264,14 @@ const Builder = props => {
           />
         </Menu>
       </DivTools>
-      <DivDetails drag={true} dragMomentum={false}>
+      {/* <DivDetails drag={true} dragMomentum={false}>
         <ComponentInfo
           knobs={knobs}
           selectedComponentId={selectedComponentId}
           selectedComponentPosition={selectedComponentPosition}
           pedalDetails={builderState.pedalDetails}
         />
-      </DivDetails>
+      </DivDetails> */}
       <Scaler scale={scale} setScale={setScaleBuilder} />
     </DivContainer>
   );

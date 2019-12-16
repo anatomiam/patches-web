@@ -59,9 +59,9 @@ export const Knob = React.memo(
     } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
-      onTap: event => {
+      // onTap: event => {
         // setSelectedComponentId(id);
-      }
+      // }
     };
     const builderProps = {
       drag: drag,
@@ -71,7 +71,6 @@ export const Knob = React.memo(
       onDragEnd: (event, info) => {
         updateCx(id, gridLock(info.offset.x + cx, 5));
         updateCy(id, gridLock(info.offset.y + cy, 5));
-        setSelectedComponentId(id);
       }
     };
     const patcherProps = {
@@ -90,6 +89,7 @@ export const Knob = React.memo(
           id,
           (((position + angleAdjust) % 360) + 360) % 360
         );
+        setSelectedComponentId(id);
       }
     };
     // set document width and height to 100x100,

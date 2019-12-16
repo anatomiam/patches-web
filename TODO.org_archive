@@ -537,3 +537,16 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] Fix onTapstart/onDrag issue                     :patcher:web:bug:
+  CLOSED: [2019-12-15 Sun 19:14]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-12-15 Sun 19:14
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - caused by component rerendering when redux fires an action
+  - maybe I should get rid of component info and just show values in the popup instead,
+    removing the need to dispatch an action on click?

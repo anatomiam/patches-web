@@ -8,8 +8,8 @@ import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
-import { setAccessToken } from "./auth/Auth";
-import { setCurrentPage } from "./state/Actions/Actions";
+import { setAccessToken, isAuthenticated } from "./auth/Auth";
+import { setCurrentPage, setIsLoggedIn } from "./state/Actions/Actions";
 import { connect } from "react-redux";
 
 const PRESET_QUERY = gql`
@@ -59,7 +59,7 @@ const PEDAL_QUERY = gql`
 
 const App = props => {
   const { currentPage } = props.sharedState;
-  const { setCurrentPage } = props;
+  const { setCurrentPage, setIsLoggedIn } = props;
   const {
     data: pedalsData,
     loading: pedalsLoading,
@@ -86,15 +86,15 @@ const App = props => {
 
   useEffect(() => {
     setCurrentPage(window.location.pathname.replace("/", ""));
+    if (isAuthenticated()) {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   if (pedalsLoading) return "Loading Pedals...";
   if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
   if (presetsLoading) return "Loading Presets...";
   if (presetsError) return `Loading Presets Error! ${presetsError}`;
-
-  // TODO update isLoggedIn bool
-  console.log(currentPage);
 
   return (
     <Router>
@@ -166,6 +166,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { setCurrentPage };
+const mapDispatchToProps = { setCurrentPage, setIsLoggedIn };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
