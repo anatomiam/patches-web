@@ -38,11 +38,13 @@ const Patcher = props => {
   } = props;
   const { width, height, color } = patcherState.pedalDetails;
   const {
+    builder,
     knobs,
     scale,
     tapKnobsIn,
     patchDetails,
     selectedComponentId,
+    pedalDetails,
     selectedComponentPosition
   } = patcherState;
 
@@ -74,6 +76,8 @@ const Patcher = props => {
         <Scaler scale={scale} setScale={setScale} />
         <DivNotes>
           <PatchForm
+            builder={builder}
+            pedalId={pedalDetails.id}
             patchDetails={patchDetails}
             setPatchDetails={setPatchDetails}
             knobs={knobs}
@@ -109,7 +113,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = { addKnob, selectPreset, setScale, setPatchDetails };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Patcher);
+export default connect(mapStateToProps, mapDispatchToProps)(Patcher);

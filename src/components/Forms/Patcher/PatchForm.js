@@ -1,10 +1,13 @@
 import React from "react";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 import { Button, Input, Form, TextArea } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, pick, omit } from "lodash";
 import { PropTypes } from "prop-types";
+import { getPatchesToCreate } from "../../../helpers/Helpers";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,9 +20,37 @@ const PatchFormSchema = Yup.object().shape({
     .required("Description is required")
 });
 
+const CREATE_PRESET = gql`
+  mutation CreatePreset(
+    $user: ID!
+    $pedal: ID
+    $name: String!
+    $description: String!
+    $patches: [PatchesInput]
+  ) {
+    createPreset(
+      user: $user
+      pedal: $pedal
+      name: $name
+      description: $description
+      patches: $patches
+    ) {
+      id
+    }
+  }
+`;
+
 export const PatchForm = React.memo(
-  ({ patchDetails, selectedComponentId, knobs, setPatchDetails }) => {
+  ({
+    patchDetails,
+    selectedComponentId,
+    knobs,
+    setPatchDetails,
+    builder,
+    pedalId
+  }) => {
     const { name, description, id } = patchDetails.patchNotes;
+    const [createPreset] = useMutation(CREATE_PRESET);
 
     // flatten form values for formik
     // this is un-flattened on submit
@@ -47,9 +78,20 @@ export const PatchForm = React.memo(
           const knobNotes = omit(values, ["name", "description"]);
           const patchNotes = { id, ...pick(values, ["name", "description"]) };
 
-          setPatchDetails({
-            patchNotes,
-            knobNotes
+          const patchesToCreate = getPatchesToCreate(knobs, knobNotes);
+
+          // setPatchDetails({
+          //   patchNotes,
+          //   knobNotes
+          // });
+          createPreset({
+            variables: {
+              user: builder,
+              pedal: pedalId,
+              name: patchNotes.name,
+              description: patchNotes.description,
+              patches: patchesToCreate
+            }
           });
           setSubmitting(false);
         }}
@@ -61,7 +103,8 @@ export const PatchForm = React.memo(
           handleChange,
           handleReset,
           isSubmitting,
-          handleSubmit
+          handleSubmit,
+          submitForm
         }) => (
           <Form
             onSubmit={event => {
@@ -113,6 +156,16 @@ export const PatchForm = React.memo(
             <Button type="submit" disabled={isSubmitting}>
               Submit Patch Notes
             </Button>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              onClick={() => {
+                console.log("updating");
+                submitForm();
+              }}
+            >
+              Update
+            </Button>
             <Button type="button" disabled={!dirty} onClick={handleReset}>
               Reset
             </Button>
@@ -127,6 +180,8 @@ export const PatchForm = React.memo(
 PatchForm.propTypes = {
   patchDetails: PropTypes.object,
   selectedComponentId: PropTypes.string,
+  builder: PropTypes.string,
+  pedalId: PropTypes.string,
   knobs: PropTypes.array,
   setPatchDetails: PropTypes.func
 };
