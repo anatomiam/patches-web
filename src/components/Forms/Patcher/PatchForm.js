@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Button, Input, Form, TextArea } from "semantic-ui-react";
@@ -7,7 +7,10 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty, pick, omit } from "lodash";
 import { PropTypes } from "prop-types";
-import { getPatchesToCreate } from "../../../helpers/Helpers";
+import {
+  getPatchesToCreate,
+  restructureUpdatedPatches
+} from "../../../helpers/Helpers";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -40,6 +43,24 @@ const CREATE_PRESET = gql`
   }
 `;
 
+const UPDATE_PRESET = gql`
+  mutation UpdatePreset(
+    $id: ID!
+    $name: String
+    $description: String
+    $patchesToUpdate: [UpdatePatchesInput]
+  ) {
+    updatePreset(
+      id: $id
+      name: $name
+      description: $description
+      patchesToUpdate: $patchesToUpdate
+    ) {
+      id
+    }
+  }
+`;
+
 export const PatchForm = React.memo(
   ({
     patchDetails,
@@ -50,7 +71,9 @@ export const PatchForm = React.memo(
     pedalId
   }) => {
     const { name, description, id } = patchDetails.patchNotes;
+    const [submitType, setSubmitType] = useState("");
     const [createPreset] = useMutation(CREATE_PRESET);
+    const [updatePreset] = useMutation(UPDATE_PRESET);
 
     // flatten form values for formik
     // this is un-flattened on submit
@@ -60,12 +83,6 @@ export const PatchForm = React.memo(
       description,
       ...patchDetails.knobNotes
     };
-    // const initialValues = {
-    //   ...{},
-    //   name,
-    //   description,
-    //   ...initialKnobNotes
-    // };
 
     return (
       <Formik
@@ -78,21 +95,28 @@ export const PatchForm = React.memo(
           const knobNotes = omit(values, ["name", "description"]);
           const patchNotes = { id, ...pick(values, ["name", "description"]) };
 
-          const patchesToCreate = getPatchesToCreate(knobs, knobNotes);
-
-          // setPatchDetails({
-          //   patchNotes,
-          //   knobNotes
-          // });
-          createPreset({
-            variables: {
-              user: builder,
-              pedal: pedalId,
-              name: patchNotes.name,
-              description: patchNotes.description,
-              patches: patchesToCreate
-            }
-          });
+          if (submitType === "create") {
+            const patchesToCreate = getPatchesToCreate(knobs, knobNotes);
+            createPreset({
+              variables: {
+                user: builder,
+                pedal: pedalId,
+                name: patchNotes.name,
+                description: patchNotes.description,
+                patches: patchesToCreate
+              }
+            });
+          } else if (submitType === "update") {
+            const patchesToUpdate = restructureUpdatedPatches(knobs, knobNotes);
+            updatePreset({
+              variables: {
+                id,
+                name: patchNotes.name,
+                description: patchNotes.description,
+                patchesToUpdate
+              }
+            });
+          }
           setSubmitting(false);
         }}
       >
@@ -104,7 +128,6 @@ export const PatchForm = React.memo(
           handleReset,
           isSubmitting,
           handleSubmit,
-          submitForm
         }) => (
           <Form
             onSubmit={event => {
@@ -153,15 +176,20 @@ export const PatchForm = React.memo(
                 </Form.Field>
               );
             })}
-            <Button type="submit" disabled={isSubmitting}>
-              Submit Patch Notes
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              onClick={() => {
+                setSubmitType("create");
+              }}
+            >
+              Create
             </Button>
             <Button
               type="submit"
               disabled={isSubmitting}
               onClick={() => {
-                console.log("updating");
-                submitForm();
+                setSubmitType("update");
               }}
             >
               Update
