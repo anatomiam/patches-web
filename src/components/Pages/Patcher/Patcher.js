@@ -6,8 +6,6 @@ import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import "../../../index.css";
-import { CreatePresetButton } from "../../Forms/Patcher/CreatePresetButton";
-import { UpdatePresetButton } from "../../Forms/Patcher/UpdatePresetButton";
 import { Scaler } from "../General/Scaler";
 import { connect } from "react-redux";
 import {
@@ -92,12 +90,6 @@ const Patcher = props => {
             pedalDetails={patcherState.pedalDetails}
           />
         </DivDetails> */}
-        <DivSubmit>
-          <CreatePresetButton patcherState={patcherState} />
-        </DivSubmit>
-        <DivSubmit>
-          <UpdatePresetButton patcherState={patcherState} />
-        </DivSubmit>
       </DivTools>
     </DivContainer>
   );

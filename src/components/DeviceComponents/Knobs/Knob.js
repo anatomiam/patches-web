@@ -142,6 +142,7 @@ export const Knob = React.memo(
         }
         on="click"
       >
+        {/* only show when in builder mode */}
         {cx ? <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} /> : null}
         {cy ? <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} /> : null}
         {description ? (
