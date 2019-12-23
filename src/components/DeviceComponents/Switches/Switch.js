@@ -39,7 +39,7 @@ export const Switch = React.memo(
     const switchPosition = switchPositions[numberOfPositions];
 
     const sharedProps = {
-      onTap: event => {
+      onTap: () => {
         setSelectedComponentId(id);
       }
     };
@@ -47,7 +47,7 @@ export const Switch = React.memo(
     const patcherProps = {
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
-      onTap: event => {
+      onTap: () => {
         setSelectedComponentPosition(id, (position + 1) % numberOfPositions);
       }
     };
@@ -65,7 +65,7 @@ export const Switch = React.memo(
         <svg width={_width} height={height}>
           <g>
             <rect
-              className="component"
+              className="icon-pointer"
               x={0}
               y={0}
               width={_width}
@@ -95,3 +95,4 @@ Switch.propTypes = {
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func
 };
+Switch.displayName = "Switch";

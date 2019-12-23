@@ -26,7 +26,7 @@ export const Pedal = React.memo(
   }) => {
     const tapKnobsProps = {
       className: "crosshair",
-      onTap: (event, info) => {
+      onTap: event => {
         addKnob({
           type: "Knob",
           cx: event.offsetX,
@@ -72,3 +72,4 @@ Pedal.propTypes = {
   tapKnobsIn: PropTypes.bool,
   addKnob: PropTypes.func
 };
+Pedal.displayName = "Pedal";

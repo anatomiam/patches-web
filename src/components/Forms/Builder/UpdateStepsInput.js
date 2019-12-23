@@ -64,5 +64,7 @@ export const UpdateStepsInput = React.memo(({ knobId, steps, updateSteps }) => {
 UpdateStepsInput.propTypes = {
   knobId: PropTypes.string,
   steps: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateSteps: PropTypes.func
 };
+UpdateStepsInput.displayName = "UpdateStepsInput";

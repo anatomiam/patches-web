@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Message } from "semantic-ui-react";
+import { Message, Button } from "semantic-ui-react";
 import { SignUpFormWithRouter } from "../../Forms/General/SignUpForm";
 import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
@@ -35,9 +35,14 @@ const Login: React.FC<Props> = props => {
           />
           <Message>
             Are you new here?{" "}
-            <a className="icon-pointer" onClick={() => setIsNewUser(true)}>
+            <Button
+              size="mini"
+              color="blue"
+              className="icon-pointer"
+              onClick={() => setIsNewUser(true)}
+            >
               Join Us
-            </a>
+            </Button>
           </Message>
         </LoginDiv>
       );
@@ -47,9 +52,14 @@ const Login: React.FC<Props> = props => {
           <SignUpFormWithRouter />
           <Message>
             Already a user?{" "}
-            <a className="icon-pointer" onClick={() => setIsNewUser(false)}>
+            <Button
+              size="mini"
+              color="blue"
+              className="icon-pointer"
+              onClick={() => setIsNewUser(false)}
+            >
               Login
-            </a>
+            </Button>
           </Message>
         </LoginDiv>
       );

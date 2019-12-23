@@ -162,3 +162,4 @@ export const AddKnobForm = React.memo(({ addKnob }) => {
 });
 
 AddKnobForm.propTypes = { addKnob: PropTypes.func };
+AddKnobForm.displayName = "AddKnobForm";

@@ -62,14 +62,7 @@ const UPDATE_PRESET = gql`
 `;
 
 export const PatchForm = React.memo(
-  ({
-    patchDetails,
-    selectedComponentId,
-    knobs,
-    setPatchDetails,
-    builder,
-    pedalId
-  }) => {
+  ({ patchDetails, selectedComponentId, knobs, builder, pedalId }) => {
     const { name, description, id } = patchDetails.patchNotes;
     const [submitType, setSubmitType] = useState("");
     const [createPreset] = useMutation(CREATE_PRESET);
@@ -127,7 +120,7 @@ export const PatchForm = React.memo(
           handleChange,
           handleReset,
           isSubmitting,
-          handleSubmit,
+          handleSubmit
         }) => (
           <Form
             onSubmit={event => {
@@ -213,3 +206,4 @@ PatchForm.propTypes = {
   knobs: PropTypes.array,
   setPatchDetails: PropTypes.func
 };
+PatchForm.displayName = "PatchForm";

@@ -64,5 +64,7 @@ export const UpdateRInput = React.memo(({ knobId, r, updateR }) => {
 UpdateRInput.propTypes = {
   knobId: PropTypes.string,
   r: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateR: PropTypes.func
 };
+UpdateRInput.displayName = "UpdateRInput";

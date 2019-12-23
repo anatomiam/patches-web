@@ -64,3 +64,4 @@ export const CreatePedalButton = React.memo(({ builderState }) => {
 CreatePedalButton.propTypes = {
   builderState: PropTypes.object
 };
+CreatePedalButton.displayName = "CreatePedalButton";

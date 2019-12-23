@@ -64,5 +64,7 @@ export const UpdateWidthInput = React.memo(({ knobId, width, updateWidth }) => {
 UpdateWidthInput.propTypes = {
   knobId: PropTypes.string,
   width: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateWidth: PropTypes.func
 };
+UpdateWidthInput.displayName = "UpdateWidthInput";

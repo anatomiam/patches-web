@@ -66,5 +66,7 @@ export const UpdatePositionInput = React.memo(
 UpdatePositionInput.propTypes = {
   knobId: PropTypes.string,
   position: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updatePosition: PropTypes.func
 };
+UpdatePositionInput.displayName = "UpdatePositionInput";

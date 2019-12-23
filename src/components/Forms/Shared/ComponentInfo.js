@@ -39,3 +39,4 @@ ComponentInfo.propTypes = {
   selectedComponentId: PropTypes.string,
   pedalDetails: PropTypes.object
 };
+ComponentInfo.displayName = "ComponentInfo";

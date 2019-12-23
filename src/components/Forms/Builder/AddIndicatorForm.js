@@ -162,3 +162,4 @@ export const AddIndicatorForm = React.memo(({ addKnob }) => {
 });
 
 AddIndicatorForm.propTypes = { addKnob: PropTypes.func };
+AddIndicatorForm.displayName = "AddIndicatorForm";

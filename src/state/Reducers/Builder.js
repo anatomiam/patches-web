@@ -23,7 +23,7 @@ import { flattenKnobObjects } from "../../helpers/Helpers";
 
 function builderState(state = builderData, action) {
   switch (action.type) {
-    case SELECT_PEDAL_BUILDER:
+    case SELECT_PEDAL_BUILDER: {
       console.log(action);
       const initialKnobNotes = flattenKnobObjects(action.knobs);
       return {
@@ -43,6 +43,7 @@ function builderState(state = builderData, action) {
         },
         isNewPedal: false
       };
+    }
     case SET_SELECTED_COMPONENT_ID:
       return {
         ...state,
@@ -73,7 +74,7 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: [...state.knobs, action.knob]
       };
-    case DELETE_KNOB:
+    case DELETE_KNOB: {
       const knobsUpdatedDeleted = state.knobs.filter(knob => {
         return knob.id !== action.selectedComponentId;
       });
@@ -81,7 +82,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedDeleted
       };
-    case UPDATE_CX:
+    }
+    case UPDATE_CX: {
       const knobsUpdatedCx = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -91,7 +93,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedCx
       };
-    case UPDATE_CY:
+    }
+    case UPDATE_CY: {
       const knobsUpdatedCy = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -101,7 +104,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedCy
       };
-    case UPDATE_DESCRIPTION:
+    }
+    case UPDATE_DESCRIPTION: {
       const knobsUpdatedDescription = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -111,7 +115,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedDescription
       };
-    case UPDATE_POSITION:
+    }
+    case UPDATE_POSITION: {
       const knobsUpdatedPosition = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -121,7 +126,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedPosition
       };
-    case UPDATE_STEPS:
+    }
+    case UPDATE_STEPS: {
       const knobsUpdatedSteps = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -131,7 +137,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedSteps
       };
-    case UPDATE_R:
+    }
+    case UPDATE_R: {
       const knobsUpdatedR = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -141,7 +148,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedR
       };
-    case UPDATE_WIDTH:
+    }
+    case UPDATE_WIDTH: {
       const knobsUpdatedWidth = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -151,7 +159,8 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedWidth
       };
-    case UPDATE_COLOR:
+    }
+    case UPDATE_COLOR: {
       const knobsUpdatedColor = state.knobs.map(knob => {
         return knob.id !== action.selectedComponentId
           ? knob
@@ -161,6 +170,7 @@ function builderState(state = builderData, action) {
         ...state,
         knobs: knobsUpdatedColor
       };
+    }
     case START_FROM_SCRATCH:
       return {
         ...state,

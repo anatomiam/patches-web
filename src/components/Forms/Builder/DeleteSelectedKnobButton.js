@@ -22,3 +22,4 @@ DeleteSelectedKnobButton.propTypes = {
   knobId: PropTypes.string,
   deleteKnob: PropTypes.func
 };
+DeleteSelectedKnobButton.displayName = "DeleteSelectedKnobButton";

@@ -1,10 +1,7 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
-import {
-  DivLabeledColorPicker,
-  InputColorPicker
-} from "../../Pages/PageStyles";
+import { InputColorPicker } from "../../Pages/PageStyles";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { isEmpty } from "lodash";
@@ -65,5 +62,7 @@ export const UpdateColorInput = React.memo(({ knobId, color, updateColor }) => {
 UpdateColorInput.propTypes = {
   knobId: PropTypes.string,
   color: PropTypes.string,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateColor: PropTypes.func
 };
+UpdateColorInput.displayName = "UpdateColorInput";

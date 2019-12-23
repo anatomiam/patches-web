@@ -66,5 +66,7 @@ export const UpdateDescriptionInput = React.memo(
 UpdateDescriptionInput.propTypes = {
   knobId: PropTypes.string,
   description: PropTypes.string,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateDescription: PropTypes.func
 };
+UpdateDescriptionInput.displayName = "UpdateDescriptionInput";

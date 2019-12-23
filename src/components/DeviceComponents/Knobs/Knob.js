@@ -60,7 +60,7 @@ export const Knob = React.memo(
     const [angleAdjust, setAngleAdjust] = useState(0);
     const sharedProps = {
       // onTap: event => {
-        // setSelectedComponentId(id);
+      // setSelectedComponentId(id);
       // }
     };
     const builderProps = {
@@ -201,5 +201,8 @@ Knob.propTypes = {
   updatePosition: PropTypes.func,
   updateSteps: PropTypes.func,
   updateR: PropTypes.func,
+  updateWidth: PropTypes.func,
+  updateColor: PropTypes.func,
   deleteKnob: PropTypes.func
 };
+Knob.displayName = "Knob";

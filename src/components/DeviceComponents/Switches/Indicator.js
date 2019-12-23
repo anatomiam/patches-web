@@ -15,7 +15,7 @@ export const Indicator = React.memo(
   ({ indicatorDetails, builder, patcher, setSelectedComponentId }) => {
     const { cx, cy, r, color, id } = indicatorDetails;
     const sharedProps = {
-      onTapStart: event => {
+      onTapStart: () => {
         setSelectedComponentId(id);
       }
     };
@@ -53,5 +53,7 @@ Indicator.propTypes = {
   indicatorDetails: PropTypes.object,
   builder: PropTypes.bool,
   patcher: PropTypes.bool,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  setSelectedComponentId: PropTypes.func
 };
+Indicator.displayName = "Indicator";

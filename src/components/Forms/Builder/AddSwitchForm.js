@@ -141,3 +141,4 @@ export const AddSwitchForm = React.memo(({ addKnob }) => {
 });
 
 AddSwitchForm.propTypes = { addKnob: PropTypes.func };
+AddSwitchForm.displayName = "AddSwitchForm";

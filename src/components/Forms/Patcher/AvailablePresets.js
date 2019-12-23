@@ -30,3 +30,4 @@ AvailablePresets.propTypes = {
   presets: PropTypes.array,
   selectPreset: PropTypes.func
 };
+AvailablePresets.displayName = "AvailablePresets";

@@ -19,7 +19,7 @@ import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { Scaler } from "../General/Scaler";
 import { Icon, Menu, Button, Popup } from "semantic-ui-react";
-import { DivContainer, DivDetails, DivPedal, DivTools } from "../PageStyles";
+import { DivContainer, DivPedal, DivTools } from "../PageStyles";
 import { connect } from "react-redux";
 
 const Builder = props => {
@@ -35,15 +35,7 @@ const Builder = props => {
   } = props;
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = builderState.pedalDetails;
-  const {
-    knobs,
-    scale,
-    isNewPedal,
-    selectedComponentId,
-    selectedComponentPosition,
-    drag,
-    tapKnobsIn
-  } = builderState;
+  const { knobs, scale, isNewPedal, drag, tapKnobsIn } = builderState;
 
   return (
     <DivContainer>
@@ -277,7 +269,16 @@ const Builder = props => {
   );
 };
 
-Builder.propTypes = { pedals: PropTypes.array };
+Builder.propTypes = {
+  pedals: PropTypes.array,
+  builderState: PropTypes.object,
+  addKnob: PropTypes.func,
+  tapKnob: PropTypes.func,
+  dragKnob: PropTypes.func,
+  setPedalDetails: PropTypes.func,
+  startFromScratch: PropTypes.func,
+  setScaleBuilder: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {

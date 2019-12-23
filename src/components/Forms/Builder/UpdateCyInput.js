@@ -66,3 +66,4 @@ UpdateCyInput.propTypes = {
   cy: PropTypes.number,
   updateCy: PropTypes.func
 };
+UpdateCyInput.displayName = "UpdateCyInput"

@@ -16,10 +16,8 @@ import {
 } from "../../../state/Actions/Actions";
 import {
   DivContainer,
-  DivDetails,
   DivNotes,
   DivPedal,
-  DivSubmit,
   DivPedalSelector,
   DivTools
 } from "../PageStyles";
@@ -42,8 +40,7 @@ const Patcher = props => {
     tapKnobsIn,
     patchDetails,
     selectedComponentId,
-    pedalDetails,
-    selectedComponentPosition
+    pedalDetails
   } = patcherState;
 
   const pedalPresets = presets.filter(preset => {
@@ -95,7 +92,15 @@ const Patcher = props => {
   );
 };
 
-Patcher.propTypes = { pedals: PropTypes.array, presets: PropTypes.array };
+Patcher.propTypes = {
+  pedals: PropTypes.array,
+  presets: PropTypes.array,
+  patcherState: PropTypes.object,
+  addKnob: PropTypes.func,
+  selectPreset: PropTypes.func,
+  setScale: PropTypes.func,
+  setPatchDetails: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {

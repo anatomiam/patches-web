@@ -1,6 +1,4 @@
 import {
-  SET_SCALE,
-  SET_IS_LOGGED_IN,
   SET_CURRENT_PAGE
 } from "../Actions/Actions";
 

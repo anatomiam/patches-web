@@ -110,6 +110,7 @@ ComponentSwitcher.propTypes = {
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
   tapKnobsIn: PropTypes.bool,
+  knobs: PropTypes.array,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,
   updateCx: PropTypes.func,
@@ -119,9 +120,10 @@ ComponentSwitcher.propTypes = {
   updateSteps: PropTypes.func,
   updateR: PropTypes.func,
   updateWidth: PropTypes.func,
+  updateColor: PropTypes.func,
   deleteKnob: PropTypes.func
 };
-
+ComponentSwitcher.displayName = "ComponentSwitcher";
 const mapStateToProps = state => {
   // need to reconcile bw builder and patcher
   return {

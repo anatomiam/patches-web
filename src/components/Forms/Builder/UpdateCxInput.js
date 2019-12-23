@@ -64,5 +64,7 @@ export const UpdateCxInput = React.memo(({ knobId, cx, updateCx }) => {
 UpdateCxInput.propTypes = {
   knobId: PropTypes.string,
   cx: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  updateCx: PropTypes.func
 };
+UpdateCxInput.displayName = "UpdateCxInput";

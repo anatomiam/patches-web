@@ -86,3 +86,4 @@ export const UpdatePedalButton = React.memo(({ builderState }) => {
 });
 
 UpdatePedalButton.propTypes = { builderState: PropTypes.object };
+UpdatePedalButton.displayName = "UpdatePedalButton"

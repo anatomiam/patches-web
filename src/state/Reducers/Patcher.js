@@ -12,7 +12,7 @@ import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
 
 function patcherState(state = patcherData, action) {
   switch (action.type) {
-    case SELECT_PEDAL:
+    case SELECT_PEDAL: {
       console.log(action);
       const initialKnobNotes = flattenKnobObjects(action.knobs);
       return {
@@ -32,8 +32,9 @@ function patcherState(state = patcherData, action) {
         },
         isNewPedal: false
       };
+    }
 
-    case SELECT_PRESET:
+    case SELECT_PRESET: {
       const updatedPositions = state.knobs.map(knob => {
         const foundKnob = action.preset.patches.find(patch => {
           return knob.id === patch.knob.id;
@@ -56,6 +57,7 @@ function patcherState(state = patcherData, action) {
         originalKnobs: updatedPositions,
         patches: action.preset.patches
       };
+    }
 
     case SET_SELECTED_COMPONENT_ID:
       return {
@@ -63,7 +65,7 @@ function patcherState(state = patcherData, action) {
         selectedComponentId: action.id
       };
 
-    case SET_SELECTED_COMPONENT_POSITION:
+    case SET_SELECTED_COMPONENT_POSITION: {
       // TODO only update single knob instead of whole set?
       const updatedKnobs = state.knobs.map(knob => {
         if (knob.id !== action.knobId) {
@@ -75,6 +77,7 @@ function patcherState(state = patcherData, action) {
         ...state,
         knobs: updatedKnobs
       };
+    }
     case SET_PATCH_DETAILS:
       return {
         ...state,

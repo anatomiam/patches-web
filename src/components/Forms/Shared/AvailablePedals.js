@@ -63,8 +63,9 @@ AvailablePedals.propTypes = {
   builder: PropTypes.bool,
   patcher: PropTypes.bool
 };
+AvailablePedals.displayName = "AvailablePedals";
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
   selectPedal,

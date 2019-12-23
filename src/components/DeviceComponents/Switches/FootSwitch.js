@@ -15,7 +15,7 @@ export const FootSwitch = React.memo(
   ({ footSwitchDetails, builder, patcher, setSelectedComponentId }) => {
     const { cx, cy, r, id } = footSwitchDetails;
     const sharedProps = {
-      onTapStart: event => {
+      onTapStart: () => {
         setSelectedComponentId(id);
       }
     };
@@ -57,3 +57,4 @@ FootSwitch.propTypes = {
   patcher: PropTypes.bool,
   setSelectedComponentId: PropTypes.func
 };
+FootSwitch.displayName = "FootSwitch";

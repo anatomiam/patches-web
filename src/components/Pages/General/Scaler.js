@@ -23,3 +23,4 @@ export const Scaler = React.memo(({ scale, setScale }) => {
 });
 
 Scaler.propTypes = { scale: PropTypes.number, setScale: PropTypes.func };
+Scaler.displayName = "Scaler";

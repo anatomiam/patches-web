@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { PropTypes } from "prop-types";
 import Builder from "./components/Pages/Builder/Builder";
 import Patcher from "./components/Pages/Patcher/Patcher";
 import Landing from "./components/Pages/General/Landing";
@@ -89,7 +90,7 @@ const App = props => {
     if (isAuthenticated()) {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [setCurrentPage, setIsLoggedIn]);
 
   if (pedalsLoading) return "Loading Pedals...";
   if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
@@ -164,6 +165,12 @@ const mapStateToProps = state => {
   return {
     sharedState: state.sharedState
   };
+};
+
+App.propTypes = {
+  sharedState: PropTypes.object,
+  setCurrentPage: PropTypes.func,
+  setIsLoggedIn: PropTypes.func
 };
 
 const mapDispatchToProps = { setCurrentPage, setIsLoggedIn };
