@@ -62,7 +62,7 @@ const UPDATE_PRESET = gql`
 `;
 
 export const PatchForm = React.memo(
-  ({ patchDetails, selectedComponentId, knobs, builder, pedalId }) => {
+  ({ patchDetails, selectedComponentId, knobs, userId, pedalId }) => {
     const { name, description, id } = patchDetails.patchNotes;
     const [submitType, setSubmitType] = useState("");
     const [createPreset] = useMutation(CREATE_PRESET);
@@ -92,7 +92,7 @@ export const PatchForm = React.memo(
             const patchesToCreate = getPatchesToCreate(knobs, knobNotes);
             createPreset({
               variables: {
-                user: builder,
+                user: userId,
                 pedal: pedalId,
                 name: patchNotes.name,
                 description: patchNotes.description,
@@ -201,7 +201,7 @@ export const PatchForm = React.memo(
 PatchForm.propTypes = {
   patchDetails: PropTypes.object,
   selectedComponentId: PropTypes.string,
-  builder: PropTypes.string,
+  userId: PropTypes.string,
   pedalId: PropTypes.string,
   knobs: PropTypes.array,
   setPatchDetails: PropTypes.func

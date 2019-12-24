@@ -29,7 +29,12 @@ const Login: React.FC<Props> = props => {
   const [isNewUser, setIsNewUser] = useState(true);
 
   if (isLoggedIn) {
-    return <LogoutButtonWithRouter setIsLoggedIn={setIsLoggedIn} />;
+    return (
+      <LogoutButtonWithRouter
+        setIsLoggedIn={setIsLoggedIn}
+        setUserId={setUserId}
+      />
+    );
   } else {
     if (!isLoggedIn && !isNewUser) {
       return (

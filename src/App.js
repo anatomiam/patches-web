@@ -7,13 +7,17 @@ import Login from "./components/Pages/General/Login";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./index.css";
 import { Menu, Segment } from "semantic-ui-react";
-import { setAccessToken, isAuthenticated } from "./auth/Auth";
-import { setCurrentPage, setIsLoggedIn } from "./state/Actions/Actions";
+import { setAccessToken, isAuthenticated, getTokenInfo } from "./auth/Auth";
+import {
+  setCurrentPage,
+  setIsLoggedIn,
+  setUserId
+} from "./state/Actions/Actions";
 import { connect } from "react-redux";
 
 const App = props => {
   const { currentPage } = props.sharedState;
-  const { setCurrentPage, setIsLoggedIn } = props;
+  const { setCurrentPage, setIsLoggedIn, setUserId } = props;
 
   // this might not be necessary now that apollo links are set up
   useEffect(() => {
@@ -28,10 +32,13 @@ const App = props => {
 
   useEffect(() => {
     setCurrentPage(window.location.pathname.replace("/", ""));
+
     if (isAuthenticated()) {
       setIsLoggedIn(true);
+      const { userId } = getTokenInfo();
+      setUserId(userId);
     }
-  }, [setCurrentPage, setIsLoggedIn]);
+  }, [setCurrentPage, setIsLoggedIn, setUserId]);
 
   // if (pedalsLoading) return "Loading Pedals...";
   // if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
@@ -100,9 +107,10 @@ const mapStateToProps = state => {
 App.propTypes = {
   sharedState: PropTypes.object,
   setCurrentPage: PropTypes.func,
-  setIsLoggedIn: PropTypes.func
+  setIsLoggedIn: PropTypes.func,
+  setUserId: PropTypes.func
 };
 
-const mapDispatchToProps = { setCurrentPage, setIsLoggedIn };
+const mapDispatchToProps = { setCurrentPage, setIsLoggedIn, setUserId };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

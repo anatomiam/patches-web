@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { setAccessToken } from "./auth/Auth";
+import { setAccessToken, getTokenInfo } from "./auth/Auth";
 import * as serviceWorker from "./serviceWorker";
 import { resolvers, typeDefs } from "./state/Resolvers";
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -16,6 +16,7 @@ import { TokenRefreshLink } from "apollo-link-token-refresh";
 import { getAccessToken, isAuthenticated } from "./auth/Auth";
 import { Provider } from "react-redux";
 import store from "./state/Store/Store";
+import { setUserId } from "./state/Actions/Actions";
 
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "accessToken",
@@ -68,10 +69,15 @@ const client = new ApolloClient({
   resolvers
 });
 
+const { userId } = getTokenInfo();
+if (userId) {
+  store.dispatch(setUserId(userId));
+}
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </ApolloProvider>,
   document.getElementById("root")

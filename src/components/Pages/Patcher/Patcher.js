@@ -8,7 +8,6 @@ import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import "../../../index.css";
-import { getTokenInfo } from "../../../auth/Auth";
 import { Scaler } from "../General/Scaler";
 import { connect } from "react-redux";
 import {
@@ -71,8 +70,15 @@ const PEDAL_QUERY = gql`
 `;
 
 const Patcher = props => {
-  const { userId } = getTokenInfo();
-
+  const {
+    patcherState,
+    sharedState,
+    addKnob,
+    selectPreset,
+    setScale,
+    setPatchDetails
+  } = props;
+  const { userId } = sharedState;
   const {
     data: pedalsData,
     loading: pedalsLoading,
@@ -85,17 +91,8 @@ const Patcher = props => {
   } = useQuery(PRESET_QUERY, {
     variables: { userId }
   });
-
-  const {
-    patcherState,
-    addKnob,
-    selectPreset,
-    setScale,
-    setPatchDetails
-  } = props;
   const { width, height, color } = patcherState.pedalDetails;
   const {
-    builder,
     knobs,
     scale,
     tapKnobsIn,
@@ -141,7 +138,7 @@ const Patcher = props => {
         <Scaler scale={scale} setScale={setScale} />
         <DivNotes>
           <PatchForm
-            builder={builder}
+            userId={userId}
             pedalId={pedalDetails.id}
             patchDetails={patchDetails}
             setPatchDetails={setPatchDetails}
@@ -166,6 +163,7 @@ Patcher.propTypes = {
   pedals: PropTypes.array,
   presets: PropTypes.array,
   patcherState: PropTypes.object,
+  sharedState: PropTypes.object,
   addKnob: PropTypes.func,
   selectPreset: PropTypes.func,
   setScale: PropTypes.func,
@@ -174,7 +172,8 @@ Patcher.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    patcherState: state.patcherState
+    patcherState: state.patcherState,
+    sharedState: state.sharedState
   };
 };
 
