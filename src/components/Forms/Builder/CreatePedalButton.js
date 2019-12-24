@@ -1,12 +1,13 @@
-import React from "react";
-import { gql } from "apollo-boost";
-import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
-import { PropTypes } from "prop-types";
 import {
   knobsToCreateModel,
   pickKeysFromArray
 } from "../../../helpers/Helpers";
+
+import { PropTypes } from "prop-types";
+import React from "react";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 
 const CREATE_PEDAL = gql`
   mutation CreatePedal(

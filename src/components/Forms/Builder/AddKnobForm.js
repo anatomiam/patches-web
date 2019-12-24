@@ -1,14 +1,16 @@
-import React from "react";
-import { Button, Input, Form, Label } from "semantic-ui-react";
-import { ValidationErrors } from "../Shared/ValidationErrors";
+import * as Yup from "yup";
+
+import { Button, Form, Input, Label } from "semantic-ui-react";
 import {
   DivLabeledColorPicker,
   InputColorPicker
 } from "../../Pages/PageStyles";
-import { Formik } from "formik";
-import * as Yup from "yup";
 import { isEmpty, uniqueId } from "lodash";
+
+import { Formik } from "formik";
 import { PropTypes } from "prop-types";
+import React from "react";
+import { ValidationErrors } from "../Shared/ValidationErrors";
 
 const AddKnobFormSchema = Yup.object().shape({
   cx: Yup.number()

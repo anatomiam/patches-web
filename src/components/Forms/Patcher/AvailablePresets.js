@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Select } from "semantic-ui-react";
+
 import { PropTypes } from "prop-types";
+import { Select } from "semantic-ui-react";
 
 export const AvailablePresets = React.memo(({ presets, selectPreset }) => {
   const [selectedPresetName, setSelectedPresetName] = useState("");

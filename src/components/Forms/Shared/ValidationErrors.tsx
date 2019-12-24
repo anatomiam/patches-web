@@ -1,7 +1,8 @@
-import React from "react";
-import { Message } from "semantic-ui-react";
 import { map, uniqueId } from "lodash";
+
 import { FormikErrors } from "formik";
+import { Message } from "semantic-ui-react";
+import React from "react";
 // import { PropTypes } from "prop-types";
 
 export const ValidationErrors: React.FC<{

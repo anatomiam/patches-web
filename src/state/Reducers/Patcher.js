@@ -1,14 +1,15 @@
 import {
   SELECT_PEDAL,
   SELECT_PRESET,
-  SET_SELECTED_COMPONENT_ID,
-  SET_SELECTED_COMPONENT_POSITION,
+  SET_IS_LOGGED_IN,
   SET_PATCH_DETAILS,
   SET_SCALE,
-  SET_IS_LOGGED_IN
+  SET_SELECTED_COMPONENT_ID,
+  SET_SELECTED_COMPONENT_POSITION
 } from "../Actions/Actions";
-import { patcherData } from "../Data";
 import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
+
+import { patcherData } from "../Data";
 
 function patcherState(state = patcherData, action) {
   switch (action.type) {

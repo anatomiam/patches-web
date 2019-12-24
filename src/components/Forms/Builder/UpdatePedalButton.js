@@ -1,18 +1,19 @@
-import React from "react";
-import { gql } from "apollo-boost";
-import { useMutation } from "@apollo/react-hooks";
 import { Button, Form } from "semantic-ui-react";
-import { PropTypes } from "prop-types";
 import {
+  getDeletedKnobs,
+  getNewKnobs,
+  getUpdatedKnobs,
   knobsToCreateModel,
   knobsToDeleteModel,
   knobsToUpdateModel,
-  getNewKnobs,
-  getDeletedKnobs,
-  getUpdatedKnobs,
-  restructureUpdatedKnobs,
-  pickKeysFromArray
+  pickKeysFromArray,
+  restructureUpdatedKnobs
 } from "../../../helpers/Helpers";
+
+import { PropTypes } from "prop-types";
+import React from "react";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 
 const UPDATE_PEDAL = gql`
   mutation UpdatePedal(

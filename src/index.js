@@ -1,22 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import { setAccessToken, getTokenInfo } from "./auth/Auth";
+
 import * as serviceWorker from "./serviceWorker";
+
+import { getAccessToken, isAuthenticated } from "./auth/Auth";
+import { getTokenInfo, setAccessToken } from "./auth/Auth";
 import { resolvers, typeDefs } from "./state/Resolvers";
-import { ApolloProvider } from "@apollo/react-hooks";
+
 import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
-import { setContext } from "apollo-link-context";
-import { onError } from "apollo-link-error";
-import { createHttpLink } from "apollo-link-http";
+import { ApolloProvider } from "@apollo/react-hooks";
+import App from "./App";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { TokenRefreshLink } from "apollo-link-token-refresh";
-import { getAccessToken, isAuthenticated } from "./auth/Auth";
 import { Provider } from "react-redux";
-import store from "./state/Store/Store";
+import React from "react";
+import ReactDOM from "react-dom";
+import { TokenRefreshLink } from "apollo-link-token-refresh";
+import { createHttpLink } from "apollo-link-http";
+import { onError } from "apollo-link-error";
+import { setContext } from "apollo-link-context";
 import { setUserId } from "./state/Actions/Actions";
+import store from "./state/Store/Store";
 
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "accessToken",

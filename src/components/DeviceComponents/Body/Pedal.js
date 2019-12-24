@@ -1,9 +1,9 @@
-import React from "react";
 import ComponentSwitcher from "../ComponentSwitcher";
+import { PropTypes } from "prop-types";
+import React from "react";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { uniqueId } from "lodash";
-import { motion } from "framer-motion";
-import { PropTypes } from "prop-types";
 
 const PedalDiv = styled(motion.div)`
   position: relative;

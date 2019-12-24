@@ -1,21 +1,5 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import AvailablePedals from "../../Forms/Shared/AvailablePedals";
-import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
-// import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
-import { PatchForm } from "../../Forms/Patcher/PatchForm";
-import { Pedal } from "../../DeviceComponents/Body/Pedal";
-import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
 import "../../../index.css";
-import { Scaler } from "../General/Scaler";
-import { connect } from "react-redux";
-import {
-  addKnob,
-  selectPreset,
-  setScale,
-  setPatchDetails
-} from "../../../state/Actions/Actions";
+
 import {
   DivContainer,
   DivNotes,
@@ -23,6 +7,24 @@ import {
   DivPedalSelector,
   DivTools
 } from "../PageStyles";
+import {
+  addKnob,
+  selectPreset,
+  setPatchDetails,
+  setScale
+} from "../../../state/Actions/Actions";
+
+import AvailablePedals from "../../Forms/Shared/AvailablePedals";
+import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
+// import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
+import { PatchForm } from "../../Forms/Patcher/PatchForm";
+import { Pedal } from "../../DeviceComponents/Body/Pedal";
+import { PropTypes } from "prop-types";
+import React from "react";
+import { Scaler } from "../General/Scaler";
+import { connect } from "react-redux";
+import { gql } from "apollo-boost";
+import { useQuery } from "@apollo/react-hooks";
 
 const PRESET_QUERY = gql`
   query PresetsByUser($userId: ID!) {

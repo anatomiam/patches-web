@@ -1,15 +1,16 @@
+import { Button, Message } from "semantic-ui-react";
 import React, { useState } from "react";
-import { Message, Button } from "semantic-ui-react";
-import { SignUpFormWithRouter } from "../../Forms/General/SignUpForm";
-import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
-import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
-import styled from "styled-components";
-import { connect } from "react-redux";
 import {
-  setIsLoggedIn,
   setCurrentPage,
+  setIsLoggedIn,
   setUserId
 } from "../../../state/Actions/Actions";
+
+import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
+import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
+import { SignUpFormWithRouter } from "../../Forms/General/SignUpForm";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
 const LoginDiv = styled.div`
   display: flex;

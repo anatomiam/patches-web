@@ -1,10 +1,10 @@
-import React from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+
 import { Button } from "semantic-ui-react";
-import { setAccessToken } from "../../../auth/Auth";
+import React from "react";
 import { gql } from "apollo-boost";
+import { setAccessToken } from "../../../auth/Auth";
 import { useMutation } from "@apollo/react-hooks";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import { setUserId } from "../../../state/Actions/Actions";
 
 interface Props extends RouteComponentProps {
   setIsLoggedIn: (isLoggedIn: boolean) => void;

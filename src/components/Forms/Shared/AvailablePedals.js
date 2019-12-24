@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Dropdown } from "semantic-ui-react";
-import { PropTypes } from "prop-types";
 import {
   selectPedal,
   selectPedalBuilder
 } from "../../../state/Actions/Actions";
+
+import { Dropdown } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
 const AvailablePedals = React.memo(props => {

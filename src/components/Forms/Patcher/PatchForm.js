@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import { gql } from "apollo-boost";
-import { useMutation } from "@apollo/react-hooks";
-import { Button, Input, Form, TextArea } from "semantic-ui-react";
-import { ValidationErrors } from "../Shared/ValidationErrors";
-import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty, pick, omit } from "lodash";
-import { PropTypes } from "prop-types";
+
+import { Button, Form, Input, TextArea } from "semantic-ui-react";
+import React, { useState } from "react";
 import {
   getPatchesToCreate,
   restructureUpdatedPatches
 } from "../../../helpers/Helpers";
+import { isEmpty, omit, pick } from "lodash";
+
+import { Formik } from "formik";
+import { PropTypes } from "prop-types";
+import { ValidationErrors } from "../Shared/ValidationErrors";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 
 const PatchFormSchema = Yup.object().shape({
   name: Yup.string()

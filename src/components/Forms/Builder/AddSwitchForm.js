@@ -1,10 +1,12 @@
-import React from "react";
-import { Button, Input, Form } from "semantic-ui-react";
-import { ValidationErrors } from "../Shared/ValidationErrors";
-import { Formik } from "formik";
 import * as Yup from "yup";
+
+import { Button, Form, Input } from "semantic-ui-react";
 import { isEmpty, uniqueId } from "lodash";
+
+import { Formik } from "formik";
 import { PropTypes } from "prop-types";
+import React from "react";
+import { ValidationErrors } from "../Shared/ValidationErrors";
 
 const AddSwitchFormSchema = Yup.object().shape({
   cx: Yup.number()

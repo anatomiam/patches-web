@@ -1,24 +1,25 @@
-import React from "react";
-import { FootSwitch } from "./Switches/FootSwitch";
-import { Knob } from "./Knobs/Knob";
-import { Switch } from "./Switches/Switch";
-import { Indicator } from "./Switches/Indicator";
-import { uniqueId } from "lodash";
-import { PropTypes } from "prop-types";
 import {
+  deleteKnob,
   setSelectedComponentId,
   setSelectedComponentPosition,
+  updateColor,
   updateCx,
   updateCy,
   updateDescription,
   updatePosition,
-  updateSteps,
   updateR,
-  updateWidth,
-  updateColor,
-  deleteKnob
+  updateSteps,
+  updateWidth
 } from "../../state/Actions/Actions";
+
+import { FootSwitch } from "./Switches/FootSwitch";
+import { Indicator } from "./Switches/Indicator";
+import { Knob } from "./Knobs/Knob";
+import { PropTypes } from "prop-types";
+import React from "react";
+import { Switch } from "./Switches/Switch";
 import { connect } from "react-redux";
+import { uniqueId } from "lodash";
 
 const ComponentSwitcher = React.memo(props => {
   const {

@@ -1,11 +1,13 @@
-import React from "react";
-import { Form, Button } from "semantic-ui-react";
-import { ValidationErrors } from "../Shared/ValidationErrors";
-import { InputColorPicker } from "../../Pages/PageStyles";
-import { Formik } from "formik";
 import * as Yup from "yup";
-import { isEmpty } from "lodash";
+
+import { Button, Form } from "semantic-ui-react";
+
+import { Formik } from "formik";
+import { InputColorPicker } from "../../Pages/PageStyles";
 import { PropTypes } from "prop-types";
+import React from "react";
+import { ValidationErrors } from "../Shared/ValidationErrors";
+import { isEmpty } from "lodash";
 
 const UpdateColorInputSchema = Yup.object().shape({
   color: Yup.string()

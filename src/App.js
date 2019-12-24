@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
-import { PropTypes } from "prop-types";
-import Builder from "./components/Pages/Builder/Builder";
-import Patcher from "./components/Pages/Patcher/Patcher";
-import Landing from "./components/Pages/General/Landing";
-import Login from "./components/Pages/General/Login";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./index.css";
+
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { Menu, Segment } from "semantic-ui-react";
-import { setAccessToken, isAuthenticated, getTokenInfo } from "./auth/Auth";
+import React, { useEffect } from "react";
+import { getTokenInfo, isAuthenticated, setAccessToken } from "./auth/Auth";
 import {
   setCurrentPage,
   setIsLoggedIn,
   setUserId
 } from "./state/Actions/Actions";
+
+import Builder from "./components/Pages/Builder/Builder";
+import Landing from "./components/Pages/General/Landing";
+import Login from "./components/Pages/General/Login";
+import Patcher from "./components/Pages/Patcher/Patcher";
+import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
 const App = props => {

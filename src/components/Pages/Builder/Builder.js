@@ -1,28 +1,29 @@
+import { Button, Icon, Menu, Popup } from "semantic-ui-react";
+import { DivContainer, DivPedal, DivTools } from "../PageStyles";
 import React, { useState } from "react";
-import { PropTypes } from "prop-types";
-import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
+import {
+  addKnob,
+  dragKnob,
+  setPedalDetails,
+  setScaleBuilder,
+  startFromScratch,
+  tapKnob
+} from "../../../state/Actions/Actions";
+
 import { AddIndicatorForm } from "../../Forms/Builder/AddIndicatorForm";
+import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
-import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
+import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
-import {
-  addKnob,
-  tapKnob,
-  dragKnob,
-  setPedalDetails,
-  startFromScratch,
-  setScaleBuilder
-} from "../../../state/Actions/Actions";
-import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
-import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
+import { PropTypes } from "prop-types";
 import { Scaler } from "../General/Scaler";
-import { Icon, Menu, Button, Popup } from "semantic-ui-react";
-import { DivContainer, DivPedal, DivTools } from "../PageStyles";
+import { UpdatePedalButton } from "../../Forms/Builder/UpdatePedalButton";
 import { connect } from "react-redux";
+import { gql } from "apollo-boost";
+import { useQuery } from "@apollo/react-hooks";
 
 const PEDAL_QUERY = gql`
   query {

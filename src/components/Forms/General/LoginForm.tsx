@@ -1,14 +1,16 @@
-import React from "react";
-import { Button, Input, Form, Header } from "semantic-ui-react";
-import { ValidationErrors } from "../Shared/ValidationErrors";
-import { setAccessToken, getTokenInfo } from "../../../auth/Auth";
-import { gql } from "apollo-boost";
-import { useMutation } from "@apollo/react-hooks";
-import { Formik } from "formik";
 import * as Yup from "yup";
+
+import { Button, Form, Header, Input } from "semantic-ui-react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { getTokenInfo, setAccessToken } from "../../../auth/Auth";
+
+import { Formik } from "formik";
+import React from "react";
+import { ValidationErrors } from "../Shared/ValidationErrors";
+import { gql } from "apollo-boost";
 import { isEmpty } from "lodash";
-import { withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
+import { useMutation } from "@apollo/react-hooks";
 
 interface Props extends RouteComponentProps {
   setIsLoggedIn: (isLoggedIn: boolean) => void;

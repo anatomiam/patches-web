@@ -1,13 +1,13 @@
 import {
-  flattenKnobObjects,
   flattenKnobNotes,
-  getPatchesToCreate,
-  getUpdatedKnobs,
+  flattenKnobObjects,
   getDeletedKnobs,
   getNewKnobs,
+  getPatchesToCreate,
+  getUpdatedKnobs,
   gridLock,
-  knobsToUpdateModel,
   knobsToCreateModel,
+  knobsToUpdateModel,
   pickKeysFromArray,
   restructureUpdatedKnobs,
   restructureUpdatedPatches

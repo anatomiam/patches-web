@@ -1,7 +1,8 @@
+import { map, uniqueId } from "lodash";
+
+import { PropTypes } from "prop-types";
 import React from "react";
 import { Table } from "semantic-ui-react";
-import { map, uniqueId } from "lodash";
-import { PropTypes } from "prop-types";
 
 export const ComponentInfo = React.memo(
   ({ knobs, selectedComponentId, pedalDetails }) => {

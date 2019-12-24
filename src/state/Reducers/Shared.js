@@ -1,4 +1,5 @@
 import { SET_CURRENT_PAGE, SET_USER_ID } from "../Actions/Actions";
+
 import { sharedData } from "../Data";
 
 function sharedState(state = sharedData, action) {

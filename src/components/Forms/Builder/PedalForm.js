@@ -1,14 +1,16 @@
-import React from "react";
-import { Button, Input, Form, Label } from "semantic-ui-react";
+import * as Yup from "yup";
+
+import { Button, Form, Input, Label } from "semantic-ui-react";
 import {
   DivLabeledColorPicker,
   InputColorPicker
 } from "../../Pages/PageStyles";
-import { ValidationErrors } from "../Shared/ValidationErrors";
+
 import { Formik } from "formik";
-import * as Yup from "yup";
-import { isEmpty } from "lodash";
 import { PropTypes } from "prop-types";
+import React from "react";
+import { ValidationErrors } from "../Shared/ValidationErrors";
+import { isEmpty } from "lodash";
 
 const PedalFormSchema = Yup.object().shape({
   width: Yup.number()

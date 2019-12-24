@@ -1,4 +1,4 @@
-import { filter, findIndex, isEqual, compact, pick, keys } from "lodash";
+import { compact, filter, findIndex, isEqual, keys, pick } from "lodash";
 
 export const knobsToDeleteModel = {
   id: null

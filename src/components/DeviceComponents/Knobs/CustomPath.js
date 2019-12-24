@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { gridLock } from "../../../helpers/Helpers";
+
 import { PropTypes } from "prop-types";
+import { gridLock } from "../../../helpers/Helpers";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 const PathDiv = styled(motion.div)`
   pointer-events: ${props => (props.disableKnobs ? "none" : "")};

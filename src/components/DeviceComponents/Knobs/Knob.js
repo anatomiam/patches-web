@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { Popup } from "semantic-ui-react";
+
 import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnobButton";
+import { Popup } from "semantic-ui-react";
+import { PropTypes } from "prop-types";
+import { UpdateColorInput } from "../../Forms/Builder/UpdateColorInput";
 import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
 import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
 import { UpdateDescriptionInput } from "../../Forms/Builder/UpdateDescriptionInput";
 import { UpdatePositionInput } from "../../Forms/Builder/UpdatePositionInput";
-import { UpdateStepsInput } from "../../Forms/Builder/UpdateStepsInput";
 import { UpdateRInput } from "../../Forms/Builder/UpdateRInput";
+import { UpdateStepsInput } from "../../Forms/Builder/UpdateStepsInput";
 import { UpdateWidthInput } from "../../Forms/Builder/UpdateWidthInput";
-import { UpdateColorInput } from "../../Forms/Builder/UpdateColorInput";
 import { gridLock } from "../../../helpers/Helpers";
-import { PropTypes } from "prop-types";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 const KnobDiv = styled(motion.div)`
   pointer-events: ${props => (props.disableKnobs ? "none" : "")};
