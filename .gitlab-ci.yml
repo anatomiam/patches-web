@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - lint
   - test
 
 cache:
@@ -16,6 +17,10 @@ install_dependencies:
     paths:
       - node_modules/
 
-testing_testing:
+linting:
+  stage: lint
+  script: yarn lint
+
+testing:
   stage: test
   script: yarn test
