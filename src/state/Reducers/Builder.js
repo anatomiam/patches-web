@@ -24,7 +24,6 @@ import { flattenKnobObjects } from "../../helpers/Helpers";
 function builderState(state = builderData, action) {
   switch (action.type) {
     case SELECT_PEDAL_BUILDER: {
-      console.log(action);
       const initialKnobNotes = flattenKnobObjects(action.knobs);
       return {
         ...state,

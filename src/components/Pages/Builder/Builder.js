@@ -4,6 +4,8 @@ import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddIndicatorForm } from "../../Forms/Builder/AddIndicatorForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
+import { gql } from "apollo-boost";
+import { useQuery } from "@apollo/react-hooks";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
@@ -22,9 +24,38 @@ import { Icon, Menu, Button, Popup } from "semantic-ui-react";
 import { DivContainer, DivPedal, DivTools } from "../PageStyles";
 import { connect } from "react-redux";
 
+const PEDAL_QUERY = gql`
+  query {
+    pedals {
+      id
+      name
+      width
+      height
+      color
+      knobs {
+        id
+        type
+        description
+        color
+        cx
+        cy
+        r
+        position
+        steps
+        width
+      }
+    }
+  }
+`;
+
 const Builder = props => {
   const {
-    pedals,
+    data: pedalsData,
+    loading: pedalsLoading,
+    error: pedalsError
+  } = useQuery(PEDAL_QUERY);
+
+  const {
     builderState,
     addKnob,
     tapKnob,
@@ -36,6 +67,11 @@ const Builder = props => {
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = builderState.pedalDetails;
   const { knobs, scale, isNewPedal, drag, tapKnobsIn } = builderState;
+
+  if (pedalsLoading) return "Loading Pedals...";
+  if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
+
+  const pedals = pedalsData.pedals;
 
   return (
     <DivContainer>

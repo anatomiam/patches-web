@@ -23,6 +23,7 @@ export const UPDATE_WIDTH = "UPDATE_WIDTH";
 export const UPDATE_COLOR = "UPDATE_COLOR";
 export const START_FROM_SCRATCH = "START_FROM_SCRATCH";
 export const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
+export const SET_USER_ID = "SET_USER_ID";
 
 export function selectPedal(
   id,
@@ -152,4 +153,8 @@ export function setIsLoggedIn(isLoggedIn) {
 
 export function setCurrentPage(currentPage) {
   return { type: SET_CURRENT_PAGE, currentPage };
+}
+
+export function setUserId(userId) {
+  return { type: SET_USER_ID, userId };
 }

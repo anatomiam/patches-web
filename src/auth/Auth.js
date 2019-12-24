@@ -10,6 +10,15 @@ export const getAccessToken = () => {
   return token;
 };
 
+export const getTokenInfo = () => {
+  const token = getAccessToken();
+  try {
+    return jwtDecode(token);
+  } catch {
+    return false;
+  }
+};
+
 export const isAuthenticated = () => {
   const token = getAccessToken();
   try {

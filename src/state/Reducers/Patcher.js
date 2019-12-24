@@ -13,7 +13,6 @@ import { flattenKnobNotes, flattenKnobObjects } from "../../helpers/Helpers";
 function patcherState(state = patcherData, action) {
   switch (action.type) {
     case SELECT_PEDAL: {
-      console.log(action);
       const initialKnobNotes = flattenKnobObjects(action.knobs);
       return {
         ...state,

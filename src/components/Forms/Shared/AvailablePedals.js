@@ -8,7 +8,6 @@ import {
 import { connect } from "react-redux";
 
 const AvailablePedals = React.memo(props => {
-  console.log(props);
   const { pedals, builder, selectPedal, selectPedalBuilder } = props;
   const [selectedPedalName, setSelectedPedalName] = useState("");
 

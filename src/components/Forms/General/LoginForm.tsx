@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Input, Form, Header } from "semantic-ui-react";
 import { ValidationErrors } from "../Shared/ValidationErrors";
-import { setAccessToken } from "../../../auth/Auth";
+import { setAccessToken, getTokenInfo } from "../../../auth/Auth";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import { Formik } from "formik";
@@ -13,6 +13,7 @@ import styled from "styled-components";
 interface Props extends RouteComponentProps {
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setCurrentPage: (currentPage: string) => void;
+  setUserId: (userId: string) => void;
 }
 
 const LOGIN = gql`
@@ -38,7 +39,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm: React.FC<Props> = React.memo(
-  ({ history, setIsLoggedIn, setCurrentPage }) => {
+  ({ history, setIsLoggedIn, setCurrentPage, setUserId }) => {
     const [login] = useMutation(LOGIN);
     return (
       <LoginDiv>
@@ -66,6 +67,8 @@ const LoginForm: React.FC<Props> = React.memo(
                 setAccessToken(response.data.login.token);
                 setSubmitting(false);
                 setIsLoggedIn(true);
+                const { userId } = getTokenInfo();
+                setUserId(userId);
               }
               setCurrentPage("home");
               history.push("/");
@@ -118,4 +121,5 @@ const LoginForm: React.FC<Props> = React.memo(
   }
 );
 
+LoginForm.displayName = "LoginFormWithRouterhared";
 export const LoginFormWithRouter = withRouter(LoginForm);

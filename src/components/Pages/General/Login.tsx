@@ -5,7 +5,11 @@ import { LoginFormWithRouter } from "../../Forms/General/LoginForm";
 import { LogoutButtonWithRouter } from "../../Forms/General/LogoutButton";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { setIsLoggedIn, setCurrentPage } from "../../../state/Actions/Actions";
+import {
+  setIsLoggedIn,
+  setCurrentPage,
+  setUserId
+} from "../../../state/Actions/Actions";
 
 const LoginDiv = styled.div`
   display: flex;
@@ -16,10 +20,11 @@ interface Props {
   patcherState: any;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setCurrentPage: (currentPage: string) => void;
+  setUserId: (userId: string) => void;
 }
 
 const Login: React.FC<Props> = props => {
-  const { patcherState, setIsLoggedIn, setCurrentPage } = props;
+  const { patcherState, setIsLoggedIn, setCurrentPage, setUserId } = props;
   const { isLoggedIn } = patcherState;
   const [isNewUser, setIsNewUser] = useState(true);
 
@@ -32,6 +37,7 @@ const Login: React.FC<Props> = props => {
           <LoginFormWithRouter
             setIsLoggedIn={setIsLoggedIn}
             setCurrentPage={setCurrentPage}
+            setUserId={setUserId}
           />
           <Message>
             Are you new here?{" "}
@@ -73,6 +79,6 @@ const mapStateToProps = (state: { patcherState: any }) => {
   };
 };
 
-const mapDispatchToProps = { setIsLoggedIn, setCurrentPage };
+const mapDispatchToProps = { setIsLoggedIn, setCurrentPage, setUserId };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

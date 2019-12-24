@@ -54,6 +54,7 @@ export const builderData = {
 
 export const sharedData = {
   currentPage: "home",
+  userId: "",
   isLoggedIn: false,
   scale: 1
 };
