@@ -1,17 +1,15 @@
 * Pre-Alpha
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:
-** TODO [#A] User actual user ID instead of hardcoded one :patcher:web:server:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Fix scaler                                         :general:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
-** TODO [#B] Improve names of in general                    :maintenance:web:
+** TODO [#B] Improve names of variables in general          :maintenance:web:
 ** TODO [#B] Improve Builder form styles                       :builder::web:
-** TODO [#C] Collapsable and draggable buttons for pedal/component info :builder:web:ux:
 * Alpha
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
-** TODO [#B] Indicators are change colors with footswitch       :patcher:web:
-** TODO [#B] Set up form for entering SVG path                 :builder:web
+** TODO [#B] Indicators change colors with footswitch click     :patcher:web:
+** TODO [#B] Set up form for entering SVG path                  :builder:web:
 ** TODO [#B] Set up Custom Path component                       :builder:web:
 ** TODO [#B] Add more tests                                 :maintenance:web:
    - https://create-react-app.dev/docs/running-tests
@@ -30,11 +28,11 @@
 ** TODO [#C] Screenshots of how to get started          :getting:started:web:
 ** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                   :patcher:web:ux:
 ** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
-** TODO [#C] CI/CD Pipeline                                 :maintenance:web:
 ** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
    - https://react.semantic-ui.com/elements/button/
 * Release Candidate
 ** TODO [#B] Embed user soundcloud demos                        :patcher:web:
+** TODO [#A] Set up SSO with soundcloud, google             :maintenance:web:
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Stable Release
 * Nice to haves

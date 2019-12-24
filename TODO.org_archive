@@ -560,3 +560,13 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#C] CI/CD Pipeline                                  :maintenance:web:
+  CLOSED: [2019-12-24 Tue 07:50]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-12-24 Tue 07:50
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Beta
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
