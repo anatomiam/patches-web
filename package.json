@@ -18,7 +18,7 @@
     "apollo-link-context": "^1.0.19",
     "apollo-link-error": "^1.1.12",
     "apollo-link-token-refresh": "^0.2.7",
-    "formik": "^2.0.8",
+    "formik": "^2.0.10",
     "framer-motion": "^1.7.0",
     "graphql": "^14.5.6",
     "jwt-decode": "^2.2.0",
