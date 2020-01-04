@@ -1,4 +1,21 @@
 * Pre-Alpha
+** TODO [#A] GraphQL error when updating patch with new knob :patcher:bug:server:
+*** To replicate
+    - create a preset on an existing pedal
+    - add a knob to that pedal
+    - attempt to *update* the preset (create works fine)
+*** Possible solutions
+    - set up updating OR create in backend 
+    - update all presets with default patch for new knob
+** TODO [#A] GraphQL error when updating knob twice in builder mode :builder:bug:server:
+*** To replicate
+    - delete a knob from an existing pedal
+    - *update* pedal
+    - add a knob to the pedal
+    - attempt to update pedal
+*** Possible solutions
+    - the data that is sent to update the pedal is still sending the knob that was just deleted
+      - update local state to reflect the deleted knob
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Fix scaler                                         :general:web:
