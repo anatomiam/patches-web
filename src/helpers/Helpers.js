@@ -124,8 +124,9 @@ export const getPatchesToCreate = (knobs, knobNotes) => {
 export const restructureUpdatedPatches = (knobs, knobNotes) => {
   return knobs.map(knob => {
     return {
-      id: knob.patchId,
+      id: knob.patchId ? knob.patchId : "",
       details: {
+        knob: knob.id,
         position: knob.position,
         notes: knobNotes[knob.id]
       }

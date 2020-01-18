@@ -570,3 +570,20 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_CATEGORY: TODO
   :ARCHIVE_TODO: DONE
   :END:
+
+* DONE [#A] GraphQL error when updating patch with new knob :patcher:bug:server:
+  CLOSED: [2020-01-18 Sat 12:05]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2020-01-18 Sat 12:26
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+** To replicate
+   - create a preset on an existing pedal
+   - add a knob to that pedal
+   - attempt to *update* the preset (create works fine)
+** Possible solutions
+   - set up updating OR create in backend 
+   - update all presets with default patch for new knob

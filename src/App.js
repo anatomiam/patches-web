@@ -42,11 +42,6 @@ const App = props => {
     }
   }, [setCurrentPage, setIsLoggedIn, setUserId]);
 
-  // if (pedalsLoading) return "Loading Pedals...";
-  // if (pedalsError) return `Loading Pedals Error! ${pedalsError}`;
-  // if (presetsLoading) return "Loading Presets...";
-  // if (presetsError) return `Loading Presets Error! ${presetsError}`;
-
   return (
     <Router>
       <Segment inverted>

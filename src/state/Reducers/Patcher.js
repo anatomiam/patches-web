@@ -27,7 +27,11 @@ function patcherState(state = patcherData, action) {
         knobs: action.knobs,
         originalKnobs: action.knobs,
         patchDetails: {
-          patchNotes: state.patchDetails.patchNotes,
+          patchNotes: {
+            name: "",
+            description: "",
+            id: ""
+          },
           knobNotes: initialKnobNotes
         },
         isNewPedal: false

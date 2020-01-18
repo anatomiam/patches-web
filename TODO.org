@@ -1,12 +1,12 @@
 * Pre-Alpha
-** TODO [#A] GraphQL error when updating patch with new knob :patcher:bug:server:
+** TODO [#A] Form error when adding new knob to pedal    :patcher:bug:server:
 *** To replicate
     - create a preset on an existing pedal
     - add a knob to that pedal
-    - attempt to *update* the preset (create works fine)
-*** Possible solutions
-    - set up updating OR create in backend 
-    - update all presets with default patch for new knob
+    - create a new preset on that pedal, setting a note for the new knob
+    - switch between presets and look at contents for the new knob on the older preset
+*** what to do
+    - figure out how to refresh the form values properly when switching between presets
 ** TODO [#A] GraphQL error when updating knob twice in builder mode :builder:bug:server:
 *** To replicate
     - delete a knob from an existing pedal
@@ -23,6 +23,7 @@
    - edit mode should be a toggle button from a view mode ?
 ** TODO [#B] Improve names of variables in general          :maintenance:web:
 ** TODO [#B] Improve Builder form styles                       :builder::web:
+** TODO [#A] Add edit functionality to all device components    :builder:web:
 * Alpha
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators change colors with footswitch click     :patcher:web:

@@ -418,6 +418,7 @@ it("should combine knobs and knob notes into an array of objects for updating pa
     {
       id: "ck19ist3i00e207896uw94wwh",
       details: {
+        knob: "ck19isb7z00df0789bhskhqgw",
         position: 66.33984375,
         notes: "knob"
       }
@@ -425,6 +426,7 @@ it("should combine knobs and knob notes into an array of objects for updating pa
     {
       id: "ck19ist4400e50789ozhuhn3n",
       details: {
+        knob: "ck19isb8600dh07898kjox85v",
         position: 1,
         notes: "switch"
       }
