@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {
   addKnob,
   dragKnob,
+  setOriginalKnobs,
   setPedalDetails,
   setScaleBuilder,
   startFromScratch,
@@ -63,7 +64,8 @@ const Builder = props => {
     dragKnob,
     setPedalDetails,
     startFromScratch,
-    setScaleBuilder
+    setScaleBuilder,
+    setOriginalKnobs
   } = props;
   const [activeItem, setActiveItem] = useState("");
   const { width, height, name, color, id } = builderState.pedalDetails;
@@ -287,7 +289,10 @@ const Builder = props => {
               isNewPedal ? (
                 <CreatePedalButton builderState={builderState} />
               ) : (
-                <UpdatePedalButton builderState={builderState} />
+                <UpdatePedalButton
+                  builderState={builderState}
+                  setOriginalKnobs={setOriginalKnobs}
+                />
               )
             }
           />
@@ -314,7 +319,8 @@ Builder.propTypes = {
   dragKnob: PropTypes.func,
   setPedalDetails: PropTypes.func,
   startFromScratch: PropTypes.func,
-  setScaleBuilder: PropTypes.func
+  setScaleBuilder: PropTypes.func,
+  setOriginalKnobs: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -329,6 +335,7 @@ const mapDispatchToProps = {
   dragKnob,
   setPedalDetails,
   setScaleBuilder,
+  setOriginalKnobs,
   startFromScratch
 };
 

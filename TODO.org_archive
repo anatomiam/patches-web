@@ -587,3 +587,21 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
 ** Possible solutions
    - set up updating OR create in backend 
    - update all presets with default patch for new knob
+
+* DONE [#A] GraphQL error when updating knob twice in builder mode :builder:bug:server:
+  CLOSED: [2020-01-18 Sat 18:45]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2020-01-18 Sat 18:46
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+** To replicate
+   - delete a knob from an existing pedal
+   - *update* pedal
+   - add a knob to the pedal
+   - attempt to update pedal
+** Possible solutions
+   - the data that is sent to update the pedal is still sending the knob that was just deleted
+     - update local state to reflect the deleted knob

@@ -41,50 +41,56 @@ const UPDATE_PEDAL = gql`
   }
 `;
 
-export const UpdatePedalButton = React.memo(({ builderState }) => {
-  const { knobs, originalKnobs, pedalDetails } = builderState;
-  const { name, width, height, color, id } = pedalDetails;
-  const [updatePedal] = useMutation(UPDATE_PEDAL);
+export const UpdatePedalButton = React.memo(
+  ({ builderState, setOriginalKnobs }) => {
+    const { knobs, originalKnobs, pedalDetails } = builderState;
+    const { name, width, height, color, id } = pedalDetails;
+    const [updatePedal] = useMutation(UPDATE_PEDAL);
 
-  const knobsToCreate = pickKeysFromArray(
-    getNewKnobs(originalKnobs, knobs),
-    knobsToCreateModel
-  );
-  const knobsToDelete = pickKeysFromArray(
-    getDeletedKnobs(originalKnobs, knobs),
-    knobsToDeleteModel
-  );
-  const knobsToUpdate = restructureUpdatedKnobs(
-    getUpdatedKnobs(originalKnobs, knobs),
-    knobsToUpdateModel
-  );
+    const knobsToCreate = pickKeysFromArray(
+      getNewKnobs(originalKnobs, knobs),
+      knobsToCreateModel
+    );
+    const knobsToDelete = pickKeysFromArray(
+      getDeletedKnobs(originalKnobs, knobs),
+      knobsToDeleteModel
+    );
+    const knobsToUpdate = restructureUpdatedKnobs(
+      getUpdatedKnobs(originalKnobs, knobs),
+      knobsToUpdateModel
+    );
 
-  return (
-    <Form>
-      <Button
-        size="mini"
-        color="green"
-        onClick={event => {
-          event.preventDefault();
-          updatePedal({
-            variables: {
-              id,
-              name,
-              width,
-              height,
-              color,
-              knobsToCreate,
-              knobsToDelete,
-              knobsToUpdate
-            }
-          });
-        }}
-      >
-        Update Pedal
-      </Button>
-    </Form>
-  );
-});
+    return (
+      <Form>
+        <Button
+          size="mini"
+          color="green"
+          onClick={event => {
+            event.preventDefault();
+            updatePedal({
+              variables: {
+                id,
+                name,
+                width,
+                height,
+                color,
+                knobsToCreate,
+                knobsToDelete,
+                knobsToUpdate
+              }
+            });
+            setOriginalKnobs();
+          }}
+        >
+          Update Pedal
+        </Button>
+      </Form>
+    );
+  }
+);
 
-UpdatePedalButton.propTypes = { builderState: PropTypes.object };
-UpdatePedalButton.displayName = "UpdatePedalButton"
+UpdatePedalButton.propTypes = {
+  builderState: PropTypes.object,
+  setOriginalKnobs: PropTypes.func
+};
+UpdatePedalButton.displayName = "UpdatePedalButton";

@@ -10,6 +10,7 @@ export const SET_PATCH_DETAILS = "SET_PATCH_DETAILS";
 export const DRAG_KNOB = "DRAG_KNOB";
 export const TAP_KNOB = "TAP_KNOB";
 export const SET_SCALE = "SET_SCALE";
+export const SET_ORIGINAL_KNOBS = "SET_ORIGINAL_KNOBS";
 export const SET_SCALE_BUILDER = "SET_SCALE_BUILDER";
 export const ADD_KNOB = "ADD_KNOB";
 export const DELETE_KNOB = "DELETE_KNOB";
@@ -85,6 +86,10 @@ export function setPedalDetails(pedalDetails) {
 
 export function setPatchDetails(patchDetails) {
   return { type: SET_PATCH_DETAILS, patchDetails };
+}
+
+export function setOriginalKnobs() {
+  return { type: SET_ORIGINAL_KNOBS };
 }
 
 export function dragKnob() {

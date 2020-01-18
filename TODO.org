@@ -7,15 +7,8 @@
     - switch between presets and look at contents for the new knob on the older preset
 *** what to do
     - figure out how to refresh the form values properly when switching between presets
-** TODO [#A] GraphQL error when updating knob twice in builder mode :builder:bug:server:
-*** To replicate
-    - delete a knob from an existing pedal
-    - *update* pedal
-    - add a knob to the pedal
-    - attempt to update pedal
-*** Possible solutions
-    - the data that is sent to update the pedal is still sending the knob that was just deleted
-      - update local state to reflect the deleted knob
+** TODO [#A] Get the pedal/knob ids after saving pedal        :builder:web:
+   - So that updates can be made immediately after saving the initial draft
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Fix scaler                                         :general:web:

@@ -4,6 +4,7 @@ import {
   DRAG_KNOB,
   SELECT_PEDAL_BUILDER,
   SET_IS_LOGGED_IN,
+  SET_ORIGINAL_KNOBS,
   SET_PEDAL_DETAILS,
   SET_SCALE_BUILDER,
   SET_SELECTED_COMPONENT_ID,
@@ -53,6 +54,11 @@ function builderState(state = builderData, action) {
       return {
         ...state,
         pedalDetails: action.pedalDetails
+      };
+    case SET_ORIGINAL_KNOBS:
+      return {
+        ...state,
+        originalKnobs: [...state.knobs]
       };
     case DRAG_KNOB:
       return {
