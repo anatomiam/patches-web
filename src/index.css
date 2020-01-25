@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .component,
 .icon-pointer {
   cursor: pointer;
@@ -5,4 +8,8 @@
 
 .crosshair {
   cursor: crosshair;
+}
+
+.ui.button {
+  margin: 0;
 }

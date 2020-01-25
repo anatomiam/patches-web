@@ -44,7 +44,7 @@ const App = props => {
 
   return (
     <Router>
-      <Segment inverted>
+      {/* <Segment inverted>
         <Menu inverted pointing secondary>
           <Menu.Item
             as={Link}
@@ -83,7 +83,7 @@ const App = props => {
             }}
           />
         </Menu>
-      </Segment>
+      </Segment> */}
 
       <Switch>
         <Route exact path="/" component={Landing} />
