@@ -31,7 +31,7 @@ const CREATE_PEDAL = gql`
   }
 `;
 
-export const CreatePedalButton = React.memo(({ builderState }) => {
+export const CreatePedalButton = React.memo(({ builderState, buttonProps }) => {
   const { knobs, builder } = builderState;
   const { name, width, height, color } = builderState.pedalDetails;
   const [createPedal] = useMutation(CREATE_PEDAL);
@@ -40,8 +40,7 @@ export const CreatePedalButton = React.memo(({ builderState }) => {
   return (
     <Form>
       <Button
-        size="mini"
-        color="green"
+        {...buttonProps}
         onClick={event => {
           event.preventDefault();
           createPedal({
@@ -55,9 +54,7 @@ export const CreatePedalButton = React.memo(({ builderState }) => {
             }
           });
         }}
-      >
-        Save Pedal
-      </Button>
+      />
     </Form>
   );
 });

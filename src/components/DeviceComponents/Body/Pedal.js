@@ -7,7 +7,7 @@ import { uniqueId } from "lodash";
 
 const PedalDiv = styled(motion.div)`
   position: relative;
-  width: ${props => props.width + "px"};
+  min-width: ${props => props.width + "px"};
   height: ${props => props.height + "px"};
   background-color: ${props => props.color};
 `;

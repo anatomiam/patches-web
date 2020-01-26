@@ -42,7 +42,7 @@ const UPDATE_PEDAL = gql`
 `;
 
 export const UpdatePedalButton = React.memo(
-  ({ builderState, setOriginalKnobs }) => {
+  ({ builderState, setOriginalKnobs, buttonProps }) => {
     const { knobs, originalKnobs, pedalDetails } = builderState;
     const { name, width, height, color, id } = pedalDetails;
     const [updatePedal] = useMutation(UPDATE_PEDAL);
@@ -63,8 +63,7 @@ export const UpdatePedalButton = React.memo(
     return (
       <Form>
         <Button
-          size="mini"
-          color="green"
+          {...buttonProps}
           onClick={event => {
             event.preventDefault();
             updatePedal({
@@ -81,9 +80,7 @@ export const UpdatePedalButton = React.memo(
             });
             setOriginalKnobs();
           }}
-        >
-          Update Pedal
-        </Button>
+        />
       </Form>
     );
   }

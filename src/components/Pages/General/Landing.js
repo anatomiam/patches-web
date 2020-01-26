@@ -13,7 +13,7 @@ const size = {
 };
 
 const BodyContainer = styled.div`
-overflow: hidden;
+  overflow: hidden;
   padding-top: 75px;
   padding-bottom: 75px;
   border: 1px solid black;
@@ -98,6 +98,42 @@ const DescriptionDiv = styled.div`
   margin: 15px;
   min-height: 50px;
 `;
+const fabVariants = {
+  open: {
+    transition: { staggerChildren: 0.00, delayChildren: 0 }
+  },
+  closed: {
+    transition: { staggerChildren: 0.00, staggerDirection: -1 }
+  }
+};
+
+const liVariants = {
+  open: {
+    // y: 0,
+    x: 0,
+    // display: "block",
+
+    // position: "static",
+    // bottom: 400,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 500, velocity: -100 }
+    }
+  },
+  closed: {
+    // y: 50,
+    x: 100,
+    // display: "none",
+    // position: "fixed",
+    // bottom: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: -500 }
+    }
+  }
+};
+
+const itemIds = [0, 1, 2, 3, 4];
 
 const Landing = () => {
   const [isOpen, setIsOpen] = useState(0);
@@ -183,6 +219,21 @@ const Landing = () => {
             convallis molestie. Integer ut nulla viverra, congue nisi vel,
             aliquam arcu.
           </p>
+          <motion.ul
+            animate={isOpen == 3 ? "open" : "closed"}
+            variants={fabVariants}
+            style={{
+              position: "fixed",
+              bottom: 125,
+              right: 25
+            }}
+          >
+            {itemIds.map(i => (
+              <motion.li variants={liVariants} i={i} key={i}>
+                <Button circular icon="car" />
+              </motion.li>
+            ))}
+          </motion.ul>{" "}
         </BodyDiv>
       </BodyContainer>
       <FooterDiv>
@@ -257,7 +308,7 @@ const Landing = () => {
           />
         </BottomDrawerDiv>
         <BottomDrawerDiv
-          animate={isOpen == 3 ? "open" : "closed"}
+          animate={isOpen == 2 ? "open" : "closed"}
           variants={variants}
         >
           click me 3
