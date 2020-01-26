@@ -21,6 +21,23 @@ export const FooterDiv = styled.div`
   align-items: center;
 `;
 
+export const BottomDrawerDiv = styled(motion.div)`
+  z-index: 4;
+  width: 100%;
+  padding-bottom: 75px;
+  background-color: grey;
+  border: 1px solid maroon;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const bottomDrawerVariants = {
+  closed: { height: 0 },
+  open: { height: "300px" }
+};
+
 export const HeaderDiv = styled.div`
   position: fixed;
   top: 0;

@@ -1,11 +1,13 @@
 import {
   BodyContainer,
+  BottomDrawerDiv,
   DivContainer,
   DivPedal,
   DivTools,
   FooterDiv,
   HeaderDiv,
-  NavItemDiv
+  NavItemDiv,
+  bottomDrawerVariants
 } from "../PageStyles";
 import { Button, Icon, Menu, Popup } from "semantic-ui-react";
 import React, { useState } from "react";
@@ -24,6 +26,7 @@ import { AddKnobForm } from "../../Forms/Builder/AddKnobForm";
 import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
+import { FloatingActionButton } from "../General/FloatingActionButton";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
@@ -376,6 +379,40 @@ const Builder = props => {
           <Scaler scale={scale} setScale={setScaleBuilder} />
         </DivContainer>
       </BodyContainer>
+      <FloatingActionButton>
+        <Button
+          id={1}
+          circular
+          size="small"
+          icon={tapKnobsIn ? "add circle" : "times circle"}
+          className="icon-pointer"
+          color={tapKnobsIn ? "yellow" : null}
+        />
+        <Button
+          id={2}
+          size="small"
+          circular
+          icon={tapKnobsIn ? "add circle" : "times circle"}
+          className="icon-pointer"
+          color={tapKnobsIn ? "yellow" : null}
+        />
+        <Button
+          size="small"
+          id={3}
+          circular
+          icon={tapKnobsIn ? "add circle" : "times circle"}
+          className="icon-pointer"
+          color={tapKnobsIn ? "yellow" : null}
+        />
+        <Button
+          size="small"
+          id={4}
+          circular
+          icon={tapKnobsIn ? "add circle" : "times circle"}
+          className="icon-pointer"
+          color={tapKnobsIn ? "yellow" : null}
+        />
+      </FloatingActionButton>
       <FooterDiv>
         <NavItemDiv>
           <Button
@@ -406,6 +443,12 @@ const Builder = props => {
           />
         </NavItemDiv>
       </FooterDiv>
+      <BottomDrawerDiv
+        animate={isOpen == 1 ? "open" : "closed"}
+        variants={bottomDrawerVariants}
+      >
+        <AvailablePedals pedals={pedals} builder />
+      </BottomDrawerDiv>
     </>
   );
 };
