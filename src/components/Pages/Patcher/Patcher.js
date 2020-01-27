@@ -1,11 +1,14 @@
 import "../../../index.css";
 
 import {
+  BodyContainer,
   DivContainer,
   DivNotes,
   DivPedal,
   DivPedalSelector,
-  DivTools
+  DivTools,
+  HeaderDiv,
+  NavItemDiv
 } from "../PageStyles";
 import {
   addKnob,
@@ -16,6 +19,8 @@ import {
 
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
+import { Button } from "semantic-ui-react";
+import { FooterMobile } from "../General/FooterMobile";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
@@ -117,38 +122,63 @@ const Patcher = props => {
   });
 
   return (
-    <DivContainer>
-      <DivPedal scale={scale}>
-        <Pedal
-          knobs={knobs}
-          width={width}
-          height={height}
-          color={color}
-          addKnob={addKnob}
-          tapKnobsIn={tapKnobsIn}
-          patcher
-        />
-      </DivPedal>
-      <DivTools>
-        <DivPedalSelector>
-          <AvailablePedals pedals={pedals} />
-          <AvailablePresets
-            presets={pedalPresets}
-            selectPreset={selectPreset}
+    <>
+      <HeaderDiv>
+        <NavItemDiv>
+          <Button
+            circular
+            size="large"
+            color="red"
+            icon="trash"
+            className="icon-pointer"
+            onClick={() => {}}
           />
-        </DivPedalSelector>
-        <Scaler scale={scale} setScale={setScale} />
-        <DivNotes>
-          <PatchForm
-            userId={userId}
-            pedalId={pedalDetails.id}
-            patchDetails={patchDetails}
-            setPatchDetails={setPatchDetails}
-            knobs={knobs}
-            selectedComponentId={selectedComponentId}
+        </NavItemDiv>
+        <NavItemDiv>Patcher</NavItemDiv>
+        <NavItemDiv>
+          <Button
+            circular
+            size="large"
+            color="green"
+            icon="save"
+            className="icon-pointer"
+            onClick={() => {}}
           />
-        </DivNotes>
-        {/* <DivDetails>
+        </NavItemDiv>
+      </HeaderDiv>
+      <BodyContainer>
+        <DivContainer>
+          <DivPedal scale={scale}>
+            <Pedal
+              knobs={knobs}
+              width={width}
+              height={height}
+              color={color}
+              addKnob={addKnob}
+              tapKnobsIn={tapKnobsIn}
+              patcher
+            />
+          </DivPedal>
+          <DivTools>
+            <DivPedalSelector>
+              <AvailablePedals pedals={pedals} />
+              <AvailablePresets
+                presets={pedalPresets}
+                selectPreset={selectPreset}
+              />
+            </DivPedalSelector>
+            <Scaler scale={scale} setScale={setScale} />
+            <DivNotes>
+              <PatchForm
+                userId={userId}
+                pedalId={pedalDetails.id}
+                patchDetails={patchDetails}
+                setPatchDetails={setPatchDetails}
+                knobs={knobs}
+                selectedComponentId={selectedComponentId}
+              />
+            </DivNotes>
+            {/* <DivDetails>
           <ComponentInfo
             knobs={knobs}
             selectedComponentId={selectedComponentId}
@@ -156,8 +186,13 @@ const Patcher = props => {
             pedalDetails={patcherState.pedalDetails}
           />
         </DivDetails> */}
-      </DivTools>
-    </DivContainer>
+          </DivTools>
+        </DivContainer>
+      </BodyContainer>
+      <FooterMobile>
+        <p>Patcher Content</p>
+      </FooterMobile>
+    </>
   );
 };
 

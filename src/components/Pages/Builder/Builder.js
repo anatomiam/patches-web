@@ -1,13 +1,10 @@
 import {
   BodyContainer,
-  BottomDrawerDiv,
   DivContainer,
   DivPedal,
   DivTools,
-  FooterDiv,
   HeaderDiv,
-  NavItemDiv,
-  bottomDrawerVariants
+  NavItemDiv
 } from "../PageStyles";
 import { Button, Icon, Menu, Popup } from "semantic-ui-react";
 import React, { useState } from "react";
@@ -27,6 +24,7 @@ import { AddSwitchForm } from "../../Forms/Builder/AddSwitchForm";
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { CreatePedalButton } from "../../Forms/Builder/CreatePedalButton";
 import { FloatingActionButton } from "../General/FloatingActionButton";
+import { FooterMobile } from "../General/FooterMobile";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { Pedal } from "../../DeviceComponents/Body/Pedal";
 import { PedalForm } from "../../Forms/Builder/PedalForm";
@@ -80,7 +78,6 @@ const Builder = props => {
   } = props;
 
   const [activeItem, setActiveItem] = useState("");
-  const [isOpen, setIsOpen] = useState(0);
 
   const { width, height, name, color, id } = builderState.pedalDetails;
   const { knobs, scale, isNewPedal, drag, tapKnobsIn } = builderState;
@@ -106,7 +103,7 @@ const Builder = props => {
             }}
           />
         </NavItemDiv>
-        <NavItemDiv>{name ? name : "Untitled"}</NavItemDiv>
+        <NavItemDiv>Builder</NavItemDiv>
         <NavItemDiv>
           {isNewPedal ? (
             <CreatePedalButton
@@ -510,42 +507,9 @@ const Builder = props => {
           color={drag ? "orange" : null}
         />
       </FloatingActionButton>
-      <FooterDiv>
-        <NavItemDiv>
-          <Button
-            circular
-            onClick={() => setIsOpen(isOpen === 1 ? 0 : 1)}
-            icon="world"
-          />
-        </NavItemDiv>
-        <NavItemDiv>
-          <Button
-            circular
-            onClick={() => setIsOpen(isOpen === 2 ? 0 : 2)}
-            icon="world"
-          />
-        </NavItemDiv>
-        <NavItemDiv>
-          <Button
-            circular
-            onClick={() => setIsOpen(isOpen === 3 ? 0 : 3)}
-            icon="world"
-          />
-        </NavItemDiv>
-        <NavItemDiv>
-          <Button
-            circular
-            onClick={() => setIsOpen(isOpen === 4 ? 0 : 4)}
-            icon="world"
-          />
-        </NavItemDiv>
-      </FooterDiv>
-      <BottomDrawerDiv
-        animate={isOpen === 1 ? "open" : "closed"}
-        variants={bottomDrawerVariants}
-      >
+      <FooterMobile>
         <AvailablePedals pedals={pedals} builder />
-      </BottomDrawerDiv>
+      </FooterMobile>
     </>
   );
 };

@@ -44,6 +44,7 @@ export const FloatingActionButton = props => {
         <Button icon="edit" circular size="large" />
       </div>
       <motion.div
+        initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={fabVariants}
         style={{
