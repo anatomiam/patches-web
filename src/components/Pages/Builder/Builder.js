@@ -380,71 +380,168 @@ const Builder = props => {
         </DivContainer>
       </BodyContainer>
       <FloatingActionButton>
-        <Button
+        <Popup
           id={1}
-          circular
-          size="small"
-          icon={tapKnobsIn ? "add circle" : "times circle"}
-          className="icon-pointer"
-          color={tapKnobsIn ? "yellow" : null}
+          inverted
+          basic
+          on="click"
+          position="left center"
+          style={{ marginLeft: "7px" }}
+          trigger={
+            <Button
+              circular
+              size="small"
+              icon="plus square outline"
+              name="pedalform"
+              color={activeItem === "pedalform" ? "blue" : null}
+              onClick={() =>
+                activeItem !== "pedalform"
+                  ? setActiveItem("pedalform")
+                  : setActiveItem("")
+              }
+            />
+          }
+          content={
+            <PedalForm
+              id={id}
+              width={width}
+              height={height}
+              name={name}
+              color={color}
+              setPedalDetails={setPedalDetails}
+            />
+          }
         />
-        <Button
+        <Popup
           id={2}
-          size="small"
-          circular
-          icon={tapKnobsIn ? "add circle" : "times circle"}
-          className="icon-pointer"
-          color={tapKnobsIn ? "yellow" : null}
+          inverted
+          basic
+          on="click"
+          position="left center"
+          style={{ marginLeft: "7px" }}
+          trigger={
+            <Button
+              size="small"
+              circular
+              icon="circle notch"
+              name="add knob"
+              color={activeItem === "add knob" ? "blue" : null}
+              onClick={() =>
+                activeItem !== "add knob"
+                  ? setActiveItem("add knob")
+                  : setActiveItem("")
+              }
+            />
+          }
+          content={<AddKnobForm addKnob={addKnob} />}
         />
-        <Button
-          size="small"
+        <Popup
           id={3}
-          circular
-          icon={tapKnobsIn ? "add circle" : "times circle"}
-          className="icon-pointer"
-          color={tapKnobsIn ? "yellow" : null}
+          inverted
+          basic
+          on="click"
+          position="left center"
+          style={{ marginLeft: "7px" }}
+          trigger={
+            <Button
+              size="small"
+              circular
+              icon="toggle on"
+              name="add switch"
+              color={activeItem === "add switch" ? "blue" : null}
+              onClick={() =>
+                activeItem !== "add switch"
+                  ? setActiveItem("add switch")
+                  : setActiveItem("")
+              }
+            />
+          }
+          content={<AddSwitchForm addKnob={addKnob} />}
+        />
+        <Popup
+          id={4}
+          inverted
+          basic
+          on="click"
+          position="left center"
+          style={{ marginLeft: "7px" }}
+          trigger={
+            <Button
+              size="small"
+              circular
+              icon="lightbulb"
+              name="add indicator"
+              color={activeItem === "add indicator" ? "blue" : null}
+              onClick={() =>
+                activeItem !== "add indicator"
+                  ? setActiveItem("add indicator")
+                  : setActiveItem("")
+              }
+            />
+          }
+          content={<AddIndicatorForm addKnob={addKnob} />}
         />
         <Button
-          size="small"
-          id={4}
+          id={5}
           circular
           icon={tapKnobsIn ? "add circle" : "times circle"}
+          active={activeItem === "tap knob in"}
           className="icon-pointer"
           color={tapKnobsIn ? "yellow" : null}
+          onClick={() => {
+            tapKnob();
+            activeItem !== "tap knob in"
+              ? setActiveItem("tap knob in")
+              : setActiveItem("");
+          }}
+        />
+        <Button
+          id={6}
+          circular
+          icon={drag ? "hand rock" : "hand paper"}
+          active={activeItem === "drag knob"}
+          onClick={() => {
+            dragKnob();
+            activeItem !== "drag knob"
+              ? setActiveItem("drag knob")
+              : setActiveItem("");
+          }}
+          className="icon-pointer"
+          color={drag ? "orange" : null}
         />
       </FloatingActionButton>
       <FooterDiv>
         <NavItemDiv>
           <Button
             circular
-            onClick={() => setIsOpen(isOpen == 1 ? 0 : 1)}
+            onClick={() => setIsOpen(isOpen === 1 ? 0 : 1)}
             icon="world"
           />
         </NavItemDiv>
         <NavItemDiv>
           <Button
             circular
-            onClick={() => setIsOpen(isOpen == 2 ? 0 : 2)}
+            onClick={() => setIsOpen(isOpen === 2 ? 0 : 2)}
             icon="world"
           />
         </NavItemDiv>
         <NavItemDiv>
           <Button
             circular
-            onClick={() => setIsOpen(isOpen == 3 ? 0 : 3)}
+            onClick={() => setIsOpen(isOpen === 3 ? 0 : 3)}
             icon="world"
           />
         </NavItemDiv>
         <NavItemDiv>
           <Button
             circular
-            onClick={() => setIsOpen(isOpen == 4 ? 0 : 4)}
+            onClick={() => setIsOpen(isOpen === 4 ? 0 : 4)}
             icon="world"
           />
         </NavItemDiv>
       </FooterDiv>
       <BottomDrawerDiv
-        animate={isOpen == 1 ? "open" : "closed"}
+        animate={isOpen === 1 ? "open" : "closed"}
         variants={bottomDrawerVariants}
       >
         <AvailablePedals pedals={pedals} builder />

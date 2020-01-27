@@ -54,7 +54,6 @@ export const FloatingActionButton = props => {
         }}
       >
         {props.children.map(child => {
-          console.log(child);
           return (
             <motion.div
               style={{ margin: "5px" }}
