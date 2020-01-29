@@ -8,6 +8,7 @@ import React, { useState } from "react";
 
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 export const FooterMobile = ({ children }) => {
   const [isOpen, setIsOpen] = useState(0);
@@ -57,4 +58,8 @@ export const FooterMobile = ({ children }) => {
       </BottomDrawerDiv>
     </>
   );
+};
+
+FooterMobile.propTypes = {
+  children: PropTypes.object
 };

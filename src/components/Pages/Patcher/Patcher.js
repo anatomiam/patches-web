@@ -12,7 +12,6 @@ import {
   NavItemDiv,
   TabletPlus
 } from "../PageStyles";
-import { Button, Table } from "semantic-ui-react";
 import {
   addKnob,
   selectPreset,
@@ -22,6 +21,7 @@ import {
 
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
+import { Button } from "semantic-ui-react";
 import { FloatingActionButton } from "../General/FloatingActionButton";
 import { FooterMobile } from "../General/FooterMobile";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
@@ -118,7 +118,6 @@ const Patcher = props => {
 
   const pedals = pedalsData.pedals;
   const presets = presetsData.presetsByUser;
-  console.log(presets);
 
   const pedalPresets = presets.filter(preset => {
     return preset.pedal.id === patcherState.pedalDetails.id;
@@ -196,10 +195,10 @@ const Patcher = props => {
       </BodyContainer>
       <MobileOnly>
         <FloatingActionButton>
-          <Button circular icon="plus" />
-          <Button circular icon="minus" />
-          <Button circular icon="angle left" />
-          <Button circular icon="angle right" />
+          <Button id={1} circular icon="plus" />
+          <Button id={2} circular icon="minus" />
+          <Button id={3} circular icon="angle left" />
+          <Button id={4} circular icon="angle right" />
         </FloatingActionButton>
       </MobileOnly>
       <FooterMobile>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Button } from "semantic-ui-react";
 import { MobileOnly } from "../PageStyles";
+import { PropTypes } from "prop-types";
 import { motion } from "framer-motion";
 
 const fabVariants = {
@@ -69,4 +70,8 @@ export const FloatingActionButton = props => {
       </motion.div>
     </MobileOnly>
   );
+};
+
+FloatingActionButton.propTypes = {
+  children: PropTypes.array
 };

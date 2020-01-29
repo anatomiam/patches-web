@@ -1,10 +1,7 @@
 import "../../../index.css";
 
-import { Button, Dropdown } from "semantic-ui-react";
-import React, { useState } from "react";
-
 import { FooterMobile } from "./FooterMobile";
-import { motion } from "framer-motion";
+import React from "react";
 import styled from "styled-components";
 
 const size = {
@@ -53,37 +50,6 @@ const BodyDiv = styled.div`
   justify-content: center;
 `;
 
-const FooterDiv = styled.div`
-  width: 100%;
-  height: 75px;
-  position: fixed;
-  bottom: 0px;
-  margin: 0;
-  z-index: 5;
-  background-color: blue;
-  border: 1px solid blue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const variants = {
-  closed: { height: 0 },
-  open: { height: "300px" }
-};
-
-const BottomDrawerDiv = styled(motion.div)`
-  z-index: 4;
-  width: 100%;
-  padding-bottom: 75px;
-  background-color: rgba(201, 76, 76, 0.3);
-  border: 1px solid maroon;
-  position: fixed;
-  bottom: 0px;
-  display: flex;
-  flex-direction: column;
-`;
-
 const NavItemDiv = styled.div`
   border: 1px solid green;
   margin: 5px;
@@ -101,7 +67,6 @@ const DescriptionDiv = styled.div`
 `;
 
 const Landing = () => {
-  const [isOpen, setIsOpen] = useState(0);
   return (
     <>
       <HeaderDiv>
