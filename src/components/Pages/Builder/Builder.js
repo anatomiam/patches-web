@@ -4,7 +4,8 @@ import {
   DivPedal,
   DivTools,
   HeaderDiv,
-  NavItemDiv
+  NavItemDiv,
+  TabletPlus
 } from "../PageStyles";
 import { Button, Icon, Menu, Popup } from "semantic-ui-react";
 import React, { useState } from "react";
@@ -144,227 +145,229 @@ const Builder = props => {
               builder
             />
           </DivPedal>
-          <DivTools>
-            <Menu icon vertical borderless inverted>
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="select pedal"
-                    color="blue"
-                    active={activeItem === "select pedal"}
-                    onClick={() =>
-                      activeItem !== "select pedal"
-                        ? setActiveItem("select pedal")
-                        : setActiveItem("")
-                    }
-                  >
-                    <Icon name="folder" />
-                  </Menu.Item>
-                }
-                content={<AvailablePedals pedals={pedals} builder />}
-              />
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="pedalform"
-                    color="blue"
-                    active={activeItem === "pedalform"}
-                    onClick={() =>
-                      activeItem !== "pedalform"
-                        ? setActiveItem("pedalform")
-                        : setActiveItem("")
-                    }
-                  >
-                    <Icon name="plus square outline" />
-                  </Menu.Item>
-                }
-                content={
-                  <PedalForm
-                    id={id}
-                    width={width}
-                    height={height}
-                    name={name}
-                    color={color}
-                    setPedalDetails={setPedalDetails}
-                  />
-                }
-              />
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="add knob"
-                    color="blue"
-                    active={activeItem === "add knob"}
-                    onClick={() =>
-                      activeItem !== "add knob"
-                        ? setActiveItem("add knob")
-                        : setActiveItem("")
-                    }
-                  >
-                    <Icon name="circle notch" />
-                  </Menu.Item>
-                }
-                content={<AddKnobForm addKnob={addKnob} />}
-              />
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="add switch"
-                    color="blue"
-                    active={activeItem === "add switch"}
-                    onClick={() =>
-                      activeItem !== "add switch"
-                        ? setActiveItem("add switch")
-                        : setActiveItem("")
-                    }
-                  >
-                    <Icon name="toggle on" />
-                  </Menu.Item>
-                }
-                content={<AddSwitchForm addKnob={addKnob} />}
-              />
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="add indicator"
-                    color="blue"
-                    active={activeItem === "add indicator"}
-                    onClick={() =>
-                      activeItem !== "add indicator"
-                        ? setActiveItem("add indicator")
-                        : setActiveItem("")
-                    }
-                  >
-                    <Icon name="lightbulb" />
-                  </Menu.Item>
-                }
-                content={<AddIndicatorForm addKnob={addKnob} />}
-              />
-              <Menu.Item
-                name="drag knob"
-                active={activeItem === "drag knob"}
-                onClick={() => {
-                  dragKnob();
-                  activeItem !== "drag knob"
-                    ? setActiveItem("drag knob")
-                    : setActiveItem("");
-                }}
-              >
-                <Icon
-                  name={drag ? "hand rock" : "hand paper"}
-                  className="icon-pointer"
-                  color={drag ? "orange" : null}
+          <TabletPlus>
+            <DivTools>
+              <Menu icon vertical borderless inverted>
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="select pedal"
+                      color="blue"
+                      active={activeItem === "select pedal"}
+                      onClick={() =>
+                        activeItem !== "select pedal"
+                          ? setActiveItem("select pedal")
+                          : setActiveItem("")
+                      }
+                    >
+                      <Icon name="folder" />
+                    </Menu.Item>
+                  }
+                  content={<AvailablePedals pedals={pedals} builder />}
                 />
-              </Menu.Item>
-              <Menu.Item
-                name="tap knob in"
-                active={activeItem === "tap knob in"}
-                onClick={() => {
-                  tapKnob();
-                  activeItem !== "tap knob in"
-                    ? setActiveItem("tap knob in")
-                    : setActiveItem("");
-                }}
-              >
-                <Icon
-                  name={tapKnobsIn ? "add circle" : "times circle"}
-                  className="icon-pointer"
-                  color={tapKnobsIn ? "yellow" : null}
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="pedalform"
+                      color="blue"
+                      active={activeItem === "pedalform"}
+                      onClick={() =>
+                        activeItem !== "pedalform"
+                          ? setActiveItem("pedalform")
+                          : setActiveItem("")
+                      }
+                    >
+                      <Icon name="plus square outline" />
+                    </Menu.Item>
+                  }
+                  content={
+                    <PedalForm
+                      id={id}
+                      width={width}
+                      height={height}
+                      name={name}
+                      color={color}
+                      setPedalDetails={setPedalDetails}
+                    />
+                  }
                 />
-              </Menu.Item>
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="start over"
-                    active={activeItem === "start over"}
-                    onClick={() => setActiveItem("start over")}
-                  >
-                    <Icon name="trash" className="icon-pointer" />
-                  </Menu.Item>
-                }
-                content={
-                  <Button
-                    size="mini"
-                    color="red"
-                    content="Start from scratch?"
-                    onClick={() => {
-                      startFromScratch();
-                      setActiveItem("");
-                    }}
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="add knob"
+                      color="blue"
+                      active={activeItem === "add knob"}
+                      onClick={() =>
+                        activeItem !== "add knob"
+                          ? setActiveItem("add knob")
+                          : setActiveItem("")
+                      }
+                    >
+                      <Icon name="circle notch" />
+                    </Menu.Item>
+                  }
+                  content={<AddKnobForm addKnob={addKnob} />}
+                />
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="add switch"
+                      color="blue"
+                      active={activeItem === "add switch"}
+                      onClick={() =>
+                        activeItem !== "add switch"
+                          ? setActiveItem("add switch")
+                          : setActiveItem("")
+                      }
+                    >
+                      <Icon name="toggle on" />
+                    </Menu.Item>
+                  }
+                  content={<AddSwitchForm addKnob={addKnob} />}
+                />
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="add indicator"
+                      color="blue"
+                      active={activeItem === "add indicator"}
+                      onClick={() =>
+                        activeItem !== "add indicator"
+                          ? setActiveItem("add indicator")
+                          : setActiveItem("")
+                      }
+                    >
+                      <Icon name="lightbulb" />
+                    </Menu.Item>
+                  }
+                  content={<AddIndicatorForm addKnob={addKnob} />}
+                />
+                <Menu.Item
+                  name="drag knob"
+                  active={activeItem === "drag knob"}
+                  onClick={() => {
+                    dragKnob();
+                    activeItem !== "drag knob"
+                      ? setActiveItem("drag knob")
+                      : setActiveItem("");
+                  }}
+                >
+                  <Icon
+                    name={drag ? "hand rock" : "hand paper"}
+                    className="icon-pointer"
+                    color={drag ? "orange" : null}
                   />
-                }
-              />
-              <Popup
-                inverted
-                basic
-                on="click"
-                offset="50px, -50px"
-                style={{ marginLeft: "7px" }}
-                trigger={
-                  <Menu.Item
-                    name="save"
-                    active={activeItem === "save"}
-                    onClick={() => setActiveItem("save")}
-                  >
-                    <Icon name="save" className="icon-pointer" />
-                  </Menu.Item>
-                }
-                content={
-                  isNewPedal ? (
-                    <CreatePedalButton
-                      buttonProps={{
-                        content: "Save Pedal",
-                        color: "green",
-                        size: "mini"
+                </Menu.Item>
+                <Menu.Item
+                  name="tap knob in"
+                  active={activeItem === "tap knob in"}
+                  onClick={() => {
+                    tapKnob();
+                    activeItem !== "tap knob in"
+                      ? setActiveItem("tap knob in")
+                      : setActiveItem("");
+                  }}
+                >
+                  <Icon
+                    name={tapKnobsIn ? "add circle" : "times circle"}
+                    className="icon-pointer"
+                    color={tapKnobsIn ? "yellow" : null}
+                  />
+                </Menu.Item>
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="start over"
+                      active={activeItem === "start over"}
+                      onClick={() => setActiveItem("start over")}
+                    >
+                      <Icon name="trash" className="icon-pointer" />
+                    </Menu.Item>
+                  }
+                  content={
+                    <Button
+                      size="mini"
+                      color="red"
+                      content="Start from scratch?"
+                      onClick={() => {
+                        startFromScratch();
+                        setActiveItem("");
                       }}
-                      className="icon-pointer"
-                      builderState={builderState}
                     />
-                  ) : (
-                    <UpdatePedalButton
-                      buttonProps={{
-                        content: "Update Pedal",
-                        color: "green",
-                        size: "mini"
-                      }}
-                      builderState={builderState}
-                      setOriginalKnobs={setOriginalKnobs}
-                    />
-                  )
-                }
-              />
-            </Menu>
-          </DivTools>
+                  }
+                />
+                <Popup
+                  inverted
+                  basic
+                  on="click"
+                  offset="50px, -50px"
+                  style={{ marginLeft: "7px" }}
+                  trigger={
+                    <Menu.Item
+                      name="save"
+                      active={activeItem === "save"}
+                      onClick={() => setActiveItem("save")}
+                    >
+                      <Icon name="save" className="icon-pointer" />
+                    </Menu.Item>
+                  }
+                  content={
+                    isNewPedal ? (
+                      <CreatePedalButton
+                        buttonProps={{
+                          content: "Save Pedal",
+                          color: "green",
+                          size: "mini"
+                        }}
+                        className="icon-pointer"
+                        builderState={builderState}
+                      />
+                    ) : (
+                      <UpdatePedalButton
+                        buttonProps={{
+                          content: "Update Pedal",
+                          color: "green",
+                          size: "mini"
+                        }}
+                        builderState={builderState}
+                        setOriginalKnobs={setOriginalKnobs}
+                      />
+                    )
+                  }
+                />
+              </Menu>
+            </DivTools>
+          </TabletPlus>
           {/* <DivDetails drag={true} dragMomentum={false}>
         <ComponentInfo
           knobs={knobs}

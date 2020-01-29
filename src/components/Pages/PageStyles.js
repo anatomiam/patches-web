@@ -20,6 +20,19 @@ export const FooterDiv = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+export const MobileOnly = styled.span`
+  display: inline;
+  @media only screen and (min-width: ${size.tablet}) {
+    display: none;
+  }
+`;
+
+export const TabletPlus = styled.span`
+  display: none;
+  @media only screen and (min-width: ${size.tablet}) {
+    display: inline;
+  }
+`;
 
 export const BottomDrawerDiv = styled(motion.div)`
   z-index: 4;
@@ -115,10 +128,6 @@ export const DivTools = styled.div`
   position: fixed;
   top: 100px;
   left: 5px;
-  /* @media only screen and (min-width: ${size.tablet}) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 13;
-  } */
 `;
 
 export const DivForm = styled.div``;

@@ -8,8 +8,11 @@ import {
   DivPedalSelector,
   DivTools,
   HeaderDiv,
-  NavItemDiv
+  MobileOnly,
+  NavItemDiv,
+  TabletPlus
 } from "../PageStyles";
+import { Button, Table } from "semantic-ui-react";
 import {
   addKnob,
   selectPreset,
@@ -19,7 +22,7 @@ import {
 
 import AvailablePedals from "../../Forms/Shared/AvailablePedals";
 import { AvailablePresets } from "../../Forms/Patcher/AvailablePresets";
-import { Button } from "semantic-ui-react";
+import { FloatingActionButton } from "../General/FloatingActionButton";
 import { FooterMobile } from "../General/FooterMobile";
 // import { ComponentInfo } from "../../Forms/Shared/ComponentInfo";
 import { PatchForm } from "../../Forms/Patcher/PatchForm";
@@ -159,26 +162,27 @@ const Patcher = props => {
               patcher
             />
           </DivPedal>
-          <DivTools>
-            <DivPedalSelector>
-              <AvailablePedals pedals={pedals} />
-              <AvailablePresets
-                presets={pedalPresets}
-                selectPreset={selectPreset}
-              />
-            </DivPedalSelector>
-            <Scaler scale={scale} setScale={setScale} />
-            <DivNotes>
-              <PatchForm
-                userId={userId}
-                pedalId={pedalDetails.id}
-                patchDetails={patchDetails}
-                setPatchDetails={setPatchDetails}
-                knobs={knobs}
-                selectedComponentId={selectedComponentId}
-              />
-            </DivNotes>
-            {/* <DivDetails>
+          <TabletPlus>
+            <DivTools>
+              <DivPedalSelector>
+                <AvailablePedals pedals={pedals} />
+                <AvailablePresets
+                  presets={pedalPresets}
+                  selectPreset={selectPreset}
+                />
+              </DivPedalSelector>
+              <Scaler scale={scale} setScale={setScale} />
+              <DivNotes>
+                <PatchForm
+                  userId={userId}
+                  pedalId={pedalDetails.id}
+                  patchDetails={patchDetails}
+                  setPatchDetails={setPatchDetails}
+                  knobs={knobs}
+                  selectedComponentId={selectedComponentId}
+                />
+              </DivNotes>
+              {/* <DivDetails>
           <ComponentInfo
             knobs={knobs}
             selectedComponentId={selectedComponentId}
@@ -186,9 +190,18 @@ const Patcher = props => {
             pedalDetails={patcherState.pedalDetails}
           />
         </DivDetails> */}
-          </DivTools>
+            </DivTools>
+          </TabletPlus>
         </DivContainer>
       </BodyContainer>
+      <MobileOnly>
+        <FloatingActionButton>
+          <Button circular icon="plus" />
+          <Button circular icon="minus" />
+          <Button circular icon="angle left" />
+          <Button circular icon="angle right" />
+        </FloatingActionButton>
+      </MobileOnly>
       <FooterMobile>
         <p>Patcher Content</p>
       </FooterMobile>

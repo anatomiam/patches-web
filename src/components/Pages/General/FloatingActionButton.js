@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Button } from "semantic-ui-react";
+import { MobileOnly } from "../PageStyles";
 import { motion } from "framer-motion";
 
 const fabVariants = {
@@ -30,7 +31,7 @@ const liVariants = {
 export const FloatingActionButton = props => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <MobileOnly>
       <div
         style={{
           bottom: "100px",
@@ -66,6 +67,6 @@ export const FloatingActionButton = props => {
           );
         })}
       </motion.div>
-    </>
+    </MobileOnly>
   );
 };
