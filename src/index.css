@@ -1,6 +1,7 @@
 body {
   margin: 0;
 }
+
 .component,
 .icon-pointer {
   cursor: pointer;
@@ -12,4 +13,21 @@ body {
 
 .ui.button {
   margin: 0;
+}
+
+.mobile-only {
+  display: inline;
+}
+
+.tablet-plus {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .tablet-plus {
+    display: block !important;
+  }
 }

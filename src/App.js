@@ -1,9 +1,8 @@
 import "./index.css";
 
-// import { Menu, Segment } from "semantic-ui-react";
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Menu, Segment } from "semantic-ui-react";
 import React, { useEffect } from "react";
-// import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { getTokenInfo, isAuthenticated, setAccessToken } from "./auth/Auth";
 import {
   setCurrentPage,
@@ -19,7 +18,7 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
 const App = props => {
-  // const { currentPage } = props.sharedState;
+  const { currentPage } = props.sharedState;
   const { setCurrentPage, setIsLoggedIn, setUserId } = props;
 
   // this might not be necessary now that apollo links are set up
@@ -45,7 +44,7 @@ const App = props => {
 
   return (
     <Router>
-      {/* <Segment inverted>
+      <Segment className="tablet-plus" inverted>
         <Menu inverted pointing secondary>
           <Menu.Item
             as={Link}
@@ -84,7 +83,7 @@ const App = props => {
             }}
           />
         </Menu>
-      </Segment> */}
+      </Segment>
 
       <Switch>
         <Route exact path="/" component={Landing} />

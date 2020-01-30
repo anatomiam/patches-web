@@ -69,7 +69,7 @@ const DescriptionDiv = styled.div`
 const Landing = () => {
   return (
     <>
-      <HeaderDiv>
+      <HeaderDiv className="mobile-only">
         <NavItemDiv>Hey 1</NavItemDiv>
         <NavItemDiv>Pedal Name</NavItemDiv>
         <NavItemDiv>Hey 3</NavItemDiv>

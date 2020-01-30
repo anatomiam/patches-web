@@ -14,7 +14,7 @@ export const FooterMobile = ({ children }) => {
   const [isOpen, setIsOpen] = useState(0);
   return (
     <>
-      <FooterDiv>
+      <FooterDiv className="mobile-only">
         <NavItemDiv>
           <Link to="/">
             <Button

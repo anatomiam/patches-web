@@ -8,9 +8,7 @@ import {
   DivPedalSelector,
   DivTools,
   HeaderDiv,
-  MobileOnly,
-  NavItemDiv,
-  TabletPlus
+  NavItemDiv
 } from "../PageStyles";
 import {
   addKnob,
@@ -125,7 +123,7 @@ const Patcher = props => {
 
   return (
     <>
-      <HeaderDiv>
+      <HeaderDiv className="mobile-only">
         <NavItemDiv>
           <Button
             circular
@@ -161,27 +159,26 @@ const Patcher = props => {
               patcher
             />
           </DivPedal>
-          <TabletPlus>
-            <DivTools>
-              <DivPedalSelector>
-                <AvailablePedals pedals={pedals} />
-                <AvailablePresets
-                  presets={pedalPresets}
-                  selectPreset={selectPreset}
-                />
-              </DivPedalSelector>
-              <Scaler scale={scale} setScale={setScale} />
-              <DivNotes>
-                <PatchForm
-                  userId={userId}
-                  pedalId={pedalDetails.id}
-                  patchDetails={patchDetails}
-                  setPatchDetails={setPatchDetails}
-                  knobs={knobs}
-                  selectedComponentId={selectedComponentId}
-                />
-              </DivNotes>
-              {/* <DivDetails>
+          <DivTools className="tablet-plus">
+            <DivPedalSelector>
+              <AvailablePedals pedals={pedals} />
+              <AvailablePresets
+                presets={pedalPresets}
+                selectPreset={selectPreset}
+              />
+            </DivPedalSelector>
+            <Scaler scale={scale} setScale={setScale} />
+            <DivNotes>
+              <PatchForm
+                userId={userId}
+                pedalId={pedalDetails.id}
+                patchDetails={patchDetails}
+                setPatchDetails={setPatchDetails}
+                knobs={knobs}
+                selectedComponentId={selectedComponentId}
+              />
+            </DivNotes>
+            {/* <DivDetails>
           <ComponentInfo
             knobs={knobs}
             selectedComponentId={selectedComponentId}
@@ -189,19 +186,16 @@ const Patcher = props => {
             pedalDetails={patcherState.pedalDetails}
           />
         </DivDetails> */}
-            </DivTools>
-          </TabletPlus>
+          </DivTools>
         </DivContainer>
       </BodyContainer>
-      <MobileOnly>
-        <FloatingActionButton>
-          <Button id={1} circular icon="plus" />
-          <Button id={2} circular icon="minus" />
-          <Button id={3} circular icon="angle left" />
-          <Button id={4} circular icon="angle right" />
-        </FloatingActionButton>
-      </MobileOnly>
-      <FooterMobile>
+      <FloatingActionButton className="mobile-only">
+        <Button id={1} circular icon="plus" />
+        <Button id={2} circular icon="minus" />
+        <Button id={3} circular icon="angle left" />
+        <Button id={4} circular icon="angle right" />
+      </FloatingActionButton>
+      <FooterMobile className="mobile-only">
         <p>Patcher Content</p>
       </FooterMobile>
     </>

@@ -20,19 +20,6 @@ export const FooterDiv = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const MobileOnly = styled.span`
-  display: inline;
-  @media only screen and (min-width: ${size.tablet}) {
-    display: none;
-  }
-`;
-
-export const TabletPlus = styled.span`
-  display: none;
-  @media only screen and (min-width: ${size.tablet}) {
-    display: inline;
-  }
-`;
 
 export const BottomDrawerDiv = styled(motion.div)`
   z-index: 4;
