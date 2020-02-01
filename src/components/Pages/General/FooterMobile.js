@@ -13,8 +13,8 @@ import { PropTypes } from "prop-types";
 export const FooterMobile = ({ children }) => {
   const [isOpen, setIsOpen] = useState(0);
   return (
-    <>
-      <FooterDiv className="mobile-only">
+    <span className="mobile-only">
+      <FooterDiv>
         <NavItemDiv>
           <Link to="/">
             <Button
@@ -51,12 +51,13 @@ export const FooterMobile = ({ children }) => {
         </NavItemDiv>
       </FooterDiv>
       <BottomDrawerDiv
+        className="mobile-only"
         animate={isOpen === 4 ? "open" : "closed"}
         variants={bottomDrawerVariants}
       >
         {children}
       </BottomDrawerDiv>
-    </>
+    </span>
   );
 };
 

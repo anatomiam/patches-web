@@ -31,9 +31,8 @@ const liVariants = {
 export const FloatingActionButton = props => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <span className="mobile-only">
       <div
-        className="mobile-only"
         style={{
           bottom: "100px",
           position: "fixed",
@@ -68,7 +67,7 @@ export const FloatingActionButton = props => {
           );
         })}
       </motion.div>
-    </>
+    </span>
   );
 };
 
