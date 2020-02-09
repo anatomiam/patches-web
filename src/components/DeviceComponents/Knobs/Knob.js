@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 
-import { DeleteSelectedKnobButton } from "../../Forms/Builder/DeleteSelectedKnobButton";
-import { Popup } from "semantic-ui-react";
 import { PropTypes } from "prop-types";
-import { UpdateColorInput } from "../../Forms/Builder/UpdateColorInput";
-import { UpdateCxInput } from "../../Forms/Builder/UpdateCxInput";
-import { UpdateCyInput } from "../../Forms/Builder/UpdateCyInput";
-import { UpdateDescriptionInput } from "../../Forms/Builder/UpdateDescriptionInput";
-import { UpdatePositionInput } from "../../Forms/Builder/UpdatePositionInput";
-import { UpdateRInput } from "../../Forms/Builder/UpdateRInput";
-import { UpdateStepsInput } from "../../Forms/Builder/UpdateStepsInput";
-import { UpdateWidthInput } from "../../Forms/Builder/UpdateWidthInput";
-import { gridLock } from "../../../helpers/Helpers";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -31,49 +20,17 @@ const KnobDiv = styled(motion.div)`
 export const Knob = React.memo(
   ({
     knobDetails,
-    builder,
-    patcher,
-    drag,
+    currentPage,
     tapKnobsIn,
+    sharedProps,
+    builderProps,
     setSelectedComponentId,
     setSelectedComponentPosition,
-    updateCx,
-    updateCy,
-    updateDescription,
-    updatePosition,
-    updateSteps,
-    updateR,
-    updateWidth,
-    updateColor,
-    deleteKnob
+    // patcherProps,
+    ...rest
   }) => {
-    const {
-      position,
-      cx,
-      cy,
-      r,
-      id,
-      color,
-      description,
-      steps,
-      width
-    } = knobDetails;
+    const { id, cx, cy, r, color, position } = knobDetails;
     const [angleAdjust, setAngleAdjust] = useState(0);
-    const sharedProps = {
-      // onTap: event => {
-      // setSelectedComponentId(id);
-      // }
-    };
-    const builderProps = {
-      drag: drag,
-      onDrag: (event, info) => {
-        console.log(info.offset.x + cx);
-      },
-      onDragEnd: (event, info) => {
-        updateCx(id, gridLock(info.offset.x + cx, 5));
-        updateCy(id, gridLock(info.offset.y + cy, 5));
-      }
-    };
     const patcherProps = {
       animate: {
         rotate: position + angleAdjust
@@ -99,111 +56,51 @@ export const Knob = React.memo(
     // export with flatten transform
 
     return (
-      <Popup
-        size="mini"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: "2px",
-          opacity: 1,
-          padding: "6px"
-        }}
-        trigger={
-          <KnobDiv
-            disableKnobs={tapKnobsIn}
-            width={r * 2}
-            height={r * 2}
-            left={cx - r}
-            top={cy - r}
-            {...sharedProps}
-            {...(builder ? builderProps : {})}
-            {...(patcher ? patcherProps : {})}
-          >
-            <svg width={r * 2} height={r * 2}>
-              <g>
-                <circle
-                  className="knob component"
-                  cx={r}
-                  cy={r}
-                  r={r}
-                  fill={color}
-                />
-                <line
-                  x1={r}
-                  y1={r / 4}
-                  x2={r}
-                  y2={(3.25 * r) / 4}
-                  stroke="black"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                />
-              </g>
-            </svg>
-          </KnobDiv>
-        }
-        on="click"
+      <KnobDiv
+        disableKnobs={tapKnobsIn}
+        width={r * 2}
+        height={r * 2}
+        left={cx - r}
+        top={cy - r}
+        {...sharedProps}
+        {...builderProps}
+        {...(currentPage === "patcher" ? patcherProps : {})}
+        {...rest} // This accounts for the props passed in by SemanticUI's Popup
       >
-        {/* only show when in builder mode */}
-        {cx ? <UpdateCxInput updateCx={updateCx} knobId={id} cx={cx} /> : null}
-        {cy ? <UpdateCyInput updateCy={updateCy} knobId={id} cy={cy} /> : null}
-        {description ? (
-          <UpdateDescriptionInput
-            updateDescription={updateDescription}
-            knobId={id}
-            description={description}
-          />
-        ) : null}
-        {position ? (
-          <UpdatePositionInput
-            updatePosition={updatePosition}
-            knobId={id}
-            position={position}
-          />
-        ) : null}
-        {steps ? (
-          <UpdateStepsInput
-            updateSteps={updateSteps}
-            knobId={id}
-            steps={steps}
-          />
-        ) : null}
-        {r ? <UpdateRInput updateR={updateR} knobId={id} r={r} /> : null}
-        {width ? (
-          <UpdateWidthInput
-            updateWidth={updateWidth}
-            knobId={id}
-            width={width}
-          />
-        ) : null}
-        {color ? (
-          <UpdateColorInput
-            updateColor={updateColor}
-            knobId={id}
-            color={color}
-          />
-        ) : null}
-        <DeleteSelectedKnobButton deleteKnob={deleteKnob} knobId={id} />
-      </Popup>
+        <svg width={r * 2} height={r * 2}>
+          <g>
+            <circle
+              className="knob component"
+              cx={r}
+              cy={r}
+              r={r}
+              fill={color}
+            />
+            <line
+              x1={r}
+              y1={r / 4}
+              x2={r}
+              y2={(3.25 * r) / 4}
+              stroke="black"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+          </g>
+        </svg>
+      </KnobDiv>
     );
   }
 );
 
 Knob.propTypes = {
   knobDetails: PropTypes.object,
-  builder: PropTypes.bool,
-  patcher: PropTypes.bool,
-  drag: PropTypes.bool,
-  tapKnobsIn: PropTypes.bool,
+  currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,
-  updateCx: PropTypes.func,
-  updateCy: PropTypes.func,
-  updateDescription: PropTypes.func,
-  updatePosition: PropTypes.func,
-  updateSteps: PropTypes.func,
-  updateR: PropTypes.func,
-  updateWidth: PropTypes.func,
-  updateColor: PropTypes.func,
-  deleteKnob: PropTypes.func
+  tapKnobsIn: PropTypes.bool,
+  sharedProps: PropTypes.object,
+  builderProps: PropTypes.object,
+  patcherProps: PropTypes.object
 };
+
 Knob.displayName = "Knob";

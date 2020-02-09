@@ -1,17 +1,9 @@
 import {
-  deleteKnob,
   setSelectedComponentId,
-  setSelectedComponentPosition,
-  updateColor,
-  updateCx,
-  updateCy,
-  updateDescription,
-  updatePosition,
-  updateR,
-  updateSteps,
-  updateWidth
+  setSelectedComponentPosition
 } from "../../state/Actions/Actions";
 
+import BuilderWrapper from "./BuilderWrapper";
 import { FootSwitch } from "./Switches/FootSwitch";
 import { Indicator } from "./Switches/Indicator";
 import { Knob } from "./Knobs/Knob";
@@ -24,21 +16,10 @@ import { uniqueId } from "lodash";
 const ComponentSwitcher = React.memo(props => {
   const {
     knobs,
-    builder,
-    patcher,
     drag,
-    tapKnobsIn,
     setSelectedComponentId,
     setSelectedComponentPosition,
-    updateCx,
-    updateCy,
-    updateDescription,
-    updatePosition,
-    updateSteps,
-    updateR,
-    updateWidth,
-    updateColor,
-    deleteKnob
+    sharedState
   } = props;
   return (
     <>
@@ -46,56 +27,65 @@ const ComponentSwitcher = React.memo(props => {
         switch (knob.type) {
           case "FootSwitch":
             return (
-              <FootSwitch
-                key={uniqueId("footswitch-key")}
-                footSwitchDetails={knob}
-                setSelectedComponentId={setSelectedComponentId}
-                builder={builder}
-                patcher={patcher}
-              />
+              <BuilderWrapper
+                key={uniqueId("footswitch-key-")}
+                currentPage={sharedState.currentPage}
+                knobDetails={knob}
+                width={knob.r * 2}
+                drag={drag}
+              >
+                <FootSwitch
+                  setSelectedComponentId={setSelectedComponentId}
+                  footSwitchDetails={knob}
+                />
+              </BuilderWrapper>
             );
           case "Indicator":
             return (
-              <Indicator
-                key={uniqueId("indicator-key")}
-                indicatorDetails={knob}
-                setSelectedComponentId={setSelectedComponentId}
-                builder={builder}
-                patcher={patcher}
-              />
+              <BuilderWrapper
+                key={uniqueId("indicator-key-")}
+                currentPage={sharedState.currentPage}
+                knobDetails={knob}
+                width={knob.r * 2}
+                drag={drag}
+              >
+                <Indicator
+                  indicatorDetails={knob}
+                  setSelectedComponentId={setSelectedComponentId}
+                />
+              </BuilderWrapper>
             );
           case "Knob":
             return (
-              <Knob
+              <BuilderWrapper
                 key={uniqueId("knob-key-")}
+                currentPage={sharedState.currentPage}
                 knobDetails={knob}
-                builder={builder}
-                setSelectedComponentId={setSelectedComponentId}
-                setSelectedComponentPosition={setSelectedComponentPosition}
-                updateCx={updateCx}
-                updateCy={updateCy}
-                updateDescription={updateDescription}
-                updatePosition={updatePosition}
-                updateSteps={updateSteps}
-                updateR={updateR}
-                updateWidth={updateWidth}
-                updateColor={updateColor}
-                deleteKnob={deleteKnob}
-                patcher={patcher}
+                width={knob.r * 2}
                 drag={drag}
-                tapKnobsIn={tapKnobsIn}
-              />
+              >
+                <Knob
+                  setSelectedComponentId={setSelectedComponentId}
+                  setSelectedComponentPosition={setSelectedComponentPosition}
+                  knobDetails={knob}
+                />
+              </BuilderWrapper>
             );
           case "Switch":
             return (
-              <Switch
+              <BuilderWrapper
                 key={uniqueId("switch-key-")}
-                switchDetails={knob}
-                builder={builder}
-                patcher={patcher}
-                setSelectedComponentPosition={setSelectedComponentPosition}
-                setSelectedComponentId={setSelectedComponentId}
-              />
+                currentPage={sharedState.currentPage}
+                knobDetails={knob}
+                width={knob.width}
+                drag={drag}
+              >
+                <Switch
+                  switchDetails={knob}
+                  setSelectedComponentPosition={setSelectedComponentPosition}
+                  setSelectedComponentId={setSelectedComponentId}
+                />
+              </BuilderWrapper>
             );
           default:
             return null;
@@ -107,43 +97,25 @@ const ComponentSwitcher = React.memo(props => {
 
 ComponentSwitcher.propTypes = {
   knobDetails: PropTypes.object,
-  builder: PropTypes.bool,
-  patcher: PropTypes.bool,
   drag: PropTypes.bool,
   tapKnobsIn: PropTypes.bool,
   knobs: PropTypes.array,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,
-  updateCx: PropTypes.func,
-  updateCy: PropTypes.func,
-  updateDescription: PropTypes.func,
-  updatePosition: PropTypes.func,
-  updateSteps: PropTypes.func,
-  updateR: PropTypes.func,
-  updateWidth: PropTypes.func,
-  updateColor: PropTypes.func,
-  deleteKnob: PropTypes.func
+  sharedState: PropTypes.object
 };
 ComponentSwitcher.displayName = "ComponentSwitcher";
 const mapStateToProps = state => {
   // need to reconcile bw builder and patcher
   return {
-    builderState: state.builderState
+    builderState: state.builderState,
+    sharedState: state.sharedState
   };
 };
 
 const mapDispatchToProps = {
   setSelectedComponentId,
-  setSelectedComponentPosition,
-  updateCx,
-  updateCy,
-  updateDescription,
-  updatePosition,
-  updateSteps,
-  updateR,
-  updateWidth,
-  updateColor,
-  deleteKnob
+  setSelectedComponentPosition
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ComponentSwitcher);

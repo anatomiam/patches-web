@@ -12,15 +12,13 @@ const IndicatorDiv = styled(motion.div)`
 `;
 
 export const Indicator = React.memo(
-  ({ indicatorDetails, builder, patcher, setSelectedComponentId }) => {
+  ({ indicatorDetails, currentPage, setSelectedComponentId, ...rest }) => {
     const { cx, cy, r, color, id } = indicatorDetails;
-    const sharedProps = {
+    const patcherProps = {
       onTapStart: () => {
         setSelectedComponentId(id);
       }
     };
-    const builderProps = {};
-    const patcherProps = {};
 
     return (
       <IndicatorDiv
@@ -28,9 +26,8 @@ export const Indicator = React.memo(
         height={r * 2}
         left={cx - r}
         top={cy - r}
-        {...sharedProps}
-        {...(builder ? builderProps : {})}
-        {...(patcher ? patcherProps : {})}
+        {...(currentPage === "patcher" ? patcherProps : {})}
+        {...rest}
       >
         <svg width={r * 2} height={r * 2}>
           <g>
@@ -51,9 +48,7 @@ export const Indicator = React.memo(
 
 Indicator.propTypes = {
   indicatorDetails: PropTypes.object,
-  builder: PropTypes.bool,
-  patcher: PropTypes.bool,
-  dispatch: PropTypes.func,
+  currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func
 };
 Indicator.displayName = "Indicator";

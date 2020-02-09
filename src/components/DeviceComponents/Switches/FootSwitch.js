@@ -12,16 +12,13 @@ const FootSwitchDiv = styled(motion.div)`
 `;
 
 export const FootSwitch = React.memo(
-  ({ footSwitchDetails, builder, patcher, setSelectedComponentId }) => {
+  ({ footSwitchDetails, currentPage, setSelectedComponentId, ...rest }) => {
     const { cx, cy, r, id } = footSwitchDetails;
-    const sharedProps = {
-      onTapStart: () => {
+    const patcherProps = {
+      whileTap: { scale: 0.8 },
+      onTap: () => {
         setSelectedComponentId(id);
       }
-    };
-    const builderProps = {};
-    const patcherProps = {
-      whileTap: { scale: 0.8 }
     };
 
     return (
@@ -30,9 +27,8 @@ export const FootSwitch = React.memo(
         height={r * 2}
         left={cx - r}
         top={cy - r}
-        {...sharedProps}
-        {...(builder ? builderProps : {})}
-        {...(patcher ? patcherProps : {})}
+        {...(currentPage === "patcher" ? patcherProps : {})}
+        {...rest}
       >
         <svg width={r * 2} height={r * 2}>
           <g>
@@ -53,8 +49,7 @@ export const FootSwitch = React.memo(
 
 FootSwitch.propTypes = {
   footSwitchDetails: PropTypes.object,
-  builder: PropTypes.bool,
-  patcher: PropTypes.bool,
+  currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func
 };
 FootSwitch.displayName = "FootSwitch";

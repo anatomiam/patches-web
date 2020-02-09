@@ -14,10 +14,11 @@ const SwitchDiv = styled(motion.div)`
 export const Switch = React.memo(
   ({
     switchDetails,
-    builder,
-    patcher,
+    currentPage,
+    builderProps,
     setSelectedComponentId,
-    setSelectedComponentPosition
+    setSelectedComponentPosition,
+    ...rest
   }) => {
     // TODO better names for these variables
     const { cx, cy, width, id, position, steps } = switchDetails;
@@ -38,17 +39,12 @@ export const Switch = React.memo(
     };
     const switchPosition = switchPositions[numberOfPositions];
 
-    const sharedProps = {
-      onTap: () => {
-        setSelectedComponentId(id);
-      }
-    };
-    const builderProps = {};
     const patcherProps = {
       whileHover: { scale: 1.1 },
       whileTap: { scale: 0.95 },
       onTap: () => {
         setSelectedComponentPosition(id, (position + 1) % numberOfPositions);
+        setSelectedComponentId(id);
       }
     };
 
@@ -58,9 +54,9 @@ export const Switch = React.memo(
         height={height}
         left={_cx}
         top={_cy}
-        {...sharedProps}
-        {...(builder ? builderProps : {})}
-        {...(patcher ? patcherProps : {})}
+        {...builderProps}
+        {...(currentPage === "patcher" ? patcherProps : {})}
+        {...rest}
       >
         <svg width={_width} height={height}>
           <g>
@@ -90,8 +86,8 @@ export const Switch = React.memo(
 
 Switch.propTypes = {
   switchDetails: PropTypes.object,
-  builder: PropTypes.bool,
-  patcher: PropTypes.bool,
+  builderProps: PropTypes.object,
+  currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func
 };
