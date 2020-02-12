@@ -57,7 +57,7 @@ export const Knob = React.memo(
 
     return (
       <KnobDiv
-        disableKnobs={tapKnobsIn}
+        disableKnobs={tapKnobsIn.isActive}
         width={r * 2}
         height={r * 2}
         left={cx - r}
@@ -97,7 +97,7 @@ Knob.propTypes = {
   currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,
-  tapKnobsIn: PropTypes.bool,
+  tapKnobsIn: PropTypes.object,
   sharedProps: PropTypes.object,
   builderProps: PropTypes.object,
   patcherProps: PropTypes.object

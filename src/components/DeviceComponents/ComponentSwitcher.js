@@ -98,7 +98,6 @@ const ComponentSwitcher = React.memo(props => {
 ComponentSwitcher.propTypes = {
   knobDetails: PropTypes.object,
   drag: PropTypes.bool,
-  tapKnobsIn: PropTypes.bool,
   knobs: PropTypes.array,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,

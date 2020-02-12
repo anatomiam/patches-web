@@ -103,7 +103,6 @@ const Patcher = props => {
   const {
     knobs,
     scale,
-    tapKnobsIn,
     patchDetails,
     selectedComponentId,
     pedalDetails
@@ -155,7 +154,6 @@ const Patcher = props => {
               height={height}
               color={color}
               addKnob={addKnob}
-              tapKnobsIn={tapKnobsIn}
               patcher
             />
           </DivPedal>

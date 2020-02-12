@@ -5,7 +5,6 @@ export const patcherData = {
   selectedComponentId: null,
   selectedComponentPosition: 0,
   drag: false,
-  tapKnobsIn: false,
   scale: 1,
   knobs: [],
   originalKnobs: [],
@@ -32,7 +31,10 @@ export const builderData = {
   selectedComponentId: null,
   selectedComponentPosition: 0,
   drag: false,
-  tapKnobsIn: false,
+  tapKnobsIn: {
+    isActive: false,
+    type: ""
+  },
   scale: 1,
   knobs: [],
   originalKnobs: [],

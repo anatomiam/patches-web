@@ -79,7 +79,7 @@ export const CustomPath = React.memo(
 
     return (
       <PathDiv
-        disableKnobs={tapKnobsIn}
+        disableKnobs={tapKnobsIn.isActive}
         width={r * 2}
         height={r * 2}
         left={cx - r}
@@ -123,7 +123,7 @@ CustomPath.propTypes = {
   builder: PropTypes.bool,
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
-  tapKnobsIn: PropTypes.bool,
+  tapKnobsIn: PropTypes.object,
   dispatch: PropTypes.func
 };
 CustomPath.displayName = "CustomPath";

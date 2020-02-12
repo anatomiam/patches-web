@@ -96,6 +96,7 @@ export function dragKnob() {
   return { type: DRAG_KNOB };
 }
 
+// TODO update isActive and knob type
 export function tapKnob() {
   return { type: TAP_KNOB };
 }

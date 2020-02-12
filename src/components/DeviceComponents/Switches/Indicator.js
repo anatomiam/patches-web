@@ -12,7 +12,13 @@ const IndicatorDiv = styled(motion.div)`
 `;
 
 export const Indicator = React.memo(
-  ({ indicatorDetails, currentPage, setSelectedComponentId, ...rest }) => {
+  ({
+    indicatorDetails,
+    currentPage,
+    setSelectedComponentId,
+    builderProps,
+    ...rest
+  }) => {
     const { cx, cy, r, color, id } = indicatorDetails;
     const patcherProps = {
       onTapStart: () => {
@@ -26,6 +32,7 @@ export const Indicator = React.memo(
         height={r * 2}
         left={cx - r}
         top={cy - r}
+        {...builderProps}
         {...(currentPage === "patcher" ? patcherProps : {})}
         {...rest}
       >
@@ -48,6 +55,7 @@ export const Indicator = React.memo(
 
 Indicator.propTypes = {
   indicatorDetails: PropTypes.object,
+  builderProps: PropTypes.object,
   currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func
 };

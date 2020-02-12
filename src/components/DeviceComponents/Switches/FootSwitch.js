@@ -12,7 +12,13 @@ const FootSwitchDiv = styled(motion.div)`
 `;
 
 export const FootSwitch = React.memo(
-  ({ footSwitchDetails, currentPage, setSelectedComponentId, ...rest }) => {
+  ({
+    footSwitchDetails,
+    currentPage,
+    setSelectedComponentId,
+    builderProps,
+    ...rest
+  }) => {
     const { cx, cy, r, id } = footSwitchDetails;
     const patcherProps = {
       whileTap: { scale: 0.8 },
@@ -27,6 +33,7 @@ export const FootSwitch = React.memo(
         height={r * 2}
         left={cx - r}
         top={cy - r}
+        {...builderProps}
         {...(currentPage === "patcher" ? patcherProps : {})}
         {...rest}
       >
@@ -49,6 +56,7 @@ export const FootSwitch = React.memo(
 
 FootSwitch.propTypes = {
   footSwitchDetails: PropTypes.object,
+  builderProps: PropTypes.object,
   currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func
 };

@@ -66,6 +66,7 @@ function builderState(state = builderData, action) {
         drag: !state.drag
       };
     case TAP_KNOB:
+      // TODO update isActive and knob type
       return {
         ...state,
         tapKnobsIn: !state.tapKnobsIn

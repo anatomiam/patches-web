@@ -142,7 +142,6 @@ const BuilderWrapper = React.memo(
         tapKnobsIn: tapKnobsIn,
         sharedProps: sharedProps,
         currentPage: currentPage
-        // patcherProps: patcherProps
       });
     }
   }
@@ -174,7 +173,7 @@ BuilderWrapper.propTypes = {
   height: PropTypes.number,
   top: PropTypes.number,
   left: PropTypes.number,
-  tapKnobsIn: PropTypes.bool,
+  tapKnobsIn: PropTypes.object,
   currentPage: PropTypes.string,
   setSelectedComponentId: PropTypes.func,
   setSelectedComponentPosition: PropTypes.func,

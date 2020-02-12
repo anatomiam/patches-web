@@ -45,7 +45,7 @@ export const Pedal = React.memo(
         width={width}
         height={height}
         color={color}
-        {...(tapKnobsIn ? tapKnobsProps : {})}
+        {...(tapKnobsIn.isActive ? tapKnobsProps : {})}
       >
         <ComponentSwitcher
           knobs={knobs}
@@ -54,7 +54,6 @@ export const Pedal = React.memo(
           builder={builder}
           patcher={patcher}
           drag={drag}
-          tapKnobsIn={tapKnobsIn}
         />
       </PedalDiv>
     );
@@ -69,7 +68,7 @@ Pedal.propTypes = {
   builder: PropTypes.bool,
   patcher: PropTypes.bool,
   drag: PropTypes.bool,
-  tapKnobsIn: PropTypes.bool,
+  tapKnobsIn: PropTypes.object,
   addKnob: PropTypes.func
 };
 Pedal.displayName = "Pedal";

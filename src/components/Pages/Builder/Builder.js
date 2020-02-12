@@ -285,6 +285,7 @@ const Builder = props => {
                 name="tap knob in"
                 active={activeItem === "tap knob in"}
                 onClick={() => {
+                  // TODO update isActive and knob type
                   tapKnob();
                   activeItem !== "tap knob in"
                     ? setActiveItem("tap knob in")
@@ -292,9 +293,9 @@ const Builder = props => {
                 }}
               >
                 <Icon
-                  name={tapKnobsIn ? "add circle" : "times circle"}
+                  name={tapKnobsIn.isActive ? "add circle" : "times circle"}
                   className="icon-pointer"
-                  color={tapKnobsIn ? "yellow" : null}
+                  color={tapKnobsIn.isActive ? "yellow" : null}
                 />
               </Menu.Item>
               <Popup
@@ -481,11 +482,12 @@ const Builder = props => {
         <Button
           id={5}
           circular
-          icon={tapKnobsIn ? "add circle" : "times circle"}
+          icon={tapKnobsIn.isActive ? "add circle" : "times circle"}
           active={activeItem === "tap knob in"}
           className="icon-pointer"
-          color={tapKnobsIn ? "yellow" : null}
+          color={tapKnobsIn.isActive ? "yellow" : null}
           onClick={() => {
+            // TODO update isActive and knob type
             tapKnob();
             activeItem !== "tap knob in"
               ? setActiveItem("tap knob in")
