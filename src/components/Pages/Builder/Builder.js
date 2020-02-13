@@ -281,12 +281,12 @@ const Builder = props => {
                   color={drag ? "orange" : null}
                 />
               </Menu.Item>
+              {/* needs to be a drawer */}
               <Menu.Item
                 name="tap knob in"
                 active={activeItem === "tap knob in"}
                 onClick={() => {
-                  // TODO update isActive and knob type
-                  tapKnob();
+                  tapKnob("knob");
                   activeItem !== "tap knob in"
                     ? setActiveItem("tap knob in")
                     : setActiveItem("");
@@ -487,8 +487,7 @@ const Builder = props => {
           className="icon-pointer"
           color={tapKnobsIn.isActive ? "yellow" : null}
           onClick={() => {
-            // TODO update isActive and knob type
-            tapKnob();
+            tapKnob("knob");
             activeItem !== "tap knob in"
               ? setActiveItem("tap knob in")
               : setActiveItem("");

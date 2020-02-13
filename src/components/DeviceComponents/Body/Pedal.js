@@ -1,9 +1,9 @@
 import ComponentSwitcher from "../ComponentSwitcher";
 import { PropTypes } from "prop-types";
 import React from "react";
+import { defaultDeviceComponents } from "../../../state/Data";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { uniqueId } from "lodash";
 
 const PedalDiv = styled(motion.div)`
   position: relative;
@@ -28,14 +28,9 @@ export const Pedal = React.memo(
       className: "crosshair",
       onTap: event => {
         addKnob({
-          type: "Knob",
+          ...defaultDeviceComponents[tapKnobsIn.knobType],
           cx: event.offsetX,
-          cy: event.offsetY,
-          r: 20,
-          position: 0,
-          color: "#A9A9A9",
-          description: "Knob",
-          id: uniqueId("knob-")
+          cy: event.offsetY
         });
       }
     };

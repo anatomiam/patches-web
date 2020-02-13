@@ -66,10 +66,12 @@ function builderState(state = builderData, action) {
         drag: !state.drag
       };
     case TAP_KNOB:
-      // TODO update isActive and knob type
       return {
         ...state,
-        tapKnobsIn: !state.tapKnobsIn
+        tapKnobsIn: {
+          isActive: !state.tapKnobsIn.isActive,
+          knobType: action.knobType
+        }
       };
     case SET_SCALE_BUILDER:
       return {

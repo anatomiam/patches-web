@@ -154,6 +154,7 @@ const Patcher = props => {
               height={height}
               color={color}
               addKnob={addKnob}
+              tapKnobsIn={{ isActive: false }}
               patcher
             />
           </DivPedal>
