@@ -4,6 +4,7 @@ import React from "react";
 import { defaultDeviceComponents } from "../../../state/Data";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { uniqueId } from "lodash";
 
 const PedalDiv = styled(motion.div)`
   position: relative;
@@ -30,7 +31,8 @@ export const Pedal = React.memo(
         addKnob({
           ...defaultDeviceComponents[tapKnobsIn.knobType],
           cx: event.offsetX,
-          cy: event.offsetY
+          cy: event.offsetY,
+          id: uniqueId(`${tapKnobsIn.knobType}-`)
         });
       }
     };

@@ -293,9 +293,89 @@ const Builder = props => {
                 }}
               >
                 <Icon
-                  name={tapKnobsIn.isActive ? "add circle" : "times circle"}
+                  name={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "knob"
+                      ? "add circle"
+                      : "times circle"
+                  }
                   className="icon-pointer"
-                  color={tapKnobsIn.isActive ? "yellow" : null}
+                  color={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "knob"
+                      ? "yellow"
+                      : null
+                  }
+                />
+              </Menu.Item>
+              <Menu.Item
+                name="tap switch in"
+                active={activeItem === "tap switch in"}
+                onClick={() => {
+                  tapKnob("switch");
+                  activeItem !== "tap switch in"
+                    ? setActiveItem("tap switch in")
+                    : setActiveItem("");
+                }}
+              >
+                <Icon
+                  name={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "switch"
+                      ? "circle outline"
+                      : "circle"
+                  }
+                  className="icon-pointer"
+                  color={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "switch"
+                      ? "yellow"
+                      : null
+                  }
+                />
+              </Menu.Item>
+              <Menu.Item
+                name="tap footSwitch in"
+                active={activeItem === "tap footSwitch in"}
+                onClick={() => {
+                  tapKnob("footSwitch");
+                  activeItem !== "tap footSwitch in"
+                    ? setActiveItem("tap footSwitch in")
+                    : setActiveItem("");
+                }}
+              >
+                <Icon
+                  name={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "footSwitch"
+                      ? "expand"
+                      : "expand arrows alternate"
+                  }
+                  className="icon-pointer"
+                  color={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "footSwitch"
+                      ? "yellow"
+                      : null
+                  }
+                />
+              </Menu.Item>
+              <Menu.Item
+                name="tap indicator in"
+                active={activeItem === "tap indicator in"}
+                onClick={() => {
+                  tapKnob("indicator");
+                  activeItem !== "tap indicator in"
+                    ? setActiveItem("tap indicator in")
+                    : setActiveItem("");
+                }}
+              >
+                <Icon
+                  name={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "indicator"
+                      ? "bell"
+                      : "bell outline"
+                  }
+                  className="icon-pointer"
+                  color={
+                    tapKnobsIn.isActive && tapKnobsIn.knobType === "indicator"
+                      ? "yellow"
+                      : null
+                  }
                 />
               </Menu.Item>
               <Popup

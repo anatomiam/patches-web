@@ -1,24 +1,24 @@
 * Pre-Alpha
 ** TODO [#A] Form error when adding new knob to pedal    :patcher:bug:server:
-*** To replicate
+*** to replicate
     - create a preset on an existing pedal
     - add a knob to that pedal
     - create a new preset on that pedal, setting a note for the new knob
     - switch between presets and look at contents for the new knob on the older preset
 *** what to do
     - figure out how to refresh the form values properly when switching between presets
-** STARTED [#A] Set up tapKnobsIn for rest of components        :builder:web:
-   - last thing is to update all forms with proper buttons for knob type
+** TODO [#A] Dedupe mobile / desktop menus                      :builder:web:
 ** TODO [#A] Get the pedal/knob ids after saving pedal        :builder:web:
    - So that updates can be made immediately after saving the initial draft
 ** TODO [#A] Clean up Patcher forms                             :patcher:web:
+** TODO [#A] Add edit functionality to all device components    :builder:web:
+** TODO [#B] Update form icons                                  :web:builder:
 ** TODO [#B] Set up patch information table                     :patcher:web:
 ** TODO [#B] Fix scaler                                         :general:web:
 ** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
    - edit mode should be a toggle button from a view mode ?
 ** TODO [#B] Improve names of variables in general          :maintenance:web:
 ** TODO [#B] Improve Builder form styles                       :builder::web:
-** TODO [#A] Add edit functionality to all device components    :builder:web:
 * Alpha
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators change colors with footswitch click     :patcher:web:
@@ -44,8 +44,8 @@
 ** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
    - https://react.semantic-ui.com/elements/button/
 * Release Candidate
-** TODO [#B] Embed user soundcloud demos                        :patcher:web:
 ** TODO [#A] Set up SSO with soundcloud, google             :maintenance:web:
+** TODO [#B] Embed user soundcloud demos                        :patcher:web:
 ** TODO [#B] Set up ability to query for Browser page - read only :server:web:
 * Stable Release
 * Nice to haves

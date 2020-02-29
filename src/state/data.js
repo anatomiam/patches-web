@@ -1,5 +1,3 @@
-import { uniqueId } from "lodash";
-
 export const patcherData = {
   builder: "cju66ydwl000y0738rs8jz7yv",
   isNewPedal: true,
@@ -69,30 +67,26 @@ export const defaultDeviceComponents = {
     r: 20,
     position: 0,
     color: "#A9A9A9",
-    description: "Knob",
-    id: uniqueId("knob-")
+    description: "Knob"
   },
   footSwitch: {
     type: "FootSwitch",
     r: 15,
     color: "#A9A9A9",
-    description: "Footswitch",
-    id: uniqueId("footswitch-")
+    description: "Footswitch"
   },
   indicator: {
     type: "Indicator",
     r: 8,
     position: 0,
     color: "#a6aaa4",
-    description: "Indicator",
-    id: uniqueId("indicator-")
+    description: "Indicator"
   },
   switch: {
     type: "Switch",
     color: "#A9A9A9",
     description: "Switch",
     steps: 3,
-    width: 30,
-    id: uniqueId("switch-")
+    width: 30
   }
 };

@@ -69,7 +69,10 @@ function builderState(state = builderData, action) {
       return {
         ...state,
         tapKnobsIn: {
-          isActive: !state.tapKnobsIn.isActive,
+          isActive:
+            state.tapKnobsIn.knobType === action.knobType
+              ? !state.tapKnobsIn.isActive
+              : true,
           knobType: action.knobType
         }
       };

@@ -616,3 +616,28 @@ Archived entries from file /Users/ericdulcet/Code/patches/patches-web/TODO.org
   :ARCHIVE_TODO: DONE
   :END:
   - [X] Move redux connect into BuilderWrapper
+
+* DONE [#A] Fix drag and drop bug                           :builder:bug:web:
+  CLOSED: [2020-02-29 Sat 14:46]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2020-02-29 Sat 14:46
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+** to replicate   
+   - load a pedal, tap in a few knobs, try to drag and drop one
+** what is the issue 
+   - the id for all of the new knobs are the same (generated in Data.js)
+
+* DONE [#A] Set up tapKnobsIn for rest of components            :builder:web:
+  CLOSED: [2020-02-29 Sat 14:46]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2020-02-29 Sat 14:46
+  :ARCHIVE_FILE: ~/Code/patches/patches-web/TODO.org
+  :ARCHIVE_OLPATH: Pre-Alpha
+  :ARCHIVE_CATEGORY: TODO
+  :ARCHIVE_TODO: DONE
+  :END:
+  - last thing is to update all forms with proper buttons for knob type
