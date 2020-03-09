@@ -19,7 +19,7 @@
     "apollo-link-error": "^1.1.12",
     "apollo-link-token-refresh": "^0.2.7",
     "formik": "^2.1.4",
-    "framer-motion": "^1.9.0",
+    "framer-motion": "^1.9.1",
     "graphql": "^14.6.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
