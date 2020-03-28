@@ -1,5 +1,10 @@
+* STARTED Hold on all Builder tasks and release Patcher functionality first
 * Pre-Alpha
-** TODO [#A] Form error when adding new knob to pedal    :patcher:bug:server:
+** TODO [#A] Clean up Patcher forms                             :patcher:web:
+** TODO [#B] Set up patch information table                     :patcher:web:
+** TODO [#B] Fix scaler                                         :general:web:
+** TODO [#B] Improve names of variables in general          :maintenance:web:
+** BLOCKED [#A] Form error when adding new knob to pedal :patcher:bug:server:
 *** to replicate
     - create a preset on an existing pedal
     - add a knob to that pedal
@@ -7,23 +12,19 @@
     - switch between presets and look at contents for the new knob on the older preset
 *** what to do
     - figure out how to refresh the form values properly when switching between presets
-** TODO [#A] Dedupe mobile / desktop menus                      :builder:web:
-** TODO [#A] Get the pedal/knob ids after saving pedal        :builder:web:
+** BLOCKED [#A] Dedupe mobile / desktop menus                   :builder:web:
+** BLOCKED [#A] Get the pedal/knob ids after saving pedal       :builder:web:
    - So that updates can be made immediately after saving the initial draft
-** TODO [#A] Clean up Patcher forms                             :patcher:web:
-** TODO [#A] Add edit functionality to all device components    :builder:web:
-** TODO [#B] Update form icons                                  :web:builder:
-** TODO [#B] Set up patch information table                     :patcher:web:
-** TODO [#B] Fix scaler                                         :general:web:
-** TODO [#B] Set up distinc "create" and "edit" modes           :builder:web:
+** BLOCKED [#A] Add edit functionality to all device components :builder:web:
+** BLOCKED [#B] Update form icons                               :web:builder:
+** BLOCKED [#B] Set up distinc "create" and "edit" modes        :builder:web:
    - edit mode should be a toggle button from a view mode ?
-** TODO [#B] Improve names of variables in general          :maintenance:web:
-** TODO [#B] Improve Builder form styles                       :builder::web:
+** BLOCKED [#B] Improve Builder form styles                    :builder::web:
 * Alpha
+  
+** TODO [#A] Disable Builder page for users                 :auth:web:server:
 ** TODO [#A] Protect routes on front/backend                :auth:web:server:
 ** TODO [#B] Indicators change colors with footswitch click     :patcher:web:
-** TODO [#B] Set up form for entering SVG path                  :builder:web:
-** TODO [#B] Set up Custom Path component                       :builder:web:
 ** TODO [#B] Add more tests                                 :maintenance:web:
    - https://create-react-app.dev/docs/running-tests
    - https://github.com/testing-library/react-testing-library
@@ -32,16 +33,18 @@
 ** TODO [#C] Create the pixel / inch / cm converter/scaler thing :builder:web:
 ** TODO [#C] Create default template pedal dimensions           :builder:web:
    - use pedalplaygrounds dimensions
+** BLOCKED [#B] Set up form for entering SVG path               :builder:web:
+** BLOCKED [#B] Set up Custom Path component                    :builder:web:
 * Beta
 ** TODO [#B] Figure out why setting cookie path fails :maintenance:server:bug:
-** TODO [#B] Set up 'graph paper' for pedal background          :builder:web:
 ** TODO [#B] Set up Browser page                                :browser:web:
    - first step: display a list of patch names / descriptions
 ** TODO [#B] Set up query pedals by user                             :server:
 ** TODO [#C] Screenshots of how to get started          :getting:started:web:
 ** TODO [#C] Load knob animation like [[https://codesandbox.io/s/framer-motion-directional-stagger-effect-grid-f127v][this]]                   :patcher:web:ux:
-** TODO [#C] Create a default selection of knobs / switches / etc :builder:web:
-** TODO [#C] Animate icons on accordion when selected        :builder:web:ux:
+** BLOCKED [#B] Set up 'graph paper' for pedal background       :builder:web:
+** BLOCKED [#C] Create a default selection of knobs / switches / etc :builder:web:
+** BLOCKED [#C] Animate icons on accordion when selected     :builder:web:ux:
    - https://react.semantic-ui.com/elements/button/
 * Release Candidate
 ** TODO [#A] Set up SSO with soundcloud, google             :maintenance:web:
