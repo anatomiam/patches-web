@@ -13,7 +13,7 @@
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.0",
-    "@types/yup": "^0.26.37",
+    "@types/yup": "^0.28.0",
     "apollo-boost": "^0.4.7",
     "apollo-link-context": "^1.0.20",
     "apollo-link-error": "^1.1.13",
