@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
+    "@apollo/react-hooks": "^4.0.0",
     "@types/jest": "^26.0.5",
     "@types/lodash": "^4.14.157",
     "@types/node": "^14.0.24",
